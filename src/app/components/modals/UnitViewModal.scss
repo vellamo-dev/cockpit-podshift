@@ -1,0 +1,41 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
+// Title row of the unit view: the view labels keep their size, the name gets the ellipsis.
+.podshift-unit-view__title-row {
+  display: flex;
+  align-items: center;
+  gap: var(--pf-t--global--spacer--sm);
+  min-inline-size: 0;
+}
+
+.podshift-unit-view__switch {
+  display: inline-flex;
+  flex: none;
+  gap: var(--pf-t--global--spacer--xs);
+}
+
+.podshift-unit-view__name {
+  flex: 1 1 auto;
+  min-inline-size: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// The path is cut at its start, so the file name at its end stays visible. The block runs
+// right to left for the ellipsis; the path itself stays left to right.
+.podshift-unit-view__path {
+  min-block-size: calc(1em * var(--pf-t--global--font--line-height--body));
+  overflow: hidden;
+  //noinspection CssNoGenericFontName
+  font-family: var(--pf-t--global--font--family--mono);
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  direction: rtl;
+}
+
+.podshift-unit-view__path-text {
+  direction: ltr;
+  unicode-bidi: embed;
+}

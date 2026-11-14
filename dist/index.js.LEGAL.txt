@@ -1,0 +1,729 @@
+/**
+ * The cockpit object, typed for the IDE.
+ * artifacts/cockpit-lib/cockpit.js builds the object at runtime, so the IDE can't see its
+ * members. The JSDoc cast points it at artifacts/cockpit-lib/cockpit.d.ts instead.
+ * Import this module instead of 'cockpit' in app code.
+ *
+ * @file cockpitTyped.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Calls to the PodShift Cockpit handler and the access checks around it.
+ *
+ * @file PodShiftApi.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Translation helper. xgettext extracts i18n(...) calls (see the Makefile keywords).
+ *
+ * @file i18n.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Page shown while the access check runs.
+ *
+ * @file Loading.jsx
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Page shown when the user has no PodShift access.
+ *
+ * @file NoAccess.jsx
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Page shown when the PodShift handler is missing.
+ *
+ * @file NotInstalled.jsx
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Refresh counter that tells hooks to reload their data.
+ *
+ * @file RefreshContext.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Shared health-check result for the Overview Health card and the Health tab.
+ *
+ * @file HealthContext.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Hook that keeps the selected tab in the page address.
+ *
+ * @file useTab.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Links to Cockpit's own pages, and to the in-page Services tab.
+ * System services link to the Services page. Units of the podshift user cannot:
+ * Services reads the signed-in user's own user manager, so it cannot show them.
+ * Those units open on our Services tab, with the search box set to the unit name,
+ * or on the Logs page.
+ *
+ * @file CockpitLinks.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Kebab menu for a card header, using Cockpit's shared KebabDropdown.
+ *
+ * @file CardActionsMenu.jsx
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * PatternFly inline notice: an Alert with isInline and isPlain.
+ *
+ * @file InlineNotice.jsx
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Shared loading, error, empty and stale-data states for tabs and cards.
+ *
+ * @file LoadingContent.jsx
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Plain-text form of a properties card, and the clipboard helper for the Copy menu item.
+ *
+ * @file rowsToText.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * A card with a title and label/value rows, built like Cockpit's System information card.
+ *
+ * @file PropertiesCard.jsx
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Overview card with the PodShift configuration.
+ *
+ * @file ConfigurationCard.jsx
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * PatternFly status icon for a health-check state.
+ *
+ * @file HealthStatusIcon.jsx
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Plain-text form of a health-check result, for the Copy menu item.
+ *
+ * @file healthToText.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Overview card with the health check summary and a link to the Health tab.
+ *
+ * @file HealthCard.jsx
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Build-time facts about the Cockpit app, injected by build.js.
+ *
+ * @file AppInfo.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Hook that loads one handler action, once or on a poll period.
+ *
+ * @file useAction.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Overview card with PodShift and host information.
+ *
+ * @file InfoCard.jsx
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Overview card with the PodShift service status.
+ *
+ * @file StatusCard.jsx
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Overview card with the resource usage.
+ *
+ * @file UsageCard.jsx
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Overview page: the Status, Usage, Info, Configuration and Health cards.
+ * When the administrator has no environment tag set, a warning is shown
+ * under the tabs, above the cards.
+ *
+ * @file OverviewPage.jsx
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Base class of the toolbar filters of the resource modules: the toggle group
+ * settings and the check whether an item passes the selected option.
+ *
+ * @file BaseFilter.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Hook that keeps the one open code view of a resource tab (Inspect or Variables)
+ * and builds the card menu items that open it.
+ *
+ * @file useResourceView.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Resource sources (quadlet, container, unit, unmanaged, built-in) and their labels, colours and icons.
+ * The unmanaged source is labelled "Manual" in the UI; its key stays unmanaged, as the handler sends it.
+ *
+ * @file ResourceSource.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Hook that keeps the one open unit view of a tab (Quadlet file and generated unit) and builds
+ * the Show Quadlet menu item of Quadlet resource cards.
+ *
+ * @file useUnitView.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Hook that gathers the action, search, toggle filters and view state a resource
+ * module page passes to BaseModule.render().
+ *
+ * @file useModulePage.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Card icons of the resource modules, shared so Quadlets can use the same icon as
+ * Containers, Volumes, Networks and Images.
+ *
+ * @file ResourceIcons.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Formats a creation time from the handler as a local date with its age.
+ *
+ * @file formatCreated.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Prepares a main resource card row from a list action for display.
+ *
+ * @file translateResourceRow.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Status tone of resource cards (the colour of the corner tint), from the list items the
+ * PodShift handlers return.
+ *
+ * @file ResourceTone.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Plain-text form of a resource card, for the Copy menu item.
+ *
+ * @file resourceToText.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * A resource card: icon and name, real id as a subtitle, running, status and source labels, rows and row groups.
+ *
+ * @file ResourceCard.jsx
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Sort order for resource cards: built-in resources first, then the rest by name.
+ *
+ * @file compareResources.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Checks whether the Cockpit Podman page is installed.
+ *
+ * @file isPodmanPageInstalled.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Display name of a resource card for titles and messages, and the inspect download file name.
+ *
+ * @file resourceName.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Hook that counts how many columns of a minimum width fit in an element.
+ *
+ * @file useColumnCount.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Masonry-like grid for resource cards.
+ *
+ * @file ResourceGrid.jsx
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Filter toggle group of the resource modules, built from a BaseFilter: its options, aria label and button ids.
+ *
+ * @file FilterToggle.jsx
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Link button that opens the Cockpit Podman page for the podshift user, when that page is installed.
+ *
+ * @file OpenInPodmanButton.jsx
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Helpers for container environment variables: podman's default variables, secret detection and masking,
+ * and the NAME=value text of the Variables view.
+ *
+ * @file EnvVariables.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Downloads through a cockpit-ws external channel, the way Cockpit's own pages do it
+ * (cockpit-files download.tsx): a same-origin GET on /cockpit/channel/<csrf token>?<open options>.
+ * cockpit-ws opens the channel on the bridge and sends its data as the response body, with the
+ * Content-Disposition and Content-Type headers given in the "external" option. No blob: URL is
+ * involved, so the page's default Content Security Policy ('self') allows it.
+ *
+ * @file ChannelDownload.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Calls to the PodShift inspect action: the podman inspect object of one resource, and its
+ * download through a temporary file (file mode) and a cockpit-ws external channel.
+ *
+ * @file InspectResource.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Hook that loads the podman inspect object of one resource while its view is open.
+ *
+ * @file useInspect.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Small JSON syntax highlighter: wraps keys, strings, numbers, booleans and null in spans,
+ * and puts braces, brackets, colons and commas in a lighter punctuation span.
+ * The colours come from CodeViewModal.scss.
+ *
+ * @file highlightJson.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Hook for copy buttons that read "Copied" for a short while after a copy.
+ *
+ * @file useCopiedFlag.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * A large modal that shows coloured code in a scrollable CodeBlock, with Copy and Close.
+ * Base of InspectModal, VariablesModal, ServiceStatusModal and UnitViewModal.
+ *
+ * @file CodeViewModal.jsx
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Body of the Inspect and Variables views when there is no code to show: the resource is gone,
+ * or its inspect output is too large for the response.
+ *
+ * @file InspectNotice.jsx
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Shows the podman inspect JSON of one resource, coloured, in a CodeViewModal, with Download.
+ * Generic: containers, images, volumes and networks all use it.
+ *
+ * @file InspectModal.jsx
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Small INI / env file highlighter: wraps names, "=", values and comment lines in spans.
+ * The colours come from CodeViewModal.scss and are shared with highlightJson.
+ *
+ * @file highlightIni.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Shows the environment variables of a container as NAME=value lines in a CodeViewModal,
+ * with secret values masked until "Show secrets" is used.
+ *
+ * @file VariablesModal.jsx
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * The open code view of a resource tab: Inspect or Variables, loaded from the inspect action.
+ *
+ * @file ResourceViewModal.jsx
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Hook that loads one handler action with arguments while a view is open.
+ *
+ * @file useActionResult.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Header of the unit view: the Quadlet and Unit view labels, the unit name and the path of the
+ * file that is shown.
+ *
+ * @file UnitViewHeader.jsx
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * The unit view: the Quadlet file of a systemd user service and the unit that Quadlet generated
+ * from it, in one dialogue, from the quadlet-view and service-view actions.
+ *
+ * @file UnitViewModal.jsx
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Base class for modules that show a filterable card grid (Containers, Images,
+ * Volumes, Networks, Secrets, Services, Quadlets). Subclasses set their settings, including
+ * the toolbar filter or filters, in the constructor, override card() and countText(), and
+ * override any static helper they need to change. A module with other views
+ * overrides dialogs() and closeAndRefresh(). Hooks stay in the page; this class
+ * only builds the UI from ModulePageState.
+ *
+ * @file BaseModule.jsx
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Source filter of the resource modules: All, then the sources a module supports, by item.source.
+ *
+ * @file SourceFilter.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Containers module: settings, card formatting and the container resource card.
+ *
+ * @file ContainersModule.jsx
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Containers page: gathers hook state and asks ContainersModule to render it.
+ *
+ * @file ContainersPage.jsx
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Volumes module: settings, filter and row helpers and the volume resource card.
+ *
+ * @file VolumesModule.jsx
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Volumes page: gathers hook state and asks VolumesModule to render it.
+ *
+ * @file VolumesPage.jsx
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Networks module: settings, row helpers and the network resource card.
+ *
+ * @file NetworksModule.jsx
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Networks page: gathers hook state and asks NetworksModule to render it.
+ *
+ * @file NetworksPage.jsx
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Images module: settings, filter and inspect helpers and the image resource card.
+ *
+ * @file ImagesModule.jsx
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Images page: gathers hook state and asks ImagesModule to render it.
+ *
+ * @file ImagesPage.jsx
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Usage filter of the Secrets module: All, In use and Unused, by item.inUse.
+ *
+ * @file UsageFilter.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Secrets module: settings, usage filter, row helpers and the secret resource card.
+ * The cards come from the secrets-list action; secret values are never loaded or shown.
+ * Secrets have no source: they are not created by Quadlet or systemd.
+ *
+ * @file SecretsModule.jsx
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Secrets page: gathers hook state and asks SecretsModule to render it.
+ *
+ * @file SecretsPage.jsx
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Hook that keeps the open status and log views of the Services page.
+ *
+ * @file useServiceDialogs.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Turns journal entries into `journalctl -o short-iso` text, plain or coloured by priority.
+ *
+ * @file JournalText.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Show log view of one service on the Services tab: the last journal entries of the unit
+ * from the service-logs action, in short-iso style, coloured by priority, newest at the bottom.
+ *
+ * @file ServiceLogModal.jsx
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Status view of one service on the Services tab, from the service-view action. The unit file
+ * is shown by UnitViewModal.
+ *
+ * @file ServiceStatusModal.jsx
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * State filter of the Services module: All, Active, Inactive and Failed, by the
+ * systemd active state.
+ *
+ * @file StateFilter.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Services module: settings, state filter, row helpers, the service resource card and
+ * the unit, status and log dialogs. The systemd user services of the podshift user are
+ * listed like `systemctl --user list-units --type=service --all`, without units that are
+ * not found. The data comes from the services-list action; the views from quadlet-view,
+ * service-view and service-logs.
+ *
+ * @file ServicesModule.jsx
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Services page: gathers hook state, including the status and log views, and asks
+ * ServicesModule to render it.
+ *
+ * @file ServicesPage.jsx
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Status filter of the Quadlets module: All, Active, Inactive and Failed, by the
+ * status `podman quadlet ls` reports.
+ *
+ * @file QuadletStatusFilter.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Type filter of the Quadlets module: All, then Container, Pod, Volume, Network,
+ * Kube and Image, by the Quadlet file suffix.
+ *
+ * @file QuadletTypeFilter.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Quadlets module: settings, status filter, row helpers and the Quadlet resource card.
+ * The list is what the quadlets-list action returns, mapped from `podman quadlet ls`.
+ *
+ * @file QuadletsModule.jsx
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Quadlets page: gathers hook state and asks QuadletsModule to render it.
+ *
+ * @file QuadletsPage.jsx
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Health page: the full health check report, grouped.
+ *
+ * @file HealthPage.jsx
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * The list of modules on the main page, in display order.
+ *
+ * @file index.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * The main page: the tab sub-nav with a refresh button, then the selected tab.
+ *
+ * @file MainBoard.jsx
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Root component that shows the page matching the user's access.
+ *
+ * @file app.jsx
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Entry point: loads the styles and mounts the application into the page.
+ *
+ * @file index.jsx
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+
+Bundled license information:
+
+react/cjs/react.development.js:
+  /**
+   * @license React
+   * react.development.js
+   *
+   * Copyright (c) Facebook, Inc. and its affiliates.
+   *
+   * This source code is licensed under the MIT license found in the
+   * LICENSE file in the root directory of this source tree.
+   */
+
+scheduler/cjs/scheduler.development.js:
+  /**
+   * @license React
+   * scheduler.development.js
+   *
+   * Copyright (c) Facebook, Inc. and its affiliates.
+   *
+   * This source code is licensed under the MIT license found in the
+   * LICENSE file in the root directory of this source tree.
+   */
+
+react-dom/cjs/react-dom.development.js:
+  /**
+   * @license React
+   * react-dom.development.js
+   *
+   * Copyright (c) Facebook, Inc. and its affiliates.
+   *
+   * This source code is licensed under the MIT license found in the
+   * LICENSE file in the root directory of this source tree.
+   */
+  /**
+   * Checks if an event is supported in the current execution environment.
+   *
+   * NOTE: This will not work correctly for non-generic events such as `change`,
+   * `reset`, `load`, `error`, and `select`.
+   *
+   * Borrows from Modernizr.
+   *
+   * @param {string} eventNameSuffix Event name, e.g. "click".
+   * @return {boolean} True if the event is supported.
+   * @internal
+   * @license Modernizr 3.0.0pre (Custom Build) | MIT
+   */
+
+react/cjs/react-jsx-runtime.development.js:
+  /**
+   * @license React
+   * react-jsx-runtime.development.js
+   *
+   * Copyright (c) Facebook, Inc. and its affiliates.
+   *
+   * This source code is licensed under the MIT license found in the
+   * LICENSE file in the root directory of this source tree.
+   */
+
+tabbable/dist/index.esm.js:
+  /*!
+  * tabbable 6.5.1
+  * @license MIT, https://github.com/focus-trap/tabbable/blob/master/LICENSE
+  */
+
+focus-trap/dist/focus-trap.esm.js:
+  /*!
+  * focus-trap 7.6.6
+  * @license MIT, https://github.com/focus-trap/focus-trap/blob/master/LICENSE
+  */

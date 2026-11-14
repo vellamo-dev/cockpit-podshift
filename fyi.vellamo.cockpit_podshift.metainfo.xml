@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="addon">
+  <id>fyi.vellamo.cockpit_podshift</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <name>PodShift UI</name>
+  <summary>Cockpit UI for PodShift</summary>
+  <description>
+    <p>
+      View a PodShift server in Cockpit: containers, volumes, networks, images, secrets, services and Quadlets.
+    </p>
+  </description>
+  <project_license>AGPL-3.0-or-later AND LGPL-2.1-or-later</project_license>
+  <url type="homepage">https://github.com/vellamo-dev/cockpit-podshift</url>
+  <url type="bugtracker">https://github.com/vellamo-dev/cockpit-podshift/issues</url>
+  <extends>org.cockpit_project.cockpit</extends>
+  <launchable type="cockpit-manifest">podshift</launchable>
+</component>

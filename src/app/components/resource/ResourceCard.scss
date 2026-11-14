@@ -1,0 +1,116 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
+// A soft diagonal tint from the top-left corner, so the start of each card is easy to see in the grid.
+// Neutral mixes the text colour at 9%. The tone modifiers mix a PatternFly status colour at
+// --podshift-resource-card--tone-strength (18%), so green and red are easy to notice. In the dark
+// theme the brighter status tokens (hover: green-30, red-orange-40) are used instead of the
+// default ones (green-40, red-orange-50), which look muddy on a dark card.
+.pf-v6-c-card.podshift-resource-card {
+  --podshift-resource-card--tone-strength: 18%;
+  --podshift-resource-card--tint-color: var(--pf-t--global--text--color--regular);
+  --podshift-resource-card--tint-strength: 9%;
+
+  background-image: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--podshift-resource-card--tint-color) var(--podshift-resource-card--tint-strength), transparent) 0,
+    transparent 180px
+  );
+  background-repeat: no-repeat;
+
+  // Running or in use.
+  &.podshift-resource-card--success {
+    --podshift-resource-card--tint-color: var(--pf-t--global--color--status--success--default);
+    --podshift-resource-card--tint-strength: var(--podshift-resource-card--tone-strength);
+  }
+
+  // A problem, for example a non-zero exit code or a failed unit.
+  &.podshift-resource-card--danger {
+    --podshift-resource-card--tint-color: var(--pf-t--global--color--status--danger--default);
+    --podshift-resource-card--tint-strength: var(--podshift-resource-card--tone-strength);
+  }
+
+  :where(.pf-v6-theme-dark) &.podshift-resource-card--success {
+    --podshift-resource-card--tint-color: var(--pf-t--global--color--status--success--hover);
+  }
+
+  :where(.pf-v6-theme-dark) &.podshift-resource-card--danger {
+    --podshift-resource-card--tint-color: var(--pf-t--global--color--status--danger--hover);
+  }
+
+  // Tables inside the card let the tint show through.
+  .pf-v6-c-table {
+    --pf-v6-c-table--BackgroundColor: transparent;
+  }
+}
+
+// Card header: the kebab stays in the top-right corner on every card width.
+// Cockpit's PatternFly overrides (artifacts/cockpit-lib/patternfly/patternfly-6-overrides.scss) let every card
+// header wrap, which drops the actions under the title on a narrow card. Here the header does not
+// wrap: the title area takes the free width and may shrink, the actions never shrink.
+// The :not() matches the override's specificity.
+.pf-v6-c-card.podshift-resource-card > .pf-v6-c-card__header.podshift-resource-card__header:not(.ct-card-expandable-header) {
+  flex-wrap: nowrap;
+  align-items: flex-start;
+
+  > .pf-v6-c-card__header-main {
+    flex: 1 1 auto;
+    min-width: 0;
+
+    > .pf-v6-c-card__title {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+  }
+
+  > .pf-v6-c-card__actions {
+    flex: none;
+    align-self: flex-start;
+    flex-wrap: nowrap;
+    padding-inline-start: var(--pf-t--global--spacer--sm);
+  }
+}
+
+// Header lines: icon and name (with the kebab on the right), then the short ID, then the labels
+// on their own line, all aligned with the name, not the icon. Long names break instead of
+// widening the header.
+.podshift-resource-card__icon {
+  flex: none;
+}
+
+.podshift-resource-card__name-text {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.podshift-resource-card__labels {
+  margin-block-start: var(--pf-t--global--spacer--sm);
+}
+
+
+.podshift-resource-card__subtitle {
+  font-size: var(--pf-t--global--font--size--sm);
+  color: var(--pf-t--global--text--color--subtle);
+}
+
+// Icon-only labels (Running, Auto-update): no gap after the icon and no empty text.
+.pf-v6-c-label.podshift-resource-card__icon-only {
+  --pf-v6-c-label__content--Gap: 0;
+
+  .pf-v6-c-label__text:empty {
+    display: none;
+  }
+}
+
+// Running label: a darker success green.
+.pf-v6-c-label.podshift-resource-card__running {
+  --pf-v6-c-label--BackgroundColor: var(--pf-t--global--color--status--success--default);
+  --pf-v6-c-label__icon--Color: var(--pf-t--global--icon--color--status--on-success--default);
+}
+
+// Values such as a command or an environment variable, in a monospace font.
+.podshift-resource-card__mono {
+  //noinspection CssNoGenericFontName
+  font-family: var(--pf-t--global--font--family--mono);
+  overflow-wrap: anywhere;
+}

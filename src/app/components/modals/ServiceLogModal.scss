@@ -1,0 +1,18 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
+// Journal lines of the Show log view, coloured by priority like Cockpit's Logs page.
+.podshift-log__time {
+  color: var(--pf-t--global--text--color--subtle);
+}
+
+.podshift-log__error {
+  color: var(--pf-t--global--text--color--status--danger--default);
+}
+
+.podshift-log__warning {
+  color: var(--pf-t--global--text--color--status--warning--default);
+}
+
+.podshift-log__notice {
+  font-weight: var(--pf-t--global--font--weight--body--bold);
+}

@@ -1,0 +1,7 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+@use "page.scss";
+
+// Tabs menu: small radius instead of the PatternFly pill
+#podshift-tabs {
+  --pf-v6-c-nav--m-horizontal--m-subnav--BorderRadius: var(--pf-t--global--border--radius--small);
+}

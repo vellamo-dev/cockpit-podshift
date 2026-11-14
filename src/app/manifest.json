@@ -1,0 +1,11 @@
+{
+    "requires": {
+        "cockpit": "137"
+    },
+
+    "menu": {
+        "index": {
+            "label": "PodShift"
+        }
+    }
+}

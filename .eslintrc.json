@@ -1,0 +1,103 @@
+/*
+ * SPDX-License-Identifier: AGPL-3.0-or-later
+ */
+{
+    "root": true,
+    "env": {
+        "browser": true,
+        "es6": true
+    },
+    "extends": ["eslint:recommended", "standard", "standard-jsx", "standard-react"],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "plugins": ["react", "react-hooks", "jsdoc"],
+    "settings": {
+        "jsdoc": {
+            "mode": "typescript"
+        }
+    },
+    "rules": {
+        "object-curly-spacing": ["error", "never"],
+        "react/jsx-tag-spacing": ["error", {"closingSlash": "never", "beforeSelfClosing": "never", "afterOpening": "never", "beforeClosing": "never"}],
+        "indent": ["error", 4,
+            {
+                "ObjectExpression": "first",
+                "CallExpression": {"arguments": "first"},
+                "MemberExpression": 2,
+                "ignoredNodes": [ "JSXAttribute" ]
+            }],
+        "newline-per-chained-call": ["error", { "ignoreChainWithDepth": 2 }],
+        "no-var": "error",
+        "lines-between-class-members": ["error", "always", { "exceptAfterSingleLine": true }],
+        "prefer-promise-reject-errors": ["error", { "allowEmptyReject": true }],
+        "react/jsx-indent": ["error", 4],
+        "semi": ["error", "always", { "omitLastInOneLineBlock": true }],
+
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "error",
+
+        "func-style": ["error", "declaration"],
+
+        "jsdoc/require-file-overview": ["error", {
+            "tags": {
+                "file": { "mustExist": true, "preventDuplicates": true, "initialCommentsOnly": true },
+                "license": { "mustExist": true, "preventDuplicates": true, "initialCommentsOnly": true },
+                "author": { "mustExist": true, "preventDuplicates": true, "initialCommentsOnly": true }
+            }
+        }],
+        "jsdoc/require-jsdoc": ["error", {
+            "publicOnly": false,
+            "require": {
+                "FunctionDeclaration": true,
+                "FunctionExpression": false,
+                "ArrowFunctionExpression": false,
+                "ClassDeclaration": true,
+                "MethodDefinition": true
+            }
+        }],
+        "jsdoc/require-description": "error",
+        "jsdoc/require-param": "error",
+        "jsdoc/require-param-name": "error",
+        "jsdoc/require-param-type": "error",
+        "jsdoc/require-param-description": "error",
+        "jsdoc/require-returns": "error",
+        "jsdoc/require-returns-type": "error",
+        "jsdoc/require-returns-description": "error",
+        "jsdoc/require-returns-check": "error",
+        "jsdoc/require-property": "error",
+        "jsdoc/require-property-name": "error",
+        "jsdoc/require-property-type": "error",
+        "jsdoc/require-property-description": "error",
+        "jsdoc/check-param-names": "error",
+        "jsdoc/check-property-names": "error",
+        "jsdoc/check-tag-names": "error",
+        "jsdoc/check-types": "error",
+        "jsdoc/check-alignment": "error",
+        "jsdoc/valid-types": "error",
+        "jsdoc/no-undefined-types": "error",
+
+        "camelcase": "off",
+        "comma-dangle": "off",
+        "curly": ["error", "all"],
+        "jsx-quotes": "off",
+        "key-spacing": "off",
+        "no-console": "off",
+        "quotes": "off",
+        "react/jsx-curly-spacing": "off",
+        "react/jsx-indent-props": "off",
+        "react/jsx-no-useless-fragment": "error",
+        "react/prop-types": "off",
+        "space-before-function-paren": "off",
+        "standard/no-callback-literal": "off"
+    },
+    "globals": {
+        "require": "readonly",
+        "module": "readonly",
+        "__PODSHIFT_UI_VERSION__": "readonly"
+    }
+}

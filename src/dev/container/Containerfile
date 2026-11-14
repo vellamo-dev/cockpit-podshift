@@ -1,0 +1,7 @@
+FROM registry.fedoraproject.org/fedora:45
+
+RUN dnf install -y gettext nodejs npm make git rpm-build tar xz findutils curl \
+    && dnf clean all
+
+ENV COCKPIT_PODSHIFT_CONTAINER=1
+WORKDIR /src

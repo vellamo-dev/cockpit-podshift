@@ -1,0 +1,183 @@
+#!/usr/bin/env bash
+# Run a command in the cockpit-podshift build container.
+#
+# Usage:
+#   ./src/dev/run [command ...]
+#   ./src/dev/run make
+#   ./src/dev/run make watch
+#   ./src/dev/run npm run eslint
+#
+# Runtime:
+#   Set COCKPIT_PODSHIFT_RUNTIME to "container" or "podman" to force one.
+#   Otherwise, on macOS, Apple container is used if it is on PATH, else podman.
+#   On Linux, podman is used.
+#
+# node_modules lives in the named volume cockpit-podshift-node-modules,
+# mounted at /src/node_modules, so the container never writes packages
+# into the project tree. A local ./node_modules is for the IDE only.
+#
+# The image is built from src/dev/container/Containerfile when it is missing.
+# The image tag is a short hash of that Containerfile.
+
+set -euo pipefail
+
+VOLUME_NAME=cockpit-podshift-node-modules
+
+usage() {
+    cat <<'HELP'
+Usage: ./src/dev/run [command ...]
+
+Runs the given command in the cockpit-podshift build container.
+With no command, starts an interactive shell.
+
+  ./src/dev/run make
+  ./src/dev/run make watch
+  ./src/dev/run npm run eslint
+
+Runtime is $COCKPIT_PODSHIFT_RUNTIME (container or podman). If unset, macOS
+uses Apple container when available, otherwise podman; Linux uses podman.
+
+Container node_modules is kept in the named volume
+cockpit-podshift-node-modules (mounted at /src/node_modules). The
+project's ./node_modules, if present, is only for the IDE.
+
+Options:
+  -h, --help    Show this help
+HELP
+}
+
+if [[ ${1:-} == -h || ${1:-} == --help ]]; then
+    usage
+    exit 0
+fi
+
+script_dir=$(cd "$(dirname "$0")" && pwd)
+root=$(cd "${script_dir}/../.." && pwd)
+containerfile="${script_dir}/container/Containerfile"
+
+if [[ ! -f "$containerfile" ]]; then
+    echo "src/dev/run: Containerfile not found: $containerfile" >&2
+    exit 1
+fi
+
+pick_runtime() {
+    local forced=${COCKPIT_PODSHIFT_RUNTIME:-}
+    if [[ -n "$forced" ]]; then
+        case $forced in
+            container|podman)
+                printf '%s\n' "$forced"
+                return
+                ;;
+            *)
+                echo "src/dev/run: COCKPIT_PODSHIFT_RUNTIME must be container or podman, not: $forced" >&2
+                exit 1
+                ;;
+        esac
+    fi
+
+    local sys
+    sys=$(uname -s)
+    if [[ $sys == Darwin ]] && command -v container >/dev/null 2>&1; then
+        printf '%s\n' container
+        return
+    fi
+    if command -v podman >/dev/null 2>&1; then
+        printf '%s\n' podman
+        return
+    fi
+    echo "src/dev/run: no container runtime found (need Apple container or podman)" >&2
+    exit 1
+}
+
+file_sha256() {
+    local file=$1
+    if command -v sha256sum >/dev/null 2>&1; then
+        sha256sum -- "$file" | awk '{print $1}'
+    elif command -v shasum >/dev/null 2>&1; then
+        shasum -a 256 -- "$file" | awk '{print $1}'
+    else
+        openssl dgst -sha256 "$file" | awk '{print $NF}'
+    fi
+}
+
+# Named volumes work on both podman and Apple container:
+#   podman volume create NAME;  -v NAME:/src/node_modules:Z
+#   container volume create NAME;  -v NAME:/src/node_modules
+ensure_node_modules_volume() {
+    case $runtime in
+        podman)
+            if podman volume exists "$VOLUME_NAME"; then
+                return
+            fi
+            podman volume create "$VOLUME_NAME" >/dev/null
+            ;;
+        container)
+            if container volume inspect "$VOLUME_NAME" >/dev/null 2>&1; then
+                return
+            fi
+            container volume create "$VOLUME_NAME" >/dev/null
+            ;;
+    esac
+}
+
+runtime=$(pick_runtime)
+if ! command -v "$runtime" >/dev/null 2>&1; then
+    echo "src/dev/run: runtime not on PATH: $runtime" >&2
+    exit 1
+fi
+
+hash=$(file_sha256 "$containerfile")
+tag=${hash:0:12}
+image="localhost/cockpit-podshift-build:${tag}"
+
+image_exists() {
+    case $runtime in
+        podman)
+            podman image exists "$image"
+            ;;
+        container)
+            # list output splits name and tag; inspect by name:tag is reliable.
+            container image inspect "$image" >/dev/null 2>&1
+            ;;
+    esac
+}
+
+if ! image_exists; then
+    echo "src/dev/run: building image $image" >&2
+    "$runtime" build -t "$image" -f "$containerfile" "${script_dir}/container"
+fi
+
+ensure_node_modules_volume
+
+run_opts=(--rm -i)
+if [[ $runtime == podman ]]; then
+    run_opts+=(-v "${root}:/src:Z")
+    run_opts+=(-v "${VOLUME_NAME}:/src/node_modules:Z")
+else
+    run_opts+=(-v "${root}:/src")
+    run_opts+=(-v "${VOLUME_NAME}:/src/node_modules")
+fi
+run_opts+=(-w /src)
+run_opts+=(-e COCKPIT_PODSHIFT_CONTAINER=1)
+
+# Forward vars the Makefile and watch upload already document.
+if [[ -n ${NODE_ENV:-} ]]; then
+    run_opts+=(-e "NODE_ENV=${NODE_ENV}")
+fi
+if [[ -n ${RSYNC_DEVEL:-} ]]; then
+    run_opts+=(-e "RSYNC_DEVEL=${RSYNC_DEVEL}")
+fi
+
+if [[ $runtime == podman && $(uname -s) == Linux ]]; then
+    run_opts+=(--userns=keep-id)
+fi
+
+if [[ -t 0 ]]; then
+    run_opts+=(-t)
+fi
+
+if [[ $# -eq 0 ]]; then
+    set -- bash
+fi
+
+exec "$runtime" run "${run_opts[@]}" "$image" "$@"

@@ -1,0 +1,39 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
+// The code scrolls inside the modal instead of making the modal grow.
+.podshift-code-view .pf-v6-c-code-block__content {
+  max-block-size: 60vh;
+  overflow: auto;
+}
+
+// Token colours shared by highlightJson and highlightIni. PatternFly text tokens follow the light and the dark theme.
+.podshift-code__key {
+  color: var(--pf-t--global--text--color--link--default);
+}
+
+.podshift-code__string {
+  color: var(--pf-t--global--text--color--status--success--default);
+}
+
+.podshift-code__number {
+  color: var(--pf-t--global--text--color--status--custom--default);
+}
+
+.podshift-code__boolean {
+  color: var(--pf-t--global--text--color--status--info--default);
+}
+
+.podshift-code__symb {
+  color: var(--pf-t--global--text--color--subtle);
+}
+
+.podshift-code__null,
+.podshift-code__comment {
+  color: var(--pf-t--global--text--color--subtle);
+  font-style: italic;
+}
+
+// The terminal command of a too-large inspect output: one short line.
+.podshift-code-command .pf-v6-c-code-block__content {
+  overflow-x: auto;
+}

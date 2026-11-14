@@ -1,0 +1,15 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
+.podshift-resource-grid {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--pf-t--global--spacer--lg);
+}
+
+.podshift-resource-grid__column {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  gap: var(--pf-t--global--spacer--lg);
+  min-width: 0;
+}
