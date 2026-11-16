@@ -6,6 +6,8 @@
 #   ./src/dev/run make
 #   ./src/dev/run make watch
 #   ./src/dev/run npm run eslint
+#   ./src/dev/run --clean
+#   ./src/dev/run --clean-all
 #
 # Runtime:
 #   Set COCKPIT_PODSHIFT_RUNTIME to "container" or "podman" to force one.
@@ -18,10 +20,14 @@
 #
 # The image is built from src/dev/container/Containerfile when it is missing.
 # The image tag is a short hash of that Containerfile.
+# Old images pile up when the Containerfile changes. --clean removes every
+# cockpit-podshift-build image except the current one. --clean-all also
+# removes the current image and the node_modules volume.
 
 set -euo pipefail
 
 VOLUME_NAME=cockpit-podshift-node-modules
+IMAGE_REPO=localhost/cockpit-podshift-build
 
 usage() {
     cat <<'HELP'
@@ -42,7 +48,12 @@ cockpit-podshift-node-modules (mounted at /src/node_modules). The
 project's ./node_modules, if present, is only for the IDE.
 
 Options:
+  --clean       Remove old build images, keep the current one
+  --clean-all   Remove all build images and the node_modules volume
   -h, --help    Show this help
+
+The next run builds the image and fills the volume again when they
+are missing.
 HELP
 }
 
@@ -128,7 +139,7 @@ fi
 
 hash=$(file_sha256 "$containerfile")
 tag=${hash:0:12}
-image="localhost/cockpit-podshift-build:${tag}"
+image="${IMAGE_REPO}:${tag}"
 
 image_exists() {
     case $runtime in
@@ -141,6 +152,82 @@ image_exists() {
             ;;
     esac
 }
+
+# Prints every cockpit-podshift-build image as name:tag, one per line.
+list_build_images() {
+    local raw
+    case $runtime in
+        podman)
+            raw=$(podman images --filter "reference=${IMAGE_REPO}" --format '{{.Repository}}:{{.Tag}}') || return 1
+            printf '%s\n' "$raw" | grep "^${IMAGE_REPO}:" | grep -v ':<none>$' || true
+            ;;
+        container)
+            raw=$(container image list -q) || return 1
+            printf '%s\n' "$raw" | grep "^${IMAGE_REPO}:" || true
+            ;;
+    esac
+}
+
+remove_image() {
+    case $runtime in
+        podman) podman image rm "$1" >/dev/null ;;
+        container) container image delete "$1" >/dev/null ;;
+    esac
+}
+
+remove_node_modules_volume() {
+    case $runtime in
+        podman)
+            podman volume exists "$VOLUME_NAME" || return 0
+            podman volume rm "$VOLUME_NAME" >/dev/null || return 1
+            ;;
+        container)
+            container volume inspect "$VOLUME_NAME" >/dev/null 2>&1 || return 0
+            container volume delete "$VOLUME_NAME" >/dev/null || return 1
+            ;;
+    esac
+    echo "src/dev/run: removed volume $VOLUME_NAME"
+}
+
+# $1 is "old" (keep the current image) or "all".
+clean() {
+    local name listed removed=0 failed=0
+    listed=$(list_build_images) || { echo "src/dev/run: could not list the images with $runtime" >&2; return 1; }
+    for name in $listed; do
+        if [[ $1 == old && $name == "$image" ]]; then
+            continue
+        fi
+        if remove_image "$name"; then
+            echo "src/dev/run: removed image $name"
+            removed=$((removed + 1))
+        else
+            echo "src/dev/run: could not remove image $name" >&2
+            failed=1
+        fi
+    done
+    if (( removed == 0 && failed == 0 )); then
+        if [[ $1 == old ]]; then
+            echo "src/dev/run: no old images to remove"
+        else
+            echo "src/dev/run: no build images to remove"
+        fi
+    fi
+    if [[ $1 == all ]]; then
+        remove_node_modules_volume || { echo "src/dev/run: could not remove volume $VOLUME_NAME" >&2; failed=1; }
+    fi
+    return "$failed"
+}
+
+case ${1:-} in
+    --clean)
+        clean old
+        exit
+        ;;
+    --clean-all)
+        clean all
+        exit
+        ;;
+esac
 
 if ! image_exists; then
     echo "src/dev/run: building image $image" >&2

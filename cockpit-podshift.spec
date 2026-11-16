@@ -1,5 +1,5 @@
 Name: cockpit-podshift
-Version: 0.9.9
+Version: 0.9.10
 Release: 1%{?dist}
 Summary: Cockpit UI for PodShift
 License: AGPL-3.0-or-later AND LGPL-2.1-or-later
@@ -46,6 +46,9 @@ test -f %{buildroot}%{_datadir}/cockpit/podshift/index.js
 %{_metainfodir}/fyi.vellamo.cockpit_podshift.metainfo.xml
 
 %changelog
+* Sat Nov 14 2026 Vellamo Dev <no-email@vellamo.fyi> - 0.9.10
+- Docs: agents.md starts with Purpose first
+
 * Sat Nov 14 2026 Vellamo Dev <no-email@vellamo.fyi> - 0.9.9
 - npm run rebuild forces a build
 

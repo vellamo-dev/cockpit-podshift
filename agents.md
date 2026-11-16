@@ -5,6 +5,19 @@ PodShift UI (`cockpit-podshift`) is an optional Cockpit page for a [PodShift](ht
 - What it is and its pages: [docs/readme.md](docs/readme.md)
 - What is done and planned: [docs/roadmap.md](docs/roadmap.md)
 
+## Purpose first
+
+AI can draw on almost all the world's knowledge, but people still have limited time, money and attention. It's easy to end up with checks, reviews and solutions that are thorough on paper but no longer serve their purpose, are fair to the people they affect, work well in practice, or fit the goal to the resources at hand.
+
+So:
+
+- PodShift is built for people first. If a change doesn't make it better for the people who use or maintain it, don't make it.
+- The guardrails in this file are rules, not suggestions. Follow them even when breaking one looks faster.
+- Don't report something as verified unless you ran it. A check that passes but doesn't prove the real behaviour is a false validation.
+- Do what was asked. Extra features, polishing and refactoring nobody asked for are creep. Propose them instead.
+
+The wider thinking is in PodShift's [design choices](https://github.com/vellamo-dev/podshift/blob/main/docs/design-choices.md).
+
 ## Scope
 
 Read [docs/scope.md](docs/scope.md). In short:
