@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cockpit-podshift 0.9.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-14 09:48+0000\n"
+"POT-Creation-Date: 2026-11-16 15:09+0000\n"
 "PO-Revision-Date: 2026-11-14 11:50+0200\n"
 "Last-Translator: Vellamo Dev <no-email@vellamo.fyi>\n"
 "Language-Team: German\n"
@@ -228,7 +228,7 @@ msgid "Show in Podman UI"
 msgstr "In der Podman-Oberfläche anzeigen"
 
 #: src/app/hooks/useModulePage.js:116 src/app/modules/health/HealthPage.jsx:56
-#: src/app/modules/overview/InfoCard.jsx:61
+#: src/app/modules/overview/InfoCard.jsx:86
 #: src/app/modules/overview/StatusCard.jsx:45
 #: src/app/modules/overview/ConfigurationCard.jsx:45
 #: src/app/modules/overview/HealthCard.jsx:44
@@ -554,12 +554,24 @@ msgid_plural "$0 volumes"
 msgstr[0] "$0 Volume"
 msgstr[1] "$0 Volumes"
 
-#: src/app/modules/overview/InfoCard.jsx:37
+#: src/app/modules/overview/InfoCard.jsx:33
+msgid "Desktop"
+msgstr "Desktop"
+
+#: src/app/modules/overview/InfoCard.jsx:34
+msgid "Server"
+msgstr "Server"
+
+#: src/app/modules/overview/InfoCard.jsx:48
+msgid "Install type"
+msgstr "Installationstyp"
+
+#: src/app/modules/overview/InfoCard.jsx:62
 #: fyi.vellamo.cockpit_podshift.metainfo.xml:5
 msgid "PodShift UI"
 msgstr "PodShift-Oberfläche"
 
-#: src/app/modules/overview/InfoCard.jsx:56
+#: src/app/modules/overview/InfoCard.jsx:81
 msgid "Info"
 msgstr "Info"
 

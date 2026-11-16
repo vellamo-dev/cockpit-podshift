@@ -25,6 +25,31 @@ import {useAction} from '../../hooks/useAction.js';
 /** @typedef {import('../../types/card.js').PropertyRow} PropertyRow */
 
 /**
+ * Translated install types, so the words are in the translation template.
+ *
+ * @type {Record<string, function(): string>}
+ */
+const INSTALL_TYPES = {
+    desktop: () => i18n("Desktop"),
+    server: () => i18n("Server"),
+};
+
+/**
+ * Translates the label and value of the install type row, which the server sends as desktop or server.
+ *
+ * @param {PropertyRow[]|null} rows Translated server rows, or null before the first load.
+ * @returns {PropertyRow[]|null} The rows with the install type translated.
+ */
+function withInstallType(rows) {
+    if (rows == null) { return rows }
+    return rows.map(row => {
+        if (row.id !== 'install') { return row }
+        const known = typeof row.value === 'string' && Object.prototype.hasOwnProperty.call(INSTALL_TYPES, row.value);
+        return {...row, label: i18n("Install type"), value: known ? INSTALL_TYPES[row.value]() : row.value};
+    });
+}
+
+/**
  * Adds the PodShift UI version after the server's PodShift row, when those rows have loaded.
  *
  * @param {PropertyRow[]|null} rows Translated server rows, or null before the first load.
@@ -54,7 +79,7 @@ export function InfoCard({mode}) {
             id="podshift-info"
             icon={<InfoCircleIcon/>}
             title={i18n("Info")}
-            rows={withUiVersion(rows)}
+            rows={withUiVersion(withInstallType(rows))}
             alignValues="end"
             loading={loading}
             error={error}

@@ -21,6 +21,7 @@ import cockpit from '../../utils/cockpitTyped.js';
 import {i18n} from '../../utils/i18n.js';
 import {formatCreated} from '../../utils/formatCreated.js';
 import {CockpitLinks} from '../../utils/CockpitLinks.js';
+import {serviceDisplayName} from '../../utils/resourceName.js';
 
 import {ResourceCard} from '../../components/resource/ResourceCard.jsx';
 import {UnitViewModal} from '../../components/modals/UnitViewModal.jsx';
@@ -266,8 +267,8 @@ export class ServicesModule extends BaseModule {
             <ResourceCard
                 key={item.id}
                 id={this.cardDomId(item)}
-                title={item.title}
-                subtitle={item.subtitle}
+                title={serviceDisplayName(item.title)}
+                subtitle={item.subtitle === item.title ? serviceDisplayName(item.subtitle) : item.subtitle}
                 icon={<Icon/>}
                 status={label.text}
                 statusVariant={label.variant}

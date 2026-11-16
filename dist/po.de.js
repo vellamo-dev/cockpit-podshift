@@ -458,6 +458,18 @@ cockpit.locale({
   "$0 Volume",
   "$0 Volumes"
  ],
+ "Desktop": [
+  null,
+  "Desktop"
+ ],
+ "Server": [
+  null,
+  "Server"
+ ],
+ "Install type": [
+  null,
+  "Installationstyp"
+ ],
  "PodShift UI": [
   null,
   "PodShift-Oberfläche"

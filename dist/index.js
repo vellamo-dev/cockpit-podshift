@@ -36525,7 +36525,7 @@
    *
    * @type {string}
    */
-  __publicField(AppInfo, "VERSION", "0.9.9");
+  __publicField(AppInfo, "VERSION", "0.10.0");
 
   // src/app/hooks/useAction.js
   var import_react55 = __toESM(require_react(), 1);
@@ -36641,6 +36641,22 @@
 
   // src/app/modules/overview/InfoCard.jsx
   var import_jsx_runtime71 = __toESM(require_jsx_runtime(), 1);
+  var INSTALL_TYPES = {
+    desktop: () => i18n("Desktop"),
+    server: () => i18n("Server")
+  };
+  function withInstallType(rows) {
+    if (rows == null) {
+      return rows;
+    }
+    return rows.map((row) => {
+      if (row.id !== "install") {
+        return row;
+      }
+      const known = typeof row.value === "string" && Object.prototype.hasOwnProperty.call(INSTALL_TYPES, row.value);
+      return { ...row, label: i18n("Install type"), value: known ? INSTALL_TYPES[row.value]() : row.value };
+    });
+  }
   function withUiVersion(rows) {
     if (rows == null) {
       return rows;
@@ -36661,7 +36677,7 @@
         id: "podshift-info",
         icon: /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(InfoCircleIcon, {}),
         title: i18n("Info"),
-        rows: withUiVersion(rows),
+        rows: withUiVersion(withInstallType(rows)),
         alignValues: "end",
         loading,
         error,
@@ -39105,6 +39121,10 @@
       return item.title;
     }
     return String(item.id || "").slice(0, 12);
+  }
+  function serviceDisplayName(unit) {
+    const name = String(unit || "");
+    return name.endsWith(".service") && name.length > ".service".length ? name.slice(0, -".service".length) : name;
   }
 
   // src/app/components/resource/ResourceGrid.jsx
@@ -41822,7 +41842,7 @@
       CodeViewModal,
       {
         isOpen: true,
-        title: cockpitTyped_default.format(i18n("Log: $0"), service.id),
+        title: cockpitTyped_default.format(i18n("Log: $0"), serviceDisplayName(service.id)),
         text: entries.length > 0 ? text : "",
         code,
         loading,
@@ -41871,7 +41891,7 @@
       CodeViewModal,
       {
         isOpen: true,
-        title: cockpitTyped_default.format(i18n("Status: $0"), service.id),
+        title: cockpitTyped_default.format(i18n("Status: $0"), serviceDisplayName(service.id)),
         text,
         code: text,
         loading,
@@ -42134,8 +42154,8 @@
         ResourceCard,
         {
           id: this.cardDomId(item),
-          title: item.title,
-          subtitle: item.subtitle,
+          title: serviceDisplayName(item.title),
+          subtitle: item.subtitle === item.title ? serviceDisplayName(item.subtitle) : item.subtitle,
           icon: /* @__PURE__ */ (0, import_jsx_runtime135.jsx)(Icon2, {}),
           status: label.text,
           statusVariant: label.variant,

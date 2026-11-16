@@ -1,5 +1,5 @@
 Name: cockpit-podshift
-Version: 0.9.10
+Version: 0.10.0
 Release: 1%{?dist}
 Summary: Cockpit UI for PodShift
 License: AGPL-3.0-or-later AND LGPL-2.1-or-later
@@ -46,6 +46,11 @@ test -f %{buildroot}%{_datadir}/cockpit/podshift/index.js
 %{_metainfodir}/fyi.vellamo.cockpit_podshift.metainfo.xml
 
 %changelog
+* Mon Nov 16 2026 Vellamo Dev <no-email@vellamo.fyi> - 0.10.0
+- Overview: Info card shows the install type
+- Tabs menu: active tab is underlined like in new Cockpit UI.
+- Services: names are shown without the .service suffix
+
 * Sat Nov 14 2026 Vellamo Dev <no-email@vellamo.fyi> - 0.9.10
 - Docs: agents.md starts with Purpose first
 

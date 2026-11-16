@@ -458,6 +458,18 @@ cockpit.locale({
   "$0 taltio",
   "$0 taltiota"
  ],
+ "Desktop": [
+  null,
+  "Työpöytä"
+ ],
+ "Server": [
+  null,
+  "Palvelin"
+ ],
+ "Install type": [
+  null,
+  "Asennustyyppi"
+ ],
  "PodShift UI": [
   null,
   "PodShift-käyttöliittymä"

@@ -38,3 +38,18 @@ export function resourceDisplayName(item) {
     if (item.title && item.title !== '<none>') { return item.title }
     return String(item.id || '').slice(0, 12);
 }
+
+/**
+ * Returns a service unit name without the .service suffix, for display only, for example
+ * web.service becomes web. Other names, such as podman.socket, are returned as they are.
+ * Searching, links and actions keep the full unit name.
+ *
+ * @param {string} unit Unit name, for example web.service.
+ * @returns {string} The name to show.
+ */
+export function serviceDisplayName(unit) {
+    const name = String(unit || '');
+    return name.endsWith('.service') && name.length > '.service'.length
+        ? name.slice(0, -'.service'.length)
+        : name;
+}

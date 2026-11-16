@@ -23,6 +23,7 @@ import {i18n} from '../../utils/i18n.js';
 import {JournalText} from '../../utils/JournalText.js';
 import {CockpitLinks} from '../../utils/CockpitLinks.js';
 import {useActionResult} from '../../hooks/useActionResult.js';
+import {serviceDisplayName} from '../../utils/resourceName.js';
 
 import {CodeViewModal} from './CodeViewModal.jsx';
 import {InlineNotice} from '../common/InlineNotice.jsx';
@@ -85,7 +86,7 @@ export function ServiceLogModal({service, admin, onClose, onRefresh}) {
     return (
         <CodeViewModal
             isOpen
-            title={cockpit.format(i18n("Log: $0"), service.id)}
+            title={cockpit.format(i18n("Log: $0"), serviceDisplayName(service.id))}
             text={entries.length > 0 ? text : ''}
             code={code}
             loading={loading}

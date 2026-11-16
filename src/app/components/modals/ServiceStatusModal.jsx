@@ -17,6 +17,7 @@ import {AlertActionLink} from '@patternfly/react-core/dist/esm/components/Alert'
 import cockpit from '../../utils/cockpitTyped.js';
 import {i18n} from '../../utils/i18n.js';
 import {useActionResult} from '../../hooks/useActionResult.js';
+import {serviceDisplayName} from '../../utils/resourceName.js';
 
 import {CodeViewModal} from './CodeViewModal.jsx';
 import {InlineNotice} from '../common/InlineNotice.jsx';
@@ -68,7 +69,7 @@ export function ServiceStatusModal({service, onClose, onRefresh}) {
     return (
         <CodeViewModal
             isOpen
-            title={cockpit.format(i18n("Status: $0"), service.id)}
+            title={cockpit.format(i18n("Status: $0"), serviceDisplayName(service.id))}
             text={text}
             code={text}
             loading={loading}
