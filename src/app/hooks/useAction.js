@@ -15,7 +15,8 @@ import {useCallback, useEffect, useRef, useState} from 'react';
 import {i18n} from '../utils/i18n.js';
 
 import {PodShiftApi} from '../api/PodShiftApi.js';
-import {useRefreshToken} from './RefreshContext.js';
+import {useRefreshToken, useReportRefreshing} from './RefreshContext.js';
+import {createInFlight} from '../utils/inFlight.js';
 
 /** @typedef {import('../types/card.js').PropertyRow} PropertyRow */
 /** @typedef {import('../types/api.js').ActionOptions} ActionOptions */
@@ -41,11 +42,13 @@ function mapRows(rows) {
 /**
  * Loads one handler action. poll is a period in ms, or 0 for a single load.
  * Last good rows and data stay on screen while a later load runs or fails.
+ * refreshing is true while any load runs, also with data on screen. Loads other than
+ * poll ticks are reported to MainBoard, so the header refresh button shows progress.
  *
  * @template {keyof ActionDataMap} A
  * @param {A} action Action name, for example 'overview-info'.
  * @param {ActionOptions} [options] Poll period and enabled flag.
- * @returns {ActionState<ActionDataMap[A]>} Rows, data, last error, loading flag and a refresh function.
+ * @returns {ActionState<ActionDataMap[A]>} Rows, data, last error, loading and refreshing flags, and a refresh function.
  */
 export function useAction(action, {poll = 0, enabled = true} = {}) {
     const token = useRefreshToken();
@@ -56,13 +59,24 @@ export function useAction(action, {poll = 0, enabled = true} = {}) {
     const rowsRef = useRef(rows);
     const dataRef = useRef(data);
     const seqRef = useRef(0);
+    const [refreshing, setRefreshing] = useState(false);
+    const [reported, setReported] = useState(false);
+    const allLoads = useRef(/** @type {import('../utils/inFlight.js').InFlight|null} */ (null));
+    const shownLoads = useRef(/** @type {import('../utils/inFlight.js').InFlight|null} */ (null));
+    if (allLoads.current == null) { allLoads.current = createInFlight(setRefreshing) }
+    if (shownLoads.current == null) { shownLoads.current = createInFlight(setReported) }
+
+    useReportRefreshing(reported);
 
     rowsRef.current = rows;
     dataRef.current = data;
 
-    const load = useCallback(async () => {
+    const load = useCallback(async (background = false) => {
         if (!enabled) { return }
         const seq = ++seqRef.current;
+        const shown = background !== true;
+        allLoads.current.begin();
+        if (shown) { shownLoads.current.begin() }
         try {
             const payload = await PodShiftApi.callAction(action);
             if (seq !== seqRef.current) { return }
@@ -75,8 +89,12 @@ export function useAction(action, {poll = 0, enabled = true} = {}) {
             setError(e);
         } finally {
             if (seq === seqRef.current) { setLoading(false) }
+            allLoads.current.end();
+            if (shown) { shownLoads.current.end() }
         }
     }, [action, enabled]);
+
+    const refresh = useCallback(() => load(), [load]);
 
     useEffect(() => {
         if (!enabled) {
@@ -109,7 +127,7 @@ export function useAction(action, {poll = 0, enabled = true} = {}) {
         function start() {
             stop();
             timer = window.setInterval(() => {
-                if (document.visibilityState === 'visible') { load().catch(() => {}) }
+                if (document.visibilityState === 'visible') { load(true).catch(() => {}) }
             }, poll);
         }
 
@@ -120,7 +138,7 @@ export function useAction(action, {poll = 0, enabled = true} = {}) {
             if (document.visibilityState === 'hidden') {
                 stop();
             } else {
-                load().catch(() => {});
+                load(true).catch(() => {});
                 start();
             }
         }
@@ -134,5 +152,5 @@ export function useAction(action, {poll = 0, enabled = true} = {}) {
         };
     }, [enabled, load, poll]);
 
-    return {rows, data, error, loading, refresh: load};
+    return {rows, data, error, loading, refreshing, refresh};
 }

@@ -47,6 +47,7 @@
  * @property {T|null} data Last good data, or null before the first load.
  * @property {Error|null} error Error of the last load, or null.
  * @property {boolean} loading True while the first load runs.
+ * @property {boolean} refreshing True while any load runs, also with data on screen.
  * @property {() => Promise<void>} refresh Loads the action again.
  */
 

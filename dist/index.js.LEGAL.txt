@@ -44,9 +44,17 @@
  * @author Vellamo.fyi
  */
 /**
- * Refresh counter that tells hooks to reload their data.
+ * Refresh counter that tells hooks to reload their data, and the report of running loads
+ * that lets the header refresh button show progress.
  *
  * @file RefreshContext.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Counter of running loads, so a hook can tell when any of its loads is still busy.
+ *
+ * @file inFlight.js
  * @license AGPL-3.0-or-later
  * @author Vellamo.fyi
  */
@@ -674,6 +682,7 @@
  */
 /**
  * The main page: the tab sub-nav with a refresh button, then the selected tab.
+ * The refresh button shows a spinner and is disabled while a load of the visible tab runs.
  *
  * @file MainBoard.jsx
  * @license AGPL-3.0-or-later

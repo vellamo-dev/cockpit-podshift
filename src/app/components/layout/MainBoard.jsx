@@ -4,6 +4,7 @@
 
 /**
  * The main page: the tab sub-nav with a refresh button, then the selected tab.
+ * The refresh button shows a spinner and is disabled while a load of the visible tab runs.
  *
  * @file MainBoard.jsx
  * @license AGPL-3.0-or-later
@@ -16,12 +17,13 @@ import {Tooltip} from '@patternfly/react-core/dist/esm/components/Tooltip';
 import {Flex, FlexItem} from '@patternfly/react-core/dist/esm/layouts/Flex';
 import {Nav, NavItem, NavList} from '@patternfly/react-core/dist/esm/components/Nav';
 import {Page, PageSection} from '@patternfly/react-core/dist/esm/components/Page';
+import {Spinner} from '@patternfly/react-core/dist/esm/components/Spinner';
 import {SyncAltIcon} from '@patternfly/react-icons/dist/esm/icons/sync-alt-icon';
 
 import {i18n} from '../../utils/i18n.js';
 
 import {HealthProvider} from '../../hooks/HealthContext.js';
-import {RefreshContext} from '../../hooks/RefreshContext.js';
+import {RefreshActivityContext, RefreshContext} from '../../hooks/RefreshContext.js';
 import {useTab} from '../../hooks/useTab.js';
 import {MODULES} from '../../modules/index.js';
 
@@ -91,51 +93,69 @@ export function MainBoard({mode}) {
     const Current = MODULES.find(item => item.id === tab).Page;
     const [refreshToken, setRefreshToken] = useState(0);
     const refresh = useCallback(() => setRefreshToken(count => count + 1), []);
+    const [running, setRunning] = useState(0);
+    const report = useCallback(() => {
+        let open = true;
+        setRunning(count => count + 1);
+        return () => {
+            if (!open) { return }
+            open = false;
+            setRunning(count => count - 1);
+        };
+    }, []);
+    const refreshing = running > 0;
     const showRefresh = tab === 'overview' || tab === 'containers' || tab === 'health' || tab === 'volumes' || tab === 'networks' || tab === 'images' || tab === 'secrets' || tab === 'services' || tab === 'quadlets';
 
     return (
         <RefreshContext.Provider value={refreshToken}>
-            <HealthProvider>
-                <Page className="pf-m-no-sidebar">
-                    <PageSection hasBodyWrapper={false} className="podshift-header">
-                        <Flex
-                            justifyContent={{default: 'justifyContentSpaceBetween'}}
-                            alignItems={{default: 'alignItemsCenter'}}
-                            flexWrap={{default: 'nowrap'}}
-                        >
-                            <Nav
-                                variant="horizontal-subnav"
-                                id="podshift-tabs"
-                                onSelect={(_event, result) => go(result.itemId)}
+            <RefreshActivityContext.Provider value={report}>
+                <HealthProvider>
+                    <Page className="pf-m-no-sidebar">
+                        <PageSection hasBodyWrapper={false} className="podshift-header">
+                            <Flex
+                                justifyContent={{default: 'justifyContentSpaceBetween'}}
+                                alignItems={{default: 'alignItemsCenter'}}
+                                flexWrap={{default: 'nowrap'}}
                             >
-                                <NavList>
-                                    {MODULES.map(item => (
-                                        <ModuleNavItem
-                                            key={item.id}
-                                            item={item}
-                                            isActive={item.id === tab}
-                                        />
-                                    ))}
-                                </NavList>
-                            </Nav>
-                            {showRefresh && (
-                                <FlexItem>
-                                    <Tooltip content={i18n("Refresh")}>
-                                        <Button variant="plain" aria-label={i18n("Refresh")} onClick={refresh}>
-                                            <SyncAltIcon/>
-                                        </Button>
-                                    </Tooltip>
-                                </FlexItem>
-                            )}
-                        </Flex>
-                    </PageSection>
-                    <PageSection hasBodyWrapper={false}>
-                        <div id={"podshift-tab-" + tab}>
-                            <Current mode={mode}/>
-                        </div>
-                    </PageSection>
-                </Page>
-            </HealthProvider>
+                                <Nav
+                                    variant="horizontal-subnav"
+                                    id="podshift-tabs"
+                                    onSelect={(_event, result) => go(result.itemId)}
+                                >
+                                    <NavList>
+                                        {MODULES.map(item => (
+                                            <ModuleNavItem
+                                                key={item.id}
+                                                item={item}
+                                                isActive={item.id === tab}
+                                            />
+                                        ))}
+                                    </NavList>
+                                </Nav>
+                                {showRefresh && (
+                                    <FlexItem>
+                                        <Tooltip content={i18n("Refresh")}>
+                                            <Button
+                                                variant="plain"
+                                                aria-label={i18n("Refresh")}
+                                                isAriaDisabled={refreshing}
+                                                onClick={refresh}
+                                            >
+                                                {refreshing ? <Spinner size="md" isInline aria-label={i18n("Refresh")}/> : <SyncAltIcon/>}
+                                            </Button>
+                                        </Tooltip>
+                                    </FlexItem>
+                                )}
+                            </Flex>
+                        </PageSection>
+                        <PageSection hasBodyWrapper={false}>
+                            <div id={"podshift-tab-" + tab}>
+                                <Current mode={mode}/>
+                            </div>
+                        </PageSection>
+                    </Page>
+                </HealthProvider>
+            </RefreshActivityContext.Provider>
         </RefreshContext.Provider>
     );
 }

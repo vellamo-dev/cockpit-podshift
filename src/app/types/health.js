@@ -63,6 +63,7 @@
  * @property {HealthResult|null} data Last good result, or null before the first load.
  * @property {Error|null} error Error of the last load, or null.
  * @property {boolean} loading True while the first load runs.
+ * @property {boolean} refreshing True while a check runs, also with a result on screen.
  * @property {() => void} [ensure] Starts a load once per refresh token.
  */
 

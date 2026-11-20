@@ -1118,7 +1118,7 @@
             var dispatcher = resolveDispatcher();
             return dispatcher.useRef(initialValue);
           }
-          function useEffect27(create, deps) {
+          function useEffect28(create, deps) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useEffect(create, deps);
           }
@@ -1901,7 +1901,7 @@
           exports.useContext = useContext16;
           exports.useDebugValue = useDebugValue;
           exports.useDeferredValue = useDeferredValue;
-          exports.useEffect = useEffect27;
+          exports.useEffect = useEffect28;
           exports.useId = useId2;
           exports.useImperativeHandle = useImperativeHandle2;
           exports.useInsertionEffect = useInsertionEffect;
@@ -34375,6 +34375,41 @@
   function useRefreshToken() {
     return (0, import_react27.useContext)(RefreshContext);
   }
+  var RefreshActivityContext = (0, import_react27.createContext)(null);
+  function useReportRefreshing(busy) {
+    const report = (0, import_react27.useContext)(RefreshActivityContext);
+    (0, import_react27.useEffect)(() => {
+      if (!report || !busy) {
+        return void 0;
+      }
+      return report();
+    }, [report, busy]);
+  }
+
+  // src/app/utils/inFlight.js
+  function createInFlight(onChange) {
+    let running = 0;
+    return {
+      begin() {
+        running += 1;
+        if (running === 1) {
+          onChange(true);
+        }
+      },
+      end() {
+        if (running === 0) {
+          return;
+        }
+        running -= 1;
+        if (running === 0) {
+          onChange(false);
+        }
+      },
+      count() {
+        return running;
+      }
+    };
+  }
 
   // src/app/hooks/HealthContext.js
   var import_jsx_runtime35 = __toESM(require_jsx_runtime(), 1);
@@ -34393,9 +34428,18 @@
     const seqRef = (0, import_react28.useRef)(0);
     const attemptedToken = (0, import_react28.useRef)(null);
     const dataRef = (0, import_react28.useRef)(data);
+    const [refreshing, setRefreshing] = (0, import_react28.useState)(false);
+    const loads = (0, import_react28.useRef)(
+      /** @type {import('../utils/inFlight.js').InFlight|null} */
+      null
+    );
+    if (loads.current == null) {
+      loads.current = createInFlight(setRefreshing);
+    }
     dataRef.current = data;
     const load = (0, import_react28.useCallback)(async () => {
       const seq = ++seqRef.current;
+      loads.current.begin();
       try {
         const payload = await PodShiftApi.callAction("health-check");
         if (seq !== seqRef.current) {
@@ -34412,6 +34456,7 @@
         if (seq === seqRef.current) {
           setLoading(false);
         }
+        loads.current.end();
       }
     }, []);
     const ensure = (0, import_react28.useCallback)(() => {
@@ -34424,7 +34469,7 @@
       }
       load();
     }, [token, load]);
-    const value = (0, import_react28.useMemo)(() => ({ data, error, loading, ensure }), [data, error, loading, ensure]);
+    const value = (0, import_react28.useMemo)(() => ({ data, error, loading, refreshing, ensure }), [data, error, loading, refreshing, ensure]);
     return /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(HealthContext.Provider, { value, children });
   }
   function useHealthCheck(enabled = true) {
@@ -34435,7 +34480,8 @@
         ctx.ensure();
       }
     }, [enabled, token, ctx]);
-    return { data: ctx.data, error: ctx.error, loading: ctx.loading };
+    useReportRefreshing(enabled && ctx.refreshing);
+    return { data: ctx.data, error: ctx.error, loading: ctx.loading, refreshing: ctx.refreshing };
   }
 
   // src/app/hooks/useTab.js
@@ -38212,7 +38258,7 @@
    *
    * @type {string}
    */
-  __publicField(AppInfo, "VERSION", "0.11.0");
+  __publicField(AppInfo, "VERSION", "0.11.1");
 
   // src/app/hooks/useAction.js
   var import_react68 = __toESM(require_react(), 1);
@@ -38243,13 +38289,35 @@
     const rowsRef = (0, import_react68.useRef)(rows);
     const dataRef = (0, import_react68.useRef)(data);
     const seqRef = (0, import_react68.useRef)(0);
+    const [refreshing, setRefreshing] = (0, import_react68.useState)(false);
+    const [reported, setReported] = (0, import_react68.useState)(false);
+    const allLoads = (0, import_react68.useRef)(
+      /** @type {import('../utils/inFlight.js').InFlight|null} */
+      null
+    );
+    const shownLoads = (0, import_react68.useRef)(
+      /** @type {import('../utils/inFlight.js').InFlight|null} */
+      null
+    );
+    if (allLoads.current == null) {
+      allLoads.current = createInFlight(setRefreshing);
+    }
+    if (shownLoads.current == null) {
+      shownLoads.current = createInFlight(setReported);
+    }
+    useReportRefreshing(reported);
     rowsRef.current = rows;
     dataRef.current = data;
-    const load = (0, import_react68.useCallback)(async () => {
+    const load = (0, import_react68.useCallback)(async (background = false) => {
       if (!enabled) {
         return;
       }
       const seq = ++seqRef.current;
+      const shown = background !== true;
+      allLoads.current.begin();
+      if (shown) {
+        shownLoads.current.begin();
+      }
       try {
         const payload = await PodShiftApi.callAction(action);
         if (seq !== seqRef.current) {
@@ -38271,8 +38339,13 @@
         if (seq === seqRef.current) {
           setLoading(false);
         }
+        allLoads.current.end();
+        if (shown) {
+          shownLoads.current.end();
+        }
       }
     }, [action, enabled]);
+    const refresh = (0, import_react68.useCallback)(() => load(), [load]);
     (0, import_react68.useEffect)(() => {
       if (!enabled) {
         setLoading(false);
@@ -38300,7 +38373,7 @@
         stop();
         timer = window.setInterval(() => {
           if (document.visibilityState === "visible") {
-            load().catch(() => {
+            load(true).catch(() => {
             });
           }
         }, poll);
@@ -38309,7 +38382,7 @@
         if (document.visibilityState === "hidden") {
           stop();
         } else {
-          load().catch(() => {
+          load(true).catch(() => {
           });
           start2();
         }
@@ -38323,7 +38396,7 @@
         document.removeEventListener("visibilitychange", onVisibility);
       };
     }, [enabled, load, poll]);
-    return { rows, data, error, loading, refresh: load };
+    return { rows, data, error, loading, refreshing, refresh };
   }
 
   // src/app/modules/overview/InfoCard.jsx
@@ -43664,8 +43737,21 @@
     const Current = MODULES.find((item) => item.id === tab).Page;
     const [refreshToken, setRefreshToken] = (0, import_react125.useState)(0);
     const refresh = (0, import_react125.useCallback)(() => setRefreshToken((count) => count + 1), []);
+    const [running, setRunning] = (0, import_react125.useState)(0);
+    const report = (0, import_react125.useCallback)(() => {
+      let open = true;
+      setRunning((count) => count + 1);
+      return () => {
+        if (!open) {
+          return;
+        }
+        open = false;
+        setRunning((count) => count - 1);
+      };
+    }, []);
+    const refreshing = running > 0;
     const showRefresh = tab === "overview" || tab === "containers" || tab === "health" || tab === "volumes" || tab === "networks" || tab === "images" || tab === "secrets" || tab === "services" || tab === "quadlets";
-    return /* @__PURE__ */ (0, import_jsx_runtime149.jsx)(RefreshContext.Provider, { value: refreshToken, children: /* @__PURE__ */ (0, import_jsx_runtime149.jsx)(HealthProvider, { children: /* @__PURE__ */ (0, import_jsx_runtime149.jsxs)(Page, { className: "pf-m-no-sidebar", children: [
+    return /* @__PURE__ */ (0, import_jsx_runtime149.jsx)(RefreshContext.Provider, { value: refreshToken, children: /* @__PURE__ */ (0, import_jsx_runtime149.jsx)(RefreshActivityContext.Provider, { value: report, children: /* @__PURE__ */ (0, import_jsx_runtime149.jsx)(HealthProvider, { children: /* @__PURE__ */ (0, import_jsx_runtime149.jsxs)(Page, { className: "pf-m-no-sidebar", children: [
       /* @__PURE__ */ (0, import_jsx_runtime149.jsx)(PageSection, { hasBodyWrapper: false, className: "podshift-header", children: /* @__PURE__ */ (0, import_jsx_runtime149.jsxs)(
         Flex,
         {
@@ -43689,12 +43775,21 @@
                 )) })
               }
             ),
-            showRefresh && /* @__PURE__ */ (0, import_jsx_runtime149.jsx)(FlexItem, { children: /* @__PURE__ */ (0, import_jsx_runtime149.jsx)(Tooltip, { content: i18n("Refresh"), children: /* @__PURE__ */ (0, import_jsx_runtime149.jsx)(Button, { variant: "plain", "aria-label": i18n("Refresh"), onClick: refresh, children: /* @__PURE__ */ (0, import_jsx_runtime149.jsx)(SyncAltIcon, {}) }) }) })
+            showRefresh && /* @__PURE__ */ (0, import_jsx_runtime149.jsx)(FlexItem, { children: /* @__PURE__ */ (0, import_jsx_runtime149.jsx)(Tooltip, { content: i18n("Refresh"), children: /* @__PURE__ */ (0, import_jsx_runtime149.jsx)(
+              Button,
+              {
+                variant: "plain",
+                "aria-label": i18n("Refresh"),
+                isAriaDisabled: refreshing,
+                onClick: refresh,
+                children: refreshing ? /* @__PURE__ */ (0, import_jsx_runtime149.jsx)(Spinner, { size: "md", isInline: true, "aria-label": i18n("Refresh") }) : /* @__PURE__ */ (0, import_jsx_runtime149.jsx)(SyncAltIcon, {})
+              }
+            ) }) })
           ]
         }
       ) }),
       /* @__PURE__ */ (0, import_jsx_runtime149.jsx)(PageSection, { hasBodyWrapper: false, children: /* @__PURE__ */ (0, import_jsx_runtime149.jsx)("div", { id: "podshift-tab-" + tab, children: /* @__PURE__ */ (0, import_jsx_runtime149.jsx)(Current, { mode }) }) })
-    ] }) }) });
+    ] }) }) }) });
   }
 
   // src/app/app.jsx

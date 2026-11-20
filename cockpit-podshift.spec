@@ -1,5 +1,5 @@
 Name: cockpit-podshift
-Version: 0.11.0
+Version: 0.11.1
 Release: 1%{?dist}
 Summary: Cockpit UI for PodShift
 License: AGPL-3.0-or-later AND LGPL-2.1-or-later
@@ -46,6 +46,10 @@ test -f %{buildroot}%{_datadir}/cockpit/podshift/index.js
 %{_metainfodir}/fyi.vellamo.cockpit_podshift.metainfo.xml
 
 %changelog
+* Fri Nov 20 2026 Vellamo Dev <no-email@vellamo.fyi> - 0.11.1
+- User feedback improvement: the header Refresh button shows progress and is disabled while the visible tab refreshes
+- Tests: QUnit unit tests for the running-load counter behind the refresh progress
+
 * Fri Nov 20 2026 Vellamo Dev <no-email@vellamo.fyi> - 0.11.0
 - Overview: the Configuration card adds, edits and removes custom TSV_* variables (needs PodShift 0.22.0)
 - Overview: an unset TSV_ENV can be set once from the Configuration card, with suggested tags
