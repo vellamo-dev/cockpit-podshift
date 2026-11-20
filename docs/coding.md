@@ -27,6 +27,7 @@ cockpit-podshift/
 │   │   ├── types/
 │   │   └── utils/
 │   ├── po/             # translations (for example de.po); templates are generated
+│   ├── test/unit/      # QUnit unit tests for pure helpers in src/app/utils/
 │   └── dev/            # build container wrapper (run) and Containerfile
 ├── readme.md, LICENSE, docs/licenses/
 ├── dist/               # built app, committed so the RPM can install it
@@ -74,6 +75,16 @@ Local Node is for the IDE only. You can run `npm install` on the host so `./node
 For day-to-day work on a VM, the scripts below are the usual path.
 
 Lint scripts in `package.json` (run them in the container, as above): `eslint`, `eslint:fix`, `stylelint` and `stylelint:fix`.
+
+## Unit tests
+
+Pure helpers in `src/app/utils/`, such as `TsvConfigRules` and `ConfigModalView`, have QUnit tests in `src/test/unit/`, one `<Name>.test.js` file per helper. They run under Node in the build container, so a tested helper must not import `cockpit` or React.
+
+Run the unit tests in the container:
+
+```sh
+npm test
+```
 
 ## Testing on a VM
 

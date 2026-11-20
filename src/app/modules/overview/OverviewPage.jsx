@@ -29,7 +29,7 @@ import './overview.scss';
 
 /** @typedef {import('../../types/api.js').AccessMode} AccessMode */
 /** @typedef {import('../../types/api.js').ActionState} ActionState */
-/** @typedef {import('../../types/api.js').OverviewResult} OverviewResult */
+/** @typedef {import('../../types/api.js').OverviewConfigResult} OverviewConfigResult */
 
 /**
  * Shows the cards in the same grid as Cockpit's Overview page: Status | Usage, Info | Configuration, Health.
@@ -42,8 +42,8 @@ import './overview.scss';
  */
 export function OverviewPage({mode}) {
     const admin = mode === 'admin';
-    /** @type {ActionState<OverviewResult>} */
-    const {rows, loading, error, data} = useAction('overview-config', {poll: 30000, enabled: admin});
+    /** @type {ActionState<OverviewConfigResult>} */
+    const {rows, loading, error, data, refresh} = useAction('overview-config', {poll: 30000, enabled: admin});
     const envRow = (data?.rows || []).find(row => row.id === 'tsv_env');
     const envValue = envRow ? envRow.value : undefined;
     const showEnvNotice = admin && !loading && envRow != null && (envValue == null || envValue === '');
@@ -64,7 +64,7 @@ export function OverviewPage({mode}) {
                 <StatusCard mode={mode}/>
                 <UsageCard mode={mode}/>
                 <InfoCard mode={mode}/>
-                <ConfigurationCard mode={mode} rows={rows} loading={loading} error={error}/>
+                <ConfigurationCard mode={mode} rows={rows} data={data} loading={loading} error={error} onChanged={() => { refresh().catch(() => {}) }}/>
                 <HealthCard mode={mode}/>
             </Gallery>
         </>

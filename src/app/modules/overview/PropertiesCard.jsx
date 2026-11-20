@@ -72,6 +72,21 @@ function rowLabel(row, rowTab) {
 }
 
 /**
+ * Value cell of a row: what rowValue returns for it, otherwise the plain value.
+ *
+ * @param {PropertyRow} row The row.
+ * @param {((row: PropertyRow) => (React.ReactNode|undefined))|undefined} rowValue Optional function that returns the cell content.
+ * @returns {React.ReactNode} The value content.
+ */
+function cellValue(row, rowValue) {
+    const content = rowValue ? rowValue(row) : undefined;
+    if (content === undefined) {
+        return row.value;
+    }
+    return content;
+}
+
+/**
  * Shows a card with a title and label/value rows, or its loading, error or unavailable state.
  *
  * @param {object} props Component props.
@@ -85,12 +100,13 @@ function rowLabel(row, rowTab) {
  * @param {string|null} [props.unavailable] Text shown instead of the rows, for example without admin access.
  * @param {MenuItem[]} [props.actions] Extra kebab menu items after Copy.
  * @param {((row: PropertyRow) => (string|undefined))|undefined} [props.rowTab] Returns a tab id to open when the label is clicked; unit links take precedence.
+ * @param {((row: PropertyRow) => (React.ReactNode|undefined))|undefined} [props.rowValue] Returns the value cell content for a row, for example an edit button; undefined shows the plain value.
  * @returns {React.ReactElement} The card.
  */
 export function PropertiesCard({
     id, icon, title, rows, alignValues = 'start',
     loading = false, error = null, unavailable = null,
-    actions = [], rowTab
+    actions = [], rowTab, rowValue
 }) {
     const canCopy = !unavailable && rows != null && rows.length > 0;
     const menuItems = [
@@ -130,7 +146,7 @@ export function PropertiesCard({
                             {(rows || []).map(row => (
                                 <tr className="pf-v6-c-table__tr" key={row.id || row.label}>
                                     <th className="pf-v6-c-table__th" scope="row">{rowLabel(row, rowTab)}</th>
-                                    <td className={alignValues === 'end' ? 'pf-v6-c-table__td pf-v6-u-text-align-end' : 'pf-v6-c-table__td'}>{row.value}</td>
+                                    <td className={alignValues === 'end' ? 'pf-v6-c-table__td pf-v6-u-text-align-end' : 'pf-v6-c-table__td'}>{cellValue(row, rowValue)}</td>
                                 </tr>
                             ))}
                         </tbody>

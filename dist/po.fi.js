@@ -52,6 +52,30 @@ cockpit.locale({
   null,
   "Lähde"
  ],
+ "Use a capital letter, then capital letters, digits or _.": [
+  null,
+  ""
+ ],
+ "Names starting with TSV_NW or TSV_ENV are managed by PodShift.": [
+  null,
+  ""
+ ],
+ "Secrets don't belong in config. Use a Podman secret instead.": [
+  null,
+  ""
+ ],
+ "Value must not be empty.": [
+  null,
+  ""
+ ],
+ "Value must not contain quotes (\" or '), control characters or a trailing backslash.": [
+  null,
+  ""
+ ],
+ "Use 1 to 128 characters of a-z, A-Z, 0-9, _, . and -, not starting with . or -.": [
+  null,
+  ""
+ ],
  "Refresh": [
   null,
   "Päivitä"
@@ -76,6 +100,34 @@ cockpit.locale({
   null,
   "Tarkastelutuloste on liian suuri näytettäväksi tässä ($0)."
  ],
+ "PodShift refused the change.": [
+  null,
+  ""
+ ],
+ "Set environment": [
+  null,
+  ""
+ ],
+ "The environment tag, TSV_ENV, can be set here once. Change it later as root with": [
+  null,
+  ""
+ ],
+ "Use \"$0\"": [
+  null,
+  ""
+ ],
+ "Pick or type a tag": [
+  null,
+  ""
+ ],
+ "No suggested tags. Type a tag.": [
+  null,
+  ""
+ ],
+ "Cancel": [
+  null,
+  ""
+ ],
  "The output is too large to show here ($0).": [
   null,
   "Tuloste on liian suuri näytettäväksi tässä ($0)."
@@ -95,6 +147,42 @@ cockpit.locale({
  "Show secrets": [
   null,
   "Näytä salaisuudet"
+ ],
+ "Edit $0": [
+  null,
+  ""
+ ],
+ "Remove $0?": [
+  null,
+  ""
+ ],
+ "Do not use these variables for passwords, tokens and other sensitive data. Use Podman secrets for that purpose.": [
+  null,
+  ""
+ ],
+ "Values are stored in plain text in tsv.conf.": [
+  null,
+  ""
+ ],
+ "$0 is removed from tsv.conf. Running Quadlets keep their values until they are installed again.": [
+  null,
+  ""
+ ],
+ "Name": [
+  null,
+  ""
+ ],
+ "Value": [
+  null,
+  ""
+ ],
+ "Save": [
+  null,
+  ""
+ ],
+ "Remove": [
+  null,
+  ""
  ],
  "Copy": [
   null,

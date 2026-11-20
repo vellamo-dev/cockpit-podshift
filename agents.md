@@ -38,6 +38,7 @@ npm run rebuild                 # force a build even when nothing changed
 npm run watch                   # rebuild dist/ on every save, in the container
 ./src/dev/run npm run eslint
 ./src/dev/run npm run stylelint
+npm test                        # unit tests in src/test/unit/, in the container
 npm run updateTranslations      # refresh src/po/podshift.pot and merge it into every .po (uses the container)
 ```
 

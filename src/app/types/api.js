@@ -69,6 +69,40 @@
  */
 
 /**
+ * One row of the overview-config action. Only rows with editable true can be changed in the UI.
+ *
+ * @typedef {object} ConfigRow
+ * @property {string} id Stable row id, for example tsv_env or tsv_app_domain.
+ * @property {string} label Variable name, for example TSV_APP_DOMAIN.
+ * @property {string|null} value Value, or null when TSV_ENV is unset.
+ * @property {boolean} editable True for custom variables, and for TSV_ENV while it is unset.
+ */
+
+/**
+ * Data of the overview-config action.
+ *
+ * @typedef {object} OverviewConfigResult
+ * @property {ConfigRow[]} rows Untranslated rows: TSV_ENV, set TSV_NW* values, then custom variables.
+ * @property {string[]} envSuggestions Suggested environment tags from PodShift's main.conf.
+ */
+
+/**
+ * A reason PodShift refuses a config-set, config-unset or env-set request.
+ *
+ * @typedef {'INVALID_NAME'|'RESERVED_NAME'|'SENSITIVE_NAME'|'EMPTY_VALUE'|'INVALID_VALUE'|'SENSITIVE_VALUE'|'RULES_UNAVAILABLE'|'NOT_SET'|'INVALID_TAG'|'ALREADY_SET'} ConfigProblem
+ */
+
+/**
+ * Data of the config-set, config-unset and env-set actions. A refused request is ok false, not an error.
+ *
+ * @typedef {object} ConfigResult
+ * @property {string} key The variable name.
+ * @property {boolean} ok True when the change was saved.
+ * @property {ConfigProblem} [error] Why it was refused, when ok is false.
+ * @property {string} [message] PodShift's message for the refusal, when ok is false.
+ */
+
+/**
  * Data of the ping action.
  *
  * @typedef {object} PingResult
@@ -103,7 +137,7 @@
  *   'ping': PingResult,
  *   'capabilities': CapabilitiesResult,
  *   'overview-info': OverviewResult,
- *   'overview-config': OverviewResult,
+ *   'overview-config': OverviewConfigResult,
  *   'overview-status': OverviewResult,
  *   'overview-usage': OverviewResult,
  *   'health-check': import('./health.js').HealthResult,
@@ -118,6 +152,9 @@
  *   'service-view': import('./service.js').ServiceViewResult,
  *   'service-logs': import('./service.js').ServiceLogResult,
  *   'quadlet-view': import('./service.js').QuadletViewResult,
+ *   'config-set': ConfigResult,
+ *   'config-unset': ConfigResult,
+ *   'env-set': ConfigResult,
  * }} ActionDataMap
  */
 

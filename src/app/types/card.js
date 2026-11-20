@@ -62,4 +62,22 @@
  * @typedef {'neutral'|'success'|'danger'} CardTone
  */
 
+/**
+ * Mode of the shared variable modal of the Configuration card.
+ *
+ * @typedef {'add'|'edit'} ConfigModalMode
+ */
+
+/**
+ * What the variable modal shows in its current mode.
+ *
+ * @typedef {object} ConfigModalLayout
+ * @property {'add'|'edit'|'remove'} title Which title to show: Add variable, Edit TSV_X or Remove TSV_X?.
+ * @property {boolean} showForm True when the name and value fields are shown.
+ * @property {boolean} nameLocked True when the name cannot be changed.
+ * @property {boolean} showRemove True when the Remove button is shown next to Save.
+ * @property {boolean} showSave True when the Save button is shown.
+ * @property {boolean} showConfirm True when the remove confirmation is shown instead of the form.
+ */
+
 export {};

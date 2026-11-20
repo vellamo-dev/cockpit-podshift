@@ -12,7 +12,7 @@ The menu entry is **PodShift**. These tabs appear, in this order:
 
 | Tab | What it shows |
 |---|---|
-| Overview | Status, Usage, Info, Configuration and Health cards. When the environment tag (`TSV_ENV`) is not set, an administrator sees a warning under the tabs. |
+| Overview | Status, Usage, Info, Configuration and Health cards. When the environment tag (`TSV_ENV`) is not set, an administrator sees a warning under the tabs. The Configuration card can add, edit and remove custom `TSV_*` variables, and set the environment tag once. |
 | Health | The full health check report, grouped. |
 | Containers | Podman containers as cards, with a text filter and a source switch. |
 | Volumes | Podman volumes as cards, with a text filter and a source switch. |
@@ -21,6 +21,19 @@ The menu entry is **PodShift**. These tabs appear, in this order:
 | Secrets | Podman secrets as cards, with a text filter and a usage switch. |
 | Services | The systemd user services of the `podshift` user, with a text filter and a state switch. You can also open a unit's status and logs. |
 | Quadlets | Podman Quadlets as cards, with a text filter and state and type switches. A card shows the unit description when the Quadlet file has one. |
+
+## Configuration card
+
+The Configuration card needs PodShift 0.22.0 or later and Cockpit administrative access. It lists `TSV_ENV`, the `TSV_NW*` network values and the custom `TSV_*` variables from the podshift user's `tsv.conf`.
+
+- **Add variable** in the card's menu opens a modal with a fixed `TSV_` before the name. The name is changed to capital letters, and a typed or pasted `TSV_` at the start is removed.
+- A custom variable's value is a link. It opens the same modal to change the value or remove the variable. The name cannot be changed. Remove asks for confirmation in the same modal.
+- The modal warns not to store passwords, tokens or other secrets, because values are kept in plain text in `tsv.conf`. Use Podman secrets for those.
+- The modal checks the name and value with the same rules as `podshift config`, and Save stays disabled while a rule fails. Reserved names (`TSV_NW*`, `TSV_ENV*`), secret words in the name and known token formats in the value are refused. PodShift checks again when saving, and shows its own message if it refuses.
+- `TSV_NW*` rows are read-only.
+- While `TSV_ENV` is not set, its **Not set** value opens a modal to set it, with the suggested tags from PodShift. Once set, it is read-only here; change it as root with `sudo podshift env --set <tag>`.
+
+The card reloads after each change. Running Quadlets keep their values until they are installed again.
 
 ## Access
 

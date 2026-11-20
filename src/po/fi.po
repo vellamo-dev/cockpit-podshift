@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cockpit-podshift 0.9.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-16 15:09+0000\n"
+"POT-Creation-Date: 2026-11-20 14:59+0000\n"
 "PO-Revision-Date: 2026-11-14 12:18+0200\n"
 "Last-Translator: Vellamo Dev <no-email@vellamo.fyi>\n"
 "Language-Team: Finnish\n"
@@ -77,13 +77,41 @@ msgstr "Tila"
 msgid "Source"
 msgstr "Lähde"
 
+#: src/app/utils/configProblemText.js:26
+msgid "Use a capital letter, then capital letters, digits or _."
+msgstr ""
+
+#: src/app/utils/configProblemText.js:28
+msgid "Names starting with TSV_NW or TSV_ENV are managed by PodShift."
+msgstr ""
+
+#: src/app/utils/configProblemText.js:31
+msgid "Secrets don't belong in config. Use a Podman secret instead."
+msgstr ""
+
+#: src/app/utils/configProblemText.js:33
+msgid "Value must not be empty."
+msgstr ""
+
+#: src/app/utils/configProblemText.js:35
+msgid ""
+"Value must not contain quotes (\" or '), control characters or a trailing "
+"backslash."
+msgstr ""
+
+#: src/app/utils/configProblemText.js:37
+msgid ""
+"Use 1 to 128 characters of a-z, A-Z, 0-9, _, . and -, not starting with . or "
+"-."
+msgstr ""
+
 #: src/app/components/layout/MainBoard.jsx:123
 #: src/app/components/layout/MainBoard.jsx:124
 #: src/app/components/modals/InspectNotice.jsx:77
-#: src/app/components/modals/ServiceStatusModal.jsx:55
+#: src/app/components/modals/ServiceStatusModal.jsx:56
 #: src/app/components/modals/UnitViewModal.jsx:111
-#: src/app/components/modals/ServiceLogModal.jsx:70
-#: src/app/components/modals/ServiceLogModal.jsx:98
+#: src/app/components/modals/ServiceLogModal.jsx:71
+#: src/app/components/modals/ServiceLogModal.jsx:99
 msgid "Refresh"
 msgstr "Päivitä"
 
@@ -102,9 +130,9 @@ msgid "Copied"
 msgstr "Kopioitu"
 
 #: src/app/components/modals/InspectNotice.jsx:75
-#: src/app/components/modals/ServiceStatusModal.jsx:53
+#: src/app/components/modals/ServiceStatusModal.jsx:54
 #: src/app/components/modals/UnitViewModal.jsx:109
-#: src/app/components/modals/ServiceLogModal.jsx:68
+#: src/app/components/modals/ServiceLogModal.jsx:69
 msgid "This $0 no longer exists."
 msgstr "Kohdetta $0 ei enää ole."
 
@@ -112,12 +140,54 @@ msgstr "Kohdetta $0 ei enää ole."
 msgid "The inspect output is too large to show here ($0)."
 msgstr "Tarkastelutuloste on liian suuri näytettäväksi tässä ($0)."
 
-#: src/app/components/modals/ServiceStatusModal.jsx:63
+#: src/app/components/modals/EnvTagModal.jsx:71
+#: src/app/components/modals/ConfigVariableModal.jsx:120
+msgid "PodShift refused the change."
+msgstr ""
+
+#: src/app/components/modals/EnvTagModal.jsx:85
+msgid "Set environment"
+msgstr ""
+
+#: src/app/components/modals/EnvTagModal.jsx:89
+msgid ""
+"The environment tag, TSV_ENV, can be set here once. Change it later as root "
+"with"
+msgstr ""
+
+#: src/app/components/modals/EnvTagModal.jsx:98
+#, fuzzy
+msgid "Environment tag"
+msgstr "Ympäristöä ei ole asetettu"
+
+#: src/app/components/modals/EnvTagModal.jsx:104
+msgid "Use \"$0\""
+msgstr ""
+
+#: src/app/components/modals/EnvTagModal.jsx:105
+msgid "Pick or type a tag"
+msgstr ""
+
+#: src/app/components/modals/EnvTagModal.jsx:106
+msgid "No suggested tags. Type a tag."
+msgstr ""
+
+#: src/app/components/modals/EnvTagModal.jsx:126
+#, fuzzy
+msgid "Set"
+msgstr "Salaisuudet"
+
+#: src/app/components/modals/EnvTagModal.jsx:129
+#: src/app/components/modals/ConfigVariableModal.jsx:234
+msgid "Cancel"
+msgstr ""
+
+#: src/app/components/modals/ServiceStatusModal.jsx:64
 #: src/app/components/modals/UnitViewModal.jsx:127
 msgid "The output is too large to show here ($0)."
 msgstr "Tuloste on liian suuri näytettäväksi tässä ($0)."
 
-#: src/app/components/modals/ServiceStatusModal.jsx:71
+#: src/app/components/modals/ServiceStatusModal.jsx:72
 msgid "Status: $0"
 msgstr "Tila: $0"
 
@@ -133,11 +203,58 @@ msgstr "Piilota salaisuudet"
 msgid "Show secrets"
 msgstr "Näytä salaisuudet"
 
+#: src/app/components/modals/ConfigVariableModal.jsx:97
+#: src/app/modules/overview/ConfigurationCard.jsx:93
+#, fuzzy
+msgid "Add variable"
+msgstr "Muuttujat"
+
+#: src/app/components/modals/ConfigVariableModal.jsx:99
+msgid "Edit $0"
+msgstr ""
+
+#: src/app/components/modals/ConfigVariableModal.jsx:101
+msgid "Remove $0?"
+msgstr ""
+
+#: src/app/components/modals/ConfigVariableModal.jsx:161
+msgid ""
+"Do not use these variables for passwords, tokens and other sensitive data. "
+"Use Podman secrets for that purpose."
+msgstr ""
+
+#: src/app/components/modals/ConfigVariableModal.jsx:162
+msgid "Values are stored in plain text in tsv.conf."
+msgstr ""
+
+#: src/app/components/modals/ConfigVariableModal.jsx:173
+msgid ""
+"$0 is removed from tsv.conf. Running Quadlets keep their values until they "
+"are installed again."
+msgstr ""
+
+#: src/app/components/modals/ConfigVariableModal.jsx:179
+msgid "Name"
+msgstr ""
+
+#: src/app/components/modals/ConfigVariableModal.jsx:195
+msgid "Value"
+msgstr ""
+
+#: src/app/components/modals/ConfigVariableModal.jsx:214
+msgid "Save"
+msgstr ""
+
+#: src/app/components/modals/ConfigVariableModal.jsx:219
+#: src/app/components/modals/ConfigVariableModal.jsx:246
+msgid "Remove"
+msgstr ""
+
 #: src/app/components/modals/CodeViewModal.jsx:92
 #: src/app/components/resource/ResourceCard.jsx:127
 #: src/app/modules/health/HealthPage.jsx:73
 #: src/app/modules/overview/HealthCard.jsx:57
-#: src/app/modules/overview/PropertiesCard.jsx:99
+#: src/app/modules/overview/PropertiesCard.jsx:115
 msgid "Copy"
 msgstr "Kopioi"
 
@@ -153,7 +270,9 @@ msgstr "Quadlet-tiedostoa $0 ei enää ole."
 msgid ""
 "The Quadlet file $0 is not in the PodShift Quadlet folder, so it is not "
 "shown."
-msgstr "Quadlet-tiedosto $0 ei ole PodShiftin Quadlet-kansiossa, joten sitä ei näytetä."
+msgstr ""
+"Quadlet-tiedosto $0 ei ole PodShiftin Quadlet-kansiossa, joten sitä ei "
+"näytetä."
 
 #: src/app/components/modals/UnitViewModal.jsx:62
 msgid "The Quadlet file $0 cannot be read."
@@ -168,20 +287,20 @@ msgstr "Tätä yksikköä ei ole luotu Quadlet-tiedostosta."
 msgid "Download"
 msgstr "Lataa"
 
-#: src/app/components/modals/ServiceLogModal.jsx:76
+#: src/app/components/modals/ServiceLogModal.jsx:77
 msgid "The journal of the podshift user cannot be read."
 msgstr "podshift-käyttäjän journalia ei voi lukea."
 
-#: src/app/components/modals/ServiceLogModal.jsx:82
+#: src/app/components/modals/ServiceLogModal.jsx:83
 msgid "No log entries"
 msgstr "Ei lokimerkintöjä"
 
-#: src/app/components/modals/ServiceLogModal.jsx:88
+#: src/app/components/modals/ServiceLogModal.jsx:89
 msgid "Log: $0"
 msgstr "Loki: $0"
 
-#: src/app/components/modals/ServiceLogModal.jsx:102
-#: src/app/modules/services/ServicesModule.jsx:210
+#: src/app/components/modals/ServiceLogModal.jsx:103
+#: src/app/modules/services/ServicesModule.jsx:211
 msgid "Open log"
 msgstr "Avaa loki"
 
@@ -203,7 +322,9 @@ msgstr "Ei käyttöoikeutta"
 
 #: src/app/components/status/NoAccess.jsx:35
 msgid "Log in as the podshift user, or turn on Cockpit administrative access."
-msgstr "Kirjaudu sisään podshift-käyttäjänä tai ota käyttöön Cockpitin järjestelmänvalvojan käyttöoikeus."
+msgstr ""
+"Kirjaudu sisään podshift-käyttäjänä tai ota käyttöön Cockpitin "
+"järjestelmänvalvojan käyttöoikeus."
 
 #: src/app/components/status/NotInstalled.jsx:30
 msgid "PodShift is not installed"
@@ -217,7 +338,7 @@ msgstr "PodShiftin Cockpit-käsittelijää ei löytynyt tästä järjestelmäst�
 #: src/app/components/resource/ResourceCard.jsx:165
 #: src/app/modules/quadlets/QuadletsModule.jsx:91
 #: src/app/modules/containers/ContainersModule.jsx:75
-#: src/app/modules/services/ServicesModule.jsx:119
+#: src/app/modules/services/ServicesModule.jsx:120
 msgid "Running"
 msgstr "Käynnissä"
 
@@ -228,7 +349,7 @@ msgstr "Näytä Podman-käyttöliittymässä"
 #: src/app/hooks/useModulePage.js:116 src/app/modules/health/HealthPage.jsx:56
 #: src/app/modules/overview/InfoCard.jsx:86
 #: src/app/modules/overview/StatusCard.jsx:45
-#: src/app/modules/overview/ConfigurationCard.jsx:45
+#: src/app/modules/overview/ConfigurationCard.jsx:109
 #: src/app/modules/overview/HealthCard.jsx:44
 #: src/app/modules/overview/UsageCard.jsx:45
 msgid "Requires administrative access"
@@ -236,7 +357,7 @@ msgstr "Vaatii järjestelmänvalvojan käyttöoikeudet"
 
 #: src/app/hooks/useUnitView.js:77
 #: src/app/modules/quadlets/QuadletsModule.jsx:203
-#: src/app/modules/services/ServicesModule.jsx:202
+#: src/app/modules/services/ServicesModule.jsx:203
 msgid "Show Quadlet"
 msgstr "Näytä Quadlet"
 
@@ -296,21 +417,21 @@ msgstr "Tila"
 #: src/app/modules/filters/QuadletStatusFilter.js:61
 #: src/app/modules/filters/StateFilter.js:59
 #: src/app/modules/quadlets/QuadletsModule.jsx:127
-#: src/app/modules/services/ServicesModule.jsx:75
-#: src/app/modules/services/ServicesModule.jsx:120
-#: src/app/modules/services/ServicesModule.jsx:151
+#: src/app/modules/services/ServicesModule.jsx:76
+#: src/app/modules/services/ServicesModule.jsx:121
+#: src/app/modules/services/ServicesModule.jsx:152
 msgid "Active"
 msgstr "Aktiivinen"
 
 #: src/app/modules/filters/QuadletStatusFilter.js:62
 #: src/app/modules/filters/StateFilter.js:60
-#: src/app/modules/services/ServicesModule.jsx:76
+#: src/app/modules/services/ServicesModule.jsx:77
 msgid "Inactive"
 msgstr "Epäaktiivinen"
 
 #: src/app/modules/filters/QuadletStatusFilter.js:63
 #: src/app/modules/filters/StateFilter.js:61
-#: src/app/modules/services/ServicesModule.jsx:77
+#: src/app/modules/services/ServicesModule.jsx:78
 msgid "Failed"
 msgstr "Epäonnistunut"
 
@@ -420,26 +541,26 @@ msgstr "Koonti"
 
 #: src/app/modules/quadlets/QuadletsModule.jsx:92
 #: src/app/modules/quadlets/QuadletsModule.jsx:126
-#: src/app/modules/services/ServicesModule.jsx:118
+#: src/app/modules/services/ServicesModule.jsx:119
 msgid "Not running"
 msgstr "Ei käynnissä"
 
 #: src/app/modules/quadlets/QuadletsModule.jsx:93
 #: src/app/modules/quadlets/QuadletsModule.jsx:123
-#: src/app/modules/services/ServicesModule.jsx:115
+#: src/app/modules/services/ServicesModule.jsx:116
 msgid "Failed to start"
 msgstr "Käynnistys epäonnistui"
 
 #: src/app/modules/quadlets/QuadletsModule.jsx:94
 #: src/app/modules/quadlets/QuadletsModule.jsx:124
 #: src/app/modules/containers/ContainersModule.jsx:89
-#: src/app/modules/services/ServicesModule.jsx:116
+#: src/app/modules/services/ServicesModule.jsx:117
 msgid "Starting"
 msgstr "Käynnistyy"
 
 #: src/app/modules/quadlets/QuadletsModule.jsx:95
 #: src/app/modules/quadlets/QuadletsModule.jsx:125
-#: src/app/modules/services/ServicesModule.jsx:117
+#: src/app/modules/services/ServicesModule.jsx:118
 msgid "Stopping"
 msgstr "Pysähtyy"
 
@@ -456,7 +577,7 @@ msgid "Application"
 msgstr "Sovellus"
 
 #: src/app/modules/quadlets/QuadletsModule.jsx:204
-#: src/app/modules/services/ServicesModule.jsx:204
+#: src/app/modules/services/ServicesModule.jsx:205
 msgid "Show Unit"
 msgstr "Näytä yksikkö"
 
@@ -514,7 +635,8 @@ msgstr "$0 (ei vaikutusta, systemd ei suorita)"
 
 #: src/app/modules/containers/ContainersModule.jsx:158
 msgid "Auto-update: $0, no effect because systemd does not run the container"
-msgstr "Automaattipäivitys: $0, ei vaikutusta, koska systemd ei suorita konttia"
+msgstr ""
+"Automaattipäivitys: $0, ei vaikutusta, koska systemd ei suorita konttia"
 
 #: src/app/modules/containers/ContainersModule.jsx:159
 msgid "Auto-update: $0"
@@ -573,7 +695,7 @@ msgstr "PodShift-käyttöliittymä"
 msgid "Info"
 msgstr "Tiedot"
 
-#: src/app/modules/overview/ConfigurationCard.jsx:40
+#: src/app/modules/overview/ConfigurationCard.jsx:104
 msgid "Configuration"
 msgstr "Määritykset"
 
@@ -601,99 +723,99 @@ msgstr "Näytä Palvelut-välilehdessä"
 msgid "Open in Services"
 msgstr "Avaa Palveluissa"
 
-#: src/app/modules/services/ServicesModule.jsx:59
+#: src/app/modules/services/ServicesModule.jsx:60
 msgid "Services"
 msgstr "Palvelut"
 
-#: src/app/modules/services/ServicesModule.jsx:62
+#: src/app/modules/services/ServicesModule.jsx:63
 msgid "No services"
 msgstr "Ei palveluita"
 
-#: src/app/modules/services/ServicesModule.jsx:63
+#: src/app/modules/services/ServicesModule.jsx:64
 msgid "No matching services."
 msgstr "Ei vastaavia palveluita."
 
-#: src/app/modules/services/ServicesModule.jsx:78
+#: src/app/modules/services/ServicesModule.jsx:79
 msgid "Activating"
 msgstr "Aktivoituu"
 
-#: src/app/modules/services/ServicesModule.jsx:79
+#: src/app/modules/services/ServicesModule.jsx:80
 msgid "Deactivating"
 msgstr "Deaktivoituu"
 
-#: src/app/modules/services/ServicesModule.jsx:80
+#: src/app/modules/services/ServicesModule.jsx:81
 msgid "Reloading"
 msgstr "Ladataan uudelleen"
 
-#: src/app/modules/services/ServicesModule.jsx:89
+#: src/app/modules/services/ServicesModule.jsx:90
 msgid "Enabled"
 msgstr "Käytössä"
 
-#: src/app/modules/services/ServicesModule.jsx:90
+#: src/app/modules/services/ServicesModule.jsx:91
 msgid "Disabled"
 msgstr "Poistettu käytöstä"
 
-#: src/app/modules/services/ServicesModule.jsx:91
+#: src/app/modules/services/ServicesModule.jsx:92
 msgid "Static"
 msgstr "Staattinen"
 
-#: src/app/modules/services/ServicesModule.jsx:92
+#: src/app/modules/services/ServicesModule.jsx:93
 msgid "Generated"
 msgstr "Luotu"
 
-#: src/app/modules/services/ServicesModule.jsx:93
+#: src/app/modules/services/ServicesModule.jsx:94
 msgid "Masked"
 msgstr "Maskattu"
 
-#: src/app/modules/services/ServicesModule.jsx:153
+#: src/app/modules/services/ServicesModule.jsx:154
 msgid "$0 since $1"
 msgstr "$0 alkaen $1"
 
-#: src/app/modules/services/ServicesModule.jsx:156
+#: src/app/modules/services/ServicesModule.jsx:157
 msgid "Sub state"
 msgstr "Alatila"
 
-#: src/app/modules/services/ServicesModule.jsx:159
+#: src/app/modules/services/ServicesModule.jsx:160
 msgid "Unit file"
 msgstr "Yksikkötiedosto"
 
-#: src/app/modules/services/ServicesModule.jsx:161
+#: src/app/modules/services/ServicesModule.jsx:162
 msgid "$0 (preset: $1)"
 msgstr "$0 (oletus: $1)"
 
-#: src/app/modules/services/ServicesModule.jsx:165
+#: src/app/modules/services/ServicesModule.jsx:166
 msgid "Generated from"
 msgstr "Luotu lähteestä"
 
-#: src/app/modules/services/ServicesModule.jsx:165
+#: src/app/modules/services/ServicesModule.jsx:166
 msgid "Path"
 msgstr "Polku"
 
-#: src/app/modules/services/ServicesModule.jsx:166
+#: src/app/modules/services/ServicesModule.jsx:167
 msgid "Triggered by"
 msgstr "Laukaissut"
 
-#: src/app/modules/services/ServicesModule.jsx:167
+#: src/app/modules/services/ServicesModule.jsx:168
 msgid "Result"
 msgstr "Tulos"
 
-#: src/app/modules/services/ServicesModule.jsx:168
+#: src/app/modules/services/ServicesModule.jsx:169
 msgid "Main PID"
 msgstr "Pää-PID"
 
-#: src/app/modules/services/ServicesModule.jsx:169
+#: src/app/modules/services/ServicesModule.jsx:170
 msgid "Memory"
 msgstr "Muisti"
 
-#: src/app/modules/services/ServicesModule.jsx:205
+#: src/app/modules/services/ServicesModule.jsx:206
 msgid "Show status"
 msgstr "Näytä tila"
 
-#: src/app/modules/services/ServicesModule.jsx:207
+#: src/app/modules/services/ServicesModule.jsx:208
 msgid "Show log"
 msgstr "Näytä loki"
 
-#: src/app/modules/services/ServicesModule.jsx:221
+#: src/app/modules/services/ServicesModule.jsx:222
 msgid "$0 service"
 msgid_plural "$0 services"
 msgstr[0] "$0 palvelu"

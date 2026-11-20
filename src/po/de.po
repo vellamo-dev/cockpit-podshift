@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cockpit-podshift 0.9.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-16 15:09+0000\n"
+"POT-Creation-Date: 2026-11-20 14:59+0000\n"
 "PO-Revision-Date: 2026-11-14 11:50+0200\n"
 "Last-Translator: Vellamo Dev <no-email@vellamo.fyi>\n"
 "Language-Team: German\n"
@@ -77,13 +77,41 @@ msgstr "Status"
 msgid "Source"
 msgstr "Quelle"
 
+#: src/app/utils/configProblemText.js:26
+msgid "Use a capital letter, then capital letters, digits or _."
+msgstr ""
+
+#: src/app/utils/configProblemText.js:28
+msgid "Names starting with TSV_NW or TSV_ENV are managed by PodShift."
+msgstr ""
+
+#: src/app/utils/configProblemText.js:31
+msgid "Secrets don't belong in config. Use a Podman secret instead."
+msgstr ""
+
+#: src/app/utils/configProblemText.js:33
+msgid "Value must not be empty."
+msgstr ""
+
+#: src/app/utils/configProblemText.js:35
+msgid ""
+"Value must not contain quotes (\" or '), control characters or a trailing "
+"backslash."
+msgstr ""
+
+#: src/app/utils/configProblemText.js:37
+msgid ""
+"Use 1 to 128 characters of a-z, A-Z, 0-9, _, . and -, not starting with . or "
+"-."
+msgstr ""
+
 #: src/app/components/layout/MainBoard.jsx:123
 #: src/app/components/layout/MainBoard.jsx:124
 #: src/app/components/modals/InspectNotice.jsx:77
-#: src/app/components/modals/ServiceStatusModal.jsx:55
+#: src/app/components/modals/ServiceStatusModal.jsx:56
 #: src/app/components/modals/UnitViewModal.jsx:111
-#: src/app/components/modals/ServiceLogModal.jsx:70
-#: src/app/components/modals/ServiceLogModal.jsx:98
+#: src/app/components/modals/ServiceLogModal.jsx:71
+#: src/app/components/modals/ServiceLogModal.jsx:99
 msgid "Refresh"
 msgstr "Aktualisieren"
 
@@ -102,9 +130,9 @@ msgid "Copied"
 msgstr "Kopiert"
 
 #: src/app/components/modals/InspectNotice.jsx:75
-#: src/app/components/modals/ServiceStatusModal.jsx:53
+#: src/app/components/modals/ServiceStatusModal.jsx:54
 #: src/app/components/modals/UnitViewModal.jsx:109
-#: src/app/components/modals/ServiceLogModal.jsx:68
+#: src/app/components/modals/ServiceLogModal.jsx:69
 msgid "This $0 no longer exists."
 msgstr "Dieses $0 existiert nicht mehr."
 
@@ -112,12 +140,54 @@ msgstr "Dieses $0 existiert nicht mehr."
 msgid "The inspect output is too large to show here ($0)."
 msgstr "Die Inspect-Ausgabe ist zu groß für die Anzeige hier ($0)."
 
-#: src/app/components/modals/ServiceStatusModal.jsx:63
+#: src/app/components/modals/EnvTagModal.jsx:71
+#: src/app/components/modals/ConfigVariableModal.jsx:120
+msgid "PodShift refused the change."
+msgstr ""
+
+#: src/app/components/modals/EnvTagModal.jsx:85
+msgid "Set environment"
+msgstr ""
+
+#: src/app/components/modals/EnvTagModal.jsx:89
+msgid ""
+"The environment tag, TSV_ENV, can be set here once. Change it later as root "
+"with"
+msgstr ""
+
+#: src/app/components/modals/EnvTagModal.jsx:98
+#, fuzzy
+msgid "Environment tag"
+msgstr "Umgebung ist nicht gesetzt"
+
+#: src/app/components/modals/EnvTagModal.jsx:104
+msgid "Use \"$0\""
+msgstr ""
+
+#: src/app/components/modals/EnvTagModal.jsx:105
+msgid "Pick or type a tag"
+msgstr ""
+
+#: src/app/components/modals/EnvTagModal.jsx:106
+msgid "No suggested tags. Type a tag."
+msgstr ""
+
+#: src/app/components/modals/EnvTagModal.jsx:126
+#, fuzzy
+msgid "Set"
+msgstr "Secrets"
+
+#: src/app/components/modals/EnvTagModal.jsx:129
+#: src/app/components/modals/ConfigVariableModal.jsx:234
+msgid "Cancel"
+msgstr ""
+
+#: src/app/components/modals/ServiceStatusModal.jsx:64
 #: src/app/components/modals/UnitViewModal.jsx:127
 msgid "The output is too large to show here ($0)."
 msgstr "Die Ausgabe ist zu groß für die Anzeige hier ($0)."
 
-#: src/app/components/modals/ServiceStatusModal.jsx:71
+#: src/app/components/modals/ServiceStatusModal.jsx:72
 msgid "Status: $0"
 msgstr "Status: $0"
 
@@ -133,11 +203,58 @@ msgstr "Secrets verbergen"
 msgid "Show secrets"
 msgstr "Secrets anzeigen"
 
+#: src/app/components/modals/ConfigVariableModal.jsx:97
+#: src/app/modules/overview/ConfigurationCard.jsx:93
+#, fuzzy
+msgid "Add variable"
+msgstr "Variablen"
+
+#: src/app/components/modals/ConfigVariableModal.jsx:99
+msgid "Edit $0"
+msgstr ""
+
+#: src/app/components/modals/ConfigVariableModal.jsx:101
+msgid "Remove $0?"
+msgstr ""
+
+#: src/app/components/modals/ConfigVariableModal.jsx:161
+msgid ""
+"Do not use these variables for passwords, tokens and other sensitive data. "
+"Use Podman secrets for that purpose."
+msgstr ""
+
+#: src/app/components/modals/ConfigVariableModal.jsx:162
+msgid "Values are stored in plain text in tsv.conf."
+msgstr ""
+
+#: src/app/components/modals/ConfigVariableModal.jsx:173
+msgid ""
+"$0 is removed from tsv.conf. Running Quadlets keep their values until they "
+"are installed again."
+msgstr ""
+
+#: src/app/components/modals/ConfigVariableModal.jsx:179
+msgid "Name"
+msgstr ""
+
+#: src/app/components/modals/ConfigVariableModal.jsx:195
+msgid "Value"
+msgstr ""
+
+#: src/app/components/modals/ConfigVariableModal.jsx:214
+msgid "Save"
+msgstr ""
+
+#: src/app/components/modals/ConfigVariableModal.jsx:219
+#: src/app/components/modals/ConfigVariableModal.jsx:246
+msgid "Remove"
+msgstr ""
+
 #: src/app/components/modals/CodeViewModal.jsx:92
 #: src/app/components/resource/ResourceCard.jsx:127
 #: src/app/modules/health/HealthPage.jsx:73
 #: src/app/modules/overview/HealthCard.jsx:57
-#: src/app/modules/overview/PropertiesCard.jsx:99
+#: src/app/modules/overview/PropertiesCard.jsx:115
 msgid "Copy"
 msgstr "Kopieren"
 
@@ -170,20 +287,20 @@ msgstr "Diese Unit wurde nicht aus einer Quadlet-Datei erzeugt."
 msgid "Download"
 msgstr "Herunterladen"
 
-#: src/app/components/modals/ServiceLogModal.jsx:76
+#: src/app/components/modals/ServiceLogModal.jsx:77
 msgid "The journal of the podshift user cannot be read."
 msgstr "Das Journal des Benutzers podshift kann nicht gelesen werden."
 
-#: src/app/components/modals/ServiceLogModal.jsx:82
+#: src/app/components/modals/ServiceLogModal.jsx:83
 msgid "No log entries"
 msgstr "Keine Log-Einträge"
 
-#: src/app/components/modals/ServiceLogModal.jsx:88
+#: src/app/components/modals/ServiceLogModal.jsx:89
 msgid "Log: $0"
 msgstr "Log: $0"
 
-#: src/app/components/modals/ServiceLogModal.jsx:102
-#: src/app/modules/services/ServicesModule.jsx:210
+#: src/app/components/modals/ServiceLogModal.jsx:103
+#: src/app/modules/services/ServicesModule.jsx:211
 msgid "Open log"
 msgstr "Log öffnen"
 
@@ -205,7 +322,9 @@ msgstr "Kein Zugriff"
 
 #: src/app/components/status/NoAccess.jsx:35
 msgid "Log in as the podshift user, or turn on Cockpit administrative access."
-msgstr "Melden Sie sich als Benutzer podshift an, oder aktivieren Sie den administrativen Zugriff von Cockpit."
+msgstr ""
+"Melden Sie sich als Benutzer podshift an, oder aktivieren Sie den "
+"administrativen Zugriff von Cockpit."
 
 #: src/app/components/status/NotInstalled.jsx:30
 msgid "PodShift is not installed"
@@ -219,7 +338,7 @@ msgstr "Der PodShift-Cockpit-Handler wurde auf diesem System nicht gefunden."
 #: src/app/components/resource/ResourceCard.jsx:165
 #: src/app/modules/quadlets/QuadletsModule.jsx:91
 #: src/app/modules/containers/ContainersModule.jsx:75
-#: src/app/modules/services/ServicesModule.jsx:119
+#: src/app/modules/services/ServicesModule.jsx:120
 msgid "Running"
 msgstr "Läuft"
 
@@ -230,7 +349,7 @@ msgstr "In der Podman-Oberfläche anzeigen"
 #: src/app/hooks/useModulePage.js:116 src/app/modules/health/HealthPage.jsx:56
 #: src/app/modules/overview/InfoCard.jsx:86
 #: src/app/modules/overview/StatusCard.jsx:45
-#: src/app/modules/overview/ConfigurationCard.jsx:45
+#: src/app/modules/overview/ConfigurationCard.jsx:109
 #: src/app/modules/overview/HealthCard.jsx:44
 #: src/app/modules/overview/UsageCard.jsx:45
 msgid "Requires administrative access"
@@ -238,7 +357,7 @@ msgstr "Erfordert administrativen Zugriff"
 
 #: src/app/hooks/useUnitView.js:77
 #: src/app/modules/quadlets/QuadletsModule.jsx:203
-#: src/app/modules/services/ServicesModule.jsx:202
+#: src/app/modules/services/ServicesModule.jsx:203
 msgid "Show Quadlet"
 msgstr "Quadlet anzeigen"
 
@@ -298,21 +417,21 @@ msgstr "Status"
 #: src/app/modules/filters/QuadletStatusFilter.js:61
 #: src/app/modules/filters/StateFilter.js:59
 #: src/app/modules/quadlets/QuadletsModule.jsx:127
-#: src/app/modules/services/ServicesModule.jsx:75
-#: src/app/modules/services/ServicesModule.jsx:120
-#: src/app/modules/services/ServicesModule.jsx:151
+#: src/app/modules/services/ServicesModule.jsx:76
+#: src/app/modules/services/ServicesModule.jsx:121
+#: src/app/modules/services/ServicesModule.jsx:152
 msgid "Active"
 msgstr "Aktiv"
 
 #: src/app/modules/filters/QuadletStatusFilter.js:62
 #: src/app/modules/filters/StateFilter.js:60
-#: src/app/modules/services/ServicesModule.jsx:76
+#: src/app/modules/services/ServicesModule.jsx:77
 msgid "Inactive"
 msgstr "Inaktiv"
 
 #: src/app/modules/filters/QuadletStatusFilter.js:63
 #: src/app/modules/filters/StateFilter.js:61
-#: src/app/modules/services/ServicesModule.jsx:77
+#: src/app/modules/services/ServicesModule.jsx:78
 msgid "Failed"
 msgstr "Fehlgeschlagen"
 
@@ -422,26 +541,26 @@ msgstr "Build"
 
 #: src/app/modules/quadlets/QuadletsModule.jsx:92
 #: src/app/modules/quadlets/QuadletsModule.jsx:126
-#: src/app/modules/services/ServicesModule.jsx:118
+#: src/app/modules/services/ServicesModule.jsx:119
 msgid "Not running"
 msgstr "Läuft nicht"
 
 #: src/app/modules/quadlets/QuadletsModule.jsx:93
 #: src/app/modules/quadlets/QuadletsModule.jsx:123
-#: src/app/modules/services/ServicesModule.jsx:115
+#: src/app/modules/services/ServicesModule.jsx:116
 msgid "Failed to start"
 msgstr "Start fehlgeschlagen"
 
 #: src/app/modules/quadlets/QuadletsModule.jsx:94
 #: src/app/modules/quadlets/QuadletsModule.jsx:124
 #: src/app/modules/containers/ContainersModule.jsx:89
-#: src/app/modules/services/ServicesModule.jsx:116
+#: src/app/modules/services/ServicesModule.jsx:117
 msgid "Starting"
 msgstr "Wird gestartet"
 
 #: src/app/modules/quadlets/QuadletsModule.jsx:95
 #: src/app/modules/quadlets/QuadletsModule.jsx:125
-#: src/app/modules/services/ServicesModule.jsx:117
+#: src/app/modules/services/ServicesModule.jsx:118
 msgid "Stopping"
 msgstr "Wird gestoppt"
 
@@ -458,7 +577,7 @@ msgid "Application"
 msgstr "Anwendung"
 
 #: src/app/modules/quadlets/QuadletsModule.jsx:204
-#: src/app/modules/services/ServicesModule.jsx:204
+#: src/app/modules/services/ServicesModule.jsx:205
 msgid "Show Unit"
 msgstr "Unit anzeigen"
 
@@ -575,7 +694,7 @@ msgstr "PodShift-Oberfläche"
 msgid "Info"
 msgstr "Info"
 
-#: src/app/modules/overview/ConfigurationCard.jsx:40
+#: src/app/modules/overview/ConfigurationCard.jsx:104
 msgid "Configuration"
 msgstr "Konfiguration"
 
@@ -603,99 +722,99 @@ msgstr "Im Tab „Dienste“ anzeigen"
 msgid "Open in Services"
 msgstr "In „Dienste“ öffnen"
 
-#: src/app/modules/services/ServicesModule.jsx:59
+#: src/app/modules/services/ServicesModule.jsx:60
 msgid "Services"
 msgstr "Dienste"
 
-#: src/app/modules/services/ServicesModule.jsx:62
+#: src/app/modules/services/ServicesModule.jsx:63
 msgid "No services"
 msgstr "Keine Dienste"
 
-#: src/app/modules/services/ServicesModule.jsx:63
+#: src/app/modules/services/ServicesModule.jsx:64
 msgid "No matching services."
 msgstr "Keine passenden Dienste."
 
-#: src/app/modules/services/ServicesModule.jsx:78
+#: src/app/modules/services/ServicesModule.jsx:79
 msgid "Activating"
 msgstr "Wird aktiviert"
 
-#: src/app/modules/services/ServicesModule.jsx:79
+#: src/app/modules/services/ServicesModule.jsx:80
 msgid "Deactivating"
 msgstr "Wird deaktiviert"
 
-#: src/app/modules/services/ServicesModule.jsx:80
+#: src/app/modules/services/ServicesModule.jsx:81
 msgid "Reloading"
 msgstr "Wird neu geladen"
 
-#: src/app/modules/services/ServicesModule.jsx:89
+#: src/app/modules/services/ServicesModule.jsx:90
 msgid "Enabled"
 msgstr "Aktiviert"
 
-#: src/app/modules/services/ServicesModule.jsx:90
+#: src/app/modules/services/ServicesModule.jsx:91
 msgid "Disabled"
 msgstr "Deaktiviert"
 
-#: src/app/modules/services/ServicesModule.jsx:91
+#: src/app/modules/services/ServicesModule.jsx:92
 msgid "Static"
 msgstr "Statisch"
 
-#: src/app/modules/services/ServicesModule.jsx:92
+#: src/app/modules/services/ServicesModule.jsx:93
 msgid "Generated"
 msgstr "Erzeugt"
 
-#: src/app/modules/services/ServicesModule.jsx:93
+#: src/app/modules/services/ServicesModule.jsx:94
 msgid "Masked"
 msgstr "Maskiert"
 
-#: src/app/modules/services/ServicesModule.jsx:153
+#: src/app/modules/services/ServicesModule.jsx:154
 msgid "$0 since $1"
 msgstr "$0 seit $1"
 
-#: src/app/modules/services/ServicesModule.jsx:156
+#: src/app/modules/services/ServicesModule.jsx:157
 msgid "Sub state"
 msgstr "Unterstatus"
 
-#: src/app/modules/services/ServicesModule.jsx:159
+#: src/app/modules/services/ServicesModule.jsx:160
 msgid "Unit file"
 msgstr "Unit-Datei"
 
-#: src/app/modules/services/ServicesModule.jsx:161
+#: src/app/modules/services/ServicesModule.jsx:162
 msgid "$0 (preset: $1)"
 msgstr "$0 (Voreinstellung: $1)"
 
-#: src/app/modules/services/ServicesModule.jsx:165
+#: src/app/modules/services/ServicesModule.jsx:166
 msgid "Generated from"
 msgstr "Erzeugt aus"
 
-#: src/app/modules/services/ServicesModule.jsx:165
+#: src/app/modules/services/ServicesModule.jsx:166
 msgid "Path"
 msgstr "Pfad"
 
-#: src/app/modules/services/ServicesModule.jsx:166
+#: src/app/modules/services/ServicesModule.jsx:167
 msgid "Triggered by"
 msgstr "Ausgelöst von"
 
-#: src/app/modules/services/ServicesModule.jsx:167
+#: src/app/modules/services/ServicesModule.jsx:168
 msgid "Result"
 msgstr "Ergebnis"
 
-#: src/app/modules/services/ServicesModule.jsx:168
+#: src/app/modules/services/ServicesModule.jsx:169
 msgid "Main PID"
 msgstr "Haupt-PID"
 
-#: src/app/modules/services/ServicesModule.jsx:169
+#: src/app/modules/services/ServicesModule.jsx:170
 msgid "Memory"
 msgstr "Speicher"
 
-#: src/app/modules/services/ServicesModule.jsx:205
+#: src/app/modules/services/ServicesModule.jsx:206
 msgid "Show status"
 msgstr "Status anzeigen"
 
-#: src/app/modules/services/ServicesModule.jsx:207
+#: src/app/modules/services/ServicesModule.jsx:208
 msgid "Show log"
 msgstr "Log anzeigen"
 
-#: src/app/modules/services/ServicesModule.jsx:221
+#: src/app/modules/services/ServicesModule.jsx:222
 msgid "$0 service"
 msgid_plural "$0 services"
 msgstr[0] "$0 Dienst"

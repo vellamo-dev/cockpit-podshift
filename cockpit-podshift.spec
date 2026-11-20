@@ -1,5 +1,5 @@
 Name: cockpit-podshift
-Version: 0.10.0
+Version: 0.11.0
 Release: 1%{?dist}
 Summary: Cockpit UI for PodShift
 License: AGPL-3.0-or-later AND LGPL-2.1-or-later
@@ -46,6 +46,12 @@ test -f %{buildroot}%{_datadir}/cockpit/podshift/index.js
 %{_metainfodir}/fyi.vellamo.cockpit_podshift.metainfo.xml
 
 %changelog
+* Fri Nov 20 2026 Vellamo Dev <no-email@vellamo.fyi> - 0.11.0
+- Overview: the Configuration card adds, edits and removes custom TSV_* variables (needs PodShift 0.22.0)
+- Overview: an unset TSV_ENV can be set once from the Configuration card, with suggested tags
+- Overview: the variable modal checks names and values with PodShift's rules and warns against storing secrets
+- Tests: QUnit unit tests for the variable rules and the modal modes (npm test)
+
 * Mon Nov 16 2026 Vellamo Dev <no-email@vellamo.fyi> - 0.10.0
 - Overview: Info card shows the install type
 - Tabs menu: active tab is underlined like in new Cockpit UI.

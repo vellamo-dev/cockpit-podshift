@@ -22,6 +22,7 @@
         "stylelint": "stylelint src/app/*.{css,scss}",
         "stylelint:fix": "stylelint --fix src/app/*.{css,scss}",
         "syncUIinVM": "../podshift/test postinstall-ui-sync-files",
+        "test": "./src/dev/run npx qunit \"src/test/unit/*.test.js\"",
         "updateTranslations": "rm -f src/po/*.pot && ./src/dev/run make src/po/podshift.pot && for f in src/po/*.po; do ./src/dev/run msgmerge --update --backup=none \"$f\" src/po/podshift.pot || exit 1; done",
         "watch": "./src/dev/run make watch"
     },
