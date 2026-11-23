@@ -1,0 +1,72 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
+// Drop zone of the drop-quadlet tab: at most 200px high, and the whole area opens the file picker.
+.podshift-drop__zone {
+  max-block-size: 200px;
+  overflow: hidden;
+
+  .pf-v6-c-multiple-file-upload__main {
+    --pf-v6-c-multiple-file-upload__main--PaddingBlockStart: var(--pf-t--global--spacer--md);
+    --pf-v6-c-multiple-file-upload__main--PaddingBlockEnd: var(--pf-t--global--spacer--md);
+
+    max-block-size: 200px;
+    cursor: pointer;
+  }
+
+  // Locked while an upload runs and shortly after a drop (DropQuadletPage): greyed out, and the
+  // pointer shows that nothing can be dropped.
+  &.podshift-drop__zone--locked .pf-v6-c-multiple-file-upload__main {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+// "Copied" next to the install log title after Copy log: small, normal weight and muted.
+.podshift-drop__copied {
+  margin-inline-start: var(--pf-t--global--spacer--sm);
+  font-size: var(--pf-t--global--font--size--body--sm);
+  font-weight: var(--pf-t--global--font--weight--body--default);
+  color: var(--pf-t--global--text--color--subtle);
+}
+
+// The install log scrolls inside its card instead of making the page grow.
+// Newest first keeps its scroll position in code (DropQuadletPage), so the browser does not adjust it too.
+.podshift-drop__log .pf-v6-c-code-block__content {
+  max-block-size: 20rem;
+  overflow: auto;
+  overflow-anchor: none;
+}
+
+// History status column: little padding around the icon. Its width comes from pf-m-fit-content
+// on the cells, because PatternFly sets the cell width with a more specific rule than one class.
+.podshift-drop__status {
+  --pf-v6-c-table--cell--PaddingInlineStart: var(--pf-t--global--spacer--xs);
+  --pf-v6-c-table--cell--PaddingInlineEnd: var(--pf-t--global--spacer--xs);
+  text-align: center;
+}
+
+// Date and time header and cells stay on one line.
+.podshift-drop__nowrap {
+  white-space: nowrap;
+}
+
+// Date and time in the history and the install log: one line, small and muted. In the history
+// it is a span inside the cell, because the PatternFly cell rule (a class and tr) sets colour,
+// font size and weight on the cell itself and outranks one class on the same cell.
+.podshift-drop__time {
+  font-size: var(--pf-t--global--font--size--body--sm);
+  color: var(--pf-t--global--text--color--subtle);
+  white-space: nowrap;
+}
+
+// The file name stands out; the description stays normal. Also a span inside the cell.
+.podshift-drop__name {
+  font-weight: var(--pf-t--global--font--weight--body--bold);
+}
+
+// The reason of a failed or refused item: its own line below the description, small and muted.
+.podshift-drop__reason {
+  display: block;
+  font-size: var(--pf-t--global--font--size--body--sm);
+  color: var(--pf-t--global--text--color--subtle);
+}

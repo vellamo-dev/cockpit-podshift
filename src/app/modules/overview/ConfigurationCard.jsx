@@ -18,6 +18,7 @@ import {CogIcon} from '@patternfly/react-icons/dist/esm/icons/cog-icon';
 
 import {ConfigVariableModal} from '../../components/modals/ConfigVariableModal.jsx';
 import {EnvTagModal} from '../../components/modals/EnvTagModal.jsx';
+import {useCapability} from '../../hooks/CapabilitiesContext.js';
 import {PropertiesCard} from './PropertiesCard.jsx';
 
 /** @typedef {import('../../types/api.js').AccessMode} AccessMode */
@@ -37,6 +38,7 @@ import {PropertiesCard} from './PropertiesCard.jsx';
  * The parent loads the rows, so the Overview page can also warn when TSV_ENV is unset.
  * The kebab menu adds a variable. An editable value is a link that opens the edit modal;
  * an unset TSV_ENV opens the environment tag modal. TSV_NW* rows and a set TSV_ENV are read-only.
+ * Without the config-set action there is no Add variable and no edit link; without env-set, TSV_ENV is not a link.
  *
  * @param {object} props Component props.
  * @param {AccessMode} props.mode Access mode of the user.
@@ -51,6 +53,8 @@ export function ConfigurationCard({mode, rows, data = null, loading, error, onCh
     const admin = mode === 'admin';
     const [open, setOpen] = useState(/** @type {OpenModal} */ ({kind: 'none'}));
     const rawRows = data?.rows || [];
+    const canEdit = useCapability('config-set');
+    const canSetEnv = useCapability('env-set');
 
     /**
      * Closes the modal and reloads the rows after a change.
@@ -73,6 +77,12 @@ export function ConfigurationCard({mode, rows, data = null, loading, error, onCh
         if (!admin || !raw || !raw.editable) {
             return undefined;
         }
+        if (raw.id === 'tsv_env' && !canSetEnv) {
+            return undefined;
+        }
+        if (raw.id !== 'tsv_env' && !canEdit) {
+            return undefined;
+        }
         if (raw.id === 'tsv_env') {
             return (
                 <Button variant="link" isInline onClick={() => setOpen({kind: 'env'})}>
@@ -87,14 +97,16 @@ export function ConfigurationCard({mode, rows, data = null, loading, error, onCh
         );
     }
 
-    const actions = [
-        {
+    /** @type {import('../../types/card.js').MenuItem[]} */
+    const actions = [];
+    if (canEdit) {
+        actions.push({
             key: 'add-variable',
             label: i18n("Add variable"),
             isDisabled: !admin || data == null,
             onClick: () => setOpen({kind: 'variable', mode: 'add'})
-        }
-    ];
+        });
+    }
 
     return (
         <>

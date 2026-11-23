@@ -15,6 +15,7 @@ import {useCallback, useState} from 'react';
 
 import {i18n} from '../utils/i18n.js';
 import {ResourceSource} from '../utils/ResourceSource.js';
+import {useCapability} from './CapabilitiesContext.js';
 
 /** @typedef {import('../types/card.js').MenuDivider} MenuDivider */
 /** @typedef {import('../types/card.js').MenuItem} MenuItem */
@@ -46,6 +47,7 @@ export function isServiceUnit(unit) {
  */
 export function useUnitView() {
     const [unitView, setUnitView] = useState(/** @type {UnitView|null} */ (null));
+    const canQuadletView = useCapability('quadlet-view');
 
     const openUnitView = useCallback(
         /**
@@ -62,14 +64,14 @@ export function useUnitView() {
     const quadletActions = useCallback(
         /**
          * Builds a divider and Show Quadlet for a card with the Quadlet source and a service unit
-         * in its systemd group; other cards get nothing.
+         * in its systemd group; other cards get nothing, and nothing without the quadlet-view action.
          *
          * @param {ResourceItem} item The resource.
          * @returns {(MenuItem|MenuDivider)[]} The menu items.
          */
         function build(item) {
             const unit = ResourceSource.sourceUnitFromGroups(item.groups);
-            if (item.source !== 'quadlet' || !isServiceUnit(unit)) { return [] }
+            if (!canQuadletView || item.source !== 'quadlet' || !isServiceUnit(unit)) { return [] }
             return [
                 {key: 'quadlet-divider', divider: true},
                 {
@@ -79,7 +81,7 @@ export function useUnitView() {
                 },
             ];
         },
-        []
+        [canQuadletView]
     );
 
     const closeUnitView = useCallback(() => setUnitView(null), []);

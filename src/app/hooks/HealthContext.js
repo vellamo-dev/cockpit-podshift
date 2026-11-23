@@ -15,6 +15,7 @@ import React, {createContext, useCallback, useContext, useEffect, useMemo, useRe
 import {PodShiftApi} from '../api/PodShiftApi.js';
 import {useRefreshToken, useReportRefreshing} from './RefreshContext.js';
 import {createInFlight} from '../utils/inFlight.js';
+import {healthLoadNeeded} from '../utils/healthLoad.js';
 
 /** @typedef {import('../types/health.js').HealthCheckState} HealthCheckState */
 /** @typedef {import('../types/health.js').HealthResult} HealthResult */
@@ -28,7 +29,8 @@ const HealthContext = createContext(null);
 
 /**
  * Provides the shared health-check result to the Overview Health card and the Health tab.
- * The check runs once, then again when the header refresh button is used.
+ * The check runs once, then again when the header refresh button is used, and again
+ * when a caller asks for a fresh result (the Health tab on opening).
  * refreshing is true while a check runs, also when a result is already on screen.
  *
  * @param {object} props Component props.
@@ -66,8 +68,8 @@ export function HealthProvider({children}) {
         }
     }, []);
 
-    const ensure = useCallback(() => {
-        if (attemptedToken.current === token) { return }
+    const ensure = useCallback((fresh = false) => {
+        if (!healthLoadNeeded(fresh, attemptedToken.current, token, loads.current.count())) { return }
         attemptedToken.current = token;
         if (dataRef.current == null) { setLoading(true) }
         load();
@@ -83,20 +85,28 @@ export function HealthProvider({children}) {
 }
 
 /**
- * Loads the shared health-check when enabled. A later mount with the same
+ * Loads the shared health-check when enabled. Without fresh, a later mount with the same
  * refresh token reuses the cached result and does not call the handler again.
+ * With fresh, each mount runs one new check, unless one is already running; the last
+ * result stays on screen meanwhile. Later renders of the same mount reuse the result.
  * While enabled, a running check is reported to MainBoard for the header refresh button.
  *
  * @param {boolean} [enabled] False skips the load, for example without admin access.
+ * @param {object} [options] Load options.
+ * @param {boolean} [options.fresh] True runs a new check when the component mounts (the Health tab).
  * @returns {HealthCheckState} The result, the last error, and the loading and refreshing flags.
  */
-export function useHealthCheck(enabled = true) {
+export function useHealthCheck(enabled = true, {fresh = false} = {}) {
     const ctx = useContext(HealthContext);
     const token = useRefreshToken();
+    const freshDone = useRef(false);
 
     useEffect(() => {
-        if (enabled) { ctx.ensure() }
-    }, [enabled, token, ctx]);
+        if (!enabled) { return }
+        const force = fresh && !freshDone.current;
+        if (force) { freshDone.current = true }
+        ctx.ensure(force);
+    }, [enabled, fresh, token, ctx]);
 
     useReportRefreshing(enabled && ctx.refreshing);
 

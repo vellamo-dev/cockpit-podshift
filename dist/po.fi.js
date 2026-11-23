@@ -76,9 +76,37 @@ cockpit.locale({
   null,
   ""
  ],
+ "Checking PodShift access": [
+  null,
+  "Tarkistetaan PodShift-käyttöoikeutta"
+ ],
+ "Auto refresh is off. Click to turn it on.": [
+  null,
+  "Automaattinen päivitys on pois päältä. Laita se päälle napsauttamalla."
+ ],
+ "Auto refresh is on. Click to turn it off.": [
+  null,
+  "Automaattinen päivitys on päällä. Laita se pois päältä napsauttamalla."
+ ],
+ "Auto refresh turned off after $0 minutes. Click to turn it on.": [
+  null,
+  "Automaattinen päivitys meni pois päältä $0 minuutin jälkeen. Laita se päälle napsauttamalla."
+ ],
+ "Auto refresh": [
+  null,
+  "Automaattinen päivitys"
+ ],
  "Refresh": [
   null,
   "Päivitä"
+ ],
+ "Could not read capabilities: $0": [
+  null,
+  ""
+ ],
+ "This PodShift version offers none of these views.": [
+  null,
+  ""
  ],
  "Coming soon.": [
   null,
@@ -236,9 +264,69 @@ cockpit.locale({
   null,
   "Näkymä"
  ],
- "Checking PodShift access": [
+ "$0 cannot be uninstalled: PodShift does not accept this name.": [
   null,
-  "Tarkistetaan PodShift-käyttöoikeutta"
+  "$0: asennusta ei voi poistaa, koska PodShift ei hyväksy tätä nimeä."
+ ],
+ "$0 is not installed in the PodShift Quadlet folder, or not any more.": [
+  null,
+  "$0 ei ole (enää) asennettuna PodShiftin Quadlet-kansiossa."
+ ],
+ "$0 is still in use and cannot be uninstalled: $1.": [
+  null,
+  "$0 on yhä käytössä, eikä sen asennusta voi poistaa: $1."
+ ],
+ "used by another Quadlet": [
+  null,
+  "toinen Quadlet käyttää sitä"
+ ],
+ "An uninstall of $0 is already waiting.": [
+  null,
+  "Asennuksen poisto odottaa jo: $0."
+ ],
+ "The PodShift remove queue folder is missing. Check the PodShift health.": [
+  null,
+  "PodShiftin poistojonon kansio puuttuu. Tarkista PodShiftin kunto."
+ ],
+ "$0 could not be uninstalled.": [
+  null,
+  "Asennusta ei voitu poistaa: $0."
+ ],
+ "Uninstall app $0": [
+  null,
+  "Poista asennus: sovellus $0"
+ ],
+ "Uninstall $0": [
+  null,
+  "Poista asennus: $0"
+ ],
+ "All Quadlet files of app $0 are uninstalled: their units are stopped and the files are removed. Images are kept.": [
+  null,
+  "Sovelluksen $0 kaikkien Quadlet-tiedostojen asennus poistetaan: niiden yksiköt pysäytetään ja tiedostot poistetaan. Levykuvat säilytetään."
+ ],
+ "The units of $0 are stopped and the file is removed. Images are kept.": [
+  null,
+  "Tiedoston $0 yksiköt pysäytetään ja tiedosto poistetaan. Levykuvat säilytetään."
+ ],
+ "$0 is part of app $1, so the whole app is uninstalled.": [
+  null,
+  "$0 kuuluu sovellukseen $1, joten koko sovelluksen asennus poistetaan."
+ ],
+ "Also delete volume data": [
+  null,
+  "Poista myös taltioiden tiedot"
+ ],
+ "The volumes and all their data are deleted permanently. This cannot be undone.": [
+  null,
+  "Taltiot ja kaikki niiden tiedot poistetaan pysyvästi. Tätä ei voi perua."
+ ],
+ "The install log on the Drop Quadlet tab shows the progress.": [
+  null,
+  "Edistyminen näkyy Drop Quadlet -välilehden asennuslokissa."
+ ],
+ "Uninstall": [
+  null,
+  "Poista asennus"
  ],
  "No access": [
   null,
@@ -256,6 +344,14 @@ cockpit.locale({
   null,
   "PodShiftin Cockpit-käsittelijää ei löytynyt tästä järjestelmästä."
  ],
+ "Requires administrative access": [
+  null,
+  "Vaatii järjestelmänvalvojan käyttöoikeudet"
+ ],
+ "Turn on Cockpit administrative access to use PodShift.": [
+  null,
+  ""
+ ],
  "Running": [
   null,
   "Käynnissä"
@@ -263,10 +359,6 @@ cockpit.locale({
  "Show in Podman UI": [
   null,
   "Näytä Podman-käyttöliittymässä"
- ],
- "Requires administrative access": [
-  null,
-  "Vaatii järjestelmänvalvojan käyttöoikeudet"
  ],
  "Show Quadlet": [
   null,
@@ -410,6 +502,134 @@ cockpit.locale({
   null,
   "$0 verkko",
   "$0 verkkoa"
+ ],
+ "Accepted": [
+  null,
+  ""
+ ],
+ "Already installed with the same content, not installed again": [
+  null,
+  ""
+ ],
+ "$0: the name must be a file name without folders.": [
+  null,
+  ""
+ ],
+ "$0: hidden files are not accepted.": [
+  null,
+  ""
+ ],
+ "$0: only $1 files are accepted.": [
+  null,
+  ""
+ ],
+ "$0: the name must start with a letter or a digit and use only letters, digits, _, . and -.": [
+  null,
+  ""
+ ],
+ "The file has no name.": [
+  null,
+  ""
+ ],
+ "$0 is empty.": [
+  null,
+  ""
+ ],
+ "$0 is larger than 50 KB.": [
+  null,
+  ""
+ ],
+ "$0: PodShift does not accept this file name.": [
+  null,
+  ""
+ ],
+ "$0 could not be sent to PodShift. Try again.": [
+  null,
+  ""
+ ],
+ "$0 was not saved: the upload was not owned by the podshift user.": [
+  null,
+  ""
+ ],
+ "A file named $0 is still waiting to be processed. Try again in a few seconds.": [
+  null,
+  ""
+ ],
+ "The PodShift drop folder is missing. Check the PodShift health.": [
+  null,
+  ""
+ ],
+ "$0 was not accepted.": [
+  null,
+  ""
+ ],
+ "Drag and drop a Quadlet file here": [
+  null,
+  ""
+ ],
+ "or": [
+  null,
+  ""
+ ],
+ "One file of at most 50 KB: $0": [
+  null,
+  ""
+ ],
+ "Browse": [
+  null,
+  ""
+ ],
+ "The drop history cannot be read from the journal.": [
+  null,
+  ""
+ ],
+ "No files dropped yet": [
+  null,
+  ""
+ ],
+ "Drop History": [
+  null,
+  ""
+ ],
+ "Date and time": [
+  null,
+  ""
+ ],
+ "Description": [
+  null,
+  ""
+ ],
+ "Newest first": [
+  null,
+  ""
+ ],
+ "Oldest first": [
+  null,
+  ""
+ ],
+ "Copy log": [
+  null,
+  "Kopioi loki"
+ ],
+ "The install log cannot be read from the journal.": [
+  null,
+  ""
+ ],
+ "Uploading $0…": [
+  null,
+  ""
+ ],
+ "$0 was uploaded. PodShift verifies and processes the file within seconds.": [
+  null,
+  ""
+ ],
+ "Drop only one file at a time.": [
+  null,
+  ""
+ ],
+ "$0 is not accepted.": [
+  null,
+  ""
  ],
  "Quadlets": [
   null,
@@ -690,6 +910,18 @@ cockpit.locale({
   null,
   "$0 palvelu",
   "$0 palvelua"
+ ],
+ "Uninstall of app $0 is queued": [
+  null,
+  "Sovelluksen $0 asennuksen poisto on jonossa"
+ ],
+ "Uninstall of $0 is queued": [
+  null,
+  "Asennuksen poisto on jonossa: $0"
+ ],
+ "The list loads again shortly. The install log on the Drop Quadlet tab shows the progress.": [
+  null,
+  "Luettelo latautuu pian uudelleen. Edistyminen näkyy Drop Quadlet -välilehden asennuslokissa."
  ],
  "Filter": [
   null,

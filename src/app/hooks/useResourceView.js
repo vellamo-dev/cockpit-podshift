@@ -14,6 +14,7 @@
 import {useCallback, useState} from 'react';
 
 import {i18n} from '../utils/i18n.js';
+import {useCapability} from './CapabilitiesContext.js';
 
 /** @typedef {import('../types/card.js').MenuItem} MenuItem */
 /** @typedef {import('../types/inspect.js').ResourceView} ResourceView */
@@ -21,6 +22,7 @@ import {i18n} from '../utils/i18n.js';
 
 /**
  * Keeps the open view of a tab. Opening a view replaces the one before, so only one is open.
+ * Inspect and Variables both read the inspect action, so neither is offered when PodShift lacks it.
  *
  * @param {object} [options] Hook options.
  * @param {boolean} [options.variables] True adds a Variables item after Inspect (containers).
@@ -28,6 +30,7 @@ import {i18n} from '../utils/i18n.js';
  */
 export function useResourceView({variables = false} = {}) {
     const [view, setView] = useState(/** @type {ResourceView|null} */ (null));
+    const canInspect = useCapability('inspect');
 
     const viewActions = useCallback(
         /**
@@ -35,16 +38,17 @@ export function useResourceView({variables = false} = {}) {
          *
          * @param {string} ref Name or ID passed to the inspect action.
          * @param {string} name Resource name, shown in the title.
-         * @returns {MenuItem[]} Inspect, and Variables when enabled.
+         * @returns {MenuItem[]} Inspect, and Variables when enabled; nothing without the inspect action.
          */
         function build(ref, name) {
+            if (!canInspect) { return [] }
             const items = [
                 {key: 'inspect', label: i18n("Inspect"), onClick: () => setView({mode: 'inspect', ref, name})},
             ];
             if (variables) { items.push({key: 'variables', label: i18n("Variables"), onClick: () => setView({mode: 'variables', ref, name})}) }
             return items;
         },
-        [variables]
+        [variables, canInspect]
     );
 
     const closeView = useCallback(() => setView(null), []);

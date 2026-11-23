@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cockpit-podshift 0.9.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-20 14:59+0000\n"
+"POT-Creation-Date: 2026-11-23 19:28+0000\n"
 "PO-Revision-Date: 2026-11-14 12:18+0200\n"
 "Last-Translator: Vellamo Dev <no-email@vellamo.fyi>\n"
 "Language-Team: Finnish\n"
@@ -25,13 +25,13 @@ msgstr "Quadlet"
 
 #: src/app/utils/ResourceSource.js:40
 #: src/app/modules/filters/QuadletTypeFilter.js:43
-#: src/app/modules/quadlets/QuadletsModule.jsx:75
+#: src/app/modules/quadlets/QuadletsModule.jsx:77
 msgid "Container"
 msgstr "Kontti"
 
 #: src/app/utils/ResourceSource.js:41
 #: src/app/components/modals/UnitViewHeader.jsx:30
-#: src/app/modules/quadlets/QuadletsModule.jsx:154
+#: src/app/modules/quadlets/QuadletsModule.jsx:156
 msgid "Unit"
 msgstr "Yksikkö"
 
@@ -63,11 +63,13 @@ msgstr "Käyttämätön"
 
 #: src/app/utils/resourceToText.js:26 src/app/utils/rowsToText.js:27
 #: src/app/components/resource/ResourceCard.jsx:85
-#: src/app/hooks/useAction.js:35
+#: src/app/hooks/useAction.js:37
 msgid "Not set"
 msgstr "Ei asetettu"
 
 #: src/app/utils/resourceToText.js:41
+#: src/app/modules/drop/DropQuadletPage.jsx:241
+#: src/app/modules/drop/DropQuadletPage.jsx:250
 #: src/app/modules/overview/StatusCard.jsx:40
 msgid "Status"
 msgstr "Tila"
@@ -105,8 +107,30 @@ msgid ""
 "-."
 msgstr ""
 
-#: src/app/components/layout/MainBoard.jsx:123
-#: src/app/components/layout/MainBoard.jsx:124
+#: src/app/components/layout/MainBoard.jsx:101
+#: src/app/components/status/Loading.jsx:30
+msgid "Checking PodShift access"
+msgstr "Tarkistetaan PodShift-käyttöoikeutta"
+
+#: src/app/components/layout/MainBoard.jsx:118
+msgid "Auto refresh is off. Click to turn it on."
+msgstr "Automaattinen päivitys on pois päältä. Laita se päälle napsauttamalla."
+
+#: src/app/components/layout/MainBoard.jsx:120
+msgid "Auto refresh is on. Click to turn it off."
+msgstr "Automaattinen päivitys on päällä. Laita se pois päältä napsauttamalla."
+
+#: src/app/components/layout/MainBoard.jsx:122
+msgid "Auto refresh turned off after $0 minutes. Click to turn it on."
+msgstr "Automaattinen päivitys meni pois päältä $0 minuutin jälkeen. Laita se päälle napsauttamalla."
+
+#: src/app/components/layout/MainBoard.jsx:129
+msgid "Auto refresh"
+msgstr "Automaattinen päivitys"
+
+#: src/app/components/layout/MainBoard.jsx:319
+#: src/app/components/layout/MainBoard.jsx:322
+#: src/app/components/layout/MainBoard.jsx:326
 #: src/app/components/modals/InspectNotice.jsx:77
 #: src/app/components/modals/ServiceStatusModal.jsx:56
 #: src/app/components/modals/UnitViewModal.jsx:111
@@ -114,6 +138,14 @@ msgstr ""
 #: src/app/components/modals/ServiceLogModal.jsx:99
 msgid "Refresh"
 msgstr "Päivitä"
+
+#: src/app/components/layout/MainBoard.jsx:339
+msgid "Could not read capabilities: $0"
+msgstr ""
+
+#: src/app/components/layout/MainBoard.jsx:350
+msgid "This PodShift version offers none of these views."
+msgstr ""
 
 #: src/app/components/layout/TabPlaceholder.jsx:29
 msgid "Coming soon."
@@ -126,6 +158,7 @@ msgstr "Kopioi komento"
 
 #: src/app/components/modals/InspectNotice.jsx:46
 #: src/app/components/modals/CodeViewModal.jsx:92
+#: src/app/modules/drop/DropQuadletPage.jsx:344
 msgid "Copied"
 msgstr "Kopioitu"
 
@@ -179,6 +212,7 @@ msgstr "Salaisuudet"
 
 #: src/app/components/modals/EnvTagModal.jsx:129
 #: src/app/components/modals/ConfigVariableModal.jsx:234
+#: src/app/components/modals/QuadletUninstallModal.jsx:167
 msgid "Cancel"
 msgstr ""
 
@@ -204,7 +238,7 @@ msgid "Show secrets"
 msgstr "Näytä salaisuudet"
 
 #: src/app/components/modals/ConfigVariableModal.jsx:97
-#: src/app/modules/overview/ConfigurationCard.jsx:93
+#: src/app/modules/overview/ConfigurationCard.jsx:105
 #, fuzzy
 msgid "Add variable"
 msgstr "Muuttujat"
@@ -234,6 +268,8 @@ msgid ""
 msgstr ""
 
 #: src/app/components/modals/ConfigVariableModal.jsx:179
+#: src/app/modules/drop/DropQuadletPage.jsx:243
+#: src/app/modules/drop/DropQuadletPage.jsx:254
 msgid "Name"
 msgstr ""
 
@@ -252,7 +288,7 @@ msgstr ""
 
 #: src/app/components/modals/CodeViewModal.jsx:92
 #: src/app/components/resource/ResourceCard.jsx:127
-#: src/app/modules/health/HealthPage.jsx:73
+#: src/app/modules/health/HealthPage.jsx:74
 #: src/app/modules/overview/HealthCard.jsx:57
 #: src/app/modules/overview/PropertiesCard.jsx:115
 msgid "Copy"
@@ -292,6 +328,7 @@ msgid "The journal of the podshift user cannot be read."
 msgstr "podshift-käyttäjän journalia ei voi lukea."
 
 #: src/app/components/modals/ServiceLogModal.jsx:83
+#: src/app/modules/drop/DropQuadletPage.jsx:330
 msgid "No log entries"
 msgstr "Ei lokimerkintöjä"
 
@@ -300,7 +337,7 @@ msgid "Log: $0"
 msgstr "Loki: $0"
 
 #: src/app/components/modals/ServiceLogModal.jsx:103
-#: src/app/modules/services/ServicesModule.jsx:211
+#: src/app/modules/services/ServicesModule.jsx:214
 msgid "Open log"
 msgstr "Avaa loki"
 
@@ -312,9 +349,79 @@ msgstr "Tutki: $0"
 msgid "View"
 msgstr "Näkymä"
 
-#: src/app/components/status/Loading.jsx:30
-msgid "Checking PodShift access"
-msgstr "Tarkistetaan PodShift-käyttöoikeutta"
+#: src/app/components/modals/QuadletUninstallModal.jsx:39
+msgid "$0 cannot be uninstalled: PodShift does not accept this name."
+msgstr "$0: asennusta ei voi poistaa, koska PodShift ei hyväksy tätä nimeä."
+
+#: src/app/components/modals/QuadletUninstallModal.jsx:41
+msgid "$0 is not installed in the PodShift Quadlet folder, or not any more."
+msgstr "$0 ei ole (enää) asennettuna PodShiftin Quadlet-kansiossa."
+
+#: src/app/components/modals/QuadletUninstallModal.jsx:43
+msgid "$0 is still in use and cannot be uninstalled: $1."
+msgstr "$0 on yhä käytössä, eikä sen asennusta voi poistaa: $1."
+
+#: src/app/components/modals/QuadletUninstallModal.jsx:43
+msgid "used by another Quadlet"
+msgstr "toinen Quadlet käyttää sitä"
+
+#: src/app/components/modals/QuadletUninstallModal.jsx:45
+msgid "An uninstall of $0 is already waiting."
+msgstr "Asennuksen poisto odottaa jo: $0."
+
+#: src/app/components/modals/QuadletUninstallModal.jsx:47
+msgid "The PodShift remove queue folder is missing. Check the PodShift health."
+msgstr "PodShiftin poistojonon kansio puuttuu. Tarkista PodShiftin kunto."
+
+#: src/app/components/modals/QuadletUninstallModal.jsx:49
+msgid "$0 could not be uninstalled."
+msgstr "Asennusta ei voitu poistaa: $0."
+
+#: src/app/components/modals/QuadletUninstallModal.jsx:61
+msgid "Uninstall app $0"
+msgstr "Poista asennus: sovellus $0"
+
+#: src/app/components/modals/QuadletUninstallModal.jsx:62
+msgid "Uninstall $0"
+msgstr "Poista asennus: $0"
+
+#: src/app/components/modals/QuadletUninstallModal.jsx:119
+msgid ""
+"All Quadlet files of app $0 are uninstalled: their units are stopped and the "
+"files are removed. Images are kept."
+msgstr ""
+"Sovelluksen $0 kaikkien Quadlet-tiedostojen asennus poistetaan: niiden "
+"yksiköt pysäytetään ja tiedostot poistetaan. Levykuvat säilytetään."
+
+#: src/app/components/modals/QuadletUninstallModal.jsx:121
+msgid "The units of $0 are stopped and the file is removed. Images are kept."
+msgstr ""
+"Tiedoston $0 yksiköt pysäytetään ja tiedosto poistetaan. Levykuvat "
+"säilytetään."
+
+#: src/app/components/modals/QuadletUninstallModal.jsx:141
+msgid "$0 is part of app $1, so the whole app is uninstalled."
+msgstr "$0 kuuluu sovellukseen $1, joten koko sovelluksen asennus poistetaan."
+
+#: src/app/components/modals/QuadletUninstallModal.jsx:149
+msgid "Also delete volume data"
+msgstr "Poista myös taltioiden tiedot"
+
+#: src/app/components/modals/QuadletUninstallModal.jsx:150
+msgid ""
+"The volumes and all their data are deleted permanently. This cannot be "
+"undone."
+msgstr ""
+"Taltiot ja kaikki niiden tiedot poistetaan pysyvästi. Tätä ei voi perua."
+
+#: src/app/components/modals/QuadletUninstallModal.jsx:158
+msgid "The install log on the Drop Quadlet tab shows the progress."
+msgstr "Edistyminen näkyy Drop Quadlet -välilehden asennuslokissa."
+
+#: src/app/components/modals/QuadletUninstallModal.jsx:164
+#: src/app/modules/BaseModule.jsx:198
+msgid "Uninstall"
+msgstr "Poista asennus"
 
 #: src/app/components/status/NoAccess.jsx:30
 msgid "No access"
@@ -334,9 +441,23 @@ msgstr "PodShift ei ole asennettu"
 msgid "The PodShift Cockpit handler was not found on this system."
 msgstr "PodShiftin Cockpit-käsittelijää ei löytynyt tästä järjestelmästä."
 
+#: src/app/components/status/AdminRequired.jsx:30
+#: src/app/hooks/useModulePage.js:132 src/app/modules/health/HealthPage.jsx:57
+#: src/app/modules/overview/InfoCard.jsx:86
+#: src/app/modules/overview/StatusCard.jsx:45
+#: src/app/modules/overview/ConfigurationCard.jsx:121
+#: src/app/modules/overview/HealthCard.jsx:44
+#: src/app/modules/overview/UsageCard.jsx:45
+msgid "Requires administrative access"
+msgstr "Vaatii järjestelmänvalvojan käyttöoikeudet"
+
+#: src/app/components/status/AdminRequired.jsx:35
+msgid "Turn on Cockpit administrative access to use PodShift."
+msgstr ""
+
 #: src/app/components/resource/ResourceCard.jsx:164
 #: src/app/components/resource/ResourceCard.jsx:165
-#: src/app/modules/quadlets/QuadletsModule.jsx:91
+#: src/app/modules/quadlets/QuadletsModule.jsx:93
 #: src/app/modules/containers/ContainersModule.jsx:75
 #: src/app/modules/services/ServicesModule.jsx:120
 msgid "Running"
@@ -346,52 +467,43 @@ msgstr "Käynnissä"
 msgid "Show in Podman UI"
 msgstr "Näytä Podman-käyttöliittymässä"
 
-#: src/app/hooks/useModulePage.js:116 src/app/modules/health/HealthPage.jsx:56
-#: src/app/modules/overview/InfoCard.jsx:86
-#: src/app/modules/overview/StatusCard.jsx:45
-#: src/app/modules/overview/ConfigurationCard.jsx:109
-#: src/app/modules/overview/HealthCard.jsx:44
-#: src/app/modules/overview/UsageCard.jsx:45
-msgid "Requires administrative access"
-msgstr "Vaatii järjestelmänvalvojan käyttöoikeudet"
-
-#: src/app/hooks/useUnitView.js:77
-#: src/app/modules/quadlets/QuadletsModule.jsx:203
-#: src/app/modules/services/ServicesModule.jsx:203
+#: src/app/hooks/useUnitView.js:79
+#: src/app/modules/quadlets/QuadletsModule.jsx:210
+#: src/app/modules/services/ServicesModule.jsx:204
 msgid "Show Quadlet"
 msgstr "Näytä Quadlet"
 
-#: src/app/hooks/useResourceView.js:42
+#: src/app/hooks/useResourceView.js:46
 msgid "Inspect"
 msgstr "Tutki"
 
-#: src/app/hooks/useResourceView.js:44
+#: src/app/hooks/useResourceView.js:48
 msgid "Variables"
 msgstr "Muuttujat"
 
 #: src/app/modules/filters/QuadletTypeFilter.js:44
-#: src/app/modules/quadlets/QuadletsModule.jsx:76
-#: src/app/modules/quadlets/QuadletsModule.jsx:155
+#: src/app/modules/quadlets/QuadletsModule.jsx:78
+#: src/app/modules/quadlets/QuadletsModule.jsx:157
 msgid "Pod"
 msgstr "Pod"
 
 #: src/app/modules/filters/QuadletTypeFilter.js:45
-#: src/app/modules/quadlets/QuadletsModule.jsx:79
+#: src/app/modules/quadlets/QuadletsModule.jsx:81
 msgid "Volume"
 msgstr "Taltio"
 
 #: src/app/modules/filters/QuadletTypeFilter.js:46
-#: src/app/modules/quadlets/QuadletsModule.jsx:78
+#: src/app/modules/quadlets/QuadletsModule.jsx:80
 msgid "Network"
 msgstr "Verkko"
 
 #: src/app/modules/filters/QuadletTypeFilter.js:47
-#: src/app/modules/quadlets/QuadletsModule.jsx:77
+#: src/app/modules/quadlets/QuadletsModule.jsx:79
 msgid "Kube"
 msgstr "Kube"
 
 #: src/app/modules/filters/QuadletTypeFilter.js:48
-#: src/app/modules/quadlets/QuadletsModule.jsx:80
+#: src/app/modules/quadlets/QuadletsModule.jsx:82
 msgid "Image"
 msgstr "Levykuva"
 
@@ -416,7 +528,7 @@ msgstr "Tila"
 
 #: src/app/modules/filters/QuadletStatusFilter.js:61
 #: src/app/modules/filters/StateFilter.js:59
-#: src/app/modules/quadlets/QuadletsModule.jsx:127
+#: src/app/modules/quadlets/QuadletsModule.jsx:129
 #: src/app/modules/services/ServicesModule.jsx:76
 #: src/app/modules/services/ServicesModule.jsx:121
 #: src/app/modules/services/ServicesModule.jsx:152
@@ -431,6 +543,7 @@ msgstr "Epäaktiivinen"
 
 #: src/app/modules/filters/QuadletStatusFilter.js:63
 #: src/app/modules/filters/StateFilter.js:61
+#: src/app/modules/drop/DropQuadletPage.jsx:88
 #: src/app/modules/services/ServicesModule.jsx:78
 msgid "Failed"
 msgstr "Epäonnistunut"
@@ -496,14 +609,19 @@ msgid_plural "$0 secrets"
 msgstr[0] "$0 salaisuus"
 msgstr[1] "$0 salaisuutta"
 
-#: src/app/modules/health/HealthPage.jsx:55 src/app/modules/index.js:44
+#: src/app/modules/health/HealthPage.jsx:56 src/app/modules/index.js:54
 #: src/app/modules/overview/HealthCard.jsx:43
 msgid "Health"
 msgstr "Kunto"
 
-#: src/app/modules/index.js:43
+#: src/app/modules/index.js:52
 msgid "Overview"
 msgstr "Yleiskuva"
+
+#: src/app/modules/index.js:53
+#, fuzzy
+msgid "Drop Quadlet"
+msgstr "Näytä Quadlet"
 
 #: src/app/modules/networks/NetworksModule.jsx:43
 msgid "Networks"
@@ -523,65 +641,234 @@ msgid_plural "$0 networks"
 msgstr[0] "$0 verkko"
 msgstr[1] "$0 verkkoa"
 
-#: src/app/modules/quadlets/QuadletsModule.jsx:55
+#: src/app/modules/drop/DropQuadletPage.jsx:82
+msgid "Accepted"
+msgstr ""
+
+#: src/app/modules/drop/DropQuadletPage.jsx:83
+#, fuzzy
+msgid "Validated"
+msgstr "Päivitetty"
+
+#: src/app/modules/drop/DropQuadletPage.jsx:84
+#, fuzzy
+msgid "Installing"
+msgstr "Asennustyyppi"
+
+#: src/app/modules/drop/DropQuadletPage.jsx:85
+#, fuzzy
+msgid "Installed"
+msgstr "Asennustyyppi"
+
+#: src/app/modules/drop/DropQuadletPage.jsx:86
+msgid "Already installed with the same content, not installed again"
+msgstr ""
+
+#: src/app/modules/drop/DropQuadletPage.jsx:87
+#, fuzzy
+msgid "Refused"
+msgstr "Käyttämätön"
+
+#: src/app/modules/drop/DropQuadletPage.jsx:137
+msgid "$0: the name must be a file name without folders."
+msgstr ""
+
+#: src/app/modules/drop/DropQuadletPage.jsx:139
+msgid "$0: hidden files are not accepted."
+msgstr ""
+
+#: src/app/modules/drop/DropQuadletPage.jsx:141
+#: src/app/modules/drop/DropQuadletPage.jsx:169
+msgid "$0: only $1 files are accepted."
+msgstr ""
+
+#: src/app/modules/drop/DropQuadletPage.jsx:143
+msgid ""
+"$0: the name must start with a letter or a digit and use only letters, "
+"digits, _, . and -."
+msgstr ""
+
+#: src/app/modules/drop/DropQuadletPage.jsx:145
+msgid "The file has no name."
+msgstr ""
+
+#: src/app/modules/drop/DropQuadletPage.jsx:149
+#: src/app/modules/drop/DropQuadletPage.jsx:173
+msgid "$0 is empty."
+msgstr ""
+
+#: src/app/modules/drop/DropQuadletPage.jsx:151
+#: src/app/modules/drop/DropQuadletPage.jsx:175
+msgid "$0 is larger than 50 KB."
+msgstr ""
+
+#: src/app/modules/drop/DropQuadletPage.jsx:167
+msgid "$0: PodShift does not accept this file name."
+msgstr ""
+
+#: src/app/modules/drop/DropQuadletPage.jsx:171
+msgid "$0 could not be sent to PodShift. Try again."
+msgstr ""
+
+#: src/app/modules/drop/DropQuadletPage.jsx:177
+msgid "$0 was not saved: the upload was not owned by the podshift user."
+msgstr ""
+
+#: src/app/modules/drop/DropQuadletPage.jsx:179
+msgid ""
+"A file named $0 is still waiting to be processed. Try again in a few seconds."
+msgstr ""
+
+#: src/app/modules/drop/DropQuadletPage.jsx:181
+msgid "The PodShift drop folder is missing. Check the PodShift health."
+msgstr ""
+
+#: src/app/modules/drop/DropQuadletPage.jsx:183
+msgid "$0 was not accepted."
+msgstr ""
+
+#: src/app/modules/drop/DropQuadletPage.jsx:201
+msgid "Drag and drop a Quadlet file here"
+msgstr ""
+
+#: src/app/modules/drop/DropQuadletPage.jsx:202
+msgid "or"
+msgstr ""
+
+#: src/app/modules/drop/DropQuadletPage.jsx:203
+msgid "One file of at most 50 KB: $0"
+msgstr ""
+
+#: src/app/modules/drop/DropQuadletPage.jsx:204
+msgid "Browse"
+msgstr ""
+
+#: src/app/modules/drop/DropQuadletPage.jsx:227
+msgid "The drop history cannot be read from the journal."
+msgstr ""
+
+#: src/app/modules/drop/DropQuadletPage.jsx:235
+msgid "No files dropped yet"
+msgstr ""
+
+#: src/app/modules/drop/DropQuadletPage.jsx:238
+#: src/app/modules/drop/DropQuadletPage.jsx:269
+msgid "Drop History"
+msgstr ""
+
+#: src/app/modules/drop/DropQuadletPage.jsx:242
+#: src/app/modules/drop/DropQuadletPage.jsx:253
+msgid "Date and time"
+msgstr ""
+
+#: src/app/modules/drop/DropQuadletPage.jsx:244
+#: src/app/modules/drop/DropQuadletPage.jsx:255
+msgid "Description"
+msgstr ""
+
+#: src/app/modules/drop/DropQuadletPage.jsx:315
+msgid "Newest first"
+msgstr ""
+
+#: src/app/modules/drop/DropQuadletPage.jsx:316
+msgid "Oldest first"
+msgstr ""
+
+#: src/app/modules/drop/DropQuadletPage.jsx:318
+msgid "Copy log"
+msgstr "Kopioi loki"
+
+#: src/app/modules/drop/DropQuadletPage.jsx:322
+msgid "The install log cannot be read from the journal."
+msgstr ""
+
+#: src/app/modules/drop/DropQuadletPage.jsx:343
+#, fuzzy
+msgid "Install log"
+msgstr "Asennustyyppi"
+
+#: src/app/modules/drop/DropQuadletPage.jsx:459
+msgid "Uploading $0…"
+msgstr ""
+
+#: src/app/modules/drop/DropQuadletPage.jsx:465
+msgid ""
+"$0 was uploaded. PodShift verifies and processes the file within seconds."
+msgstr ""
+
+#: src/app/modules/drop/DropQuadletPage.jsx:496
+#: src/app/modules/drop/DropQuadletPage.jsx:520
+msgid "Drop only one file at a time."
+msgstr ""
+
+#: src/app/modules/drop/DropQuadletPage.jsx:525
+msgid "$0 is not accepted."
+msgstr ""
+
+#: src/app/modules/drop/DropQuadletPage.jsx:548
+#, fuzzy
+msgid "Uploading"
+msgstr "Ladataan uudelleen"
+
+#: src/app/modules/quadlets/QuadletsModule.jsx:57
 msgid "Quadlets"
 msgstr "Quadletit"
 
-#: src/app/modules/quadlets/QuadletsModule.jsx:61
+#: src/app/modules/quadlets/QuadletsModule.jsx:63
 msgid "No quadlets"
 msgstr "Ei Quadleteja"
 
-#: src/app/modules/quadlets/QuadletsModule.jsx:62
+#: src/app/modules/quadlets/QuadletsModule.jsx:64
 msgid "No matching quadlets."
 msgstr "Ei vastaavia Quadleteja."
 
-#: src/app/modules/quadlets/QuadletsModule.jsx:81
+#: src/app/modules/quadlets/QuadletsModule.jsx:83
 msgid "Build"
 msgstr "Koonti"
 
-#: src/app/modules/quadlets/QuadletsModule.jsx:92
-#: src/app/modules/quadlets/QuadletsModule.jsx:126
+#: src/app/modules/quadlets/QuadletsModule.jsx:94
+#: src/app/modules/quadlets/QuadletsModule.jsx:128
 #: src/app/modules/services/ServicesModule.jsx:119
 msgid "Not running"
 msgstr "Ei käynnissä"
 
-#: src/app/modules/quadlets/QuadletsModule.jsx:93
-#: src/app/modules/quadlets/QuadletsModule.jsx:123
+#: src/app/modules/quadlets/QuadletsModule.jsx:95
+#: src/app/modules/quadlets/QuadletsModule.jsx:125
 #: src/app/modules/services/ServicesModule.jsx:116
 msgid "Failed to start"
 msgstr "Käynnistys epäonnistui"
 
-#: src/app/modules/quadlets/QuadletsModule.jsx:94
-#: src/app/modules/quadlets/QuadletsModule.jsx:124
+#: src/app/modules/quadlets/QuadletsModule.jsx:96
+#: src/app/modules/quadlets/QuadletsModule.jsx:126
 #: src/app/modules/containers/ContainersModule.jsx:89
 #: src/app/modules/services/ServicesModule.jsx:117
 msgid "Starting"
 msgstr "Käynnistyy"
 
-#: src/app/modules/quadlets/QuadletsModule.jsx:95
-#: src/app/modules/quadlets/QuadletsModule.jsx:125
+#: src/app/modules/quadlets/QuadletsModule.jsx:97
+#: src/app/modules/quadlets/QuadletsModule.jsx:127
 #: src/app/modules/services/ServicesModule.jsx:118
 msgid "Stopping"
 msgstr "Pysähtyy"
 
-#: src/app/modules/quadlets/QuadletsModule.jsx:96
+#: src/app/modules/quadlets/QuadletsModule.jsx:98
 msgid "Not loaded"
 msgstr "Ei ladattu"
 
-#: src/app/modules/quadlets/QuadletsModule.jsx:97
+#: src/app/modules/quadlets/QuadletsModule.jsx:99
 msgid "Loaded template"
 msgstr "Malli ladattu"
 
-#: src/app/modules/quadlets/QuadletsModule.jsx:156
+#: src/app/modules/quadlets/QuadletsModule.jsx:158
 msgid "Application"
 msgstr "Sovellus"
 
-#: src/app/modules/quadlets/QuadletsModule.jsx:204
-#: src/app/modules/services/ServicesModule.jsx:205
+#: src/app/modules/quadlets/QuadletsModule.jsx:211
+#: src/app/modules/services/ServicesModule.jsx:207
 msgid "Show Unit"
 msgstr "Näytä yksikkö"
 
-#: src/app/modules/quadlets/QuadletsModule.jsx:215
+#: src/app/modules/quadlets/QuadletsModule.jsx:222
 msgid "$0 quadlet"
 msgid_plural "$0 quadlets"
 msgstr[0] "$0 Quadlet"
@@ -695,7 +982,7 @@ msgstr "PodShift-käyttöliittymä"
 msgid "Info"
 msgstr "Tiedot"
 
-#: src/app/modules/overview/ConfigurationCard.jsx:104
+#: src/app/modules/overview/ConfigurationCard.jsx:116
 msgid "Configuration"
 msgstr "Määritykset"
 
@@ -707,11 +994,11 @@ msgstr "Näytä raportti"
 msgid "View details"
 msgstr "Näytä tiedot"
 
-#: src/app/modules/overview/OverviewPage.jsx:58
+#: src/app/modules/overview/OverviewPage.jsx:64
 msgid "Environment is not set"
 msgstr "Ympäristöä ei ole asetettu"
 
-#: src/app/modules/overview/OverviewPage.jsx:60
+#: src/app/modules/overview/OverviewPage.jsx:66
 msgid "Set the environment tag as root with"
 msgstr "Aseta ympäristötunniste pääkäyttäjänä komennolla"
 
@@ -807,21 +1094,37 @@ msgstr "Pää-PID"
 msgid "Memory"
 msgstr "Muisti"
 
-#: src/app/modules/services/ServicesModule.jsx:206
+#: src/app/modules/services/ServicesModule.jsx:208
 msgid "Show status"
 msgstr "Näytä tila"
 
-#: src/app/modules/services/ServicesModule.jsx:208
+#: src/app/modules/services/ServicesModule.jsx:212
 msgid "Show log"
 msgstr "Näytä loki"
 
-#: src/app/modules/services/ServicesModule.jsx:222
+#: src/app/modules/services/ServicesModule.jsx:225
 msgid "$0 service"
 msgid_plural "$0 services"
 msgstr[0] "$0 palvelu"
 msgstr[1] "$0 palvelua"
 
-#: src/app/modules/BaseModule.jsx:425
+#: src/app/modules/BaseModule.jsx:428
+msgid "Uninstall of app $0 is queued"
+msgstr "Sovelluksen $0 asennuksen poisto on jonossa"
+
+#: src/app/modules/BaseModule.jsx:429
+msgid "Uninstall of $0 is queued"
+msgstr "Asennuksen poisto on jonossa: $0"
+
+#: src/app/modules/BaseModule.jsx:438
+msgid ""
+"The list loads again shortly. The install log on the Drop Quadlet tab shows "
+"the progress."
+msgstr ""
+"Luettelo latautuu pian uudelleen. Edistyminen näkyy Drop Quadlet -välilehden "
+"asennuslokissa."
+
+#: src/app/modules/BaseModule.jsx:502
 msgid "Filter"
 msgstr "Suodatin"
 
@@ -836,3 +1139,7 @@ msgid ""
 msgstr ""
 "Näytä PodShift-palvelin Cockpitissa: kontit, taltiot, verkot, levykuvat, "
 "salaisuudet, palvelut ja Quadletit."
+
+#, fuzzy
+#~ msgid "drop-quadlet"
+#~ msgstr "Ei Quadleteja"

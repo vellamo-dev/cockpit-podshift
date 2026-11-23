@@ -76,9 +76,37 @@ cockpit.locale({
   null,
   ""
  ],
+ "Checking PodShift access": [
+  null,
+  "PodShift-Zugriff wird geprüft"
+ ],
+ "Auto refresh is off. Click to turn it on.": [
+  null,
+  "Automatische Aktualisierung ist aus. Zum Einschalten klicken."
+ ],
+ "Auto refresh is on. Click to turn it off.": [
+  null,
+  "Automatische Aktualisierung ist an. Zum Ausschalten klicken."
+ ],
+ "Auto refresh turned off after $0 minutes. Click to turn it on.": [
+  null,
+  "Automatische Aktualisierung wurde nach $0 Minuten ausgeschaltet. Zum Einschalten klicken."
+ ],
+ "Auto refresh": [
+  null,
+  "Automatische Aktualisierung"
+ ],
  "Refresh": [
   null,
   "Aktualisieren"
+ ],
+ "Could not read capabilities: $0": [
+  null,
+  ""
+ ],
+ "This PodShift version offers none of these views.": [
+  null,
+  ""
  ],
  "Coming soon.": [
   null,
@@ -236,9 +264,69 @@ cockpit.locale({
   null,
   "Ansicht"
  ],
- "Checking PodShift access": [
+ "$0 cannot be uninstalled: PodShift does not accept this name.": [
   null,
-  "PodShift-Zugriff wird geprüft"
+  "$0 kann nicht deinstalliert werden: PodShift akzeptiert diesen Namen nicht."
+ ],
+ "$0 is not installed in the PodShift Quadlet folder, or not any more.": [
+  null,
+  "$0 ist nicht (mehr) im PodShift-Quadlet-Ordner installiert."
+ ],
+ "$0 is still in use and cannot be uninstalled: $1.": [
+  null,
+  "$0 wird noch verwendet und kann nicht deinstalliert werden: $1."
+ ],
+ "used by another Quadlet": [
+  null,
+  "von einem anderen Quadlet verwendet"
+ ],
+ "An uninstall of $0 is already waiting.": [
+  null,
+  "Eine Deinstallation von $0 wartet bereits."
+ ],
+ "The PodShift remove queue folder is missing. Check the PodShift health.": [
+  null,
+  "Der Ordner der PodShift-Entfernungswarteschlange fehlt. Prüfe den PodShift-Systemzustand."
+ ],
+ "$0 could not be uninstalled.": [
+  null,
+  "$0 konnte nicht deinstalliert werden."
+ ],
+ "Uninstall app $0": [
+  null,
+  "App $0 deinstallieren"
+ ],
+ "Uninstall $0": [
+  null,
+  "$0 deinstallieren"
+ ],
+ "All Quadlet files of app $0 are uninstalled: their units are stopped and the files are removed. Images are kept.": [
+  null,
+  "Alle Quadlet-Dateien der App $0 werden deinstalliert: Ihre Units werden gestoppt und die Dateien entfernt. Images bleiben erhalten."
+ ],
+ "The units of $0 are stopped and the file is removed. Images are kept.": [
+  null,
+  "Die Units von $0 werden gestoppt und die Datei wird entfernt. Images bleiben erhalten."
+ ],
+ "$0 is part of app $1, so the whole app is uninstalled.": [
+  null,
+  "$0 gehört zur App $1, daher wird die ganze App deinstalliert."
+ ],
+ "Also delete volume data": [
+  null,
+  "Auch Volume-Daten löschen"
+ ],
+ "The volumes and all their data are deleted permanently. This cannot be undone.": [
+  null,
+  "Die Volumes und alle ihre Daten werden endgültig gelöscht. Das kann nicht rückgängig gemacht werden."
+ ],
+ "The install log on the Drop Quadlet tab shows the progress.": [
+  null,
+  "Das Installationsprotokoll im Tab Drop Quadlet zeigt den Fortschritt."
+ ],
+ "Uninstall": [
+  null,
+  "Deinstallieren"
  ],
  "No access": [
   null,
@@ -256,6 +344,14 @@ cockpit.locale({
   null,
   "Der PodShift-Cockpit-Handler wurde auf diesem System nicht gefunden."
  ],
+ "Requires administrative access": [
+  null,
+  "Erfordert administrativen Zugriff"
+ ],
+ "Turn on Cockpit administrative access to use PodShift.": [
+  null,
+  ""
+ ],
  "Running": [
   null,
   "Läuft"
@@ -263,10 +359,6 @@ cockpit.locale({
  "Show in Podman UI": [
   null,
   "In der Podman-Oberfläche anzeigen"
- ],
- "Requires administrative access": [
-  null,
-  "Erfordert administrativen Zugriff"
  ],
  "Show Quadlet": [
   null,
@@ -410,6 +502,134 @@ cockpit.locale({
   null,
   "$0 Netzwerk",
   "$0 Netzwerke"
+ ],
+ "Accepted": [
+  null,
+  ""
+ ],
+ "Already installed with the same content, not installed again": [
+  null,
+  ""
+ ],
+ "$0: the name must be a file name without folders.": [
+  null,
+  ""
+ ],
+ "$0: hidden files are not accepted.": [
+  null,
+  ""
+ ],
+ "$0: only $1 files are accepted.": [
+  null,
+  ""
+ ],
+ "$0: the name must start with a letter or a digit and use only letters, digits, _, . and -.": [
+  null,
+  ""
+ ],
+ "The file has no name.": [
+  null,
+  ""
+ ],
+ "$0 is empty.": [
+  null,
+  ""
+ ],
+ "$0 is larger than 50 KB.": [
+  null,
+  ""
+ ],
+ "$0: PodShift does not accept this file name.": [
+  null,
+  ""
+ ],
+ "$0 could not be sent to PodShift. Try again.": [
+  null,
+  ""
+ ],
+ "$0 was not saved: the upload was not owned by the podshift user.": [
+  null,
+  ""
+ ],
+ "A file named $0 is still waiting to be processed. Try again in a few seconds.": [
+  null,
+  ""
+ ],
+ "The PodShift drop folder is missing. Check the PodShift health.": [
+  null,
+  ""
+ ],
+ "$0 was not accepted.": [
+  null,
+  ""
+ ],
+ "Drag and drop a Quadlet file here": [
+  null,
+  ""
+ ],
+ "or": [
+  null,
+  ""
+ ],
+ "One file of at most 50 KB: $0": [
+  null,
+  ""
+ ],
+ "Browse": [
+  null,
+  ""
+ ],
+ "The drop history cannot be read from the journal.": [
+  null,
+  ""
+ ],
+ "No files dropped yet": [
+  null,
+  ""
+ ],
+ "Drop History": [
+  null,
+  ""
+ ],
+ "Date and time": [
+  null,
+  ""
+ ],
+ "Description": [
+  null,
+  ""
+ ],
+ "Newest first": [
+  null,
+  ""
+ ],
+ "Oldest first": [
+  null,
+  ""
+ ],
+ "Copy log": [
+  null,
+  "Protokoll kopieren"
+ ],
+ "The install log cannot be read from the journal.": [
+  null,
+  ""
+ ],
+ "Uploading $0…": [
+  null,
+  ""
+ ],
+ "$0 was uploaded. PodShift verifies and processes the file within seconds.": [
+  null,
+  ""
+ ],
+ "Drop only one file at a time.": [
+  null,
+  ""
+ ],
+ "$0 is not accepted.": [
+  null,
+  ""
  ],
  "Quadlets": [
   null,
@@ -690,6 +910,18 @@ cockpit.locale({
   null,
   "$0 Dienst",
   "$0 Dienste"
+ ],
+ "Uninstall of app $0 is queued": [
+  null,
+  "Deinstallation der App $0 ist eingereiht"
+ ],
+ "Uninstall of $0 is queued": [
+  null,
+  "Deinstallation von $0 ist eingereiht"
+ ],
+ "The list loads again shortly. The install log on the Drop Quadlet tab shows the progress.": [
+  null,
+  "Die Liste wird gleich neu geladen. Das Installationsprotokoll im Tab Drop Quadlet zeigt den Fortschritt."
  ],
  "Filter": [
   null,

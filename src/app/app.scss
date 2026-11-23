@@ -27,3 +27,8 @@
     background-color: transparent;
   }
 }
+
+// Warning under the tab bar when the capabilities could not be read.
+.podshift-capabilities-warning {
+  margin-block-end: var(--pf-t--global--spacer--md);
+}

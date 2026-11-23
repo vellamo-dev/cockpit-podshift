@@ -23,7 +23,7 @@ import {useAction} from '../../hooks/useAction.js';
 /** @typedef {import('../../types/api.js').OverviewResult} OverviewResult */
 
 /**
- * Shows the resource usage, reloaded every 30 seconds. Needs admin access.
+ * Shows the resource usage, reloaded every 30 seconds while auto refresh is on. Needs admin access.
  *
  * @param {object} props Component props.
  * @param {AccessMode} props.mode Access mode of the user.

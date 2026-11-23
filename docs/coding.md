@@ -100,6 +100,17 @@ These `package.json` scripts call tests in the sister `../podshift` project. The
 | `npm run buildRpm` | `ui-rpm-build` | Builds the cockpit-podshift RPM in its own Fedora container, the way Copr does, and writes it to `artifacts/rpm/`. Needs a built `dist/` already (including `dist/manifest.json`). |
 | `npm run buildAndInstallRpm` | `npm run build`, then `bundle-ui-rpm-install-examples` | Builds `dist/`, then installs PodShift and the UI from RPMs in a fresh VM, and adds the example resources. |
 
+## Tabs and capabilities
+
+The tabs are listed in `src/app/modules/index.js`. Besides `id`, `label`, `Page`, `icon` and `iconOnly`, an entry has:
+
+- `requires`: the handler actions the tab cannot work without. Once the `capabilities` action has been read, the tab is hidden when one of them is missing or retired. An empty or missing list always shows the tab.
+- `optional`: the actions of single features of the tab. The tab hides such a feature itself with `useCapability(action)` (`src/app/hooks/CapabilitiesContext.js`), or `state.canUse(action)` in a BaseModule module.
+- `refresh`: `true` shows the header Refresh button on the tab.
+- `autoRefresh`: `true` shows the header Auto refresh toggle left of Refresh, for a tab that polls (Overview and Drop Quadlet). It turns on with a fresh 4-minute countdown when the tab opens, the browser tab is shown again, on Refresh, on a drop and on a click while off; it turns off on a click while on, after 4 minutes, and when the tab or the browser tab is left. While it is off, `useAction` runs no poll chain; single loads still run. A page can hold the countdown (Drop Quadlet does while an item is in progress); it then starts again from 4 minutes. The rule is in `src/app/utils/AutoRefresh.js`, the state in MainBoard (`src/app/hooks/AutoRefreshContext.js`).
+
+`CapabilitiesProvider` in MainBoard loads `capabilities` when MainBoard mounts (once per admin access change) and on each header refresh. While it loads for the first time, MainBoard shows a spinner in place of the tabs and mounts no page, so a hidden tab never appears or loads data. When it fails, every tab and feature is shown, so an older PodShift without the action still works. A later load keeps the last good list until the new one arrives. The rules are pure helpers in `src/app/utils/capabilities.js`, with unit tests.
+
 ## Coding style
 
 The rules below apply to every `.js` and `.jsx` file under `src/app`. ESLint enforces them: run `./src/dev/run npm run eslint`.

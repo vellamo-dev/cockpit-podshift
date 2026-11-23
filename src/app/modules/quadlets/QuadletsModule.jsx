@@ -16,6 +16,7 @@ import React from 'react';
 import cockpit from '../../utils/cockpitTyped.js';
 import {i18n} from '../../utils/i18n.js';
 import {ResourceIcons} from '../../utils/ResourceIcons.js';
+import {QuadletUninstall} from '../../utils/QuadletUninstall.js';
 
 import {ResourceCard} from '../../components/resource/ResourceCard.jsx';
 import {UnitViewModal} from '../../components/modals/UnitViewModal.jsx';
@@ -41,6 +42,7 @@ import {QuadletTypeFilter} from '../filters/QuadletTypeFilter.js';
  * The cards stay short: the Quadlet name, an optional description, a type label, a status, and Unit, Pod and
  * Application rows only when those are set. There is no Inspect view. The menu has Show
  * Quadlet and Show Unit, which open the shared unit view, when the Quadlet has a service unit.
+ * Uninstall, after a divider, opens the shared Uninstall modal for the file, or for its app.
  * i18n() in the constructor runs at module load, the same as the module list in index.js.
  *
  * @augments {BaseModule<QuadletItem>}
@@ -188,21 +190,26 @@ export class QuadletsModule extends BaseModule {
     /**
      * Builds the menu items after Copy: Show Quadlet and Show Unit, which open the shared
      * unit view on the Quadlet or the Unit view. Both are hidden when the Quadlet has no
-     * service unit, the same check as on the other resource cards.
+     * service unit, the same check as on the other resource cards. Show Quadlet needs the quadlet-view
+     * action and Show Unit the service-view action; an item whose action PodShift lacks is left out.
+     * Then a divider and Uninstall, also without a service unit, when PodShift offers quadlet-remove:
+     * it removes the file, or the whole app when the Quadlet is part of one (QuadletUninstall).
      *
      * @param {QuadletItem} item The Quadlet.
-     * @param {QuadletsPageState} state Page state, for the unit view opener.
+     * @param {QuadletsPageState} state Page state, for the unit view opener and the Uninstall modal.
      * @returns {(MenuItem|MenuDivider)[]} The menu items.
      */
     static cardActions(item, state) {
-        if (!isServiceUnit(item.unitName)) { return [] }
+        const uninstall = BaseModule.uninstallItems(QuadletUninstall.fromQuadlet(item), state);
+        if (!isServiceUnit(item.unitName)) { return uninstall }
         const {openUnitView} = state;
         /** @type {UnitView} */
         const base = {unit: item.unitName, initial: 'unit', hasQuadlet: true, quadletPath: item.path};
-        return [
-            {key: 'quadlet', label: i18n("Show Quadlet"), onClick: () => openUnitView({...base, initial: 'quadlet'})},
-            {key: 'unit', label: i18n("Show Unit"), onClick: () => openUnitView(base)},
-        ];
+        /** @type {(MenuItem|MenuDivider)[]} */
+        const actions = [];
+        if (state.canUse('quadlet-view')) { actions.push({key: 'quadlet', label: i18n("Show Quadlet"), onClick: () => openUnitView({...base, initial: 'quadlet'})}) }
+        if (state.canUse('service-view')) { actions.push({key: 'unit', label: i18n("Show Unit"), onClick: () => openUnitView(base)}) }
+        return [...actions, ...uninstall];
     }
 
     /**
@@ -216,7 +223,8 @@ export class QuadletsModule extends BaseModule {
     }
 
     /**
-     * Builds the dialogues of the page: the unit view only. Quadlets have no Inspect view.
+     * Builds the dialogues of the page: the unit view and the Uninstall modal. Quadlets have no
+     * Inspect view.
      *
      * @param {QuadletsPageState} state Page state, for the open view and its close function.
      * @returns {React.ReactElement} The dialogues.
@@ -225,7 +233,10 @@ export class QuadletsModule extends BaseModule {
         const {closeUnitView} = state;
         const onRefresh = () => this.closeAndRefresh(state);
         return (
-            <UnitViewModal view={state.unitView} onClose={closeUnitView} onRefresh={onRefresh}/>
+            <>
+                <UnitViewModal view={state.unitView} onClose={closeUnitView} onRefresh={onRefresh}/>
+                {this.uninstallDialog(state)}
+            </>
         );
     }
 

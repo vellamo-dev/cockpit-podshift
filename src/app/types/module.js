@@ -27,6 +27,10 @@
  * @property {import('react').ComponentType<ModuleProps>} Page Module page content.
  * @property {import('./resource.js').PatternFlyIcon} [icon] PatternFly icon shown as the tab title when iconOnly is true.
  * @property {boolean} [iconOnly] True when the tab shows only the icon, with the label in a tooltip and aria-label.
+ * @property {string[]} [requires] Handler actions the tab needs; once the capabilities are read, the tab is hidden when one is missing.
+ * @property {string[]} [optional] Handler actions of single features of the tab; the tab hides a feature whose action is missing.
+ * @property {boolean} [refresh] True shows the header Refresh button on this tab.
+ * @property {boolean} [autoRefresh] True shows the header Auto refresh toggle on this tab, and its polling follows it.
  */
 
 /**
@@ -96,6 +100,27 @@
  * @property {(view: import('./service.js').UnitView) => void} openUnitView Opens a unit view, replacing the open one.
  * @property {(item: import('./resource.js').ResourceItem) => (import('./card.js').MenuItem|import('./card.js').MenuDivider)[]} quadletActions Builds a divider and Show Quadlet for a Quadlet resource card, or nothing.
  * @property {() => void} closeUnitView Closes the unit view.
+ * @property {(action: string) => boolean} canUse Tells whether an optional handler action can be used, from the capabilities.
+ * @property {import('./drop.js').UninstallTarget|null} uninstall The open Uninstall confirm modal, or null.
+ * @property {(target: import('./drop.js').UninstallTarget) => void} openUninstall Opens the Uninstall confirm modal for a target.
+ * @property {() => void} closeUninstall Closes the Uninstall modal without a change.
+ * @property {(target: import('./drop.js').UninstallTarget) => void} uninstallQueued Closes the modal after the removal was queued, shows a notice and loads the list again.
+ * @property {(target: import('./drop.js').UninstallTarget) => boolean} isUninstallQueued Tells whether the removal of a target was queued a short while ago, so its Uninstall item is disabled.
+ * @property {import('./drop.js').UninstallTarget|null} uninstallNotice The target of the last queued uninstall, shown as a notice, or null.
+ * @property {() => void} dismissUninstallNotice Hides the uninstall notice.
+ */
+
+/**
+ * Auto refresh state of the current page, from MainBoard. Outside MainBoard and on a tab without
+ * autoRefresh it is always on and start and stop do nothing.
+ *
+ * @typedef {object} AutoRefreshState
+ * @property {boolean} on True while polling may run.
+ * @property {boolean} ranOut True when it is off because the countdown ran out.
+ * @property {number|null} startedAt Time of the last (re)start in ms since the epoch, or null while off.
+ * @property {() => void} start Turns it on and restarts the countdown, without a reload.
+ * @property {() => void} stop Turns it off.
+ * @property {(held: boolean) => void} hold True makes the countdown wait; false lets it run again from a fresh start.
  */
 
 export {};

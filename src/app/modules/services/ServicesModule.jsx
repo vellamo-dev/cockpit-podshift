@@ -187,7 +187,8 @@ export class ServicesModule extends BaseModule {
     /**
      * Builds the menu items after Copy: Show Quadlet (Quadlet services only), Show Unit and Show
      * status, a divider, then Show log and, for admins, Open log. Show Quadlet and Show Unit open
-     * the same dialog on the Quadlet or the Unit view.
+     * the same dialog on the Quadlet or the Unit view. An item whose handler action PodShift lacks
+     * is left out: Show Quadlet needs quadlet-view, Show Unit and Show status service-view, Show log service-logs.
      *
      * @param {ServiceItem} item The service.
      * @param {ServicesPageState} state Page state, for the unit, status and log openers and the access mode.
@@ -200,13 +201,15 @@ export class ServicesModule extends BaseModule {
         const base = {unit: item.id, initial: 'unit', hasQuadlet, unitPath: item.path, quadletPath: item.quadletFile};
         /** @type {(MenuItem|MenuDivider)[]} */
         const actions = [];
-        if (hasQuadlet) { actions.push({key: 'quadlet', label: i18n("Show Quadlet"), onClick: () => openUnitView({...base, initial: 'quadlet'})}) }
-        actions.push(
-            {key: 'unit', label: i18n("Show Unit"), onClick: () => openUnitView(base)},
-            {key: 'status', label: i18n("Show status"), onClick: () => setStatusService(item)},
-            {key: 'log-divider', divider: true},
-            {key: 'log', label: i18n("Show log"), onClick: () => setLogService(item)},
-        );
+        if (hasQuadlet && state.canUse('quadlet-view')) { actions.push({key: 'quadlet', label: i18n("Show Quadlet"), onClick: () => openUnitView({...base, initial: 'quadlet'})}) }
+        if (state.canUse('service-view')) {
+            actions.push(
+                {key: 'unit', label: i18n("Show Unit"), onClick: () => openUnitView(base)},
+                {key: 'status', label: i18n("Show status"), onClick: () => setStatusService(item)},
+            );
+        }
+        actions.push({key: 'log-divider', divider: true});
+        if (state.canUse('service-logs')) { actions.push({key: 'log', label: i18n("Show log"), onClick: () => setLogService(item)}) }
         // Defensive: the page needs admin access, so this is always true while the menu is shown.
         if (state.mode === 'admin') { actions.push({key: 'open-log', label: i18n("Open log"), onClick: () => CockpitLinks.openServiceLog(item.id)}) }
         return actions;

@@ -13,6 +13,7 @@
 import React, {useEffect, useState} from 'react';
 
 import {PodShiftApi} from './api/PodShiftApi.js';
+import {AdminRequired} from './components/status/AdminRequired.jsx';
 import {Loading} from './components/status/Loading.jsx';
 import {NoAccess} from './components/status/NoAccess.jsx';
 import {NotInstalled} from './components/status/NotInstalled.jsx';
@@ -22,8 +23,9 @@ import {MainBoard} from './components/layout/MainBoard.jsx';
 
 /**
  * Checks access on start and on each admin access change, then shows the matching page.
+ * Without admin access (the podshift user) it asks to turn admin access on, because every view needs it.
  *
- * @returns {React.ReactElement} The loading, not-installed, no-access or main page.
+ * @returns {React.ReactElement} The loading, not-installed, no-access, admin-required or main page.
  */
 export function Application() {
     const [access, setAccess] = useState(/** @type {AccessResult} */ ({status: 'checking'}));
@@ -54,6 +56,7 @@ export function Application() {
     case 'no-access':
         return <NoAccess/>;
     case 'mainboard':
+        if (access.mode !== 'admin') { return <AdminRequired/> }
         return <MainBoard mode={access.mode}/>;
     default:
         return <Loading/>;

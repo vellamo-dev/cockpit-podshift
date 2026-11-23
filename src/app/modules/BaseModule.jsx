@@ -8,7 +8,8 @@
  * the toolbar filter or filters, in the constructor, override card() and countText(), and
  * override any static helper they need to change. A module with other views
  * overrides dialogs() and closeAndRefresh(). Hooks stay in the page; this class
- * only builds the UI from ModulePageState.
+ * only builds the UI from ModulePageState. Items made by an installed Quadlet file get an
+ * Uninstall item, which opens the shared Uninstall modal.
  *
  * @file BaseModule.jsx
  * @license AGPL-3.0-or-later
@@ -16,13 +17,16 @@
  */
 
 import React from 'react';
+import {Alert, AlertActionCloseButton} from '@patternfly/react-core/dist/esm/components/Alert';
 import {SearchInput} from '@patternfly/react-core/dist/esm/components/SearchInput';
 import {Toolbar, ToolbarContent, ToolbarItem} from '@patternfly/react-core/dist/esm/components/Toolbar';
 import {Stack, StackItem} from '@patternfly/react-core/dist/esm/layouts/Stack';
 
+import cockpit from '../utils/cockpitTyped.js';
 import {i18n} from '../utils/i18n.js';
 import {compareResources} from '../utils/compareResources.js';
 import {isPodmanPageInstalled} from '../utils/isPodmanPageInstalled.js';
+import {QuadletUninstall} from '../utils/QuadletUninstall.js';
 import {resourceDisplayName} from '../utils/resourceName.js';
 
 import {LoadingContent} from '../components/common/LoadingContent.jsx';
@@ -30,10 +34,12 @@ import {ResourceGrid} from '../components/resource/ResourceGrid.jsx';
 import {FilterToggle} from '../components/resource/FilterToggle.jsx';
 import {OpenInPodmanButton} from '../components/resource/OpenInPodmanButton.jsx';
 import {ResourceViewModal} from '../components/modals/ResourceViewModal.jsx';
+import {QuadletUninstallModal} from '../components/modals/QuadletUninstallModal.jsx';
 import {UnitViewModal} from '../components/modals/UnitViewModal.jsx';
 
 import {BaseFilter} from './filters/BaseFilter.js';
 
+/** @typedef {import('../types/drop.js').UninstallTarget} UninstallTarget */
 /** @typedef {import('../types/card.js').MenuDivider} MenuDivider */
 /** @typedef {import('../types/card.js').MenuItem} MenuItem */
 /** @typedef {import('../types/card.js').PropertyGroup} PropertyGroup */
@@ -176,15 +182,46 @@ export class BaseModule {
     }
 
     /**
+     * Builds the Uninstall kebab items of a target: a divider and Uninstall, which opens the
+     * shared modal. Nothing when the target is null or PodShift does not offer quadlet-remove.
+     * Uninstall is disabled while the removal of the same target was queued a short while ago
+     * (state.isUninstallQueued), so it cannot be queued twice.
+     *
+     * @param {UninstallTarget|null} target What Uninstall removes, from QuadletUninstall.
+     * @param {ModulePageState<any>} state Page state, for canUse and the modal opener.
+     * @returns {(MenuItem|MenuDivider)[]} The menu items, or an empty array.
+     */
+    static uninstallItems(target, state) {
+        if (!target || !state.canUse('quadlet-remove')) { return [] }
+        return [
+            {key: 'uninstall-divider', divider: true},
+            {key: 'uninstall', label: i18n("Uninstall"), isDisabled: state.isUninstallQueued(target), onClick: () => state.openUninstall(target)},
+        ];
+    }
+
+    /**
+     * Builds the Uninstall kebab items of a resource: only for an item with the quadlet field,
+     * which PodShift sets for containers, volumes and networks made by an installed Quadlet file.
+     *
+     * @param {ResourceItem} item The resource.
+     * @param {ModulePageState} state Page state, for canUse and the modal opener.
+     * @returns {(MenuItem|MenuDivider)[]} The menu items, or an empty array.
+     */
+    static uninstallActions(item, state) {
+        return this.uninstallItems(QuadletUninstall.fromResource(item), state);
+    }
+
+    /**
      * Builds the full kebab action list of a resource card: Inspect (and Variables),
-     * then Show Quadlet when the resource has a Quadlet unit.
+     * then Show Quadlet when the resource has a Quadlet unit, then Uninstall when an installed
+     * Quadlet file made it.
      *
      * @param {ResourceItem} item The resource.
      * @param {ModulePageState} state Page state, for the hook action builders.
      * @returns {(MenuItem|MenuDivider)[]} The menu items.
      */
     static cardActions(item, state) {
-        return [...this.viewActions(item, state), ...this.quadletActions(item, state)];
+        return [...this.viewActions(item, state), ...this.quadletActions(item, state), ...this.uninstallActions(item, state)];
     }
 
     /**
@@ -300,9 +337,21 @@ export class BaseModule {
     }
 
     /**
-     * Builds the dialogues of the page. The default is the Inspect view modal and,
-     * unless quadletView is off, the Quadlet view modal. A module with other views
-     * overrides this.
+     * Builds the shared Uninstall modal. After a removal is queued the page shows a notice and
+     * loads the list again (useModulePage).
+     *
+     * @param {ModulePageState<T>} state Page state, for the open target and its callbacks.
+     * @returns {React.ReactElement} The modal, which renders nothing while no target is open.
+     */
+    uninstallDialog(state) {
+        const {uninstall, closeUninstall, uninstallQueued} = state;
+        return <QuadletUninstallModal target={uninstall} onClose={closeUninstall} onQueued={uninstallQueued}/>;
+    }
+
+    /**
+     * Builds the dialogues of the page. The default is the Inspect view modal, the Uninstall
+     * modal and, unless quadletView is off, the Quadlet view modal. A module with other views
+     * overrides this and keeps uninstallDialog() when its cards offer Uninstall.
      *
      * @param {ModulePageState<T>} state Page state, for the open views and their close functions.
      * @returns {React.ReactElement} The dialogues.
@@ -325,6 +374,7 @@ export class BaseModule {
             <>
                 <ResourceViewModal kind={this.kind} view={state.view} onClose={closeView} onRefresh={refresh}/>
                 {unitViewModal}
+                {this.uninstallDialog(state)}
             </>
         );
     }
@@ -344,6 +394,7 @@ export class BaseModule {
         return (
             <Stack style={{rowGap: 'var(--pf-t--global--spacer--lg)'}}>
                 {this.#toolbar(state, resources, items)}
+                {this.#uninstallNotice(state)}
                 <LoadingContent
                     unavailable={state.unavailable}
                     loading={state.loading}
@@ -361,6 +412,32 @@ export class BaseModule {
                 </LoadingContent>
                 {this.dialogs(state)}
             </Stack>
+        );
+    }
+
+    /**
+     * Builds the notice shown after an uninstall was queued, until it is closed.
+     *
+     * @param {ModulePageState<T>} state Page state, for the queued target and the close function.
+     * @returns {React.ReactElement|null} The notice, wrapped in a StackItem, or null.
+     */
+    #uninstallNotice(state) {
+        const {uninstallNotice: target, dismissUninstallNotice} = state;
+        if (!target) { return null }
+        const title = target.isApp
+            ? cockpit.format(i18n("Uninstall of app $0 is queued"), target.name)
+            : cockpit.format(i18n("Uninstall of $0 is queued"), target.name);
+        return (
+            <StackItem>
+                <Alert
+                    variant="success"
+                    isInline
+                    title={title}
+                    actionClose={<AlertActionCloseButton onClose={dismissUninstallNotice}/>}
+                >
+                    {i18n("The list loads again shortly. The install log on the Drop Quadlet tab shows the progress.")}
+                </Alert>
+            </StackItem>
         );
     }
 

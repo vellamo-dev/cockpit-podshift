@@ -1,8 +1,10 @@
 # modules
 
 One folder per MainBoard module, such as `overview/OverviewPage.jsx`. A module keeps its own
-sub-components in its folder. `index.js` lists the modules in display order: Overview, Health,
-Containers, Volumes, Networks, Images, Secrets, Services, Quadlets. Overview and Health are icon-only tabs.
+sub-components in its folder. `index.js` lists the modules in display order: Overview, Drop Quadlet, Health,
+Containers, Volumes, Networks, Images, Secrets, Services, Quadlets. Overview, Drop Quadlet and Health are icon-only tabs.
+Each entry also names the handler actions it `requires` (the tab is hidden without them), its `optional`
+feature actions and whether it shows the header Refresh (`refresh`); see docs/coding.md, Tabs and capabilities.
 
 Each module page gets `mode` ("admin" or "podshift") as a prop.
 
@@ -18,6 +20,14 @@ which closes the Inspect and unit views and loads the list again. A module with 
 returns the unit, status and log dialogs (no Inspect), and closes its status and log views before
 `super.closeAndRefresh(state)`. Services keeps those two views in `../hooks/useServiceDialogs.js`, which
 `ServicesPage` merges into the `useModulePage` state (`ServicesPageState`).
+
+Uninstall is shared: `QuadletUninstall` (`../utils/QuadletUninstall.js`) turns a Quadlets card (file name and app) or the
+`quadlet` field of a container, volume or network into a target `{name, isApp, file}`, where `name` is what
+`quadlet-remove` takes (the app for a file in an app). `BaseModule.uninstallItems(target, state)` adds a divider and
+Uninstall when `state.canUse('quadlet-remove')`; `cardActions` adds them for resources, and the Quadlets module for
+its cards. `uninstallDialog(state)` renders `QuadletUninstallModal` (`../components/modals/`), and `useModulePage`
+holds the open target, the queued notice and the reload after a removal is queued. `UninstallGuard`
+(`../utils/UninstallGuard.js`) keeps Uninstall of a queued target disabled for 60 seconds, shared by all tabs.
 
 The toolbar toggle filters are pluggable: each module passes one filter, or several that all apply, as `filter` in its settings, and the
 `FilterToggle` component (`../components/resource/FilterToggle.jsx`) renders each one's options, aria label and button ids

@@ -24,6 +24,7 @@ import {InfoCard} from './InfoCard.jsx';
 import {StatusCard} from './StatusCard.jsx';
 import {UsageCard} from './UsageCard.jsx';
 import {useAction} from '../../hooks/useAction.js';
+import {useCapability} from '../../hooks/CapabilitiesContext.js';
 
 import './overview.scss';
 
@@ -35,6 +36,7 @@ import './overview.scss';
  * Shows the cards in the same grid as Cockpit's Overview page: Status | Usage, Info | Configuration, Health.
  * Only this page is mounted, so card polling stops when you leave Overview.
  * Loads the configuration once so the page can warn when TSV_ENV is unset, and passes those rows to the Configuration card.
+ * A card whose handler action PodShift lacks (overview-usage, overview-info, overview-config, health-check) is left out.
  *
  * @param {object} props Component props.
  * @param {AccessMode} props.mode Access mode of the user.
@@ -42,8 +44,12 @@ import './overview.scss';
  */
 export function OverviewPage({mode}) {
     const admin = mode === 'admin';
+    const hasUsage = useCapability('overview-usage');
+    const hasInfo = useCapability('overview-info');
+    const hasConfig = useCapability('overview-config');
+    const hasHealth = useCapability('health-check');
     /** @type {ActionState<OverviewConfigResult>} */
-    const {rows, loading, error, data, refresh} = useAction('overview-config', {poll: 30000, enabled: admin});
+    const {rows, loading, error, data, refresh} = useAction('overview-config', {poll: 30000, enabled: admin && hasConfig});
     const envRow = (data?.rows || []).find(row => row.id === 'tsv_env');
     const envValue = envRow ? envRow.value : undefined;
     const showEnvNotice = admin && !loading && envRow != null && (envValue == null || envValue === '');
@@ -62,10 +68,10 @@ export function OverviewPage({mode}) {
             )}
             <Gallery className="ct-system-overview" hasGutter>
                 <StatusCard mode={mode}/>
-                <UsageCard mode={mode}/>
-                <InfoCard mode={mode}/>
-                <ConfigurationCard mode={mode} rows={rows} data={data} loading={loading} error={error} onChanged={() => { refresh().catch(() => {}) }}/>
-                <HealthCard mode={mode}/>
+                {hasUsage && <UsageCard mode={mode}/>}
+                {hasInfo && <InfoCard mode={mode}/>}
+                {hasConfig && <ConfigurationCard mode={mode} rows={rows} data={data} loading={loading} error={error} onChanged={() => { refresh().catch(() => {}) }}/>}
+                {hasHealth && <HealthCard mode={mode}/>}
             </Gallery>
         </>
     );

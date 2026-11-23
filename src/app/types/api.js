@@ -34,7 +34,8 @@
  * Options of the useAction hook.
  *
  * @typedef {object} ActionOptions
- * @property {number} [poll] Reload period in milliseconds, or 0 for a single load.
+ * @property {number|(() => number)} [poll] Delay in milliseconds between loads, or 0 for a single load;
+ *     a function returns the next delay each time, or 0 to stop.
  * @property {boolean} [enabled] False skips the call, for example without admin access.
  */
 
@@ -156,6 +157,10 @@
  *   'config-set': ConfigResult,
  *   'config-unset': ConfigResult,
  *   'env-set': ConfigResult,
+ *   'quadlet-drop': import('./drop.js').DropResult,
+ *   'quadlet-drop-history': import('./drop.js').DropHistoryResult,
+ *   'quadlet-install-log': import('./drop.js').InstallLogResult,
+ *   'quadlet-remove': import('./drop.js').RemoveResult,
  * }} ActionDataMap
  */
 

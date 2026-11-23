@@ -43,6 +43,7 @@ const groupStackStyle = {
 
 /**
  * Shows the full health check report: the summary in the title, then each group of checks. Needs admin access.
+ * Each time the tab opens it runs a new check; the last result stays on screen while it runs.
  *
  * @param {object} props Component props.
  * @param {AccessMode} props.mode Access mode of the user.
@@ -51,7 +52,7 @@ const groupStackStyle = {
 export function HealthPage({mode}) {
     const admin = mode === 'admin';
     /** @type {HealthCheckState} */
-    const {data, loading, error} = useHealthCheck(admin);
+    const {data, loading, error} = useHealthCheck(admin, {fresh: true});
     const title = i18n("Health");
     const unavailable = admin ? null : i18n("Requires administrative access");
     const summary = data?.summary;

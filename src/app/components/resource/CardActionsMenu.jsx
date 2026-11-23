@@ -37,6 +37,7 @@ export function CardActionsMenu({items = []}) {
                         key={item.key}
                         onClick={() => item.onClick()}
                         isDisabled={item.isDisabled}
+                        isSelected={item.isSelected}
                     >
                         {item.label}
                     </DropdownItem>

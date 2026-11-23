@@ -23,6 +23,13 @@
  * @author Vellamo.fyi
  */
 /**
+ * Page shown to a user without Cockpit administrative access, instead of the tabs.
+ *
+ * @file AdminRequired.jsx
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
  * Page shown while the access check runs.
  *
  * @file Loading.jsx
@@ -44,6 +51,30 @@
  * @author Vellamo.fyi
  */
 /**
+ * Countdown rule of the header auto refresh: how long it stays on after a (re)start, and how
+ * much of that time is left (0 when it has run out).
+ *
+ * @file AutoRefresh.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Pure helpers that decide which tabs and features the installed PodShift supports,
+ * from the result of the capabilities action.
+ *
+ * @file capabilities.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Auto refresh state of the header toggle: whether polling may run on the current page, since when,
+ * and the functions that turn it on (with a fresh countdown) or off, or hold the countdown.
+ *
+ * @file AutoRefreshContext.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
  * Refresh counter that tells hooks to reload their data, and the report of running loads
  * that lets the header refresh button show progress.
  *
@@ -55,6 +86,28 @@
  * Counter of running loads, so a hook can tell when any of its loads is still busy.
  *
  * @file inFlight.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Hook that loads one handler action, once or on a poll delay.
+ *
+ * @file useAction.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Capabilities of the installed PodShift: which handler actions it offers, for the tab menu
+ * and for features that need an optional action.
+ *
+ * @file CapabilitiesContext.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Decides whether the shared health check should start a new load.
+ *
+ * @file healthLoad.js
  * @license AGPL-3.0-or-later
  * @author Vellamo.fyi
  */
@@ -191,13 +244,6 @@
  * @author Vellamo.fyi
  */
 /**
- * Hook that loads one handler action, once or on a poll period.
- *
- * @file useAction.js
- * @license AGPL-3.0-or-later
- * @author Vellamo.fyi
- */
-/**
  * Overview card with PodShift and host information.
  *
  * @file InfoCard.jsx
@@ -228,10 +274,81 @@
  * @author Vellamo.fyi
  */
 /**
+ * File rules of the drop-quadlet tab, the same as PodShift's quadlet-drop action checks:
+ * a plain, not hidden name, a Quadlet type of PODSHIFT_DROP_QUADLET_EXTENSIONS or a .zip
+ * bundle, a base name that passes is-valid-app-name, and 1 byte to 50 KB
+ * (PODSHIFT_DROP_MAX_BUNDLE_SIZE). Also the base64 encoding of the upload.
+ *
+ * @file DropFileRules.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Status helpers of the drop history: the icon kind of each PodShift status, whether the
+ * history still has an item in progress, the poll schedules of the tab and a drop made
+ * elsewhere, the quadlet-remove name
+ * of a history name, and whether a new drop of an uploaded name has appeared so the
+ * success notice can hide.
+ *
+ * @file DropStatus.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Short local date and time for lists, for example "20/11/2026, 20:05" in en-GB.
+ *
+ * @file formatDateTime.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Turns journal entries into `journalctl -o short-iso` text, plain or coloured by priority.
+ *
+ * @file JournalText.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Display order of the install log: newest or oldest line first, kept in the browser.
+ * This is the first browser storage the project uses: one localStorage key, so the choice
+ * stays after a reload. It is per browser and Cockpit address, not per Cockpit user.
+ *
+ * @file LogOrder.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Hook for copy buttons that read "Copied" for a short while after a copy.
+ *
+ * @file useCopiedFlag.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Drop-quadlet page: a drop zone that uploads one Quadlet file or .zip bundle with the
+ * quadlet-drop action, the drop history (quadlet-drop-history), and the install log
+ * (quadlet-install-log).
+ *
+ * @file DropQuadletPage.jsx
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
  * Base class of the toolbar filters of the resource modules: the toggle group
  * settings and the check whether an item passes the selected option.
  *
  * @file BaseFilter.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Remembers the Uninstall targets queued a short while ago, so their Uninstall item stays
+ * disabled and the same removal cannot be queued twice while PodShift still runs it. The tab
+ * loads its list right after the queue and again after 5 seconds, but stopping a unit can take
+ * 10 seconds or more, so the item can still show then. The memory is shared by all tabs, as each
+ * tab is unmounted while another one is open, and lasts until the page reloads.
+ *
+ * @file UninstallGuard.js
  * @license AGPL-3.0-or-later
  * @author Vellamo.fyi
  */
@@ -326,6 +443,16 @@
  * @author Vellamo.fyi
  */
 /**
+ * Decides whether a card can be uninstalled and what the Uninstall item removes: one installed
+ * Quadlet file, or the whole app (bundle) it belongs to. The Quadlets tab gives the file name
+ * and app of a Quadlet; the Containers, Volumes and Networks tabs give the quadlet field that
+ * PodShift adds to an item made by an installed Quadlet file. Pure, so it has unit tests.
+ *
+ * @file QuadletUninstall.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
  * Display name of a resource card for titles and messages, and the inspect download file name.
  *
  * @file resourceName.js
@@ -404,13 +531,6 @@
  * @author Vellamo.fyi
  */
 /**
- * Hook for copy buttons that read "Copied" for a short while after a copy.
- *
- * @file useCopiedFlag.js
- * @license AGPL-3.0-or-later
- * @author Vellamo.fyi
- */
-/**
  * A large modal that shows coloured code in a scrollable CodeBlock, with Copy and Close.
  * Base of InspectModal, VariablesModal, ServiceStatusModal and UnitViewModal.
  *
@@ -458,6 +578,14 @@
  * @author Vellamo.fyi
  */
 /**
+ * Confirm modal to uninstall one installed Quadlet file or app with the quadlet-remove action,
+ * opened from the Uninstall item of a Quadlets, Containers, Volumes or Networks card.
+ *
+ * @file QuadletUninstallModal.jsx
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
  * Hook that loads one handler action with arguments while a view is open.
  *
  * @file useActionResult.js
@@ -486,7 +614,8 @@
  * the toolbar filter or filters, in the constructor, override card() and countText(), and
  * override any static helper they need to change. A module with other views
  * overrides dialogs() and closeAndRefresh(). Hooks stay in the page; this class
- * only builds the UI from ModulePageState.
+ * only builds the UI from ModulePageState. Items made by an installed Quadlet file get an
+ * Uninstall item, which opens the shared Uninstall modal.
  *
  * @file BaseModule.jsx
  * @license AGPL-3.0-or-later
@@ -586,13 +715,6 @@
  * @author Vellamo.fyi
  */
 /**
- * Turns journal entries into `journalctl -o short-iso` text, plain or coloured by priority.
- *
- * @file JournalText.js
- * @license AGPL-3.0-or-later
- * @author Vellamo.fyi
- */
-/**
  * Show log view of one service on the Services tab: the last journal entries of the unit
  * from the service-logs action, in short-iso style, coloured by priority, newest at the bottom.
  *
@@ -681,8 +803,9 @@
  * @author Vellamo.fyi
  */
 /**
- * The main page: the tab sub-nav with a refresh button, then the selected tab.
- * The refresh button shows a spinner and is disabled while a load of the visible tab runs.
+ * The main page: the tab sub-nav with an auto refresh toggle and a refresh button, then the
+ * selected tab. The refresh button shows a spinner and is disabled while a load of the visible
+ * tab runs. The tabs follow the capabilities of the installed PodShift.
  *
  * @file MainBoard.jsx
  * @license AGPL-3.0-or-later
@@ -761,6 +884,23 @@ react/cjs/react-jsx-runtime.development.js:
    * This source code is licensed under the MIT license found in the
    * LICENSE file in the root directory of this source tree.
    */
+
+react-is/cjs/react-is.development.js:
+  /** @license React v16.13.1
+   * react-is.development.js
+   *
+   * Copyright (c) Facebook, Inc. and its affiliates.
+   *
+   * This source code is licensed under the MIT license found in the
+   * LICENSE file in the root directory of this source tree.
+   */
+
+object-assign/index.js:
+  /*
+  object-assign
+  (c) Sindre Sorhus
+  @license MIT
+  */
 
 tabbable/dist/index.esm.js:
   /*!

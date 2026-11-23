@@ -39,6 +39,7 @@
  * @property {string} label Text shown in the menu.
  * @property {() => void} onClick Called when the item is chosen.
  * @property {boolean} [isDisabled] Greys the item out.
+ * @property {boolean} [isSelected] Shows a check mark, for the chosen one of several options.
  */
 
 /**

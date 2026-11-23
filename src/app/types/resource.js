@@ -81,6 +81,15 @@
  * @property {'success'|'warning'|'danger'|'info'|'custom'} [statusVariant] PatternFly Label status for the status text.
  * @property {ResourceRow[]} [rows] Main rows, untranslated.
  * @property {ResourceRowGroup[]} [groups] Row groups below the main rows, untranslated.
+ * @property {QuadletOwner} [quadlet] Containers, volumes and networks only: the installed Quadlet file that made the item, so it can be uninstalled.
+ */
+
+/**
+ * The installed Quadlet file that made a container, volume or network, as PodShift reports it.
+ *
+ * @typedef {object} QuadletOwner
+ * @property {string} name Quadlet file name, for example boy.container.
+ * @property {string} [app] App (bundle) name, only when the file is part of an app.
  */
 
 /**

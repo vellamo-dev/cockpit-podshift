@@ -23,7 +23,7 @@ The `tone` prop colors the corner tint: neutral (text color, 9%), success or dan
 `--podshift-resource-card--tone-strength`, 18%; the brighter hover status tokens in the dark theme).
 A row can set `mono` to show its value in a monospace font, for example the container command.
 
-`CardActionsMenu.jsx` is the kebab menu used on resource cards, the Overview PropertiesCard, and the Health views. An item `{ key, divider: true }` (`MenuDivider` in `../types/card.js`) shows a separator line.
+`CardActionsMenu.jsx` is the kebab menu used on resource cards, the Overview PropertiesCard, and the Health views. An item with `isSelected` shows a check mark (the install log order on the Drop Quadlet tab). An item `{ key, divider: true }` (`MenuDivider` in `../types/card.js`) shows a separator line.
 `OpenInPodmanButton.jsx` links to the Cockpit Podman page for the podshift user. Whether that page is installed is
 checked by `../utils/isPodmanPageInstalled.js`.
 

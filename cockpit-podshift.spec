@@ -1,5 +1,5 @@
 Name: cockpit-podshift
-Version: 0.11.1
+Version: 0.18.0
 Release: 1%{?dist}
 Summary: Cockpit UI for PodShift
 License: AGPL-3.0-or-later AND LGPL-2.1-or-later
@@ -46,52 +46,36 @@ test -f %{buildroot}%{_datadir}/cockpit/podshift/index.js
 %{_metainfodir}/fyi.vellamo.cockpit_podshift.metainfo.xml
 
 %changelog
-* Fri Nov 20 2026 Vellamo Dev <no-email@vellamo.fyi> - 0.11.1
-- User feedback improvement: the header Refresh button shows progress and is disabled while the visible tab refreshes
-- Tests: QUnit unit tests for the running-load counter behind the refresh progress
+* Mon Nov 23 2026 Vellamo Dev <no-email@vellamo.fyi> - 0.18.0
+- Header: an Auto refresh toggle left of Refresh on Overview and Drop Quadlet; a sleeping icon shows it is off
+- Auto refresh turns on when the tab opens or is shown again, on Refresh and on a drop, and off after 4 minutes
+- Auto refresh also turns off when you leave the tab or hide the browser tab; while it is off nothing polls
+- A click on the toggle turns it off, or on again with one reload and a fresh 4 minutes, like Refresh
+- Drop Quadlet: history and log poll on their own; after a tab open or Refresh from 1 s down to 5 s and 15 s
+- Drop Quadlet: after a drop, here or in a terminal, both poll from every 300 ms to every 2 s for 2 minutes
+- Drop Quadlet: while an item is in progress both poll at least every second and the auto refresh countdown waits
+- Translations: Finnish and German for the auto refresh texts
+- Tests: QUnit tests for the auto refresh countdown and the Drop Quadlet poll schedules
 
-* Fri Nov 20 2026 Vellamo Dev <no-email@vellamo.fyi> - 0.11.0
-- Overview: the Configuration card adds, edits and removes custom TSV_* variables (needs PodShift 0.22.0)
-- Overview: an unset TSV_ENV can be set once from the Configuration card, with suggested tags
-- Overview: the variable modal checks names and values with PodShift's rules and warns against storing secrets
-- Tests: QUnit unit tests for the variable rules and the modal modes (npm test)
+* Sat Nov 21 2026 Vellamo Dev <no-email@vellamo.fyi> - 0.17.1
+- Drop zone: locked after a drop until the drop shows in the Drop History, for at most 5 seconds; it looks greyed out
+- A refused or failed upload unlocks the drop zone at once
+- Install log: Copy log in its menu copies the shown lines as text; the title reads "Copied" for 2 seconds
+- Uninstall dialogue: "Also remove volumes" is now "Also delete volume data", with a note that it cannot be undone
+- Uninstall of the same file or app is disabled for 60 seconds after it is queued, so it is not queued twice
+- Translations: Finnish and German for the Uninstall and Copy log texts
+- Tests: QUnit tests for the Uninstall guard and the copied log text
 
-* Mon Nov 16 2026 Vellamo Dev <no-email@vellamo.fyi> - 0.10.0
-- Overview: Info card shows the install type
-- Tabs menu: active tab is underlined like in new Cockpit UI.
-- Services: names are shown without the .service suffix
+* Sat Nov 21 2026 Vellamo Dev <no-email@vellamo.fyi> - 0.17.0
+- Quadlets: every card has Uninstall in its menu; it removes the Quadlet file, or the whole app it belongs to
+- Containers, Volumes and Networks: Uninstall is in the menu of items made by an installed Quadlet file
+- Uninstall needs the quadlet-remove action and the quadlet field of PodShift 0.25.3 for the resource tabs
+- The confirm dialogue names what goes, such as "Uninstall boy.container" or "Uninstall app shop"
+- "Also remove volumes" is offered for an app and a .volume file; images are always kept
+- After the uninstall is queued, a notice shows and the tab loads its list now and again after 5 seconds
+- The unused remove dialogue of the drop history is replaced by the shared Uninstall dialogue
 
-* Sat Nov 14 2026 Vellamo Dev <no-email@vellamo.fyi> - 0.9.10
-- Docs: agents.md starts with Purpose first
-
-* Sat Nov 14 2026 Vellamo Dev <no-email@vellamo.fyi> - 0.9.9
-- npm run rebuild forces a build
-
-* Sat Nov 14 2026 Vellamo Dev <no-email@vellamo.fyi> - 0.9.8
-- fi.po (Finish translation) added
-
-* Sat Nov 14 2026 Vellamo Dev <no-email@vellamo.fyi> - 0.9.7
-- The build writes the version into manifest.json
-
-* Sat Nov 14 2026 Vellamo Dev <no-email@vellamo.fyi> - 0.9.6
-- de.po (German translation) updated
-
-* Sat Nov 14 2026 Vellamo Dev <no-email@vellamo.fyi> - 0.9.5
-- Documentation: Finnish readme (readme.fi.md)
-
-* Sat Nov 14 2026 Vellamo Dev <no-email@vellamo.fyi> - 0.9.4
-- npm run updateTranslations refreshes the template and all translations
-
-* Sat Nov 14 2026 Vellamo Dev <no-email@vellamo.fyi> - 0.9.3
-- Documentation: security policy (security.md)
-
-* Sat Nov 14 2026 Vellamo Dev <no-email@vellamo.fyi> - 0.9.2
-- Tabs menu uses a small border radius
-
-* Fri Nov 13 2026 Vellamo Dev <no-email@vellamo.fyi> - 0.9.1
-- UI polishing
-
-* Fri Nov 13 2026 Vellamo Dev <no-email@vellamo.fyi> - 0.9.0
-- Refactored the initial MVP codebase into a scalable, production-ready product.
-- Package for Copr: fixed source directory, metainfo for Cockpit Applications
-- Overview, Health, Containers, Volumes, Networks, Images, Secrets, Services and Quadlets pages
+* Sat Nov 21 2026 Vellamo Dev <no-email@vellamo.fyi> - 0.16.3
+- The Health tab runs a new health check each time it opens
+- The last result stays on screen while the check runs
+- The Overview Health card keeps the cached result
