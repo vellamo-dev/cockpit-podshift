@@ -111,15 +111,16 @@ function LoadingNavItem() {
  * @param {object} props Component props.
  * @param {boolean} props.on True while auto refresh is on.
  * @param {boolean} props.ranOut True when the countdown turned it off.
- * @param {() => void} props.onToggle Turns it off, or on like a Refresh click.
+ * @param {number} props.forMs How long the last countdown lasted, in ms, for the tooltip.
+ * @param {() => void} props.onToggle Turns it off, or on with one reload.
  * @returns {React.ReactElement} The toggle button with its tooltip.
  */
-function AutoRefreshToggle({on, ranOut, onToggle}) {
+function AutoRefreshToggle({on, ranOut, forMs, onToggle}) {
     let tip = i18n("Auto refresh is off. Click to turn it on.");
     if (on) {
         tip = i18n("Auto refresh is on. Click to turn it off.");
     } else if (ranOut) {
-        tip = cockpit.format(i18n("Auto refresh turned off after $0 minutes. Click to turn it on."), AutoRefresh.offAfterMinutes());
+        tip = cockpit.format(i18n("Auto refresh turned off after $0 minutes. Click to turn it on."), AutoRefresh.offAfterMinutes(forMs));
     }
 
     return (
@@ -146,8 +147,9 @@ function AutoRefreshToggle({on, ranOut, onToggle}) {
  * refresh state with its one countdown timer: once turned on or restarted, auto refresh turns
  * itself off after AutoRefresh.OFF_AFTER_MS (4 minutes). A page can hold the countdown, as
  * Drop Quadlet does while an item is in progress; when the hold ends, the countdown starts again
- * from a fresh 4 minutes. The tabs and their content are in MainBoardContent, inside those
- * providers.
+ * from a fresh 4 minutes. A page can also ask for a shorter countdown when it turns auto refresh
+ * on, as the tabs with Uninstall do (2 minutes). The tabs and their content are in
+ * MainBoardContent, inside those providers.
  *
  * @param {object} props Component props.
  * @param {AccessMode} props.mode Access mode of the user.
@@ -168,9 +170,11 @@ export function MainBoard({mode}) {
     }, []);
     const [autoStartedAt, setAutoStartedAt] = useState(/** @type {number|null} */ (null));
     const [autoRanOut, setAutoRanOut] = useState(false);
+    const [autoForMs, setAutoForMs] = useState(AutoRefresh.OFF_AFTER_MS);
     const autoOn = autoStartedAt !== null;
-    const startAuto = useCallback(() => {
+    const startAuto = useCallback(function startAuto(forMs = AutoRefresh.OFF_AFTER_MS) {
         setAutoRanOut(false);
+        setAutoForMs(forMs);
         setAutoStartedAt(Date.now());
     }, []);
     const stopAuto = useCallback(() => {
@@ -186,8 +190,8 @@ export function MainBoard({mode}) {
         if (!held) { setAutoStartedAt(current => (current === null ? null : Date.now())) }
     }, []);
     const autoRefresh = useMemo(
-        () => ({on: autoOn, ranOut: autoRanOut, startedAt: autoStartedAt, start: startAuto, stop: stopAuto, hold: holdAuto}),
-        [autoOn, autoRanOut, autoStartedAt, startAuto, stopAuto, holdAuto]
+        () => ({on: autoOn, ranOut: autoRanOut, startedAt: autoStartedAt, forMs: autoForMs, start: startAuto, stop: stopAuto, hold: holdAuto}),
+        [autoOn, autoRanOut, autoStartedAt, autoForMs, startAuto, stopAuto, holdAuto]
     );
 
     useEffect(() => {
@@ -195,9 +199,9 @@ export function MainBoard({mode}) {
         const timer = window.setTimeout(() => {
             setAutoRanOut(true);
             setAutoStartedAt(null);
-        }, AutoRefresh.msLeft(autoStartedAt, Date.now()));
+        }, AutoRefresh.msLeft(autoStartedAt, Date.now(), autoForMs));
         return () => window.clearTimeout(timer);
-    }, [autoStartedAt, autoHeld]);
+    }, [autoStartedAt, autoHeld, autoForMs]);
 
     return (
         <RefreshContext.Provider value={refreshToken}>
@@ -224,12 +228,13 @@ export function MainBoard({mode}) {
  * and no page loads data it may not use. When they could not be read, every tab is shown with
  * a warning. A selected tab that is hidden is never mounted: the first shown tab is rendered
  * at once, and the page address follows.
- * On a tab with autoRefresh, auto refresh turns on with a fresh countdown when the tab becomes
- * the active one, when the browser tab is shown again and on a Refresh click; it turns off when
- * the browser tab is hidden. A tab without the flag gets auto refresh that is always on, so it
- * polls as before, and leaving a tab with the flag turns it off. A click on the toggle turns it
- * off, or on like a Refresh click (one reload and a fresh countdown); while a load already runs
- * it only turns it on, so nothing loads twice.
+ * On a tab with autoRefresh true, auto refresh turns on with a fresh countdown when the tab
+ * becomes the active one, when the browser tab is shown again and on a Refresh click. On a tab
+ * with autoRefresh 'action' it starts off and only the page (after an Uninstall) or the toggle
+ * turns it on; Refresh only reloads. On both it turns off when the browser tab is hidden or the
+ * tab is left. A tab without the flag gets auto refresh that is always on, so it polls as before.
+ * A click on the toggle turns it off, or on with one reload and a fresh 4-minute countdown;
+ * while a load already runs it only turns it on, so nothing loads twice.
  *
  * @param {object} props Component props.
  * @param {AccessMode} props.mode Access mode of the user.
@@ -246,7 +251,8 @@ function MainBoardContent({mode, refreshing, onRefresh, autoRefresh}) {
     const current = shown.find(item => item.id === tab) || shown[0] || null;
     const Current = current ? current.Page : null;
     const showRefresh = current?.refresh === true;
-    const autoPage = current?.autoRefresh === true;
+    const autoOnOpen = current?.autoRefresh === true;
+    const autoPage = autoOnOpen || current?.autoRefresh === 'action';
     const currentId = current ? current.id : null;
     const {start: startAuto, stop: stopAuto} = autoRefresh;
 
@@ -255,47 +261,45 @@ function MainBoardContent({mode, refreshing, onRefresh, autoRefresh}) {
     }, [current, tab, go]);
 
     useEffect(function followActiveTab() {
-        if (autoPage) {
+        if (autoOnOpen) {
             startAuto();
         } else {
             stopAuto();
         }
-    }, [currentId, autoPage, startAuto, stopAuto]);
+    }, [currentId, autoOnOpen, startAuto, stopAuto]);
 
     useEffect(function followBrowserTab() {
         if (!autoPage) { return undefined }
 
         /**
-         * Turns auto refresh off while the browser tab is hidden, and on again when it is shown.
+         * Turns auto refresh off while the browser tab is hidden, and on a tab with autoRefresh
+         * true on again when it is shown.
          */
         function onVisibility() {
             if (document.hidden) {
                 stopAuto();
-            } else {
+            } else if (autoOnOpen) {
                 startAuto();
             }
         }
 
         document.addEventListener('visibilitychange', onVisibility);
         return () => document.removeEventListener('visibilitychange', onVisibility);
-    }, [autoPage, startAuto, stopAuto]);
+    }, [autoPage, autoOnOpen, startAuto, stopAuto]);
 
     const autoOn = autoRefresh.on;
     const refreshTab = useCallback(function refreshTab() {
         onRefresh();
-        if (autoPage) { startAuto() }
-    }, [onRefresh, autoPage, startAuto]);
+        if (autoOnOpen) { startAuto() }
+    }, [onRefresh, autoOnOpen, startAuto]);
     const toggleAuto = useCallback(function toggleAuto() {
         if (autoOn) {
             stopAuto();
             return;
         }
-        if (refreshing) {
-            startAuto();
-            return;
-        }
-        refreshTab();
-    }, [autoOn, refreshing, startAuto, stopAuto, refreshTab]);
+        if (!refreshing) { onRefresh() }
+        startAuto();
+    }, [autoOn, refreshing, startAuto, stopAuto, onRefresh]);
 
     return (
         <Page className="pf-m-no-sidebar">
@@ -325,7 +329,7 @@ function MainBoardContent({mode, refreshing, onRefresh, autoRefresh}) {
                     </Nav>
                     {showRefresh && (
                         <FlexItem>
-                            {autoPage && <AutoRefreshToggle on={autoOn} ranOut={autoRefresh.ranOut} onToggle={toggleAuto}/>}
+                            {autoPage && <AutoRefreshToggle on={autoOn} ranOut={autoRefresh.ranOut} forMs={autoRefresh.forMs} onToggle={toggleAuto}/>}
                             <Tooltip content={i18n("Refresh")} position="bottom" flipBehavior={["bottom"]}>
                                 <Button
                                     variant="plain"

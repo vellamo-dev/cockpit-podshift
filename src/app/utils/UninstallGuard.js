@@ -5,9 +5,9 @@
 /**
  * Remembers the Uninstall targets queued a short while ago, so their Uninstall item stays
  * disabled and the same removal cannot be queued twice while PodShift still runs it. The tab
- * loads its list right after the queue and again after 5 seconds, but stopping a unit can take
- * 10 seconds or more, so the item can still show then. The memory is shared by all tabs, as each
- * tab is unmounted while another one is open, and lasts until the page reloads.
+ * loads its list right after the queue and then polls it (UninstallRefresh), but stopping a unit
+ * can take 10 seconds or more, so the item can still show for a while. The memory is shared by
+ * all tabs, as each tab is unmounted while another one is open, and lasts until the page reloads.
  *
  * @file UninstallGuard.js
  * @license AGPL-3.0-or-later

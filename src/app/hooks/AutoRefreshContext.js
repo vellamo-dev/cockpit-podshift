@@ -13,6 +13,8 @@
 
 import {createContext, useContext} from 'react';
 
+import {AutoRefresh} from '../utils/AutoRefresh.js';
+
 /** @typedef {import('../types/module.js').AutoRefreshState} AutoRefreshState */
 
 /**
@@ -27,7 +29,7 @@ function keepAsIs() {}
  *
  * @type {AutoRefreshState}
  */
-export const AUTO_REFRESH_ALWAYS_ON = {on: true, ranOut: false, startedAt: null, start: keepAsIs, stop: keepAsIs, hold: keepAsIs};
+export const AUTO_REFRESH_ALWAYS_ON = {on: true, ranOut: false, startedAt: null, forMs: AutoRefresh.OFF_AFTER_MS, start: keepAsIs, stop: keepAsIs, hold: keepAsIs};
 
 /**
  * The auto refresh state from MainBoard. useAction runs its poll chain only while on is true.

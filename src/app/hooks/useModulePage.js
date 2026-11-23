@@ -11,15 +11,18 @@
  * @author Vellamo.fyi
  */
 
-import {useCallback, useEffect, useRef, useState} from 'react';
+import {useCallback, useEffect, useState} from 'react';
 
 import cockpit from '../utils/cockpitTyped.js';
 import {i18n} from '../utils/i18n.js';
 import {BaseFilter} from '../modules/filters/BaseFilter.js';
 import {hasCapability} from '../utils/capabilities.js';
+import {QuadletUninstall} from '../utils/QuadletUninstall.js';
 import {UninstallGuard} from '../utils/UninstallGuard.js';
+import {UninstallRefresh} from '../utils/UninstallRefresh.js';
 
 import {useAction} from './useAction.js';
+import {useAutoRefresh} from './AutoRefreshContext.js';
 import {useCapabilities} from './CapabilitiesContext.js';
 import {useResourceView} from './useResourceView.js';
 import {useUnitView} from './useUnitView.js';
@@ -40,14 +43,6 @@ import {useUnitView} from './useUnitView.js';
  * @template {ModuleItem} [I=import('../types/resource.js').ResourceItem] Item type of the list.
  * @typedef {import('../types/module.js').ModulePageState<I>} ModulePageState
  */
-
-/**
- * Delay before the list loads a second time after an uninstall was queued, in ms. The removal runs
- * later in the podshift-qdl-remove service, so the first load right away often still shows the item.
- *
- * @type {number}
- */
-const UNINSTALL_RELOAD_MS = 5000;
 
 /**
  * Reads the search text from the page address, if any.
@@ -72,8 +67,12 @@ function readLocationFilter() {
  * starts on its default option. The hook always requires admin access,
  * like the Containers, Images, Volumes, Networks, Secrets and Services pages.
  * A filter option in the page address pre-fills the search box.
- * It also holds the Uninstall modal and notice: after a removal is queued the list loads at
- * once and again after UNINSTALL_RELOAD_MS, as the removal itself runs a little later.
+ * It also holds the Uninstall modal and notice. After a removal is queued the list loads at once
+ * and the header auto refresh turns on for UninstallRefresh.FOR_MS (2 minutes), polling on the
+ * UninstallRefresh steps, as the removal itself runs a little later in the podshift-qdl-remove
+ * service. It turns off once the list no longer has an item of that target. Auto refresh turned
+ * on with the toggle polls every UninstallRefresh.MANUAL_MS. On a tab without the toggle nothing
+ * polls.
  * A queued target keeps its Uninstall item disabled for UninstallGuard.HOLD_MS, so the same
  * removal cannot be queued twice; the page renders again when that time ends.
  *
@@ -127,17 +126,32 @@ export function useModulePage(module, props) {
     );
     const {view, viewActions, closeView} = useResourceView({variables: module.variables === true});
     const {unitView, openUnitView, quadletActions, closeUnitView} = useUnitView();
+    const {startedAt: autoStartedAt, start: startAuto, stop: stopAuto} = useAutoRefresh();
+    const autoActive = autoStartedAt !== null;
+    const [uninstalling, setUninstalling] = useState(/** @type {{name: string, at: number}|null} */ (null));
+    const uninstallAt = uninstalling ? uninstalling.at : 0;
+    const poll = useCallback(function listPoll() {
+        return UninstallRefresh.pollDelay(autoActive, uninstallAt ? Date.now() - uninstallAt : NaN);
+    }, [autoActive, uninstallAt]);
     /** @type {ActionState<import('../types/module.js').ModuleList<T>>} */
-    const {data, error, loading, refresh} = useAction(module.action, {enabled: admin});
+    const {data, error, loading, refresh} = useAction(module.action, {enabled: admin, poll});
     const unavailable = admin ? null : i18n("Requires administrative access");
     const caps = useCapabilities();
     const canUse = useCallback(action => hasCapability(caps, action), [caps]);
     const [uninstall, setUninstall] = useState(/** @type {UninstallTarget|null} */ (null));
     const [uninstallNotice, setUninstallNotice] = useState(/** @type {UninstallTarget|null} */ (null));
-    const reloadTimer = useRef(/** @type {number|null} */ (null));
-    useEffect(() => () => {
-        if (reloadTimer.current !== null) { window.clearTimeout(reloadTimer.current) }
-    }, []);
+    useEffect(function endUninstallRefresh() {
+        if (!uninstalling) { return }
+        if (!autoActive) {
+            setUninstalling(null);
+            return;
+        }
+        const items = data?.items;
+        if (Array.isArray(items) && !QuadletUninstall.listHas(items, uninstalling.name)) {
+            setUninstalling(null);
+            stopAuto();
+        }
+    }, [uninstalling, autoActive, data, stopAuto]);
     const openUninstall = useCallback(target => setUninstall(target), []);
     const closeUninstall = useCallback(() => setUninstall(null), []);
     const [guardTick, setGuardTick] = useState(0);
@@ -150,8 +164,8 @@ export function useModulePage(module, props) {
     const dismissUninstallNotice = useCallback(() => setUninstallNotice(null), []);
     const uninstallQueued = useCallback(
         /**
-         * Closes the modal, shows the queued notice and loads the list now and once more later.
-         * The target keeps its Uninstall item disabled for a while (UninstallGuard).
+         * Closes the modal, shows the queued notice, loads the list now and turns auto refresh on
+         * for 2 minutes. The target keeps its Uninstall item disabled for a while (UninstallGuard).
          *
          * @param {UninstallTarget} target What was queued for removal.
          */
@@ -161,13 +175,10 @@ export function useModulePage(module, props) {
             setGuardTick(tick => tick + 1);
             setUninstallNotice(target);
             refresh().catch(() => {});
-            if (reloadTimer.current !== null) { window.clearTimeout(reloadTimer.current) }
-            reloadTimer.current = window.setTimeout(() => {
-                reloadTimer.current = null;
-                refresh().catch(() => {});
-            }, UNINSTALL_RELOAD_MS);
+            setUninstalling({name: target.name, at: Date.now()});
+            startAuto(UninstallRefresh.FOR_MS);
         },
-        [refresh]
+        [refresh, startAuto]
     );
 
     /**

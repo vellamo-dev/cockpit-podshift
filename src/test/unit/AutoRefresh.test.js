@@ -29,4 +29,13 @@ QUnit.module('AutoRefresh', () => {
         assert.strictEqual(AutoRefresh.msLeft(start, start + 999999), 0, 'long after the end');
         assert.strictEqual(AutoRefresh.msLeft(start, start - 5000), 240000, 'the clock went back');
     });
+
+    QUnit.test('a page can ask for a shorter time, such as 2 minutes after an Uninstall', assert => {
+        const start = 1000000;
+        assert.strictEqual(AutoRefresh.offAfterMinutes(120000), 2);
+        assert.strictEqual(AutoRefresh.msLeft(start, start, 120000), 120000, 'right after the start');
+        assert.strictEqual(AutoRefresh.msLeft(start, start + 119999, 120000), 1, 'just before the end');
+        assert.strictEqual(AutoRefresh.msLeft(start, start + 120000, 120000), 0, 'at the end');
+        assert.strictEqual(AutoRefresh.msLeft(start, start - 5000, 120000), 120000, 'the clock went back');
+    });
 });

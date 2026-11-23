@@ -7,6 +7,7 @@ keeps the open status and log views of the Services page.
 `useActionResult.js` loads one action with arguments while a view is open (`service-view`, `service-logs` and `quadlet-view`), with
 a reload function; each load clears the last result and late results are dropped. `RefreshContext.js` is the header refresh counter.
 `AutoRefreshContext.js` holds the header auto refresh state from MainBoard, with its start time and a hold for the countdown;
+a page may start it with a shorter countdown (`useModulePage` does after an Uninstall, for 2 minutes);
 `useAction` polls only while it is on.
 `HealthContext.js` holds one shared health-check result for the Overview Health card and the Health tab. The check
 runs once per header refresh, and the Health tab runs a new one each time it opens (`useHealthCheck(enabled, {fresh: true})`),

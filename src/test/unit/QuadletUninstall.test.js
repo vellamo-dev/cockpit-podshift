@@ -62,4 +62,20 @@ QUnit.module('QuadletUninstall', () => {
         assert.false(QuadletUninstall.offersVolumes({name: 'boy.container', isApp: false, file: 'boy.container'}));
         assert.false(QuadletUninstall.offersVolumes({name: 'front.network', isApp: false, file: 'front.network'}));
     });
+
+    QUnit.test('listHas finds the resources and Quadlets that a queued Uninstall removes', assert => {
+        const web = {id: 'systemd-web', title: 'web', quadlet: {name: 'web.container'}};
+        const shopDb = {id: 'shop-db', title: 'shop-db', quadlet: {name: 'db.container', app: 'shop'}};
+        const plain = {id: 'other', title: 'other'};
+        const quadlet = {id: 'data.volume', title: 'data', app: ''};
+        const inApp = {id: 'front.network', title: 'front', app: 'shop'};
+        assert.true(QuadletUninstall.listHas([plain, web], 'web.container'), 'a container of a single file');
+        assert.true(QuadletUninstall.listHas([shopDb], 'shop'), 'a container of an app');
+        assert.false(QuadletUninstall.listHas([shopDb], 'db.container'), 'a file of an app goes by the app name');
+        assert.true(QuadletUninstall.listHas([quadlet], 'data.volume'), 'a Quadlets tab file');
+        assert.true(QuadletUninstall.listHas([inApp], 'shop'), 'a Quadlets tab file of an app');
+        assert.false(QuadletUninstall.listHas([plain, web], 'shop'), 'gone');
+        assert.false(QuadletUninstall.listHas([], 'web.container'));
+        assert.false(QuadletUninstall.listHas(null, 'web.container'));
+    });
 });

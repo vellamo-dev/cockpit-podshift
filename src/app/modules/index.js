@@ -41,7 +41,8 @@ import {HealthPage} from './health/HealthPage.jsx';
  * requires lists the handler actions a tab cannot work without: the tab is hidden once the
  * capabilities are read and one of them is missing. optional lists the actions of single
  * features, which the tab hides itself (useCapability). refresh shows the header Refresh button, and
- * autoRefresh the Auto refresh toggle next to it; only the tabs that poll have it.
+ * autoRefresh the Auto refresh toggle next to it: true on the tabs that poll (on when opened),
+ * 'action' on the tabs with Uninstall (off until an Uninstall or the toggle turns it on).
  * Drop Quadlet stays hidden until PodShift offers quadlet-drop; its history and install log
  * cards need quadlet-drop-history and quadlet-install-log. The Uninstall item on the Quadlets,
  * Containers, Volumes and Networks cards needs quadlet-remove.
@@ -52,11 +53,11 @@ export const MODULES = [
     {id: 'overview', label: i18n("Overview"), Page: OverviewPage, icon: HomeIcon, iconOnly: true, refresh: true, autoRefresh: true, requires: ['overview-status'], optional: ['overview-info', 'overview-usage', 'overview-config', 'health-check', 'config-set', 'config-unset', 'env-set']},
     {id: 'drop-quadlet', label: i18n("Drop Quadlet"), Page: DropQuadletPage, icon: AddCircleOIcon, iconOnly: true, refresh: true, autoRefresh: true, requires: ['quadlet-drop'], optional: ['quadlet-drop-history', 'quadlet-install-log', 'quadlet-remove']},
     {id: 'health', label: i18n("Health"), Page: HealthPage, icon: HeartbeatIcon, iconOnly: true, refresh: true, requires: ['health-check']},
-    {id: containersModule.id, label: containersModule.label, Page: ContainersPage, refresh: true, requires: ['containers-list'], optional: ['inspect', 'quadlet-view', 'quadlet-remove']},
-    {id: volumesModule.id, label: volumesModule.label, Page: VolumesPage, refresh: true, requires: ['volumes-list'], optional: ['inspect', 'quadlet-view', 'quadlet-remove']},
-    {id: networksModule.id, label: networksModule.label, Page: NetworksPage, refresh: true, requires: ['networks-list'], optional: ['inspect', 'quadlet-view', 'quadlet-remove']},
+    {id: containersModule.id, label: containersModule.label, Page: ContainersPage, refresh: true, autoRefresh: 'action', requires: ['containers-list'], optional: ['inspect', 'quadlet-view', 'quadlet-remove']},
+    {id: volumesModule.id, label: volumesModule.label, Page: VolumesPage, refresh: true, autoRefresh: 'action', requires: ['volumes-list'], optional: ['inspect', 'quadlet-view', 'quadlet-remove']},
+    {id: networksModule.id, label: networksModule.label, Page: NetworksPage, refresh: true, autoRefresh: 'action', requires: ['networks-list'], optional: ['inspect', 'quadlet-view', 'quadlet-remove']},
     {id: imagesModule.id, label: imagesModule.label, Page: ImagesPage, refresh: true, requires: ['images-list'], optional: ['inspect', 'quadlet-view']},
     {id: secretsModule.id, label: secretsModule.label, Page: SecretsPage, refresh: true, requires: ['secrets-list'], optional: ['inspect']},
     {id: servicesModule.id, label: servicesModule.label, Page: ServicesPage, refresh: true, requires: ['services-list'], optional: ['service-view', 'service-logs', 'quadlet-view']},
-    {id: quadletsModule.id, label: quadletsModule.label, Page: QuadletsPage, refresh: true, requires: ['quadlets-list'], optional: ['quadlet-view', 'service-view', 'quadlet-remove']},
+    {id: quadletsModule.id, label: quadletsModule.label, Page: QuadletsPage, refresh: true, autoRefresh: 'action', requires: ['quadlets-list'], optional: ['quadlet-view', 'service-view', 'quadlet-remove']},
 ];

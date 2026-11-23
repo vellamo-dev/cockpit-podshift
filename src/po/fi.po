@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cockpit-podshift 0.9.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-23 19:28+0000\n"
+"POT-Creation-Date: 2026-11-23 20:51+0000\n"
 "PO-Revision-Date: 2026-11-14 12:18+0200\n"
 "Last-Translator: Vellamo Dev <no-email@vellamo.fyi>\n"
 "Language-Team: Finnish\n"
@@ -68,8 +68,8 @@ msgid "Not set"
 msgstr "Ei asetettu"
 
 #: src/app/utils/resourceToText.js:41
-#: src/app/modules/drop/DropQuadletPage.jsx:241
-#: src/app/modules/drop/DropQuadletPage.jsx:250
+#: src/app/modules/drop/DropQuadletPage.jsx:251
+#: src/app/modules/drop/DropQuadletPage.jsx:260
 #: src/app/modules/overview/StatusCard.jsx:40
 msgid "Status"
 msgstr "Tila"
@@ -112,25 +112,27 @@ msgstr ""
 msgid "Checking PodShift access"
 msgstr "Tarkistetaan PodShift-käyttöoikeutta"
 
-#: src/app/components/layout/MainBoard.jsx:118
+#: src/app/components/layout/MainBoard.jsx:119
 msgid "Auto refresh is off. Click to turn it on."
 msgstr "Automaattinen päivitys on pois päältä. Laita se päälle napsauttamalla."
 
-#: src/app/components/layout/MainBoard.jsx:120
+#: src/app/components/layout/MainBoard.jsx:121
 msgid "Auto refresh is on. Click to turn it off."
 msgstr "Automaattinen päivitys on päällä. Laita se pois päältä napsauttamalla."
 
-#: src/app/components/layout/MainBoard.jsx:122
+#: src/app/components/layout/MainBoard.jsx:123
 msgid "Auto refresh turned off after $0 minutes. Click to turn it on."
-msgstr "Automaattinen päivitys meni pois päältä $0 minuutin jälkeen. Laita se päälle napsauttamalla."
+msgstr ""
+"Automaattinen päivitys meni pois päältä $0 minuutin jälkeen. Laita se päälle "
+"napsauttamalla."
 
-#: src/app/components/layout/MainBoard.jsx:129
+#: src/app/components/layout/MainBoard.jsx:130
 msgid "Auto refresh"
 msgstr "Automaattinen päivitys"
 
-#: src/app/components/layout/MainBoard.jsx:319
-#: src/app/components/layout/MainBoard.jsx:322
-#: src/app/components/layout/MainBoard.jsx:326
+#: src/app/components/layout/MainBoard.jsx:333
+#: src/app/components/layout/MainBoard.jsx:336
+#: src/app/components/layout/MainBoard.jsx:340
 #: src/app/components/modals/InspectNotice.jsx:77
 #: src/app/components/modals/ServiceStatusModal.jsx:56
 #: src/app/components/modals/UnitViewModal.jsx:111
@@ -139,11 +141,11 @@ msgstr "Automaattinen päivitys"
 msgid "Refresh"
 msgstr "Päivitä"
 
-#: src/app/components/layout/MainBoard.jsx:339
+#: src/app/components/layout/MainBoard.jsx:353
 msgid "Could not read capabilities: $0"
 msgstr ""
 
-#: src/app/components/layout/MainBoard.jsx:350
+#: src/app/components/layout/MainBoard.jsx:364
 msgid "This PodShift version offers none of these views."
 msgstr ""
 
@@ -158,7 +160,7 @@ msgstr "Kopioi komento"
 
 #: src/app/components/modals/InspectNotice.jsx:46
 #: src/app/components/modals/CodeViewModal.jsx:92
-#: src/app/modules/drop/DropQuadletPage.jsx:344
+#: src/app/modules/drop/DropQuadletPage.jsx:354
 msgid "Copied"
 msgstr "Kopioitu"
 
@@ -268,8 +270,8 @@ msgid ""
 msgstr ""
 
 #: src/app/components/modals/ConfigVariableModal.jsx:179
-#: src/app/modules/drop/DropQuadletPage.jsx:243
-#: src/app/modules/drop/DropQuadletPage.jsx:254
+#: src/app/modules/drop/DropQuadletPage.jsx:253
+#: src/app/modules/drop/DropQuadletPage.jsx:264
 msgid "Name"
 msgstr ""
 
@@ -328,7 +330,7 @@ msgid "The journal of the podshift user cannot be read."
 msgstr "podshift-käyttäjän journalia ei voi lukea."
 
 #: src/app/components/modals/ServiceLogModal.jsx:83
-#: src/app/modules/drop/DropQuadletPage.jsx:330
+#: src/app/modules/drop/DropQuadletPage.jsx:340
 msgid "No log entries"
 msgstr "Ei lokimerkintöjä"
 
@@ -442,7 +444,7 @@ msgid "The PodShift Cockpit handler was not found on this system."
 msgstr "PodShiftin Cockpit-käsittelijää ei löytynyt tästä järjestelmästä."
 
 #: src/app/components/status/AdminRequired.jsx:30
-#: src/app/hooks/useModulePage.js:132 src/app/modules/health/HealthPage.jsx:57
+#: src/app/hooks/useModulePage.js:138 src/app/modules/health/HealthPage.jsx:57
 #: src/app/modules/overview/InfoCard.jsx:86
 #: src/app/modules/overview/StatusCard.jsx:45
 #: src/app/modules/overview/ConfigurationCard.jsx:121
@@ -543,7 +545,7 @@ msgstr "Epäaktiivinen"
 
 #: src/app/modules/filters/QuadletStatusFilter.js:63
 #: src/app/modules/filters/StateFilter.js:61
-#: src/app/modules/drop/DropQuadletPage.jsx:88
+#: src/app/modules/drop/DropQuadletPage.jsx:98
 #: src/app/modules/services/ServicesModule.jsx:78
 msgid "Failed"
 msgstr "Epäonnistunut"
@@ -609,16 +611,16 @@ msgid_plural "$0 secrets"
 msgstr[0] "$0 salaisuus"
 msgstr[1] "$0 salaisuutta"
 
-#: src/app/modules/health/HealthPage.jsx:56 src/app/modules/index.js:54
+#: src/app/modules/health/HealthPage.jsx:56 src/app/modules/index.js:55
 #: src/app/modules/overview/HealthCard.jsx:43
 msgid "Health"
 msgstr "Kunto"
 
-#: src/app/modules/index.js:52
+#: src/app/modules/index.js:53
 msgid "Overview"
 msgstr "Yleiskuva"
 
-#: src/app/modules/index.js:53
+#: src/app/modules/index.js:54
 #, fuzzy
 msgid "Drop Quadlet"
 msgstr "Näytä Quadlet"
@@ -641,171 +643,171 @@ msgid_plural "$0 networks"
 msgstr[0] "$0 verkko"
 msgstr[1] "$0 verkkoa"
 
-#: src/app/modules/drop/DropQuadletPage.jsx:82
+#: src/app/modules/drop/DropQuadletPage.jsx:92
 msgid "Accepted"
 msgstr ""
 
-#: src/app/modules/drop/DropQuadletPage.jsx:83
+#: src/app/modules/drop/DropQuadletPage.jsx:93
 #, fuzzy
 msgid "Validated"
 msgstr "Päivitetty"
 
-#: src/app/modules/drop/DropQuadletPage.jsx:84
+#: src/app/modules/drop/DropQuadletPage.jsx:94
 #, fuzzy
 msgid "Installing"
 msgstr "Asennustyyppi"
 
-#: src/app/modules/drop/DropQuadletPage.jsx:85
+#: src/app/modules/drop/DropQuadletPage.jsx:95
 #, fuzzy
 msgid "Installed"
 msgstr "Asennustyyppi"
 
-#: src/app/modules/drop/DropQuadletPage.jsx:86
+#: src/app/modules/drop/DropQuadletPage.jsx:96
 msgid "Already installed with the same content, not installed again"
 msgstr ""
 
-#: src/app/modules/drop/DropQuadletPage.jsx:87
+#: src/app/modules/drop/DropQuadletPage.jsx:97
 #, fuzzy
 msgid "Refused"
 msgstr "Käyttämätön"
 
-#: src/app/modules/drop/DropQuadletPage.jsx:137
+#: src/app/modules/drop/DropQuadletPage.jsx:147
 msgid "$0: the name must be a file name without folders."
 msgstr ""
 
-#: src/app/modules/drop/DropQuadletPage.jsx:139
+#: src/app/modules/drop/DropQuadletPage.jsx:149
 msgid "$0: hidden files are not accepted."
 msgstr ""
 
-#: src/app/modules/drop/DropQuadletPage.jsx:141
-#: src/app/modules/drop/DropQuadletPage.jsx:169
+#: src/app/modules/drop/DropQuadletPage.jsx:151
+#: src/app/modules/drop/DropQuadletPage.jsx:179
 msgid "$0: only $1 files are accepted."
 msgstr ""
 
-#: src/app/modules/drop/DropQuadletPage.jsx:143
+#: src/app/modules/drop/DropQuadletPage.jsx:153
 msgid ""
 "$0: the name must start with a letter or a digit and use only letters, "
 "digits, _, . and -."
 msgstr ""
 
-#: src/app/modules/drop/DropQuadletPage.jsx:145
+#: src/app/modules/drop/DropQuadletPage.jsx:155
 msgid "The file has no name."
 msgstr ""
 
-#: src/app/modules/drop/DropQuadletPage.jsx:149
-#: src/app/modules/drop/DropQuadletPage.jsx:173
+#: src/app/modules/drop/DropQuadletPage.jsx:159
+#: src/app/modules/drop/DropQuadletPage.jsx:183
 msgid "$0 is empty."
 msgstr ""
 
-#: src/app/modules/drop/DropQuadletPage.jsx:151
-#: src/app/modules/drop/DropQuadletPage.jsx:175
+#: src/app/modules/drop/DropQuadletPage.jsx:161
+#: src/app/modules/drop/DropQuadletPage.jsx:185
 msgid "$0 is larger than 50 KB."
 msgstr ""
 
-#: src/app/modules/drop/DropQuadletPage.jsx:167
+#: src/app/modules/drop/DropQuadletPage.jsx:177
 msgid "$0: PodShift does not accept this file name."
 msgstr ""
 
-#: src/app/modules/drop/DropQuadletPage.jsx:171
+#: src/app/modules/drop/DropQuadletPage.jsx:181
 msgid "$0 could not be sent to PodShift. Try again."
 msgstr ""
 
-#: src/app/modules/drop/DropQuadletPage.jsx:177
+#: src/app/modules/drop/DropQuadletPage.jsx:187
 msgid "$0 was not saved: the upload was not owned by the podshift user."
 msgstr ""
 
-#: src/app/modules/drop/DropQuadletPage.jsx:179
+#: src/app/modules/drop/DropQuadletPage.jsx:189
 msgid ""
 "A file named $0 is still waiting to be processed. Try again in a few seconds."
 msgstr ""
 
-#: src/app/modules/drop/DropQuadletPage.jsx:181
+#: src/app/modules/drop/DropQuadletPage.jsx:191
 msgid "The PodShift drop folder is missing. Check the PodShift health."
 msgstr ""
 
-#: src/app/modules/drop/DropQuadletPage.jsx:183
+#: src/app/modules/drop/DropQuadletPage.jsx:193
 msgid "$0 was not accepted."
 msgstr ""
 
-#: src/app/modules/drop/DropQuadletPage.jsx:201
+#: src/app/modules/drop/DropQuadletPage.jsx:211
 msgid "Drag and drop a Quadlet file here"
 msgstr ""
 
-#: src/app/modules/drop/DropQuadletPage.jsx:202
+#: src/app/modules/drop/DropQuadletPage.jsx:212
 msgid "or"
 msgstr ""
 
-#: src/app/modules/drop/DropQuadletPage.jsx:203
+#: src/app/modules/drop/DropQuadletPage.jsx:213
 msgid "One file of at most 50 KB: $0"
 msgstr ""
 
-#: src/app/modules/drop/DropQuadletPage.jsx:204
+#: src/app/modules/drop/DropQuadletPage.jsx:214
 msgid "Browse"
 msgstr ""
 
-#: src/app/modules/drop/DropQuadletPage.jsx:227
+#: src/app/modules/drop/DropQuadletPage.jsx:237
 msgid "The drop history cannot be read from the journal."
 msgstr ""
 
-#: src/app/modules/drop/DropQuadletPage.jsx:235
+#: src/app/modules/drop/DropQuadletPage.jsx:245
 msgid "No files dropped yet"
 msgstr ""
 
-#: src/app/modules/drop/DropQuadletPage.jsx:238
-#: src/app/modules/drop/DropQuadletPage.jsx:269
+#: src/app/modules/drop/DropQuadletPage.jsx:248
+#: src/app/modules/drop/DropQuadletPage.jsx:279
 msgid "Drop History"
 msgstr ""
 
-#: src/app/modules/drop/DropQuadletPage.jsx:242
-#: src/app/modules/drop/DropQuadletPage.jsx:253
+#: src/app/modules/drop/DropQuadletPage.jsx:252
+#: src/app/modules/drop/DropQuadletPage.jsx:263
 msgid "Date and time"
 msgstr ""
 
-#: src/app/modules/drop/DropQuadletPage.jsx:244
-#: src/app/modules/drop/DropQuadletPage.jsx:255
+#: src/app/modules/drop/DropQuadletPage.jsx:254
+#: src/app/modules/drop/DropQuadletPage.jsx:265
 msgid "Description"
 msgstr ""
 
-#: src/app/modules/drop/DropQuadletPage.jsx:315
+#: src/app/modules/drop/DropQuadletPage.jsx:325
 msgid "Newest first"
 msgstr ""
 
-#: src/app/modules/drop/DropQuadletPage.jsx:316
+#: src/app/modules/drop/DropQuadletPage.jsx:326
 msgid "Oldest first"
 msgstr ""
 
-#: src/app/modules/drop/DropQuadletPage.jsx:318
+#: src/app/modules/drop/DropQuadletPage.jsx:328
 msgid "Copy log"
 msgstr "Kopioi loki"
 
-#: src/app/modules/drop/DropQuadletPage.jsx:322
+#: src/app/modules/drop/DropQuadletPage.jsx:332
 msgid "The install log cannot be read from the journal."
 msgstr ""
 
-#: src/app/modules/drop/DropQuadletPage.jsx:343
+#: src/app/modules/drop/DropQuadletPage.jsx:353
 #, fuzzy
 msgid "Install log"
 msgstr "Asennustyyppi"
 
-#: src/app/modules/drop/DropQuadletPage.jsx:459
+#: src/app/modules/drop/DropQuadletPage.jsx:505
 msgid "Uploading $0…"
 msgstr ""
 
-#: src/app/modules/drop/DropQuadletPage.jsx:465
+#: src/app/modules/drop/DropQuadletPage.jsx:511
 msgid ""
 "$0 was uploaded. PodShift verifies and processes the file within seconds."
 msgstr ""
 
-#: src/app/modules/drop/DropQuadletPage.jsx:496
-#: src/app/modules/drop/DropQuadletPage.jsx:520
+#: src/app/modules/drop/DropQuadletPage.jsx:544
+#: src/app/modules/drop/DropQuadletPage.jsx:569
 msgid "Drop only one file at a time."
 msgstr ""
 
-#: src/app/modules/drop/DropQuadletPage.jsx:525
+#: src/app/modules/drop/DropQuadletPage.jsx:574
 msgid "$0 is not accepted."
 msgstr ""
 
-#: src/app/modules/drop/DropQuadletPage.jsx:548
+#: src/app/modules/drop/DropQuadletPage.jsx:597
 #, fuzzy
 msgid "Uploading"
 msgstr "Ladataan uudelleen"

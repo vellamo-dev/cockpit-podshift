@@ -1,5 +1,10 @@
 # Change Log
 
+## Sat Nov 21 2026 - 0.16.3
+- The Health tab runs a new health check each time it opens
+- The last result stays on screen while the check runs
+- The Overview Health card keeps the cached result
+
 ## Sat Nov 21 2026 - 0.16.2
 - A successful drop now says PodShift verifies and processes the file, not that it will install it
 - The success message hides after 10 seconds, or sooner when the drop shows in the Drop History

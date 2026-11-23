@@ -30,7 +30,7 @@
  * @property {string[]} [requires] Handler actions the tab needs; once the capabilities are read, the tab is hidden when one is missing.
  * @property {string[]} [optional] Handler actions of single features of the tab; the tab hides a feature whose action is missing.
  * @property {boolean} [refresh] True shows the header Refresh button on this tab.
- * @property {boolean} [autoRefresh] True shows the header Auto refresh toggle on this tab, and its polling follows it.
+ * @property {boolean|'action'} [autoRefresh] Shows the header Auto refresh toggle, and polling follows it: true turns it on when the tab opens and on Refresh; 'action' leaves it off until the page or the toggle turns it on.
  */
 
 /**
@@ -118,7 +118,8 @@
  * @property {boolean} on True while polling may run.
  * @property {boolean} ranOut True when it is off because the countdown ran out.
  * @property {number|null} startedAt Time of the last (re)start in ms since the epoch, or null while off.
- * @property {() => void} start Turns it on and restarts the countdown, without a reload.
+ * @property {number} forMs How long the last countdown lasts, in ms; 4 minutes unless start was given another time.
+ * @property {(forMs?: number) => void} start Turns it on and restarts the countdown (forMs, else 4 minutes), without a reload.
  * @property {() => void} stop Turns it off.
  * @property {(held: boolean) => void} hold True makes the countdown wait; false lets it run again from a fresh start.
  */

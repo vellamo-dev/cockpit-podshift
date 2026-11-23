@@ -51,7 +51,8 @@
  * @author Vellamo.fyi
  */
 /**
- * Countdown rule of the header auto refresh: how long it stays on after a (re)start, and how
+ * Countdown rule of the header auto refresh: how long it stays on after a (re)start (4 minutes, or
+ * a shorter time a page asks for, such as 2 minutes after an Uninstall), and how
  * much of that time is left (0 when it has run out).
  *
  * @file AutoRefresh.js
@@ -342,13 +343,31 @@
  * @author Vellamo.fyi
  */
 /**
+ * Decides whether a card can be uninstalled and what the Uninstall item removes: one installed
+ * Quadlet file, or the whole app (bundle) it belongs to. The Quadlets tab gives the file name
+ * and app of a Quadlet; the Containers, Volumes and Networks tabs give the quadlet field that
+ * PodShift adds to an item made by an installed Quadlet file. Pure, so it has unit tests.
+ *
+ * @file QuadletUninstall.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
  * Remembers the Uninstall targets queued a short while ago, so their Uninstall item stays
  * disabled and the same removal cannot be queued twice while PodShift still runs it. The tab
- * loads its list right after the queue and again after 5 seconds, but stopping a unit can take
- * 10 seconds or more, so the item can still show then. The memory is shared by all tabs, as each
- * tab is unmounted while another one is open, and lasts until the page reloads.
+ * loads its list right after the queue and then polls it (UninstallRefresh), but stopping a unit
+ * can take 10 seconds or more, so the item can still show for a while. The memory is shared by
+ * all tabs, as each tab is unmounted while another one is open, and lasts until the page reloads.
  *
  * @file UninstallGuard.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Poll schedule of a tab with Uninstall while its auto refresh is on: fast for 2 minutes after
+ * an Uninstall was queued, otherwise a slow delay for auto refresh turned on by hand.
+ *
+ * @file UninstallRefresh.js
  * @license AGPL-3.0-or-later
  * @author Vellamo.fyi
  */
@@ -439,16 +458,6 @@
  * Checks whether the Cockpit Podman page is installed.
  *
  * @file isPodmanPageInstalled.js
- * @license AGPL-3.0-or-later
- * @author Vellamo.fyi
- */
-/**
- * Decides whether a card can be uninstalled and what the Uninstall item removes: one installed
- * Quadlet file, or the whole app (bundle) it belongs to. The Quadlets tab gives the file name
- * and app of a Quadlet; the Containers, Volumes and Networks tabs give the quadlet field that
- * PodShift adds to an item made by an installed Quadlet file. Pure, so it has unit tests.
- *
- * @file QuadletUninstall.js
  * @license AGPL-3.0-or-later
  * @author Vellamo.fyi
  */

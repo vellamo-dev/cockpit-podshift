@@ -1,5 +1,5 @@
 Name: cockpit-podshift
-Version: 0.18.0
+Version: 0.19.0
 Release: 1%{?dist}
 Summary: Cockpit UI for PodShift
 License: AGPL-3.0-or-later AND LGPL-2.1-or-later
@@ -46,6 +46,13 @@ test -f %{buildroot}%{_datadir}/cockpit/podshift/index.js
 %{_metainfodir}/fyi.vellamo.cockpit_podshift.metainfo.xml
 
 %changelog
+* Mon Nov 23 2026 Vellamo Dev <no-email@vellamo.fyi> - 0.19.0
+- Containers, Volumes, Networks and Quadlets: the Auto refresh toggle, off by default; Refresh only reloads
+- A queued Uninstall turns auto refresh on: every 1 s, then every 2 s from 15 s and every 5 s from 30 s
+- It turns off when the item is gone from the list, after 2 minutes, or when the tab or browser tab is left
+- Turned on with the toggle, these tabs reload every 10 seconds for 4 minutes
+- Tests: QUnit tests for the Uninstall poll schedule, the gone check and the shorter countdown
+
 * Mon Nov 23 2026 Vellamo Dev <no-email@vellamo.fyi> - 0.18.0
 - Header: an Auto refresh toggle left of Refresh on Overview and Drop Quadlet; a sleeping icon shows it is off
 - Auto refresh turns on when the tab opens or is shown again, on Refresh and on a drop, and off after 4 minutes
@@ -74,8 +81,3 @@ test -f %{buildroot}%{_datadir}/cockpit/podshift/index.js
 - "Also remove volumes" is offered for an app and a .volume file; images are always kept
 - After the uninstall is queued, a notice shows and the tab loads its list now and again after 5 seconds
 - The unused remove dialogue of the drop history is replaced by the shared Uninstall dialogue
-
-* Sat Nov 21 2026 Vellamo Dev <no-email@vellamo.fyi> - 0.16.3
-- The Health tab runs a new health check each time it opens
-- The last result stays on screen while the check runs
-- The Overview Health card keeps the cached result

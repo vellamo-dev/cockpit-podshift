@@ -22,7 +22,7 @@ See the state of a PodShift server in Cockpit.
 | ✅ | Quadlets | Quadlet cards with state, type and description. |
 | ✅ | Cockpit links | System services and other items open in Cockpit's own pages. |
 | ✅ | Capabilities | Tabs and single features follow the actions the installed PodShift offers. |
-| ✅ | Auto refresh | Overview and Drop Quadlet refresh on their own for 4 minutes after the tab opens or Refresh is clicked; a header toggle turns it on or off (0.18.0). |
+| ✅ | Auto refresh | Overview and Drop Quadlet refresh on their own for 4 minutes after the tab opens or Refresh is clicked; a header toggle turns it on or off (0.18.0). Containers, Volumes, Networks and Quadlets have the toggle off by default; a queued Uninstall turns it on until the item is gone, for at most 2 minutes (0.19.0). |
 
 ## Managing
 

@@ -67,6 +67,25 @@ export class QuadletUninstall {
     }
 
     /**
+     * Tells whether a list still has an item that the queued Uninstall removes: a card whose own
+     * Uninstall target has the same name. Items with the quadlet field are resources; the others
+     * are taken as Quadlets tab items.
+     *
+     * @param {(ResourceItem|QuadletItem)[]|null|undefined} items The list items.
+     * @param {string} name The name sent to quadlet-remove.
+     * @returns {boolean} True while such an item is in the list.
+     */
+    static listHas(items, name) {
+        if (!Array.isArray(items)) { return false }
+        return items.some(item => {
+            const target = 'quadlet' in item
+                ? QuadletUninstall.fromResource(/** @type {ResourceItem} */ (item))
+                : QuadletUninstall.fromQuadlet(/** @type {QuadletItem} */ (item));
+            return target?.name === name;
+        });
+    }
+
+    /**
      * Tells whether the modal offers the Also delete volume data option: for an app, and for a single
      * .volume file, the only cases where quadlet-remove has volumes to remove.
      *

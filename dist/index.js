@@ -1114,7 +1114,7 @@
             var dispatcher = resolveDispatcher();
             return dispatcher.useReducer(reducer2, initialArg, init);
           }
-          function useRef28(initialValue) {
+          function useRef27(initialValue) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useRef(initialValue);
           }
@@ -1908,7 +1908,7 @@
           exports.useLayoutEffect = useLayoutEffect4;
           exports.useMemo = useMemo13;
           exports.useReducer = useReducer2;
-          exports.useRef = useRef28;
+          exports.useRef = useRef27;
           exports.useState = useState35;
           exports.useSyncExternalStore = useSyncExternalStore;
           exports.useTransition = useTransition;
@@ -35235,21 +35235,23 @@
      * How long auto refresh stays on after it was turned on or restarted, in whole minutes,
      * for the tooltip.
      *
+     * @param {number} [forMs] How long it stays on, in ms; OFF_AFTER_MS when left out.
      * @returns {number} The minutes.
      */
-    static offAfterMinutes() {
-      return Math.round(_AutoRefresh.OFF_AFTER_MS / 6e4);
+    static offAfterMinutes(forMs = _AutoRefresh.OFF_AFTER_MS) {
+      return Math.round(forMs / 6e4);
     }
     /**
      * Returns the time left until auto refresh turns itself off.
      *
      * @param {number} startedAt Time of the last (re)start, in ms since the epoch.
      * @param {number} now The time now, in ms since the epoch.
-     * @returns {number} The ms left, never below 0, and never above OFF_AFTER_MS when the clock went back.
+     * @param {number} [forMs] How long it stays on, in ms; OFF_AFTER_MS when left out.
+     * @returns {number} The ms left, never below 0, and never above forMs when the clock went back.
      */
-    static msLeft(startedAt, now) {
-      const left2 = startedAt + _AutoRefresh.OFF_AFTER_MS - now;
-      return Math.min(_AutoRefresh.OFF_AFTER_MS, Math.max(0, left2));
+    static msLeft(startedAt, now, forMs = _AutoRefresh.OFF_AFTER_MS) {
+      const left2 = startedAt + forMs - now;
+      return Math.min(forMs, Math.max(0, left2));
     }
   };
   /**
@@ -35300,7 +35302,7 @@
   var import_react28 = __toESM(require_react(), 1);
   function keepAsIs() {
   }
-  var AUTO_REFRESH_ALWAYS_ON = { on: true, ranOut: false, startedAt: null, start: keepAsIs, stop: keepAsIs, hold: keepAsIs };
+  var AUTO_REFRESH_ALWAYS_ON = { on: true, ranOut: false, startedAt: null, forMs: AutoRefresh.OFF_AFTER_MS, start: keepAsIs, stop: keepAsIs, hold: keepAsIs };
   var AutoRefreshContext = (0, import_react28.createContext)(AUTO_REFRESH_ALWAYS_ON);
   function useAutoRefresh() {
     return (0, import_react28.useContext)(AutoRefreshContext);
@@ -39485,7 +39487,7 @@
    *
    * @type {string}
    */
-  __publicField(AppInfo, "VERSION", "0.18.0");
+  __publicField(AppInfo, "VERSION", "0.19.0");
 
   // src/app/modules/overview/InfoCard.jsx
   var import_jsx_runtime106 = __toESM(require_jsx_runtime(), 1);
@@ -43185,6 +43187,89 @@
   __publicField(_BaseFilter, "ALL", "all");
   var BaseFilter = _BaseFilter;
 
+  // src/app/utils/QuadletUninstall.js
+  var _QuadletUninstall = class _QuadletUninstall {
+    /**
+     * Builds the uninstall target of a Quadlet file and its app. A file in an app uninstalls the
+     * whole app, because quadlet-remove only takes a single file at the top of the Quadlet folder
+     * or an app name. Anything that is not a Quadlet file name gives null.
+     *
+     * @param {Partial<QuadletOwner>|null|undefined} owner The file name and, for a file in a bundle, the app name.
+     * @returns {UninstallTarget|null} What Uninstall removes, or null when nothing can be uninstalled.
+     */
+    static fromOwner(owner) {
+      const file = typeof owner?.name === "string" ? owner.name : "";
+      if (!_QuadletUninstall.QUADLET_FILE.test(file)) {
+        return null;
+      }
+      const app = typeof owner?.app === "string" ? owner.app.trim() : "";
+      if (app !== "" && !app.includes("/")) {
+        return { name: app, isApp: true, file };
+      }
+      return { name: file, isApp: false, file };
+    }
+    /**
+     * Builds the uninstall target of a container, volume or network card. Only items with the
+     * quadlet field, which PodShift sets for items made by an installed Quadlet file, have one.
+     *
+     * @param {ResourceItem|null|undefined} item The resource.
+     * @returns {UninstallTarget|null} What Uninstall removes, or null for other items.
+     */
+    static fromResource(item) {
+      return _QuadletUninstall.fromOwner(item?.quadlet);
+    }
+    /**
+     * Builds the uninstall target of a Quadlets tab card: the file (id), or its app when set.
+     *
+     * @param {QuadletItem|null|undefined} item The Quadlet.
+     * @returns {UninstallTarget|null} What Uninstall removes, or null when the id is not a Quadlet file name.
+     */
+    static fromQuadlet(item) {
+      return _QuadletUninstall.fromOwner({ name: item?.id, app: item?.app });
+    }
+    /**
+     * Tells whether a list still has an item that the queued Uninstall removes: a card whose own
+     * Uninstall target has the same name. Items with the quadlet field are resources; the others
+     * are taken as Quadlets tab items.
+     *
+     * @param {(ResourceItem|QuadletItem)[]|null|undefined} items The list items.
+     * @param {string} name The name sent to quadlet-remove.
+     * @returns {boolean} True while such an item is in the list.
+     */
+    static listHas(items, name) {
+      if (!Array.isArray(items)) {
+        return false;
+      }
+      return items.some((item) => {
+        const target = "quadlet" in item ? _QuadletUninstall.fromResource(
+          /** @type {ResourceItem} */
+          item
+        ) : _QuadletUninstall.fromQuadlet(
+          /** @type {QuadletItem} */
+          item
+        );
+        return target?.name === name;
+      });
+    }
+    /**
+     * Tells whether the modal offers the Also delete volume data option: for an app, and for a single
+     * .volume file, the only cases where quadlet-remove has volumes to remove.
+     *
+     * @param {UninstallTarget} target What Uninstall removes.
+     * @returns {boolean} True when the option is shown.
+     */
+    static offersVolumes(target) {
+      return target.isApp || target.file.endsWith(".volume");
+    }
+  };
+  /**
+   * Quadlet file suffixes that quadlet-remove accepts as a single file.
+   *
+   * @type {RegExp}
+   */
+  __publicField(_QuadletUninstall, "QUADLET_FILE", /^[^/]+\.(container|pod|kube|network|volume|image|build)$/);
+  var QuadletUninstall = _QuadletUninstall;
+
   // src/app/utils/UninstallGuard.js
   var _until;
   var _UninstallGuard = class _UninstallGuard {
@@ -43251,6 +43336,50 @@
    */
   __privateAdd(_UninstallGuard, _until, /* @__PURE__ */ new Map());
   var UninstallGuard = _UninstallGuard;
+
+  // src/app/utils/UninstallRefresh.js
+  var _UninstallRefresh = class _UninstallRefresh {
+    /**
+     * Returns the poll delay of the list.
+     *
+     * @param {boolean} on True while auto refresh is on; false or a tab without the toggle gives 0.
+     * @param {number} msSinceUninstall Milliseconds since the last queued Uninstall, or NaN for none.
+     * @returns {number} The delay in ms, or 0 for no polling.
+     */
+    static pollDelay(on, msSinceUninstall) {
+      if (!on) {
+        return 0;
+      }
+      if (!(msSinceUninstall >= 0)) {
+        return _UninstallRefresh.MANUAL_MS;
+      }
+      const step = _UninstallRefresh.STEPS.find((item) => msSinceUninstall < item.untilMs);
+      return step ? step.delayMs : _UninstallRefresh.MANUAL_MS;
+    }
+  };
+  /**
+   * How long auto refresh stays on after an Uninstall was queued, at most, in ms (2 minutes).
+   *
+   * @type {number}
+   */
+  __publicField(_UninstallRefresh, "FOR_MS", 2 * 60 * 1e3);
+  /**
+   * Poll delays after an Uninstall was queued: each step lasts until untilMs after the queue.
+   *
+   * @type {{untilMs: number, delayMs: number}[]}
+   */
+  __publicField(_UninstallRefresh, "STEPS", [
+    { untilMs: 15e3, delayMs: 1e3 },
+    { untilMs: 3e4, delayMs: 2e3 },
+    { untilMs: 2 * 60 * 1e3, delayMs: 5e3 }
+  ]);
+  /**
+   * Poll delay while auto refresh was turned on by hand, or after the Uninstall steps, in ms.
+   *
+   * @type {number}
+   */
+  __publicField(_UninstallRefresh, "MANUAL_MS", 1e4);
+  var UninstallRefresh = _UninstallRefresh;
 
   // src/app/hooks/useResourceView.js
   var import_react83 = __toESM(require_react(), 1);
@@ -43416,7 +43545,6 @@
   }
 
   // src/app/hooks/useModulePage.js
-  var UNINSTALL_RELOAD_MS = 5e3;
   function readLocationFilter() {
     const value = cockpitTyped_default.location.options.filter;
     if (typeof value === "string") {
@@ -43468,7 +43596,17 @@
     );
     const { view, viewActions, closeView } = useResourceView({ variables: module.variables === true });
     const { unitView, openUnitView, quadletActions, closeUnitView } = useUnitView();
-    const { data, error, loading, refresh } = useAction(module.action, { enabled: admin });
+    const { startedAt: autoStartedAt, start: startAuto, stop: stopAuto } = useAutoRefresh();
+    const autoActive = autoStartedAt !== null;
+    const [uninstalling, setUninstalling] = (0, import_react85.useState)(
+      /** @type {{name: string, at: number}|null} */
+      null
+    );
+    const uninstallAt = uninstalling ? uninstalling.at : 0;
+    const poll = (0, import_react85.useCallback)(function listPoll() {
+      return UninstallRefresh.pollDelay(autoActive, uninstallAt ? Date.now() - uninstallAt : NaN);
+    }, [autoActive, uninstallAt]);
+    const { data, error, loading, refresh } = useAction(module.action, { enabled: admin, poll });
     const unavailable = admin ? null : i18n("Requires administrative access");
     const caps = useCapabilities();
     const canUse = (0, import_react85.useCallback)((action) => hasCapability(caps, action), [caps]);
@@ -43480,15 +43618,20 @@
       /** @type {UninstallTarget|null} */
       null
     );
-    const reloadTimer = (0, import_react85.useRef)(
-      /** @type {number|null} */
-      null
-    );
-    (0, import_react85.useEffect)(() => () => {
-      if (reloadTimer.current !== null) {
-        window.clearTimeout(reloadTimer.current);
+    (0, import_react85.useEffect)(function endUninstallRefresh() {
+      if (!uninstalling) {
+        return;
       }
-    }, []);
+      if (!autoActive) {
+        setUninstalling(null);
+        return;
+      }
+      const items = data?.items;
+      if (Array.isArray(items) && !QuadletUninstall.listHas(items, uninstalling.name)) {
+        setUninstalling(null);
+        stopAuto();
+      }
+    }, [uninstalling, autoActive, data, stopAuto]);
     const openUninstall = (0, import_react85.useCallback)((target) => setUninstall(target), []);
     const closeUninstall = (0, import_react85.useCallback)(() => setUninstall(null), []);
     const [guardTick, setGuardTick] = (0, import_react85.useState)(0);
@@ -43503,8 +43646,8 @@
     const dismissUninstallNotice = (0, import_react85.useCallback)(() => setUninstallNotice(null), []);
     const uninstallQueued = (0, import_react85.useCallback)(
       /**
-       * Closes the modal, shows the queued notice and loads the list now and once more later.
-       * The target keeps its Uninstall item disabled for a while (UninstallGuard).
+       * Closes the modal, shows the queued notice, loads the list now and turns auto refresh on
+       * for 2 minutes. The target keeps its Uninstall item disabled for a while (UninstallGuard).
        *
        * @param {UninstallTarget} target What was queued for removal.
        */
@@ -43515,16 +43658,10 @@
         setUninstallNotice(target);
         refresh().catch(() => {
         });
-        if (reloadTimer.current !== null) {
-          window.clearTimeout(reloadTimer.current);
-        }
-        reloadTimer.current = window.setTimeout(() => {
-          reloadTimer.current = null;
-          refresh().catch(() => {
-          });
-        }, UNINSTALL_RELOAD_MS);
+        setUninstalling({ name: target.name, at: Date.now() });
+        startAuto(UninstallRefresh.FOR_MS);
       },
-      [refresh]
+      [refresh, startAuto]
     );
     function isUninstallQueued(target) {
       return UninstallGuard.isQueued(target.name, Date.now());
@@ -45205,65 +45342,6 @@
     }
     return hasPodmanManifest(window) || hasPodmanManifest(window.parent);
   }
-
-  // src/app/utils/QuadletUninstall.js
-  var _QuadletUninstall = class _QuadletUninstall {
-    /**
-     * Builds the uninstall target of a Quadlet file and its app. A file in an app uninstalls the
-     * whole app, because quadlet-remove only takes a single file at the top of the Quadlet folder
-     * or an app name. Anything that is not a Quadlet file name gives null.
-     *
-     * @param {Partial<QuadletOwner>|null|undefined} owner The file name and, for a file in a bundle, the app name.
-     * @returns {UninstallTarget|null} What Uninstall removes, or null when nothing can be uninstalled.
-     */
-    static fromOwner(owner) {
-      const file = typeof owner?.name === "string" ? owner.name : "";
-      if (!_QuadletUninstall.QUADLET_FILE.test(file)) {
-        return null;
-      }
-      const app = typeof owner?.app === "string" ? owner.app.trim() : "";
-      if (app !== "" && !app.includes("/")) {
-        return { name: app, isApp: true, file };
-      }
-      return { name: file, isApp: false, file };
-    }
-    /**
-     * Builds the uninstall target of a container, volume or network card. Only items with the
-     * quadlet field, which PodShift sets for items made by an installed Quadlet file, have one.
-     *
-     * @param {ResourceItem|null|undefined} item The resource.
-     * @returns {UninstallTarget|null} What Uninstall removes, or null for other items.
-     */
-    static fromResource(item) {
-      return _QuadletUninstall.fromOwner(item?.quadlet);
-    }
-    /**
-     * Builds the uninstall target of a Quadlets tab card: the file (id), or its app when set.
-     *
-     * @param {QuadletItem|null|undefined} item The Quadlet.
-     * @returns {UninstallTarget|null} What Uninstall removes, or null when the id is not a Quadlet file name.
-     */
-    static fromQuadlet(item) {
-      return _QuadletUninstall.fromOwner({ name: item?.id, app: item?.app });
-    }
-    /**
-     * Tells whether the modal offers the Also delete volume data option: for an app, and for a single
-     * .volume file, the only cases where quadlet-remove has volumes to remove.
-     *
-     * @param {UninstallTarget} target What Uninstall removes.
-     * @returns {boolean} True when the option is shown.
-     */
-    static offersVolumes(target) {
-      return target.isApp || target.file.endsWith(".volume");
-    }
-  };
-  /**
-   * Quadlet file suffixes that quadlet-remove accepts as a single file.
-   *
-   * @type {RegExp}
-   */
-  __publicField(_QuadletUninstall, "QUADLET_FILE", /^[^/]+\.(container|pod|kube|network|volume|image|build)$/);
-  var QuadletUninstall = _QuadletUninstall;
 
   // src/app/utils/resourceName.js
   function inspectFileName(kind, name) {
@@ -48486,13 +48564,13 @@
     { id: "overview", label: i18n("Overview"), Page: OverviewPage, icon: HomeIcon, iconOnly: true, refresh: true, autoRefresh: true, requires: ["overview-status"], optional: ["overview-info", "overview-usage", "overview-config", "health-check", "config-set", "config-unset", "env-set"] },
     { id: "drop-quadlet", label: i18n("Drop Quadlet"), Page: DropQuadletPage, icon: AddCircleOIcon, iconOnly: true, refresh: true, autoRefresh: true, requires: ["quadlet-drop"], optional: ["quadlet-drop-history", "quadlet-install-log", "quadlet-remove"] },
     { id: "health", label: i18n("Health"), Page: HealthPage, icon: HeartbeatIcon, iconOnly: true, refresh: true, requires: ["health-check"] },
-    { id: containersModule.id, label: containersModule.label, Page: ContainersPage, refresh: true, requires: ["containers-list"], optional: ["inspect", "quadlet-view", "quadlet-remove"] },
-    { id: volumesModule.id, label: volumesModule.label, Page: VolumesPage, refresh: true, requires: ["volumes-list"], optional: ["inspect", "quadlet-view", "quadlet-remove"] },
-    { id: networksModule.id, label: networksModule.label, Page: NetworksPage, refresh: true, requires: ["networks-list"], optional: ["inspect", "quadlet-view", "quadlet-remove"] },
+    { id: containersModule.id, label: containersModule.label, Page: ContainersPage, refresh: true, autoRefresh: "action", requires: ["containers-list"], optional: ["inspect", "quadlet-view", "quadlet-remove"] },
+    { id: volumesModule.id, label: volumesModule.label, Page: VolumesPage, refresh: true, autoRefresh: "action", requires: ["volumes-list"], optional: ["inspect", "quadlet-view", "quadlet-remove"] },
+    { id: networksModule.id, label: networksModule.label, Page: NetworksPage, refresh: true, autoRefresh: "action", requires: ["networks-list"], optional: ["inspect", "quadlet-view", "quadlet-remove"] },
     { id: imagesModule.id, label: imagesModule.label, Page: ImagesPage, refresh: true, requires: ["images-list"], optional: ["inspect", "quadlet-view"] },
     { id: secretsModule.id, label: secretsModule.label, Page: SecretsPage, refresh: true, requires: ["secrets-list"], optional: ["inspect"] },
     { id: servicesModule.id, label: servicesModule.label, Page: ServicesPage, refresh: true, requires: ["services-list"], optional: ["service-view", "service-logs", "quadlet-view"] },
-    { id: quadletsModule.id, label: quadletsModule.label, Page: QuadletsPage, refresh: true, requires: ["quadlets-list"], optional: ["quadlet-view", "service-view", "quadlet-remove"] }
+    { id: quadletsModule.id, label: quadletsModule.label, Page: QuadletsPage, refresh: true, autoRefresh: "action", requires: ["quadlets-list"], optional: ["quadlet-view", "service-view", "quadlet-remove"] }
   ];
 
   // src/app/components/layout/MainBoard.jsx
@@ -48531,12 +48609,12 @@
   function LoadingNavItem() {
     return /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(NavItem, { itemId: "podshift-loading", preventDefault: true, isActive: false, children: /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(Button, { variant: "link", component: "span", tabIndex: -1, children: /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(Spinner, { size: "md", isInline: true, "aria-label": i18n("Checking PodShift access") }) }) });
   }
-  function AutoRefreshToggle({ on, ranOut, onToggle }) {
+  function AutoRefreshToggle({ on, ranOut, forMs, onToggle }) {
     let tip = i18n("Auto refresh is off. Click to turn it on.");
     if (on) {
       tip = i18n("Auto refresh is on. Click to turn it off.");
     } else if (ranOut) {
-      tip = cockpitTyped_default.format(i18n("Auto refresh turned off after $0 minutes. Click to turn it on."), AutoRefresh.offAfterMinutes());
+      tip = cockpitTyped_default.format(i18n("Auto refresh turned off after $0 minutes. Click to turn it on."), AutoRefresh.offAfterMinutes(forMs));
     }
     return /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(Tooltip, { content: tip, position: "bottom", flipBehavior: ["bottom"], children: /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(
       Button,
@@ -48569,9 +48647,11 @@
       null
     );
     const [autoRanOut, setAutoRanOut] = (0, import_react134.useState)(false);
+    const [autoForMs, setAutoForMs] = (0, import_react134.useState)(AutoRefresh.OFF_AFTER_MS);
     const autoOn = autoStartedAt !== null;
-    const startAuto = (0, import_react134.useCallback)(() => {
+    const startAuto = (0, import_react134.useCallback)(function startAuto2(forMs = AutoRefresh.OFF_AFTER_MS) {
       setAutoRanOut(false);
+      setAutoForMs(forMs);
       setAutoStartedAt(Date.now());
     }, []);
     const stopAuto = (0, import_react134.useCallback)(() => {
@@ -48591,8 +48671,8 @@
       }
     }, []);
     const autoRefresh = (0, import_react134.useMemo)(
-      () => ({ on: autoOn, ranOut: autoRanOut, startedAt: autoStartedAt, start: startAuto, stop: stopAuto, hold: holdAuto }),
-      [autoOn, autoRanOut, autoStartedAt, startAuto, stopAuto, holdAuto]
+      () => ({ on: autoOn, ranOut: autoRanOut, startedAt: autoStartedAt, forMs: autoForMs, start: startAuto, stop: stopAuto, hold: holdAuto }),
+      [autoOn, autoRanOut, autoStartedAt, autoForMs, startAuto, stopAuto, holdAuto]
     );
     (0, import_react134.useEffect)(() => {
       if (autoStartedAt === null || autoHeld) {
@@ -48601,9 +48681,9 @@
       const timer = window.setTimeout(() => {
         setAutoRanOut(true);
         setAutoStartedAt(null);
-      }, AutoRefresh.msLeft(autoStartedAt, Date.now()));
+      }, AutoRefresh.msLeft(autoStartedAt, Date.now(), autoForMs));
       return () => window.clearTimeout(timer);
-    }, [autoStartedAt, autoHeld]);
+    }, [autoStartedAt, autoHeld, autoForMs]);
     return /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(RefreshContext.Provider, { value: refreshToken, children: /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(RefreshActivityContext.Provider, { value: report, children: /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(CapabilitiesProvider, { children: /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(HealthProvider, { children: /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(
       MainBoardContent,
       {
@@ -48622,7 +48702,8 @@
     const current = shown.find((item) => item.id === tab) || shown[0] || null;
     const Current = current ? current.Page : null;
     const showRefresh = current?.refresh === true;
-    const autoPage = current?.autoRefresh === true;
+    const autoOnOpen = current?.autoRefresh === true;
+    const autoPage = autoOnOpen || current?.autoRefresh === "action";
     const currentId2 = current ? current.id : null;
     const { start: startAuto, stop: stopAuto } = autoRefresh;
     (0, import_react134.useEffect)(() => {
@@ -48631,12 +48712,12 @@
       }
     }, [current, tab, go]);
     (0, import_react134.useEffect)(function followActiveTab() {
-      if (autoPage) {
+      if (autoOnOpen) {
         startAuto();
       } else {
         stopAuto();
       }
-    }, [currentId2, autoPage, startAuto, stopAuto]);
+    }, [currentId2, autoOnOpen, startAuto, stopAuto]);
     (0, import_react134.useEffect)(function followBrowserTab() {
       if (!autoPage) {
         return void 0;
@@ -48644,31 +48725,30 @@
       function onVisibility() {
         if (document.hidden) {
           stopAuto();
-        } else {
+        } else if (autoOnOpen) {
           startAuto();
         }
       }
       document.addEventListener("visibilitychange", onVisibility);
       return () => document.removeEventListener("visibilitychange", onVisibility);
-    }, [autoPage, startAuto, stopAuto]);
+    }, [autoPage, autoOnOpen, startAuto, stopAuto]);
     const autoOn = autoRefresh.on;
     const refreshTab = (0, import_react134.useCallback)(function refreshTab2() {
       onRefresh();
-      if (autoPage) {
+      if (autoOnOpen) {
         startAuto();
       }
-    }, [onRefresh, autoPage, startAuto]);
+    }, [onRefresh, autoOnOpen, startAuto]);
     const toggleAuto = (0, import_react134.useCallback)(function toggleAuto2() {
       if (autoOn) {
         stopAuto();
         return;
       }
-      if (refreshing) {
-        startAuto();
-        return;
+      if (!refreshing) {
+        onRefresh();
       }
-      refreshTab();
-    }, [autoOn, refreshing, startAuto, stopAuto, refreshTab]);
+      startAuto();
+    }, [autoOn, refreshing, startAuto, stopAuto, onRefresh]);
     return /* @__PURE__ */ (0, import_jsx_runtime162.jsxs)(Page, { className: "pf-m-no-sidebar", children: [
       /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(PageSection, { hasBodyWrapper: false, className: "podshift-header", children: /* @__PURE__ */ (0, import_jsx_runtime162.jsxs)(
         Flex,
@@ -48701,7 +48781,7 @@
               }
             ),
             showRefresh && /* @__PURE__ */ (0, import_jsx_runtime162.jsxs)(FlexItem, { children: [
-              autoPage && /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(AutoRefreshToggle, { on: autoOn, ranOut: autoRefresh.ranOut, onToggle: toggleAuto }),
+              autoPage && /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(AutoRefreshToggle, { on: autoOn, ranOut: autoRefresh.ranOut, forMs: autoRefresh.forMs, onToggle: toggleAuto }),
               /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(Tooltip, { content: i18n("Refresh"), position: "bottom", flipBehavior: ["bottom"], children: /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(
                 Button,
                 {
