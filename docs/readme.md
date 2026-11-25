@@ -13,6 +13,7 @@ The menu entry is **PodShift**. These tabs appear, in this order. A tab is shown
 | Tab | What it shows |
 |---|---|
 | Overview | Status, Usage, Info, Configuration and Health cards. When the environment tag (`TSV_ENV`) is not set, an administrator sees a warning under the tabs. The Configuration card can add, edit and remove custom `TSV_*` variables, and set the environment tag once. |
+| Drop Quadlet | A drop zone that installs one Quadlet file or .zip bundle, with the drop history and the install log. Hidden until PodShift offers `quadlet-drop`. |
 | Health | The full health check report, grouped. |
 | Containers | Podman containers as cards, with a text filter and a source switch. Each card has Commands in its menu for ready-to-copy terminal commands, which can be copied or downloaded as Markdown, and a container made by an installed Quadlet file has Uninstall. |
 | Volumes | Podman volumes as cards, with a text filter and a source switch. A volume made by an installed `.volume` file has Uninstall in its menu. |

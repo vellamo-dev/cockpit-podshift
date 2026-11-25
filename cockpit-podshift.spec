@@ -1,5 +1,5 @@
 Name: cockpit-podshift
-Version: 0.20.0
+Version: 0.20.1
 Release: 1%{?dist}
 Summary: Cockpit UI for PodShift
 License: AGPL-3.0-or-later AND LGPL-2.1-or-later
@@ -46,6 +46,9 @@ test -f %{buildroot}%{_datadir}/cockpit/podshift/index.js
 %{_metainfodir}/fyi.vellamo.cockpit_podshift.metainfo.xml
 
 %changelog
+* Wed Nov 25 2026 Vellamo Dev <no-email@vellamo.fyi> - 0.20.1
+- Documentation: Features chapter in the readme, and the Pages table now includes Drop Quadlet in tab order
+
 * Wed Nov 25 2026 Vellamo Dev <no-email@vellamo.fyi> - 0.20.0
 - Containers: Commands item in each card menu opens ready-to-copy Terminal, Logs, Processes and System info commands
 - Commands: Markdown-style page in the dialog; host commands are marked (host) first; admin uses sudo -u podshift -i
@@ -64,14 +67,3 @@ test -f %{buildroot}%{_datadir}/cockpit/podshift/index.js
 - It turns off when the item is gone from the list, after 2 minutes, or when the tab or browser tab is left
 - Turned on with the toggle, these tabs reload every 10 seconds for 4 minutes
 - Tests: QUnit tests for the Uninstall poll schedule, the gone check and the shorter countdown
-
-* Mon Nov 23 2026 Vellamo Dev <no-email@vellamo.fyi> - 0.18.0
-- Header: an Auto refresh toggle left of Refresh on Overview and Drop Quadlet; a sleeping icon shows it is off
-- Auto refresh turns on when the tab opens or is shown again, on Refresh and on a drop, and off after 4 minutes
-- Auto refresh also turns off when you leave the tab or hide the browser tab; while it is off nothing polls
-- A click on the toggle turns it off, or on again with one reload and a fresh 4 minutes, like Refresh
-- Drop Quadlet: history and log poll on their own; after a tab open or Refresh from 1 s down to 5 s and 15 s
-- Drop Quadlet: after a drop, here or in a terminal, both poll from every 300 ms to every 2 s for 2 minutes
-- Drop Quadlet: while an item is in progress both poll at least every second and the auto refresh countdown waits
-- Translations: Finnish and German for the auto refresh texts
-- Tests: QUnit tests for the auto refresh countdown and the Drop Quadlet poll schedules
