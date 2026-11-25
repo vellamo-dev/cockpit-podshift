@@ -16319,9 +16319,19 @@ input.pf-v6-c-label__content {
 }
 
 /* src/app/components/modals/CodeViewModal.scss */
+.pf-v6-c-modal-box.podshift-code-view-modal {
+  min-inline-size: 0;
+}
+.podshift-code-view-modal .pf-v6-c-modal-box__body {
+  min-inline-size: 0;
+}
 .podshift-code-view .pf-v6-c-code-block__content {
   max-block-size: 60vh;
   overflow: auto;
+}
+.podshift-code-view .pf-v6-c-code-block__pre {
+  overflow-wrap: normal;
+  white-space: pre;
 }
 .podshift-code__key {
   color: var(--pf-t--global--text--color--link--default);

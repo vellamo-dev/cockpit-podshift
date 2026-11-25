@@ -2,6 +2,13 @@
 
 Changelog history. To see the latest changes, please check the [cockpit-podshift.spec](./cockpit-podshift.spec)
 
+## Mon Nov 23 2026 - 0.19.0
+- Containers, Volumes, Networks and Quadlets: the Auto refresh toggle, off by default; Refresh only reloads
+- A queued Uninstall turns auto refresh on: every 1 s, then every 2 s from 15 s and every 5 s from 30 s
+- It turns off when the item is gone from the list, after 2 minutes, or when the tab or browser tab is left
+- Turned on with the toggle, these tabs reload every 10 seconds for 4 minutes
+- Tests: QUnit tests for the Uninstall poll schedule, the gone check and the shorter countdown
+
 ## Mon Nov 23 2026 - 0.18.0
 - Header: an Auto refresh toggle left of Refresh on Overview and Drop Quadlet; a sleeping icon shows it is off
 - Auto refresh turns on when the tab opens or is shown again, on Refresh and on a drop, and off after 4 minutes

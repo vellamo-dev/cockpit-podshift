@@ -39651,7 +39651,7 @@
    *
    * @type {string}
    */
-  __publicField(AppInfo, "VERSION", "0.20.0");
+  __publicField(AppInfo, "VERSION", "0.20.2");
 
   // src/app/modules/overview/InfoCard.jsx
   var import_jsx_runtime106 = __toESM(require_jsx_runtime(), 1);
@@ -46491,6 +46491,7 @@
       Modal,
       {
         variant: "large",
+        className: "podshift-code-view-modal",
         isOpen,
         onClose,
         "aria-labelledby": "podshift-code-view-title",

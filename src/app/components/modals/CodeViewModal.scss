@@ -1,9 +1,26 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+// Cockpit's later .pf-v6-c-modal-box { min-inline-size: min-content }
+// (patternfly-6-overrides.scss) follows the longest unbreakable line and
+// beats both PatternFly's max-width and a single-class min-inline-size: 0.
+.pf-v6-c-modal-box.podshift-code-view-modal {
+  min-inline-size: 0;
+}
+
+.podshift-code-view-modal .pf-v6-c-modal-box__body {
+  min-inline-size: 0;
+}
+
 // The code scrolls inside the modal instead of making the modal grow.
 .podshift-code-view .pf-v6-c-code-block__content {
   max-block-size: 60vh;
   overflow: auto;
+}
+
+// PatternFly's pre uses pre-wrap and overflow-wrap: break-word; keep long lines on one line so they scroll.
+.podshift-code-view .pf-v6-c-code-block__pre {
+  overflow-wrap: normal;
+  white-space: pre;
 }
 
 // Token colours shared by highlightJson and highlightIni. PatternFly text tokens follow the light and the dark theme.

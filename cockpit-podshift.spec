@@ -1,5 +1,5 @@
 Name: cockpit-podshift
-Version: 0.20.1
+Version: 0.20.2
 Release: 1%{?dist}
 Summary: Cockpit UI for PodShift
 License: AGPL-3.0-or-later AND LGPL-2.1-or-later
@@ -46,6 +46,9 @@ test -f %{buildroot}%{_datadir}/cockpit/podshift/index.js
 %{_metainfodir}/fyi.vellamo.cockpit_podshift.metainfo.xml
 
 %changelog
+* Thu Nov 26 2026 Vellamo Dev <no-email@vellamo.fyi> - 0.20.2
+- Code views: the large modal keeps its width; long lines scroll inside the box
+
 * Wed Nov 25 2026 Vellamo Dev <no-email@vellamo.fyi> - 0.20.1
 - Documentation: Features chapter in the readme, and the Pages table now includes Drop Quadlet in tab order
 
@@ -59,11 +62,4 @@ test -f %{buildroot}%{_datadir}/cockpit/podshift/index.js
 - Tests: QUnit unit tests for the command catalogue, placeholders and Markdown export
 - Documentation: security.md covers changing actions through the API, confirmation for removals, and Commands downloads
 - Documentation: readme, scope, roadmap and the package description cover monitoring and some maintenance
-- Documentation: the spec %changelog keeps the 3 latest entries; older ones move to changelog.md
-
-* Mon Nov 23 2026 Vellamo Dev <no-email@vellamo.fyi> - 0.19.0
-- Containers, Volumes, Networks and Quadlets: the Auto refresh toggle, off by default; Refresh only reloads
-- A queued Uninstall turns auto refresh on: every 1 s, then every 2 s from 15 s and every 5 s from 30 s
-- It turns off when the item is gone from the list, after 2 minutes, or when the tab or browser tab is left
-- Turned on with the toggle, these tabs reload every 10 seconds for 4 minutes
-- Tests: QUnit tests for the Uninstall poll schedule, the gone check and the shorter countdown
+- Documentation: the spec changelog keeps the 3 latest entries; older ones move to changelog.md

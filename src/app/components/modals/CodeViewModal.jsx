@@ -64,6 +64,7 @@ export function CodeViewModal({isOpen = true, title, description, header, text, 
     return (
         <Modal
             variant="large"
+            className="podshift-code-view-modal"
             isOpen={isOpen}
             onClose={onClose}
             aria-labelledby="podshift-code-view-title"
