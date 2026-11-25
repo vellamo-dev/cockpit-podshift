@@ -1106,7 +1106,7 @@
             }
             return dispatcher.useContext(Context);
           }
-          function useState35(initialState2) {
+          function useState36(initialState2) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useState(initialState2);
           }
@@ -1118,7 +1118,7 @@
             var dispatcher = resolveDispatcher();
             return dispatcher.useRef(initialValue);
           }
-          function useEffect31(create, deps) {
+          function useEffect32(create, deps) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useEffect(create, deps);
           }
@@ -1134,7 +1134,7 @@
             var dispatcher = resolveDispatcher();
             return dispatcher.useCallback(callback, deps);
           }
-          function useMemo13(create, deps) {
+          function useMemo14(create, deps) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useMemo(create, deps);
           }
@@ -1901,15 +1901,15 @@
           exports.useContext = useContext21;
           exports.useDebugValue = useDebugValue;
           exports.useDeferredValue = useDeferredValue;
-          exports.useEffect = useEffect31;
+          exports.useEffect = useEffect32;
           exports.useId = useId2;
           exports.useImperativeHandle = useImperativeHandle3;
           exports.useInsertionEffect = useInsertionEffect;
           exports.useLayoutEffect = useLayoutEffect4;
-          exports.useMemo = useMemo13;
+          exports.useMemo = useMemo14;
           exports.useReducer = useReducer2;
           exports.useRef = useRef27;
-          exports.useState = useState35;
+          exports.useState = useState36;
           exports.useSyncExternalStore = useSyncExternalStore;
           exports.useTransition = useTransition;
           exports.version = ReactVersion;
@@ -2405,9 +2405,9 @@
           if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart === "function") {
             __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
           }
-          var React57 = require_react();
+          var React58 = require_react();
           var Scheduler = require_scheduler();
-          var ReactSharedInternals = React57.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+          var ReactSharedInternals = React58.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
           var suppressWarning = false;
           function setSuppressWarning(newSuppressWarning) {
             {
@@ -2456,7 +2456,7 @@
           var HostPortal = 4;
           var HostComponent = 5;
           var HostText = 6;
-          var Fragment18 = 7;
+          var Fragment20 = 7;
           var Mode = 8;
           var ContextConsumer = 9;
           var ContextProvider = 10;
@@ -3613,7 +3613,7 @@
                 return "DehydratedFragment";
               case ForwardRef:
                 return getWrappedName$1(type, type.render, "ForwardRef");
-              case Fragment18:
+              case Fragment20:
                 return "Fragment";
               case HostComponent:
                 return type;
@@ -4014,7 +4014,7 @@
             {
               if (props.value == null) {
                 if (typeof props.children === "object" && props.children !== null) {
-                  React57.Children.forEach(props.children, function(child) {
+                  React58.Children.forEach(props.children, function(child) {
                     if (child == null) {
                       return;
                     }
@@ -12042,7 +12042,7 @@
               }
             }
             function updateFragment2(returnFiber, current2, fragment, lanes, key) {
-              if (current2 === null || current2.tag !== Fragment18) {
+              if (current2 === null || current2.tag !== Fragment20) {
                 var created = createFiberFromFragment(fragment, returnFiber.mode, lanes, key);
                 created.return = returnFiber;
                 return created;
@@ -12445,7 +12445,7 @@
                 if (child.key === key) {
                   var elementType = element.type;
                   if (elementType === REACT_FRAGMENT_TYPE) {
-                    if (child.tag === Fragment18) {
+                    if (child.tag === Fragment20) {
                       deleteRemainingChildren(returnFiber, child.sibling);
                       var existing = useFiber(child, element.props.children);
                       existing.return = returnFiber;
@@ -17921,7 +17921,7 @@
                 var _resolvedProps2 = workInProgress2.elementType === type ? _unresolvedProps2 : resolveDefaultProps(type, _unresolvedProps2);
                 return updateForwardRef(current2, workInProgress2, type, _resolvedProps2, renderLanes2);
               }
-              case Fragment18:
+              case Fragment20:
                 return updateFragment(current2, workInProgress2, renderLanes2);
               case Mode:
                 return updateMode(current2, workInProgress2, renderLanes2);
@@ -18193,7 +18193,7 @@
               case SimpleMemoComponent:
               case FunctionComponent:
               case ForwardRef:
-              case Fragment18:
+              case Fragment20:
               case Mode:
               case Profiler:
               case ContextConsumer:
@@ -22454,7 +22454,7 @@
             return fiber;
           }
           function createFiberFromFragment(elements, mode, lanes, key) {
-            var fiber = createFiber(Fragment18, elements, key, mode);
+            var fiber = createFiber(Fragment20, elements, key, mode);
             fiber.lanes = lanes;
             return fiber;
           }
@@ -23610,7 +23610,7 @@
       if (true) {
         (function() {
           "use strict";
-          var React57 = require_react();
+          var React58 = require_react();
           var REACT_ELEMENT_TYPE = /* @__PURE__ */ Symbol.for("react.element");
           var REACT_PORTAL_TYPE = /* @__PURE__ */ Symbol.for("react.portal");
           var REACT_FRAGMENT_TYPE = /* @__PURE__ */ Symbol.for("react.fragment");
@@ -23636,7 +23636,7 @@
             }
             return null;
           }
-          var ReactSharedInternals = React57.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+          var ReactSharedInternals = React58.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
           function error(format) {
             {
               {
@@ -24486,11 +24486,11 @@
               return jsxWithValidation(type, props, key, false);
             }
           }
-          var jsx49 = jsxWithValidationDynamic;
-          var jsxs21 = jsxWithValidationStatic;
+          var jsx50 = jsxWithValidationDynamic;
+          var jsxs23 = jsxWithValidationStatic;
           exports.Fragment = REACT_FRAGMENT_TYPE;
-          exports.jsx = jsx49;
-          exports.jsxs = jsxs21;
+          exports.jsx = jsx50;
+          exports.jsxs = jsxs23;
         })();
       }
     }
@@ -24577,7 +24577,7 @@
           var ContextProvider = REACT_PROVIDER_TYPE;
           var Element2 = REACT_ELEMENT_TYPE;
           var ForwardRef = REACT_FORWARD_REF_TYPE;
-          var Fragment18 = REACT_FRAGMENT_TYPE;
+          var Fragment20 = REACT_FRAGMENT_TYPE;
           var Lazy = REACT_LAZY_TYPE;
           var Memo = REACT_MEMO_TYPE;
           var Portal = REACT_PORTAL_TYPE;
@@ -24636,7 +24636,7 @@
           exports.ContextProvider = ContextProvider;
           exports.Element = Element2;
           exports.ForwardRef = ForwardRef;
-          exports.Fragment = Fragment18;
+          exports.Fragment = Fragment20;
           exports.Lazy = Lazy;
           exports.Memo = Memo;
           exports.Portal = Portal;
@@ -25315,7 +25315,7 @@
   });
 
   // src/app/index.jsx
-  var import_react136 = __toESM(require_react(), 1);
+  var import_react138 = __toESM(require_react(), 1);
   var import_client = __toESM(require_client(), 1);
 
   // artifacts/cockpit-lib/cockpit-dark-theme.ts
@@ -29000,7 +29000,7 @@
   var cockpitTyped_default = cockpit2;
 
   // src/app/app.jsx
-  var import_react135 = __toESM(require_react(), 1);
+  var import_react137 = __toESM(require_react(), 1);
 
   // artifacts/cockpit-lib/superuser.js
   function Superuser() {
@@ -33892,7 +33892,7 @@
   }
 
   // src/app/components/layout/MainBoard.jsx
-  var import_react134 = __toESM(require_react(), 1);
+  var import_react136 = __toESM(require_react(), 1);
 
   // node_modules/@patternfly/react-core/dist/esm/components/Tooltip/Tooltip.js
   var import_jsx_runtime29 = __toESM(require_jsx_runtime());
@@ -38874,6 +38874,22 @@
   };
   var CheckCircleIcon = createIconBase(CheckCircleIconConfig);
 
+  // node_modules/@patternfly/react-icons/dist/esm/icons/clipboard-check-icon.js
+  var ClipboardCheckIconConfig = {
+    name: "ClipboardCheckIcon",
+    icon: { "xOffset": 0, "yOffset": 0, "width": 384, "height": 512, "svgPathData": "M336 64h-80c0-35.3-28.7-64-64-64s-64 28.7-64 64H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48zM192 40c13.3 0 24 10.7 24 24s-10.7 24-24 24-24-10.7-24-24 10.7-24 24-24zm121.2 231.8l-143 141.8c-4.7 4.7-12.3 4.6-17-.1l-82.6-83.3c-4.7-4.7-4.6-12.3.1-17L99.1 285c4.7-4.7 12.3-4.6 17 .1l46 46.4 106-105.2c4.7-4.7 12.3-4.6 17 .1l28.2 28.4c4.7 4.8 4.6 12.3-.1 17z" },
+    rhUiIcon: { "xOffset": 0, "yOffset": 0, "width": 32, "height": 32, "svgPathData": "M22.707 14.293a.999.999 0 0 1 0 1.414l-7.646 7.646c-.292.293-.676.438-1.061.438s-.768-.146-1.061-.438l-3.646-3.646a.999.999 0 1 1 1.414-1.414L14 21.586l7.293-7.293a.999.999 0 0 1 1.414 0ZM27 7.5v22c0 .827-.673 1.5-1.5 1.5h-19c-.827 0-1.5-.673-1.5-1.5v-22C5 6.673 5.673 6 6.5 6H9v-.5c0-.827.673-1.5 1.5-1.5h1.626c.445-1.724 2.013-3 3.874-3s3.428 1.276 3.874 3H21.5c.827 0 1.5.673 1.5 1.5V6h2.5c.827 0 1.5.673 1.5 1.5ZM11 8h10V6h-2a1 1 0 0 1-1-1c0-1.103-.897-2-2-2s-2 .897-2 2a1 1 0 0 1-1 1h-2v2Zm14 0h-2v.5c0 .827-.673 1.5-1.5 1.5h-11C9.673 10 9 9.327 9 8.5V8H7v21h18V8Z" }
+  };
+  var ClipboardCheckIcon = createIconBase(ClipboardCheckIconConfig);
+
+  // node_modules/@patternfly/react-icons/dist/esm/icons/code-icon.js
+  var CodeIconConfig = {
+    name: "CodeIcon",
+    icon: { "xOffset": 0, "yOffset": 0, "width": 640, "height": 512, "svgPathData": "M278.9 511.5l-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2l43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6l144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z" },
+    rhUiIcon: { "xOffset": 0, "yOffset": 0, "width": 32, "height": 32, "svgPathData": "M9.707 9.707 3.414 16l6.293 6.293a.999.999 0 1 1-1.414 1.414l-6.646-6.646a1.501 1.501 0 0 1 0-2.121l6.646-6.646a.999.999 0 1 1 1.414 1.414Zm20.647 5.232-6.646-6.646a.999.999 0 1 0-1.414 1.414L28.587 16l-6.293 6.293a.999.999 0 1 0 1.414 1.414l6.646-6.646a1.501 1.501 0 0 0 0-2.121ZM18.121 6.022a.997.997 0 0 0-1.186.77l-3.826 18a1 1 0 1 0 1.956.416l3.826-18a1 1 0 0 0-.77-1.186Z" }
+  };
+  var CodeIcon = createIconBase(CodeIconConfig);
+
   // node_modules/@patternfly/react-icons/dist/esm/icons/cogs-icon.js
   var CogsIconConfig = {
     name: "CogsIcon",
@@ -38954,6 +38970,14 @@
   };
   var EyeSlashIcon = createIconBase(EyeSlashIconConfig);
 
+  // node_modules/@patternfly/react-icons/dist/esm/icons/file-alt-icon.js
+  var FileAltIconConfig = {
+    name: "FileAltIcon",
+    icon: { "xOffset": 0, "yOffset": 0, "width": 384, "height": 512, "svgPathData": "M224 136V0H24C10.7 0 0 10.7 0 24v464c0 13.3 10.7 24 24 24h336c13.3 0 24-10.7 24-24V160H248c-13.2 0-24-10.8-24-24zm64 236c0 6.6-5.4 12-12 12H108c-6.6 0-12-5.4-12-12v-8c0-6.6 5.4-12 12-12h168c6.6 0 12 5.4 12 12v8zm0-64c0 6.6-5.4 12-12 12H108c-6.6 0-12-5.4-12-12v-8c0-6.6 5.4-12 12-12h168c6.6 0 12 5.4 12 12v8zm0-72v8c0 6.6-5.4 12-12 12H108c-6.6 0-12-5.4-12-12v-8c0-6.6 5.4-12 12-12h168c6.6 0 12 5.4 12 12zm96-114.1v6.1H256V0h6.1c6.4 0 12.5 2.5 17 7l97.9 98c4.5 4.5 7 10.6 7 16.9z" },
+    rhUiIcon: null
+  };
+  var FileAltIcon = createIconBase(FileAltIconConfig);
+
   // node_modules/@patternfly/react-icons/dist/esm/icons/file-code-icon.js
   var FileCodeIconConfig = {
     name: "FileCodeIcon",
@@ -39010,6 +39034,46 @@
   };
   var NetworkIcon = createIconBase(NetworkIconConfig);
 
+  // node_modules/@patternfly/react-icons/dist/esm/icons/outlined-list-alt-icon.js
+  var OutlinedListAltIconConfig = {
+    name: "OutlinedListAltIcon",
+    icon: { "xOffset": 0, "yOffset": 0, "width": 512, "height": 512, "svgPathData": "M464 32H48C21.49 32 0 53.49 0 80v352c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V80c0-26.51-21.49-48-48-48zm-6 400H54a6 6 0 0 1-6-6V86a6 6 0 0 1 6-6h404a6 6 0 0 1 6 6v340a6 6 0 0 1-6 6zm-42-92v24c0 6.627-5.373 12-12 12H204c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h200c6.627 0 12 5.373 12 12zm0-96v24c0 6.627-5.373 12-12 12H204c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h200c6.627 0 12 5.373 12 12zm0-96v24c0 6.627-5.373 12-12 12H204c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h200c6.627 0 12 5.373 12 12zm-252 12c0 19.882-16.118 36-36 36s-36-16.118-36-36 16.118-36 36-36 36 16.118 36 36zm0 96c0 19.882-16.118 36-36 36s-36-16.118-36-36 16.118-36 36-36 36 16.118 36 36zm0 96c0 19.882-16.118 36-36 36s-36-16.118-36-36 16.118-36 36-36 36 16.118 36 36z" },
+    rhUiIcon: null
+  };
+  var OutlinedListAltIcon = createIconBase(OutlinedListAltIconConfig);
+
+  // node_modules/@patternfly/react-icons/dist/esm/icons/pencil-alt-icon.js
+  var PencilAltIconConfig = {
+    name: "PencilAltIcon",
+    icon: { "xOffset": 0, "yOffset": 0, "width": 512, "height": 512, "svgPathData": "M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3 0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9 0l60.1 60.1c18.8 18.7 18.8 49.1 0 67.9zM284.2 99.8L21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3 0-17l-111-111c-4.8-4.7-12.4-4.7-17.1 0zM124.1 339.9c-5.5-5.5-5.5-14.3 0-19.8l154-154c5.5-5.5 14.3-5.5 19.8 0s5.5 14.3 0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8 0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z" },
+    rhUiIcon: { "xOffset": 0, "yOffset": 0, "width": 32, "height": 32, "svgPathData": "m29.354 6.939-4.293-4.293a1.501 1.501 0 0 0-2.121 0L6.293 19.293a.98.98 0 0 0-.225.358l-3.981 8.942c-.004.008-.002.017-.006.025-.029.07-.036.145-.049.22-.009.055-.029.107-.028.162 0 .054.019.107.028.162.013.075.02.15.049.22.003.008.002.017.006.025.044.1.105.188.175.265.013.015.031.025.045.039a.985.985 0 0 0 .246.175c.015.008.025.022.041.029.014.006.029.004.044.009a.994.994 0 0 0 .357.077h.008a.973.973 0 0 0 .357-.077c.014-.006.03-.003.044-.009l8.943-3.982a.98.98 0 0 0 .357-.225l16.65-16.647c.283-.283.439-.66.439-1.061s-.156-.777-.439-1.061ZM4.972 27.027l2.354-5.287 2.933 2.933-5.287 2.354ZM12 23.586 8.414 20 20.5 7.914l3.586 3.586L12 23.586Zm13.5-13.5L21.914 6.5 24 4.414 27.586 8 25.5 10.086Z" }
+  };
+  var PencilAltIcon = createIconBase(PencilAltIconConfig);
+
+  // node_modules/@patternfly/react-icons/dist/esm/icons/play-icon.js
+  var PlayIconConfig = {
+    name: "PlayIcon",
+    icon: { "xOffset": 0, "yOffset": 0, "width": 448, "height": 512, "svgPathData": "M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z" },
+    rhUiIcon: { "xOffset": 0, "yOffset": 0, "width": 32, "height": 32, "svgPathData": "m30.447 15.105-28-14A1.001 1.001 0 0 0 1 2v28a1.003 1.003 0 0 0 1 1c.153 0 .306-.035.447-.105l28-14a1 1 0 0 0 0-1.79ZM3 28.382V3.618L27.764 16 3 28.382Z" }
+  };
+  var PlayIcon = createIconBase(PlayIconConfig);
+
+  // node_modules/@patternfly/react-icons/dist/esm/icons/plus-icon.js
+  var PlusIconConfig = {
+    name: "PlusIcon",
+    icon: { "xOffset": 0, "yOffset": 0, "width": 448, "height": 512, "svgPathData": "M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" },
+    rhUiIcon: { "xOffset": 0, "yOffset": 0, "width": 32, "height": 32, "svgPathData": "M29 15H17V3a1 1 0 0 0-2 0v12H3a1 1 0 0 0 0 2h12v12a1 1 0 0 0 2 0V17h12a1 1 0 0 0 0-2Z" }
+  };
+  var PlusIcon = createIconBase(PlusIconConfig);
+
+  // node_modules/@patternfly/react-icons/dist/esm/icons/redo-icon.js
+  var RedoIconConfig = {
+    name: "RedoIcon",
+    icon: { "xOffset": 0, "yOffset": 0, "width": 512, "height": 512, "svgPathData": "M500.33 0h-47.41a12 12 0 0 0-12 12.57l4 82.76A247.42 247.42 0 0 0 256 8C119.34 8 7.9 119.53 8 256.19 8.1 393.07 119.1 504 256 504a247.1 247.1 0 0 0 166.18-63.91 12 12 0 0 0 .48-17.43l-34-34a12 12 0 0 0-16.38-.55A176 176 0 1 1 402.1 157.8l-101.53-4.87a12 12 0 0 0-12.57 12v47.41a12 12 0 0 0 12 12h200.33a12 12 0 0 0 12-12V12a12 12 0 0 0-12-12z" },
+    rhUiIcon: { "xOffset": 0, "yOffset": 0, "width": 32, "height": 32, "svgPathData": "M21.293 18.293 27.586 12H11c-4.411 0-8 3.589-8 8s3.589 8 8 8h15a1 1 0 0 1 0 2H11C5.486 30 1 25.514 1 20s4.486-10 10-10h16.586l-6.293-6.293a.999.999 0 1 1 1.414-1.414l7.646 7.646c.283.283.439.66.439 1.061s-.156.777-.439 1.061l-7.646 7.646a.997.997 0 0 1-1.414 0 .999.999 0 0 1 0-1.414Z" }
+  };
+  var RedoIcon = createIconBase(RedoIconConfig);
+
   // node_modules/@patternfly/react-icons/dist/esm/icons/rh-ui-copy-fill-icon.js
   var RhUiCopyFillIconConfig = {
     name: "RhUiCopyFillIcon",
@@ -39036,6 +39100,30 @@
   var SearchIcon = createIconBase(SearchIconConfig);
   var search_icon_default = SearchIcon;
 
+  // node_modules/@patternfly/react-icons/dist/esm/icons/sort-amount-down-icon.js
+  var SortAmountDownIconConfig = {
+    name: "SortAmountDownIcon",
+    icon: { "xOffset": 0, "yOffset": 0, "width": 512, "height": 512, "svgPathData": "M304 416h-64a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h64a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm-128-64h-48V48a16 16 0 0 0-16-16H80a16 16 0 0 0-16 16v304H16c-14.19 0-21.37 17.24-11.29 27.31l80 96a16 16 0 0 0 22.62 0l80-96C197.35 369.26 190.22 352 176 352zm256-192H240a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h192a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm-64 128H240a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h128a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zM496 32H240a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h256a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z" },
+    rhUiIcon: { "xOffset": 0, "yOffset": 0, "width": 32, "height": 32, "svgPathData": "M15.707 22.293a.999.999 0 0 1 0 1.414l-5.646 5.646c-.292.292-.677.438-1.061.438s-.769-.146-1.061-.438l-5.646-5.646a.999.999 0 1 1 1.414-1.414L8 26.586V3a1 1 0 1 1 2 0v23.586l4.293-4.293a.999.999 0 0 1 1.414 0ZM29 3H15a1 1 0 1 0 0 2h14a1 1 0 1 0 0-2Zm-4 6H15a1 1 0 1 0 0 2h10a1 1 0 1 0 0-2Zm-4 6h-6a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2Z" }
+  };
+  var SortAmountDownIcon = createIconBase(SortAmountDownIconConfig);
+
+  // node_modules/@patternfly/react-icons/dist/esm/icons/sort-amount-up-icon.js
+  var SortAmountUpIconConfig = {
+    name: "SortAmountUpIcon",
+    icon: { "xOffset": 0, "yOffset": 0, "width": 512, "height": 512, "svgPathData": "M304 416h-64a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h64a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zM16 160h48v304a16 16 0 0 0 16 16h32a16 16 0 0 0 16-16V160h48c14.21 0 21.38-17.24 11.31-27.31l-80-96a16 16 0 0 0-22.62 0l-80 96C-5.35 142.74 1.77 160 16 160zm416 0H240a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h192a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm-64 128H240a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h128a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zM496 32H240a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h256a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z" },
+    rhUiIcon: null
+  };
+  var SortAmountUpIcon = createIconBase(SortAmountUpIconConfig);
+
+  // node_modules/@patternfly/react-icons/dist/esm/icons/stop-icon.js
+  var StopIconConfig = {
+    name: "StopIcon",
+    icon: { "xOffset": 0, "yOffset": 0, "width": 448, "height": 512, "svgPathData": "M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48z" },
+    rhUiIcon: { "xOffset": 0, "yOffset": 0, "width": 32, "height": 32, "svgPathData": "M26 30H6.007c-2.206 0-4-1.794-4-4V6.007c0-2.206 1.794-4 4-4H26c2.206 0 4 1.794 4 4V26c0 2.206-1.794 4-4 4ZM6.007 4.007c-1.103 0-2 .897-2 2V26c0 1.103.897 2 2 2H26c1.103 0 2-.897 2-2V6.007c0-1.103-.897-2-2-2H6.007Z" }
+  };
+  var StopIcon = createIconBase(StopIconConfig);
+
   // node_modules/@patternfly/react-icons/dist/esm/icons/tachometer-alt-icon.js
   var TachometerAltIconConfig = {
     name: "TachometerAltIcon",
@@ -39043,6 +39131,22 @@
     rhUiIcon: { "xOffset": 0, "yOffset": 0, "width": 32, "height": 32, "svgPathData": "M16 1C7.729 1 1 7.729 1 16s6.729 15 15 15 15-6.729 15-15S24.271 1 16 1Zm0 28C8.832 29 3 23.168 3 16S8.832 3 16 3s13 5.832 13 13-5.832 13-13 13Zm6.707-19.707a.999.999 0 0 1 0 1.414l-4.008 4.008c.187.391.301.824.301 1.285 0 1.654-1.346 3-3 3s-3-1.346-3-3 1.346-3 3-3c.462 0 .894.113 1.285.301l4.008-4.008a.999.999 0 0 1 1.414 0ZM21 24a1 1 0 0 1-1 1h-8a1 1 0 1 1 0-2h8a1 1 0 0 1 1 1ZM8.63 16.011a1.626 1.626 0 1 1-3.251-.001 1.626 1.626 0 0 1 3.251.001Zm2.995-6a1.626 1.626 0 1 1-3.251-.001 1.626 1.626 0 0 1 3.251.001Zm6.005-3.008a1.626 1.626 0 1 1-3.251-.001 1.626 1.626 0 0 1 3.251.001Zm8.995 9.008a1.626 1.626 0 1 1-3.251-.001 1.626 1.626 0 0 1 3.251.001Z" }
   };
   var TachometerAltIcon = createIconBase(TachometerAltIconConfig);
+
+  // node_modules/@patternfly/react-icons/dist/esm/icons/terminal-icon.js
+  var TerminalIconConfig = {
+    name: "TerminalIcon",
+    icon: { "xOffset": 0, "yOffset": 0, "width": 640, "height": 512, "svgPathData": "M257.981 272.971L63.638 467.314c-9.373 9.373-24.569 9.373-33.941 0L7.029 444.647c-9.357-9.357-9.375-24.522-.04-33.901L161.011 256 6.99 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L257.981 239.03c9.373 9.372 9.373 24.568 0 33.941zM640 456v-32c0-13.255-10.745-24-24-24H312c-13.255 0-24 10.745-24 24v32c0 13.255 10.745 24 24 24h304c13.255 0 24-10.745 24-24z" },
+    rhUiIcon: null
+  };
+  var TerminalIcon = createIconBase(TerminalIconConfig);
+
+  // node_modules/@patternfly/react-icons/dist/esm/icons/trash-icon.js
+  var TrashIconConfig = {
+    name: "TrashIcon",
+    icon: { "xOffset": 0, "yOffset": 0, "width": 448, "height": 512, "svgPathData": "M432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16zM53.2 467a48 48 0 0 0 47.9 45h245.8a48 48 0 0 0 47.9-45L416 128H32z" },
+    rhUiIcon: { "xOffset": 0, "yOffset": 0, "width": 32, "height": 32, "svgPathData": "M12 24v-8a1 1 0 1 1 2 0v8a1 1 0 1 1-2 0Zm7 1a1 1 0 0 0 1-1v-8a1 1 0 1 0-2 0v8a1 1 0 0 0 1 1Zm8-14a1 1 0 0 1-1 1h-1v16.5c0 .827-.673 1.5-1.5 1.5h-15c-.827 0-1.5-.673-1.5-1.5V12H6a1 1 0 1 1 0-2h20a1 1 0 0 1 1 1Zm-4 1H9v16h14V12ZM5 6a1 1 0 0 1 1-1h5.101c.465-2.279 2.484-4 4.899-4s4.434 1.721 4.899 4H26a1 1 0 1 1 0 2H6a1 1 0 0 1-1-1Zm8.184-1h5.631c-.414-1.161-1.514-2-2.816-2s-2.402.839-2.816 2Z" }
+  };
+  var TrashIcon = createIconBase(TrashIconConfig);
 
   // node_modules/@patternfly/react-icons/dist/esm/icons/unlink-icon.js
   var UnlinkIconConfig = {
@@ -39082,23 +39186,83 @@
     );
   };
 
+  // src/app/components/resource/menuItemIcon.js
+  function menuItemIcon(key) {
+    switch (key) {
+      case "copy":
+        return CopyIcon;
+      case "inspect":
+        return SearchIcon;
+      case "variables":
+        return CodeIcon;
+      case "commands":
+        return TerminalIcon;
+      case "quadlet":
+        return FileCodeIcon;
+      case "unit":
+        return FileAltIcon;
+      case "uninstall":
+      case "remove":
+      case "delete":
+        return TrashIcon;
+      case "status":
+        return InfoCircleIcon;
+      case "log":
+        return OutlinedListAltIcon;
+      case "open-log":
+        return ExternalLinkAltIcon;
+      case "add-variable":
+        return PlusIcon;
+      case "report":
+        return ClipboardCheckIcon;
+      case "newest":
+        return SortAmountDownIcon;
+      case "oldest":
+        return SortAmountUpIcon;
+      case "download":
+        return DownloadIcon;
+      case "edit":
+        return PencilAltIcon;
+      case "start":
+        return PlayIcon;
+      case "stop":
+        return StopIcon;
+      case "restart":
+        return RedoIcon;
+      default:
+        return null;
+    }
+  }
+  function menuItemIsDanger(key) {
+    return key === "uninstall" || key === "remove" || key === "delete";
+  }
+
   // src/app/components/resource/CardActionsMenu.jsx
   var import_jsx_runtime98 = __toESM(require_jsx_runtime(), 1);
+  function dropdownEntry(item) {
+    if ("divider" in item) {
+      return /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(Divider, { component: "li" }, item.key);
+    }
+    const Icon2 = menuItemIcon(item.key);
+    return /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(
+      DropdownItem,
+      {
+        icon: Icon2 ? /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(Icon2, {}) : void 0,
+        isDanger: menuItemIsDanger(item.key),
+        onClick: () => item.onClick(),
+        isDisabled: item.isDisabled,
+        isSelected: item.isSelected,
+        children: item.label
+      },
+      item.key
+    );
+  }
   function CardActionsMenu({ items = [] }) {
     return /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(
       KebabDropdown,
       {
         position: "right",
-        dropdownItems: items.map((item) => "divider" in item ? /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(Divider, { component: "li" }, item.key) : /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(
-          DropdownItem,
-          {
-            onClick: () => item.onClick(),
-            isDisabled: item.isDisabled,
-            isSelected: item.isSelected,
-            children: item.label
-          },
-          item.key
-        ))
+        dropdownItems: items.map((item) => dropdownEntry(item))
       }
     );
   }
@@ -39487,7 +39651,7 @@
    *
    * @type {string}
    */
-  __publicField(AppInfo, "VERSION", "0.19.0");
+  __publicField(AppInfo, "VERSION", "0.20.0");
 
   // src/app/modules/overview/InfoCard.jsx
   var import_jsx_runtime106 = __toESM(require_jsx_runtime(), 1);
@@ -43107,7 +43271,7 @@
   }
 
   // src/app/modules/containers/ContainersPage.jsx
-  var import_react117 = __toESM(require_react(), 1);
+  var import_react119 = __toESM(require_react(), 1);
 
   // src/app/hooks/useModulePage.js
   var import_react85 = __toESM(require_react(), 1);
@@ -43695,8 +43859,18 @@
     };
   }
 
+  // src/app/hooks/useContainerCommands.js
+  var import_react86 = __toESM(require_react(), 1);
+  function useContainerCommands() {
+    const [commandsContainer, setCommandsContainer] = (0, import_react86.useState)(
+      /** @type {ResourceItem|null} */
+      null
+    );
+    return { commandsContainer, setCommandsContainer };
+  }
+
   // src/app/modules/containers/ContainersModule.jsx
-  var import_react116 = __toESM(require_react(), 1);
+  var import_react118 = __toESM(require_react(), 1);
 
   // src/app/utils/ResourceIcons.js
   var _ResourceIcons = class _ResourceIcons {
@@ -43876,11 +44050,11 @@
   var ResourceTone = _ResourceTone;
 
   // src/app/components/resource/ResourceCard.jsx
-  var import_react88 = __toESM(require_react(), 1);
+  var import_react89 = __toESM(require_react(), 1);
 
   // node_modules/@patternfly/react-core/dist/esm/components/Label/Label.js
   var import_jsx_runtime122 = __toESM(require_jsx_runtime());
-  var import_react86 = __toESM(require_react());
+  var import_react87 = __toESM(require_react());
 
   // node_modules/@patternfly/react-styles/css/components/Label/label.mjs
   var label_default = {
@@ -43983,10 +44157,10 @@
   };
   var Label = (_a) => {
     var { children, className = "", color = LabelColor.grey, variant = "filled", status, isCompact = false, isDisabled = false, isEditable = false, isClickable: isClickableProp = false, editableProps, textMaxWidth, tooltipPosition, icon, onClose, onClick: onLabelClick, onEditCancel, onEditComplete, closeBtn, closeBtnAriaLabel, closeBtnProps, href, render } = _a, props = __rest(_a, ["children", "className", "color", "variant", "status", "isCompact", "isDisabled", "isEditable", "isClickable", "editableProps", "textMaxWidth", "tooltipPosition", "icon", "onClose", "onClick", "onEditCancel", "onEditComplete", "closeBtn", "closeBtnAriaLabel", "closeBtnProps", "href", "render"]);
-    const [isEditableActive, setIsEditableActive] = (0, import_react86.useState)(false);
-    const [currValue, setCurrValue] = (0, import_react86.useState)(children);
-    const editableButtonRef = (0, import_react86.useRef)(void 0);
-    const editableInputRef = (0, import_react86.useRef)(void 0);
+    const [isEditableActive, setIsEditableActive] = (0, import_react87.useState)(false);
+    const [currValue, setCurrValue] = (0, import_react87.useState)(children);
+    const editableButtonRef = (0, import_react87.useRef)(void 0);
+    const editableInputRef = (0, import_react87.useRef)(void 0);
     const isOverflowLabel = variant === "overflow";
     const isAddLabel = variant === "add";
     const isClickable = isClickableProp || onLabelClick && !isOverflowLabel && !isAddLabel || href;
@@ -43997,7 +44171,7 @@
     if (icon) {
       _icon = icon;
     }
-    (0, import_react86.useEffect)(() => {
+    (0, import_react87.useEffect)(() => {
       const onDocMouseDown = (event) => {
         if (isEditableActive && editableInputRef && editableInputRef.current && !editableInputRef.current.contains(event.target)) {
           if (editableInputRef.current.value) {
@@ -44051,7 +44225,7 @@
         document.removeEventListener("keydown", onKeyDown);
       };
     }, [isEditableActive, editableInputRef, editableButtonRef, onEditComplete, onEditCancel, children]);
-    (0, import_react86.useEffect)(() => {
+    (0, import_react87.useEffect)(() => {
       if (onLabelClick && href) {
         console.warn("Link labels cannot have onClick passed, this results in invalid HTML. Please remove either the href or onClick prop.");
       } else if (onLabelClick && isEditable) {
@@ -44061,21 +44235,21 @@
     const isClickableDisabled = (href || onLabelClick) && isDisabled;
     const defaultCloseButton = (0, import_jsx_runtime122.jsx)(Button, Object.assign({ type: "button", variant: "plain", hasNoPadding: true, onClick: onClose, "aria-label": closeBtnAriaLabel || `Close ${children}` }, isClickableDisabled && { isDisabled: true }, closeBtnProps, { icon: (0, import_jsx_runtime122.jsx)(rh_microns_close_icon_default, {}) }));
     const closeButton = (0, import_jsx_runtime122.jsx)("span", { className: css(label_default.labelActions), children: closeBtn || defaultCloseButton });
-    const textRef = (0, import_react86.createRef)();
-    const componentRef = (0, import_react86.useRef)(void 0);
-    const [isTooltipVisible, setIsTooltipVisible] = (0, import_react86.useState)(false);
+    const textRef = (0, import_react87.createRef)();
+    const componentRef = (0, import_react87.useRef)(void 0);
+    const [isTooltipVisible, setIsTooltipVisible] = (0, import_react87.useState)(false);
     useIsomorphicLayoutEffect(() => {
       const currTextRef = isEditable ? editableButtonRef : textRef;
       if (!isEditableActive) {
         setIsTooltipVisible(currTextRef.current && currTextRef.current.offsetWidth < currTextRef.current.scrollWidth);
       }
     }, [isEditableActive]);
-    const content = (0, import_jsx_runtime122.jsxs)(import_react86.Fragment, { children: [_icon && (0, import_jsx_runtime122.jsx)("span", { className: css(label_default.labelIcon), children: _icon }), (0, import_jsx_runtime122.jsx)("span", Object.assign({ ref: textRef, className: css(label_default.labelText) }, textMaxWidth && {
+    const content = (0, import_jsx_runtime122.jsxs)(import_react87.Fragment, { children: [_icon && (0, import_jsx_runtime122.jsx)("span", { className: css(label_default.labelIcon), children: _icon }), (0, import_jsx_runtime122.jsx)("span", Object.assign({ ref: textRef, className: css(label_default.labelText) }, textMaxWidth && {
       style: {
         [c_label_text_MaxWidth_default.name]: textMaxWidth
       }
     }, { children }))] });
-    (0, import_react86.useEffect)(() => {
+    (0, import_react87.useEffect)(() => {
       if (isEditableActive && editableInputRef) {
         editableInputRef.current && editableInputRef.current.focus();
       }
@@ -44100,7 +44274,7 @@
     } }, editableProps)), isClickableDisabled && isButton && { disabled: true }), isClickableDisabled && href && { tabIndex: -1, "aria-disabled": true });
     let labelComponentChild = (0, import_jsx_runtime122.jsx)(LabelComponentChildElement, Object.assign({}, labelComponentChildProps, { children: content }));
     if (render) {
-      labelComponentChild = (0, import_jsx_runtime122.jsxs)(import_react86.Fragment, { children: [isTooltipVisible && (0, import_jsx_runtime122.jsx)(Tooltip, { triggerRef: componentRef, content: children, position: tooltipPosition }), render({
+      labelComponentChild = (0, import_jsx_runtime122.jsxs)(import_react87.Fragment, { children: [isTooltipVisible && (0, import_jsx_runtime122.jsx)(Tooltip, { triggerRef: componentRef, content: children, position: tooltipPosition }), render({
         className: label_default.labelContent,
         content,
         componentRef
@@ -44115,11 +44289,11 @@
 
   // node_modules/@patternfly/react-core/dist/esm/components/Label/LabelGroup.js
   var import_jsx_runtime123 = __toESM(require_jsx_runtime());
-  var import_react87 = __toESM(require_react());
-  var LabelGroup = class extends import_react87.Component {
+  var import_react88 = __toESM(require_react());
+  var LabelGroup = class extends import_react88.Component {
     constructor(props) {
       super(props);
-      this.headingRef = (0, import_react87.createRef)();
+      this.headingRef = (0, import_react88.createRef)();
       this.toggleCollapse = () => {
         this.setState((prevState) => ({
           isOpen: !prevState.isOpen,
@@ -44164,14 +44338,14 @@
         addLabelControl
       } = _a, rest = __rest(_a, ["categoryName", "children", "className", "isClosable", "isCompact", "closeBtnAriaLabel", "aria-label", "onClick", "numLabels", "expandedText", "collapsedText", "defaultIsOpen", "tooltipPosition", "isVertical", "isEditable", "hasEditableTextArea", "editableTextAreaProps", "addLabelControl"]);
       const { isOpen } = this.state;
-      const renderedChildren = import_react87.Children.toArray(children);
+      const renderedChildren = import_react88.Children.toArray(children);
       const numChildren = renderedChildren.length;
       const collapsedTextResult = fillTemplate(collapsedText, {
         remaining: numChildren - numLabels
       });
       const renderLabelGroup = (id) => {
         const labelArray = !isOpen ? renderedChildren.slice(0, numLabels) : renderedChildren;
-        const content = (0, import_jsx_runtime123.jsxs)(import_react87.Fragment, { children: [categoryName && this.renderLabel(id), (0, import_jsx_runtime123.jsxs)("ul", Object.assign({ className: css(label_group_default.labelGroupList) }, categoryName && { "aria-labelledby": id }, !categoryName && { "aria-label": ariaLabel }, { role: "list" }, rest, { children: [labelArray.map((child, i) => (0, import_jsx_runtime123.jsx)("li", { className: css(label_group_default.labelGroupListItem), children: child }, i)), numChildren > numLabels && (0, import_jsx_runtime123.jsx)("li", { className: css(label_group_default.labelGroupListItem), children: (0, import_jsx_runtime123.jsx)(Label, { variant: "overflow", onClick: this.toggleCollapse, className: css(isCompact && label_default.modifiers.compact), children: isOpen ? expandedText : collapsedTextResult }) }), addLabelControl && (0, import_jsx_runtime123.jsx)("li", { className: css(label_group_default.labelGroupListItem), children: addLabelControl }), isEditable && hasEditableTextArea && (0, import_jsx_runtime123.jsx)("li", { className: css(label_group_default.labelGroupListItem, label_group_default.modifiers.textarea), children: (0, import_jsx_runtime123.jsx)("textarea", Object.assign({ className: css(label_group_default.labelGroupTextarea), rows: 1, tabIndex: 0 }, editableTextAreaProps)) })] }))] });
+        const content = (0, import_jsx_runtime123.jsxs)(import_react88.Fragment, { children: [categoryName && this.renderLabel(id), (0, import_jsx_runtime123.jsxs)("ul", Object.assign({ className: css(label_group_default.labelGroupList) }, categoryName && { "aria-labelledby": id }, !categoryName && { "aria-label": ariaLabel }, { role: "list" }, rest, { children: [labelArray.map((child, i) => (0, import_jsx_runtime123.jsx)("li", { className: css(label_group_default.labelGroupListItem), children: child }, i)), numChildren > numLabels && (0, import_jsx_runtime123.jsx)("li", { className: css(label_group_default.labelGroupListItem), children: (0, import_jsx_runtime123.jsx)(Label, { variant: "overflow", onClick: this.toggleCollapse, className: css(isCompact && label_default.modifiers.compact), children: isOpen ? expandedText : collapsedTextResult }) }), addLabelControl && (0, import_jsx_runtime123.jsx)("li", { className: css(label_group_default.labelGroupListItem), children: addLabelControl }), isEditable && hasEditableTextArea && (0, import_jsx_runtime123.jsx)("li", { className: css(label_group_default.labelGroupListItem, label_group_default.modifiers.textarea), children: (0, import_jsx_runtime123.jsx)("textarea", Object.assign({ className: css(label_group_default.labelGroupTextarea), rows: 1, tabIndex: 0 }, editableTextAreaProps)) })] }))] });
         const close = (0, import_jsx_runtime123.jsx)("div", { className: css(label_group_default.labelGroupClose), children: (0, import_jsx_runtime123.jsx)(Button, { variant: "plain", size: "sm", "aria-label": closeBtnAriaLabel, onClick, id: `remove_group_${id}`, "aria-labelledby": `remove_group_${id} ${id}`, icon: (0, import_jsx_runtime123.jsx)(rh_microns_close_icon_default, {}) }) });
         return (0, import_jsx_runtime123.jsxs)("div", { className: css(label_group_default.labelGroup, className, categoryName && label_group_default.modifiers.category, isVertical && label_group_default.modifiers.vertical, isEditable && label_group_default.modifiers.editable), children: [(0, import_jsx_runtime123.jsx)("div", { className: css(label_group_default.labelGroupMain), children: content }), isClosable && close] });
       };
@@ -44383,20 +44557,488 @@
     ] });
   }
 
+  // src/app/components/modals/CommandsModal.jsx
+  var import_react90 = __toESM(require_react(), 1);
+
+  // node_modules/@patternfly/react-core/dist/esm/components/Content/Content.js
+  var import_jsx_runtime126 = __toESM(require_jsx_runtime());
+
+  // node_modules/@patternfly/react-styles/css/components/Content/content.mjs
+  var content_default = {
+    "content": "pf-v6-c-content",
+    "contentA": "pf-v6-c-content--a",
+    "contentBlockquote": "pf-v6-c-content--blockquote",
+    "contentDd": "pf-v6-c-content--dd",
+    "contentDl": "pf-v6-c-content--dl",
+    "contentDt": "pf-v6-c-content--dt",
+    "contentH1": "pf-v6-c-content--h1",
+    "contentH2": "pf-v6-c-content--h2",
+    "contentH3": "pf-v6-c-content--h3",
+    "contentH4": "pf-v6-c-content--h4",
+    "contentH5": "pf-v6-c-content--h5",
+    "contentH6": "pf-v6-c-content--h6",
+    "contentHr": "pf-v6-c-content--hr",
+    "contentLi": "pf-v6-c-content--li",
+    "contentOl": "pf-v6-c-content--ol",
+    "contentP": "pf-v6-c-content--p",
+    "contentPre": "pf-v6-c-content--pre",
+    "contentSmall": "pf-v6-c-content--small",
+    "contentTable": "pf-v6-c-content--table",
+    "contentUl": "pf-v6-c-content--ul",
+    "modifiers": {
+      "editorial": "pf-m-editorial",
+      "visited": "pf-m-visited",
+      "pageTitle": "pf-m-page-title",
+      "plain": "pf-m-plain"
+    }
+  };
+
+  // node_modules/@patternfly/react-core/dist/esm/components/Content/Content.js
+  var ContentVariants;
+  (function(ContentVariants2) {
+    ContentVariants2["h1"] = "h1";
+    ContentVariants2["h2"] = "h2";
+    ContentVariants2["h3"] = "h3";
+    ContentVariants2["h4"] = "h4";
+    ContentVariants2["h5"] = "h5";
+    ContentVariants2["h6"] = "h6";
+    ContentVariants2["p"] = "p";
+    ContentVariants2["a"] = "a";
+    ContentVariants2["small"] = "small";
+    ContentVariants2["blockquote"] = "blockquote";
+    ContentVariants2["pre"] = "pre";
+    ContentVariants2["hr"] = "hr";
+    ContentVariants2["ul"] = "ul";
+    ContentVariants2["ol"] = "ol";
+    ContentVariants2["dl"] = "dl";
+    ContentVariants2["li"] = "li";
+    ContentVariants2["dt"] = "dt";
+    ContentVariants2["dd"] = "dd";
+  })(ContentVariants || (ContentVariants = {}));
+  var componentStyles = {
+    div: content_default.content,
+    h1: content_default.contentH1,
+    h2: content_default.contentH2,
+    h3: content_default.contentH3,
+    h4: content_default.contentH4,
+    h5: content_default.contentH5,
+    h6: content_default.contentH6,
+    p: content_default.contentP,
+    a: content_default.contentA,
+    small: content_default.contentSmall,
+    blockquote: content_default.contentBlockquote,
+    pre: content_default.contentPre,
+    hr: content_default.contentHr,
+    ul: content_default.contentUl,
+    ol: content_default.contentOl,
+    dl: content_default.contentDl,
+    li: content_default.contentLi,
+    dt: content_default.contentDt,
+    dd: content_default.contentDd
+  };
+  var Content = (_a) => {
+    var { children, className = "", component, isPlainList = false, isVisitedLink = false, ouiaId, ouiaSafe = true, isEditorial = false } = _a, props = __rest(_a, ["children", "className", "component", "isPlainList", "isVisitedLink", "ouiaId", "ouiaSafe", "isEditorial"]);
+    const wrappingComponent = component !== null && component !== void 0 ? component : "div";
+    const Component17 = wrappingComponent;
+    const ouiaProps = useOUIAProps(Content.displayName, ouiaId, ouiaSafe);
+    const isList = ["ul", "ol", "dl"].includes(wrappingComponent);
+    return (0, import_jsx_runtime126.jsx)(Component17, Object.assign({}, ouiaProps, props, { "data-pf-content": true, className: css(componentStyles[wrappingComponent], isList && isPlainList && content_default.modifiers.plain, isVisitedLink && content_default.modifiers.visited, isEditorial && content_default.modifiers.editorial, className), children }));
+  };
+  Content.displayName = "Content";
+
+  // src/app/utils/commandCatalogue.js
+  function hostPrefix(mode) {
+    return mode === "admin" ? "sudo -u podshift -i " : "";
+  }
+  function commandCatalogue(name, mode = "admin") {
+    const prefix = hostPrefix(mode);
+    const target = String(name || "");
+    return [
+      {
+        id: "terminal",
+        commands: [
+          { id: "exec-sh", host: false, command: `${prefix}podman exec -it --user 0 ${target} sh` },
+          { id: "exec-bash", host: false, command: `${prefix}podman exec -it --user 0 ${target} bash` }
+        ]
+      },
+      {
+        id: "logs",
+        commands: [
+          { id: "logs-tail", host: true, command: `${prefix}podman logs --tail 100 ${target}` },
+          { id: "logs-follow", host: true, command: `${prefix}podman logs -f ${target}` },
+          { id: "logs-since", host: true, command: `${prefix}podman logs --since 10m ${target}` }
+        ]
+      },
+      {
+        id: "processes",
+        commands: [
+          { id: "top", host: true, command: `${prefix}podman top ${target} pid ppid user args` },
+          { id: "stats", host: true, command: `${prefix}podman stats --no-stream ${target}` },
+          { id: "pstree", host: false, command: `${prefix}podman exec ${target} pstree -p` },
+          { id: "ps-forest", host: false, command: `${prefix}podman exec ${target} ps -ef --forest` },
+          { id: "ps", host: false, command: `${prefix}podman exec ${target} ps` },
+          { id: "proc-loop", host: false, command: `${prefix}podman exec ${target} sh -c 'grep -E "^(Name|Pid|PPid):" /proc/[0-9]*/status'` }
+        ]
+      },
+      {
+        id: "system-info",
+        commands: [
+          { id: "os-release", host: false, command: `${prefix}podman exec ${target} cat /etc/os-release` },
+          { id: "meminfo", host: false, command: `${prefix}podman exec ${target} cat /proc/meminfo` },
+          { id: "df", host: false, command: `${prefix}podman exec ${target} df -h` },
+          { id: "id", host: false, command: `${prefix}podman exec ${target} id` },
+          { id: "resolv", host: false, command: `${prefix}podman exec ${target} cat /etc/resolv.conf` },
+          { id: "env", host: false, command: `${prefix}podman exec ${target} env` }
+        ]
+      }
+    ];
+  }
+  var SECTION_TITLES = {
+    terminal: "Terminal",
+    logs: "Logs",
+    processes: "Processes",
+    "system-info": "System info"
+  };
+  var COMMAND_DESCRIPTIONS = {
+    "exec-sh": "Open a root shell (container root maps to the podshift user on the host).",
+    "exec-bash": "Open a root bash shell (works if the image has bash).",
+    "logs-tail": "Show the last 100 log lines.",
+    "logs-follow": "Follow the log output live.",
+    "logs-since": "Show logs from the last 10 minutes.",
+    top: "List running processes in the container.",
+    stats: "Show one snapshot of CPU, memory and I/O usage.",
+    pstree: "Show the process tree (needs psmisc).",
+    "ps-forest": "Show processes as a tree (needs procps).",
+    ps: "List processes (works in BusyBox images too).",
+    "proc-loop": "List each process's name, PID and parent PID from /proc (works without ps).",
+    "os-release": "Show the container OS name and version.",
+    meminfo: "Show memory figures visible inside the container.",
+    df: "Show filesystem disk space usage inside the container.",
+    id: "Show the user and group IDs inside the container.",
+    resolv: "Show DNS resolver settings inside the container.",
+    env: "Show environment variables in the container (can show secret values when run)."
+  };
+  function commandCatalogueMarkdown(name, mode = "admin") {
+    const target = String(name || "");
+    const lines = [
+      `# Commands for container: \`${target}\``,
+      "",
+      "> Commands inside the container depend on its installed tools and current state, so some may not work in minimal or stopped containers. Commands marked `host` work without tools in the image.",
+      ""
+    ];
+    commandCatalogue(target, mode).forEach((section) => {
+      lines.push(`## ${SECTION_TITLES[section.id] || section.id}`, "");
+      section.commands.forEach((entry) => {
+        let description = COMMAND_DESCRIPTIONS[entry.id] || entry.id;
+        if (entry.host) {
+          description += " `(host)`";
+        }
+        lines.push(description, "", "```bash", entry.command, "```", "");
+      });
+    });
+    return lines.join("\n");
+  }
+
+  // src/app/utils/ChannelDownload.js
+  var TEMP_FILE_REMOVE_DELAY_MS = 1e4;
+  var ChannelDownload = class _ChannelDownload {
+    /**
+     * Builds the URL of an external channel.
+     *
+     * @param {Record<string, any>} open Channel open options, for example payload, path, superuser and external.
+     * @returns {string} The same-origin URL, a path with the encoded options as query.
+     */
+    static channelUrl(open) {
+      const bytes = new TextEncoder().encode(JSON.stringify(open));
+      const binary = Array.from(bytes, (byte) => String.fromCodePoint(byte)).join("");
+      const transport = (
+        /** @type {import('cockpit').Transport} */
+        cockpitTyped_default.transport
+      );
+      const prefix = new URL(transport.uri("channel/" + transport.csrf_token)).pathname;
+      return `${prefix}?${window.btoa(binary)}`;
+    }
+    /**
+     * Starts the download of a same-origin URL through a hidden anchor with a download attribute.
+     * The response is an attachment, so the page itself does not navigate.
+     *
+     * @param {string} url Same-origin URL, from channelUrl.
+     * @param {string} fileName Suggested file name.
+     */
+    static startDownload(url, fileName) {
+      const anchor = document.createElement("a");
+      anchor.href = url;
+      anchor.download = fileName;
+      anchor.rel = "noopener";
+      anchor.style.display = "none";
+      document.body.appendChild(anchor);
+      anchor.click();
+      anchor.remove();
+    }
+    /**
+     * Downloads one file of the host as root: a fsread1 external channel with superuser
+     * 'require' on the same host, so files of the podshift user that the signed-in admin cannot
+     * read directly are offered too. The file is sent as is, as an attachment with the given name.
+     *
+     * @param {string} path Absolute path of the file.
+     * @param {string} fileName Suggested file name.
+     * @param {string} contentType Content-Type of the response, for example application/json.
+     */
+    static downloadFile(path, fileName, contentType) {
+      const url = _ChannelDownload.channelUrl({
+        payload: "fsread1",
+        binary: "raw",
+        path,
+        superuser: "require",
+        host: cockpitTyped_default.transport.host,
+        // The bridge has no "unlimited" value; this is what cockpit-files passes.
+        max_read_size: Number.MAX_SAFE_INTEGER,
+        external: {
+          "content-disposition": `attachment; filename="${fileName}"`,
+          "content-type": contentType
+        }
+      });
+      _ChannelDownload.startDownload(url, fileName);
+    }
+    /**
+     * Downloads in-memory text as a file. The text is written to a temporary file of the signed-in
+     * user under /tmp, then offered through a same-origin fsread1 external channel (no superuser),
+     * and the file is removed shortly afterwards. A blob: or data: URL would be refused by
+     * Cockpit's default Content Security Policy (default-src 'self').
+     *
+     * @param {string} text File contents.
+     * @param {string} fileName Suggested file name.
+     * @param {string} contentType Content-Type of the response, for example text/markdown.
+     * @returns {Promise<void>} Settles when the download has been started.
+     */
+    static async downloadText(text, fileName, contentType) {
+      const stamp = Date.now().toString(36);
+      const safe = String(fileName || "download.txt").replace(/[^A-Za-z0-9._-]+/g, "_") || "download.txt";
+      const path = `/tmp/podshift-dl-${stamp}-${safe}`;
+      const handle = cockpitTyped_default.file(path);
+      try {
+        await handle.replace(String(text ?? ""));
+      } finally {
+        handle.close();
+      }
+      const url = _ChannelDownload.channelUrl({
+        payload: "fsread1",
+        binary: "raw",
+        path,
+        host: cockpitTyped_default.transport.host,
+        max_read_size: Number.MAX_SAFE_INTEGER,
+        external: {
+          "content-disposition": `attachment; filename="${safe}"`,
+          "content-type": contentType
+        }
+      });
+      _ChannelDownload.startDownload(url, safe);
+      window.setTimeout(function removeTempFile() {
+        const cleanup = cockpitTyped_default.file(path);
+        cleanup.replace(null).catch(() => {
+        }).finally(() => cleanup.close());
+      }, TEMP_FILE_REMOVE_DELAY_MS);
+    }
+  };
+
+  // src/app/utils/resourceName.js
+  function inspectFileName(kind, name) {
+    const safe = String(name || "").replace(/[^A-Za-z0-9._-]+/g, "_").replace(/^[._]+/, "") || "resource";
+    return `${kind}-${safe}-inspect.json`;
+  }
+  function commandsFileName(name) {
+    const safe = String(name || "").replace(/[^A-Za-z0-9._-]+/g, "_").replace(/^[._]+/, "") || "container";
+    return `commands-${safe}.md`;
+  }
+  function resourceDisplayName(item) {
+    if (item.title && item.title !== "<none>") {
+      return item.title;
+    }
+    return String(item.id || "").slice(0, 12);
+  }
+  function serviceDisplayName(unit) {
+    const name = String(unit || "");
+    return name.endsWith(".service") && name.length > ".service".length ? name.slice(0, -".service".length) : name;
+  }
+
+  // src/app/components/modals/CommandsModal.jsx
+  var import_jsx_runtime127 = __toESM(require_jsx_runtime(), 1);
+  function sectionTitle(id) {
+    switch (id) {
+      case "terminal":
+        return i18n("Terminal");
+      case "logs":
+        return i18n("Logs");
+      case "processes":
+        return i18n("Processes");
+      case "system-info":
+        return i18n("System info");
+      default:
+        return id;
+    }
+  }
+  function commandDescription(id) {
+    switch (id) {
+      case "exec-sh":
+        return i18n("Open a root shell (container root maps to the podshift user on the host).");
+      case "exec-bash":
+        return i18n("Open a root bash shell (works if the image has bash).");
+      case "logs-tail":
+        return i18n("Show the last 100 log lines.");
+      case "logs-follow":
+        return i18n("Follow the log output live.");
+      case "logs-since":
+        return i18n("Show logs from the last 10 minutes.");
+      case "top":
+        return i18n("List running processes in the container.");
+      case "stats":
+        return i18n("Show one snapshot of CPU, memory and I/O usage.");
+      case "pstree":
+        return i18n("Show the process tree (needs psmisc).");
+      case "ps-forest":
+        return i18n("Show processes as a tree (needs procps).");
+      case "ps":
+        return i18n("List processes (works in BusyBox images too).");
+      case "proc-loop":
+        return i18n("List each process's name, PID and parent PID from /proc (works without ps).");
+      case "os-release":
+        return i18n("Show the container OS name and version.");
+      case "meminfo":
+        return i18n("Show memory figures visible inside the container.");
+      case "df":
+        return i18n("Show filesystem disk space usage inside the container.");
+      case "id":
+        return i18n("Show the user and group IDs inside the container.");
+      case "resolv":
+        return i18n("Show DNS resolver settings inside the container.");
+      case "env":
+        return i18n("Show environment variables in the container (can show secret values when run).");
+      default:
+        return id;
+    }
+  }
+  function textWithInlineCode(text, marker) {
+    const at = text.indexOf(marker);
+    if (at < 0) {
+      return text;
+    }
+    return /* @__PURE__ */ (0, import_jsx_runtime127.jsxs)(import_jsx_runtime127.Fragment, { children: [
+      text.slice(0, at),
+      /* @__PURE__ */ (0, import_jsx_runtime127.jsx)("code", { children: marker }),
+      text.slice(at + marker.length)
+    ] });
+  }
+  function CommandSnippet({ command }) {
+    const { copied, copy } = useCopiedFlag();
+    return /* @__PURE__ */ (0, import_jsx_runtime127.jsx)(Tooltip, { content: copied ? i18n("Copied") : i18n("Copy"), children: /* @__PURE__ */ (0, import_jsx_runtime127.jsx)(
+      Button,
+      {
+        variant: "plain",
+        isBlock: true,
+        iconPosition: "end",
+        icon: copied ? /* @__PURE__ */ (0, import_jsx_runtime127.jsx)(CheckIcon, {}) : /* @__PURE__ */ (0, import_jsx_runtime127.jsx)(CopyIcon, {}),
+        className: "podshift-commands-snippet",
+        "aria-label": copied ? i18n("Copied") : i18n("Copy command"),
+        onClick: () => {
+          copy(command).catch(() => {
+          });
+        },
+        children: command
+      }
+    ) });
+  }
+  function CommandsModal({ container, mode, onClose }) {
+    const name = container ? resourceDisplayName(container) : "";
+    const sections = (0, import_react90.useMemo)(() => name ? commandCatalogue(name, mode) : [], [name, mode]);
+    const markdown = (0, import_react90.useMemo)(() => name ? commandCatalogueMarkdown(name, mode) : "", [name, mode]);
+    const { copied, copy, reset } = useCopiedFlag();
+    (0, import_react90.useEffect)(() => reset(), [name, markdown, reset]);
+    if (!container) {
+      return null;
+    }
+    return /* @__PURE__ */ (0, import_jsx_runtime127.jsxs)(
+      Modal,
+      {
+        variant: "large",
+        isOpen: true,
+        onClose,
+        "aria-labelledby": "podshift-commands-title",
+        children: [
+          /* @__PURE__ */ (0, import_jsx_runtime127.jsx)(
+            ModalHeader,
+            {
+              labelId: "podshift-commands-title",
+              title: i18n("Commands")
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime127.jsx)(ModalBody, { children: /* @__PURE__ */ (0, import_jsx_runtime127.jsxs)(Content, { className: "podshift-commands-page", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime127.jsxs)(Content, { component: "h1", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime127.jsx)("span", { className: "podshift-commands-mark", children: "# " }),
+              i18n("Commands for container:"),
+              " ",
+              /* @__PURE__ */ (0, import_jsx_runtime127.jsx)("code", { children: name })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime127.jsxs)(Content, { component: "blockquote", children: [
+              i18n("Commands inside the container depend on its installed tools and current state, so some may not work in minimal or stopped containers."),
+              " ",
+              textWithInlineCode(cockpitTyped_default.format(i18n("Commands marked $0 work without tools in the image."), "host"), "host")
+            ] }),
+            sections.map((section) => /* @__PURE__ */ (0, import_jsx_runtime127.jsxs)(import_react90.default.Fragment, { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime127.jsxs)(Content, { component: "h2", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime127.jsx)("span", { className: "podshift-commands-mark", children: "## " }),
+                sectionTitle(section.id)
+              ] }),
+              section.commands.map((entry) => /* @__PURE__ */ (0, import_jsx_runtime127.jsxs)("div", { className: "podshift-commands-entry", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime127.jsxs)(Content, { component: "p", children: [
+                  commandDescription(entry.id),
+                  entry.host && /* @__PURE__ */ (0, import_jsx_runtime127.jsxs)(import_jsx_runtime127.Fragment, { children: [
+                    " ",
+                    /* @__PURE__ */ (0, import_jsx_runtime127.jsx)("code", { children: "(host)" })
+                  ] })
+                ] }),
+                /* @__PURE__ */ (0, import_jsx_runtime127.jsx)(CommandSnippet, { command: entry.command })
+              ] }, entry.id))
+            ] }, section.id))
+          ] }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime127.jsxs)(ModalFooter, { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime127.jsx)(Button, { variant: "secondary", icon: /* @__PURE__ */ (0, import_jsx_runtime127.jsx)(CopyIcon, {}), isDisabled: !markdown, onClick: () => {
+              copy(markdown).catch(() => {
+              });
+            }, children: copied ? i18n("Copied") : i18n("Copy") }),
+            /* @__PURE__ */ (0, import_jsx_runtime127.jsx)(
+              Button,
+              {
+                variant: "secondary",
+                icon: /* @__PURE__ */ (0, import_jsx_runtime127.jsx)(DownloadIcon, {}),
+                isDisabled: !markdown,
+                onClick: () => {
+                  ChannelDownload.downloadText(markdown, commandsFileName(name), "text/markdown").catch(() => {
+                  });
+                },
+                children: i18n("Download")
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime127.jsx)(Button, { variant: "link", onClick: onClose, children: i18n("Close") })
+          ] })
+        ]
+      }
+    );
+  }
+
   // src/app/modules/BaseModule.jsx
-  var import_react115 = __toESM(require_react(), 1);
+  var import_react117 = __toESM(require_react(), 1);
 
   // node_modules/@patternfly/react-core/dist/esm/components/SearchInput/SearchInput.js
-  var import_jsx_runtime130 = __toESM(require_jsx_runtime());
-  var import_react91 = __toESM(require_react());
+  var import_jsx_runtime132 = __toESM(require_jsx_runtime());
+  var import_react93 = __toESM(require_react());
 
   // node_modules/@patternfly/react-core/dist/esm/components/SearchInput/AdvancedSearchMenu.js
-  var import_jsx_runtime129 = __toESM(require_jsx_runtime());
-  var import_react90 = __toESM(require_react());
+  var import_jsx_runtime131 = __toESM(require_jsx_runtime());
+  var import_react92 = __toESM(require_react());
 
   // node_modules/@patternfly/react-core/dist/esm/components/Panel/Panel.js
-  var import_jsx_runtime126 = __toESM(require_jsx_runtime());
-  var import_react89 = __toESM(require_react());
+  var import_jsx_runtime128 = __toESM(require_jsx_runtime());
+  var import_react91 = __toESM(require_react());
 
   // node_modules/@patternfly/react-styles/css/components/Panel/panel.mjs
   var panel_default = {
@@ -44422,13 +45064,13 @@
   // node_modules/@patternfly/react-core/dist/esm/components/Panel/Panel.js
   var PanelBase = (_a) => {
     var { className, children, variant, isScrollable, isAutoHeight, hasNoBorder, isFullHeight, isGlass, isPill, innerRef } = _a, props = __rest(_a, ["className", "children", "variant", "isScrollable", "isAutoHeight", "hasNoBorder", "isFullHeight", "isGlass", "isPill", "innerRef"]);
-    return (0, import_jsx_runtime126.jsx)("div", Object.assign({ className: css(panel_default.panel, variant && panel_default.modifiers[variant], isScrollable && panel_default.modifiers.scrollable, isAutoHeight && panel_default.modifiers.scrollableAutoHeight, hasNoBorder && panel_default.modifiers.noBorder, isFullHeight && panel_default.modifiers.fullHeight, isGlass && panel_default.modifiers.glass, isPill && panel_default.modifiers.pill, className), ref: innerRef }, props, { children }));
+    return (0, import_jsx_runtime128.jsx)("div", Object.assign({ className: css(panel_default.panel, variant && panel_default.modifiers[variant], isScrollable && panel_default.modifiers.scrollable, isAutoHeight && panel_default.modifiers.scrollableAutoHeight, hasNoBorder && panel_default.modifiers.noBorder, isFullHeight && panel_default.modifiers.fullHeight, isGlass && panel_default.modifiers.glass, isPill && panel_default.modifiers.pill, className), ref: innerRef }, props, { children }));
   };
-  var Panel = (0, import_react89.forwardRef)((props, ref) => (0, import_jsx_runtime126.jsx)(PanelBase, Object.assign({ innerRef: ref }, props)));
+  var Panel = (0, import_react91.forwardRef)((props, ref) => (0, import_jsx_runtime128.jsx)(PanelBase, Object.assign({ innerRef: ref }, props)));
   Panel.displayName = "Panel";
 
   // node_modules/@patternfly/react-core/dist/esm/components/Panel/PanelMain.js
-  var import_jsx_runtime127 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime129 = __toESM(require_jsx_runtime());
 
   // node_modules/@patternfly/react-tokens/dist/esm/c_panel__main_MaxHeight.js
   var c_panel__main_MaxHeight = {
@@ -44441,29 +45083,29 @@
   // node_modules/@patternfly/react-core/dist/esm/components/Panel/PanelMain.js
   var PanelMain = (_a) => {
     var { className, children, maxHeight } = _a, props = __rest(_a, ["className", "children", "maxHeight"]);
-    return (0, import_jsx_runtime127.jsx)("div", Object.assign({ className: css(panel_default.panelMain, className), style: { [c_panel_main_MaxHeight_default.name]: maxHeight } }, props, { children }));
+    return (0, import_jsx_runtime129.jsx)("div", Object.assign({ className: css(panel_default.panelMain, className), style: { [c_panel_main_MaxHeight_default.name]: maxHeight } }, props, { children }));
   };
   PanelMain.displayName = "PanelMain";
 
   // node_modules/@patternfly/react-core/dist/esm/components/Panel/PanelMainBody.js
-  var import_jsx_runtime128 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime130 = __toESM(require_jsx_runtime());
   var PanelMainBody = (_a) => {
     var { className, children } = _a, props = __rest(_a, ["className", "children"]);
-    return (0, import_jsx_runtime128.jsx)("div", Object.assign({ className: css(panel_default.panelMainBody, className) }, props, { children }));
+    return (0, import_jsx_runtime130.jsx)("div", Object.assign({ className: css(panel_default.panelMainBody, className) }, props, { children }));
   };
   PanelMainBody.displayName = "PanelMainBody";
 
   // node_modules/@patternfly/react-core/dist/esm/components/SearchInput/AdvancedSearchMenu.js
   var AdvancedSearchMenu = ({ className, parentRef, parentInputRef, value = "", attributes = [], formAdditionalItems, hasWordsAttrLabel = "Has words", advancedSearchDelimiter, getAttrValueMap, onChange, onSearch, onClear, resetButtonLabel = "Reset", submitSearchButtonLabel = "Search", isSearchMenuOpen, onToggleAdvancedMenu }) => {
     const hasWordsId = useSSRSafeId();
-    const firstAttrRef = (0, import_react90.useRef)(null);
-    const [putFocusBackOnInput, setPutFocusBackOnInput] = (0, import_react90.useState)(false);
-    (0, import_react90.useEffect)(() => {
+    const firstAttrRef = (0, import_react92.useRef)(null);
+    const [putFocusBackOnInput, setPutFocusBackOnInput] = (0, import_react92.useState)(false);
+    (0, import_react92.useEffect)(() => {
       if (attributes.length > 0 && !advancedSearchDelimiter) {
         console.error("AdvancedSearchMenu: An advancedSearchDelimiter prop is required when advanced search attributes are provided using the attributes prop");
       }
     });
-    (0, import_react90.useEffect)(() => {
+    (0, import_react92.useEffect)(() => {
       if (isSearchMenuOpen && firstAttrRef && firstAttrRef.current) {
         firstAttrRef.current.focus();
         setPutFocusBackOnInput(true);
@@ -44471,7 +45113,7 @@
         parentInputRef.current.focus();
       }
     }, [isSearchMenuOpen]);
-    (0, import_react90.useEffect)(() => {
+    (0, import_react92.useEffect)(() => {
       const onDocClick = (event) => {
         const clickedWithinSearchInput = parentRef && parentRef.current.contains(event.target);
         if (isSearchMenuOpen && !clickedWithinSearchInput) {
@@ -44529,33 +45171,33 @@
         const display = typeof attribute === "string" ? attribute : attribute.display;
         const queryAttr = typeof attribute === "string" ? attribute : attribute.attr;
         if (index === 0) {
-          formGroups.push((0, import_jsx_runtime129.jsx)(FormGroup, { label: display, fieldId: `${queryAttr}_${index}`, children: (0, import_jsx_runtime129.jsx)(TextInput, { ref: firstAttrRef, type: "text", id: `${queryAttr}_${index}`, value: getValue(queryAttr), onChange: (evt, value2) => handleValueChange(queryAttr, value2, evt) }) }, `${attribute}_${index}`));
+          formGroups.push((0, import_jsx_runtime131.jsx)(FormGroup, { label: display, fieldId: `${queryAttr}_${index}`, children: (0, import_jsx_runtime131.jsx)(TextInput, { ref: firstAttrRef, type: "text", id: `${queryAttr}_${index}`, value: getValue(queryAttr), onChange: (evt, value2) => handleValueChange(queryAttr, value2, evt) }) }, `${attribute}_${index}`));
         } else {
-          formGroups.push((0, import_jsx_runtime129.jsx)(FormGroup, { label: display, fieldId: `${queryAttr}_${index}`, children: (0, import_jsx_runtime129.jsx)(TextInput, { type: "text", id: `${queryAttr}_${index}`, value: getValue(queryAttr), onChange: (evt, value2) => handleValueChange(queryAttr, value2, evt) }) }, `${attribute}_${index}`));
+          formGroups.push((0, import_jsx_runtime131.jsx)(FormGroup, { label: display, fieldId: `${queryAttr}_${index}`, children: (0, import_jsx_runtime131.jsx)(TextInput, { type: "text", id: `${queryAttr}_${index}`, value: getValue(queryAttr), onChange: (evt, value2) => handleValueChange(queryAttr, value2, evt) }) }, `${attribute}_${index}`));
         }
       });
-      formGroups.push((0, import_jsx_runtime129.jsx)(FormGroup, { label: hasWordsAttrLabel, fieldId: hasWordsId, children: (0, import_jsx_runtime129.jsx)(TextInput, { type: "text", id: hasWordsId, value: getValue("haswords"), onChange: (evt, value2) => handleValueChange("haswords", value2, evt) }) }, "hasWords"));
+      formGroups.push((0, import_jsx_runtime131.jsx)(FormGroup, { label: hasWordsAttrLabel, fieldId: hasWordsId, children: (0, import_jsx_runtime131.jsx)(TextInput, { type: "text", id: hasWordsId, value: getValue("haswords"), onChange: (evt, value2) => handleValueChange("haswords", value2, evt) }) }, "hasWords"));
       return formGroups;
     };
-    return isSearchMenuOpen ? (0, import_jsx_runtime129.jsx)(Panel, { variant: "raised", className: css(className), children: (0, import_jsx_runtime129.jsx)(PanelMain, { children: (0, import_jsx_runtime129.jsx)(PanelMainBody, { children: (0, import_jsx_runtime129.jsxs)(Form, { children: [buildFormGroups(), formAdditionalItems ? formAdditionalItems : null, (0, import_jsx_runtime129.jsxs)(ActionGroup, { children: [(0, import_jsx_runtime129.jsx)(Button, { variant: "primary", type: "submit", onClick: onSearchHandler, isDisabled: !value, children: submitSearchButtonLabel }), !!onClear && (0, import_jsx_runtime129.jsx)(Button, { variant: "link", type: "reset", onClick: onClear, children: resetButtonLabel })] })] }) }) }) }) : null;
+    return isSearchMenuOpen ? (0, import_jsx_runtime131.jsx)(Panel, { variant: "raised", className: css(className), children: (0, import_jsx_runtime131.jsx)(PanelMain, { children: (0, import_jsx_runtime131.jsx)(PanelMainBody, { children: (0, import_jsx_runtime131.jsxs)(Form, { children: [buildFormGroups(), formAdditionalItems ? formAdditionalItems : null, (0, import_jsx_runtime131.jsxs)(ActionGroup, { children: [(0, import_jsx_runtime131.jsx)(Button, { variant: "primary", type: "submit", onClick: onSearchHandler, isDisabled: !value, children: submitSearchButtonLabel }), !!onClear && (0, import_jsx_runtime131.jsx)(Button, { variant: "link", type: "reset", onClick: onClear, children: resetButtonLabel })] })] }) }) }) }) : null;
   };
   AdvancedSearchMenu.displayName = "SearchInput";
 
   // node_modules/@patternfly/react-core/dist/esm/components/SearchInput/SearchInput.js
   var SearchInputBase = (_a) => {
     var { className, searchInputId, value = "", attributes = [], formAdditionalItems, hasWordsAttrLabel = "Has words", advancedSearchDelimiter, placeholder, hint, onChange, onSearch, onClear, onToggleAdvancedSearch, isAdvancedSearchOpen = false, resultsCount, resultsCountContext = " results", onNextClick, onPreviousClick, innerRef, expandableInput, "aria-label": ariaLabel = "Search input", resetButtonLabel = "Reset", openMenuButtonAriaLabel = "Open advanced search", previousNavigationButtonAriaLabel = "Previous", isPreviousNavigationButtonDisabled = false, isNextNavigationButtonDisabled = false, nextNavigationButtonAriaLabel = "Next", submitSearchButtonLabel = "Search", isDisabled = false, appendTo, zIndex = 9999, name, areUtilitiesDisplayed, inputProps } = _a, props = __rest(_a, ["className", "searchInputId", "value", "attributes", "formAdditionalItems", "hasWordsAttrLabel", "advancedSearchDelimiter", "placeholder", "hint", "onChange", "onSearch", "onClear", "onToggleAdvancedSearch", "isAdvancedSearchOpen", "resultsCount", "resultsCountContext", "onNextClick", "onPreviousClick", "innerRef", "expandableInput", "aria-label", "resetButtonLabel", "openMenuButtonAriaLabel", "previousNavigationButtonAriaLabel", "isPreviousNavigationButtonDisabled", "isNextNavigationButtonDisabled", "nextNavigationButtonAriaLabel", "submitSearchButtonLabel", "isDisabled", "appendTo", "zIndex", "name", "areUtilitiesDisplayed", "inputProps"]);
-    const [isSearchMenuOpen, setIsSearchMenuOpen] = (0, import_react91.useState)(false);
-    const [searchValue, setSearchValue] = (0, import_react91.useState)(value);
-    const searchInputRef = (0, import_react91.useRef)(null);
-    const ref = (0, import_react91.useRef)(null);
+    const [isSearchMenuOpen, setIsSearchMenuOpen] = (0, import_react93.useState)(false);
+    const [searchValue, setSearchValue] = (0, import_react93.useState)(value);
+    const searchInputRef = (0, import_react93.useRef)(null);
+    const ref = (0, import_react93.useRef)(null);
     const searchInputInputRef = innerRef || ref;
-    const searchInputExpandableToggleRef = (0, import_react91.useRef)(null);
-    const triggerRef = (0, import_react91.useRef)(null);
-    const popperRef = (0, import_react91.useRef)(null);
-    const [focusAfterExpandChange, setFocusAfterExpandChange] = (0, import_react91.useState)(false);
+    const searchInputExpandableToggleRef = (0, import_react93.useRef)(null);
+    const triggerRef = (0, import_react93.useRef)(null);
+    const popperRef = (0, import_react93.useRef)(null);
+    const [focusAfterExpandChange, setFocusAfterExpandChange] = (0, import_react93.useState)(false);
     const { isExpanded, onToggleExpand, toggleAriaLabel, hasAnimations: hasAnimationsProp } = expandableInput || {};
     const hasAnimations = useHasAnimations(hasAnimationsProp);
-    (0, import_react91.useEffect)(() => {
+    (0, import_react93.useEffect)(() => {
       var _a2, _b;
       if (!focusAfterExpandChange) {
         return;
@@ -44570,15 +45212,15 @@
         setFocusAfterExpandChange(false);
       }
     }, [focusAfterExpandChange, isExpanded, searchInputInputRef, searchInputExpandableToggleRef]);
-    (0, import_react91.useEffect)(() => {
+    (0, import_react93.useEffect)(() => {
       setSearchValue(value);
     }, [value]);
-    (0, import_react91.useEffect)(() => {
+    (0, import_react93.useEffect)(() => {
       if (attributes.length > 0 && !advancedSearchDelimiter) {
         console.error("An advancedSearchDelimiter prop is required when advanced search attributes are provided using the attributes prop");
       }
     });
-    (0, import_react91.useEffect)(() => {
+    (0, import_react93.useEffect)(() => {
       setIsSearchMenuOpen(isAdvancedSearchOpen);
     }, [isAdvancedSearchOpen]);
     const onChangeHandler = (event, value2) => {
@@ -44653,20 +45295,20 @@
     const renderUtilities = value && (resultsCount || !!onNextClick && !!onPreviousClick || !!onClear && !expandableInput);
     const buildTextInputGroup = (_a2 = {}) => {
       var searchInputProps2 = __rest(_a2, []);
-      return (0, import_jsx_runtime130.jsxs)(TextInputGroup, Object.assign({ isDisabled }, searchInputProps2, { children: [(0, import_jsx_runtime130.jsx)(TextInputGroupMain, { hint, icon: (0, import_jsx_runtime130.jsx)(search_icon_default, {}), innerRef: searchInputInputRef, value: searchValue, placeholder, "aria-label": ariaLabel, onKeyDown: onEnter, onChange: onChangeHandler, name, inputId: searchInputId, inputProps }), (renderUtilities || areUtilitiesDisplayed) && (0, import_jsx_runtime130.jsxs)(TextInputGroupUtilities, { children: [resultsCount && (0, import_jsx_runtime130.jsx)(Badge, { isRead: true, screenReaderText: resultsCountContext, children: resultsCount }), !!onNextClick && !!onPreviousClick && (0, import_jsx_runtime130.jsxs)("div", { className: text_input_group_default.textInputGroupGroup, children: [(0, import_jsx_runtime130.jsx)(Button, { variant: ButtonVariant.plain, "aria-label": previousNavigationButtonAriaLabel, isDisabled: isDisabled || isPreviousNavigationButtonDisabled, onClick: onPreviousClick, icon: (0, import_jsx_runtime130.jsx)(angle_up_icon_default, {}) }), (0, import_jsx_runtime130.jsx)(Button, { variant: ButtonVariant.plain, "aria-label": nextNavigationButtonAriaLabel, isDisabled: isDisabled || isNextNavigationButtonDisabled, onClick: onNextClick, icon: (0, import_jsx_runtime130.jsx)(rh_microns_caret_down_fill_icon_default, {}) })] }), !!onClear && !expandableInput && (0, import_jsx_runtime130.jsx)(Button, { variant: ButtonVariant.plain, isDisabled, "aria-label": resetButtonLabel, onClick: onClearInput, icon: (0, import_jsx_runtime130.jsx)(rh_microns_close_icon_default, {}) })] })] }));
+      return (0, import_jsx_runtime132.jsxs)(TextInputGroup, Object.assign({ isDisabled }, searchInputProps2, { children: [(0, import_jsx_runtime132.jsx)(TextInputGroupMain, { hint, icon: (0, import_jsx_runtime132.jsx)(search_icon_default, {}), innerRef: searchInputInputRef, value: searchValue, placeholder, "aria-label": ariaLabel, onKeyDown: onEnter, onChange: onChangeHandler, name, inputId: searchInputId, inputProps }), (renderUtilities || areUtilitiesDisplayed) && (0, import_jsx_runtime132.jsxs)(TextInputGroupUtilities, { children: [resultsCount && (0, import_jsx_runtime132.jsx)(Badge, { isRead: true, screenReaderText: resultsCountContext, children: resultsCount }), !!onNextClick && !!onPreviousClick && (0, import_jsx_runtime132.jsxs)("div", { className: text_input_group_default.textInputGroupGroup, children: [(0, import_jsx_runtime132.jsx)(Button, { variant: ButtonVariant.plain, "aria-label": previousNavigationButtonAriaLabel, isDisabled: isDisabled || isPreviousNavigationButtonDisabled, onClick: onPreviousClick, icon: (0, import_jsx_runtime132.jsx)(angle_up_icon_default, {}) }), (0, import_jsx_runtime132.jsx)(Button, { variant: ButtonVariant.plain, "aria-label": nextNavigationButtonAriaLabel, isDisabled: isDisabled || isNextNavigationButtonDisabled, onClick: onNextClick, icon: (0, import_jsx_runtime132.jsx)(rh_microns_caret_down_fill_icon_default, {}) })] }), !!onClear && !expandableInput && (0, import_jsx_runtime132.jsx)(Button, { variant: ButtonVariant.plain, isDisabled, "aria-label": resetButtonLabel, onClick: onClearInput, icon: (0, import_jsx_runtime132.jsx)(rh_microns_close_icon_default, {}) })] })] }));
     };
-    const expandToggleButton = (0, import_jsx_runtime130.jsx)(Button, { variant: ButtonVariant.plain, "aria-label": toggleAriaLabel, "aria-expanded": isExpanded, icon: (0, import_jsx_runtime130.jsx)(search_icon_default, {}), onClick: onExpandHandler, ref: searchInputExpandableToggleRef });
-    const collapseToggleButton = (0, import_jsx_runtime130.jsx)(Button, { variant: ButtonVariant.plain, "aria-label": toggleAriaLabel, "aria-expanded": isExpanded, icon: (0, import_jsx_runtime130.jsx)(rh_microns_close_icon_default, {}), onClick: onExpandHandler });
-    const singleButtonToggle = (0, import_jsx_runtime130.jsx)(Button, { variant: ButtonVariant.plain, "aria-label": toggleAriaLabel, "aria-expanded": isExpanded, icon: isExpanded ? (0, import_jsx_runtime130.jsx)(rh_microns_close_icon_default, {}) : (0, import_jsx_runtime130.jsx)(search_icon_default, {}), onClick: onExpandHandler, ref: searchInputExpandableToggleRef });
+    const expandToggleButton = (0, import_jsx_runtime132.jsx)(Button, { variant: ButtonVariant.plain, "aria-label": toggleAriaLabel, "aria-expanded": isExpanded, icon: (0, import_jsx_runtime132.jsx)(search_icon_default, {}), onClick: onExpandHandler, ref: searchInputExpandableToggleRef });
+    const collapseToggleButton = (0, import_jsx_runtime132.jsx)(Button, { variant: ButtonVariant.plain, "aria-label": toggleAriaLabel, "aria-expanded": isExpanded, icon: (0, import_jsx_runtime132.jsx)(rh_microns_close_icon_default, {}), onClick: onExpandHandler });
+    const singleButtonToggle = (0, import_jsx_runtime132.jsx)(Button, { variant: ButtonVariant.plain, "aria-label": toggleAriaLabel, "aria-expanded": isExpanded, icon: isExpanded ? (0, import_jsx_runtime132.jsx)(rh_microns_close_icon_default, {}) : (0, import_jsx_runtime132.jsx)(search_icon_default, {}), onClick: onExpandHandler, ref: searchInputExpandableToggleRef });
     const onTransitionEnd = () => {
       var _a2;
       !isExpanded && focusAfterExpandChange && ((_a2 = searchInputExpandableToggleRef === null || searchInputExpandableToggleRef === void 0 ? void 0 : searchInputExpandableToggleRef.current) === null || _a2 === void 0 ? void 0 : _a2.focus());
       setFocusAfterExpandChange(false);
     };
-    const expandableToggle = (0, import_jsx_runtime130.jsxs)(import_jsx_runtime130.Fragment, { children: [!hasAnimations && (0, import_jsx_runtime130.jsx)(InputGroupItem, { isPlain: true, children: singleButtonToggle }), hasAnimations && (0, import_jsx_runtime130.jsxs)(import_jsx_runtime130.Fragment, { children: [(0, import_jsx_runtime130.jsx)(InputGroupItem, Object.assign({ className: input_group_default.modifiers.searchExpand, isPlain: true, onTransitionEnd }, isExpanded && { inert: "" }, { children: expandToggleButton })), (0, import_jsx_runtime130.jsx)(InputGroupItem, Object.assign({ className: input_group_default.modifiers.searchAction, isPlain: true }, !isExpanded && { inert: "" }, { children: collapseToggleButton }))] })] });
+    const expandableToggle = (0, import_jsx_runtime132.jsxs)(import_jsx_runtime132.Fragment, { children: [!hasAnimations && (0, import_jsx_runtime132.jsx)(InputGroupItem, { isPlain: true, children: singleButtonToggle }), hasAnimations && (0, import_jsx_runtime132.jsxs)(import_jsx_runtime132.Fragment, { children: [(0, import_jsx_runtime132.jsx)(InputGroupItem, Object.assign({ className: input_group_default.modifiers.searchExpand, isPlain: true, onTransitionEnd }, isExpanded && { inert: "" }, { children: expandToggleButton })), (0, import_jsx_runtime132.jsx)(InputGroupItem, Object.assign({ className: input_group_default.modifiers.searchAction, isPlain: true }, !isExpanded && { inert: "" }, { children: collapseToggleButton }))] })] });
     const buildExpandableSearchInput = (_a2 = {}) => {
       var searchInputProps2 = __rest(_a2, []);
-      return (0, import_jsx_runtime130.jsxs)(InputGroup, Object.assign({}, searchInputProps2, { children: [(0, import_jsx_runtime130.jsx)(InputGroupItem, Object.assign({}, !hasAnimations && { isFill: true }, hasAnimations && { className: input_group_default.modifiers.searchInput }, !isExpanded && {
+      return (0, import_jsx_runtime132.jsxs)(InputGroup, Object.assign({}, searchInputProps2, { children: [(0, import_jsx_runtime132.jsx)(InputGroupItem, Object.assign({}, !hasAnimations && { isFill: true }, hasAnimations && { className: input_group_default.modifiers.searchInput }, !isExpanded && {
         inert: ""
       }, { children: buildTextInputGroup() })), expandableToggle] }));
     };
@@ -44679,22 +45321,22 @@
     };
     const buildSearchTextInputGroupWithExtraButtons = (_a2 = {}) => {
       var searchInputProps2 = __rest(_a2, []);
-      return (0, import_jsx_runtime130.jsxs)(InputGroup, Object.assign({ ref: triggerRef }, searchInputProps2, { children: [(0, import_jsx_runtime130.jsx)(InputGroupItem, Object.assign({}, !hasAnimations && { isFill: true }, expandableInput && hasAnimations && { className: input_group_default.modifiers.searchInput }, expandableInput && hasAnimations && !isExpanded && {
+      return (0, import_jsx_runtime132.jsxs)(InputGroup, Object.assign({ ref: triggerRef }, searchInputProps2, { children: [(0, import_jsx_runtime132.jsx)(InputGroupItem, Object.assign({}, !hasAnimations && { isFill: true }, expandableInput && hasAnimations && { className: input_group_default.modifiers.searchInput }, expandableInput && hasAnimations && !isExpanded && {
         inert: ""
-      }, { children: buildTextInputGroup() })), (attributes.length > 0 || onToggleAdvancedSearch) && (0, import_jsx_runtime130.jsx)(InputGroupItem, Object.assign({ isPlain: true }, hasAnimations && { className: input_group_default.modifiers.searchAction }, { children: (0, import_jsx_runtime130.jsx)(Button, { className: isSearchMenuOpen && "pf-m-expanded", variant: ButtonVariant.control, "aria-label": openMenuButtonAriaLabel, onClick: onToggle, isDisabled, "aria-expanded": isSearchMenuOpen, icon: (0, import_jsx_runtime130.jsx)(rh_microns_caret_down_fill_icon_default, {}) }) })), !!onSearch && (0, import_jsx_runtime130.jsx)(InputGroupItem, Object.assign({}, hasAnimations && { className: input_group_default.modifiers.searchAction }, { children: (0, import_jsx_runtime130.jsx)(Button, { type: "submit", variant: ButtonVariant.control, "aria-label": submitSearchButtonLabel, onClick: onSearchHandler, isDisabled, icon: (0, import_jsx_runtime130.jsx)(Icon, { shouldMirrorRTL: true, children: (0, import_jsx_runtime130.jsx)(rh_microns_caret_right_icon_default, {}) }) }) })), expandableInput && (0, import_jsx_runtime130.jsx)(InputGroupItem, { children: expandableToggle })] }));
+      }, { children: buildTextInputGroup() })), (attributes.length > 0 || onToggleAdvancedSearch) && (0, import_jsx_runtime132.jsx)(InputGroupItem, Object.assign({ isPlain: true }, hasAnimations && { className: input_group_default.modifiers.searchAction }, { children: (0, import_jsx_runtime132.jsx)(Button, { className: isSearchMenuOpen && "pf-m-expanded", variant: ButtonVariant.control, "aria-label": openMenuButtonAriaLabel, onClick: onToggle, isDisabled, "aria-expanded": isSearchMenuOpen, icon: (0, import_jsx_runtime132.jsx)(rh_microns_caret_down_fill_icon_default, {}) }) })), !!onSearch && (0, import_jsx_runtime132.jsx)(InputGroupItem, Object.assign({}, hasAnimations && { className: input_group_default.modifiers.searchAction }, { children: (0, import_jsx_runtime132.jsx)(Button, { type: "submit", variant: ButtonVariant.control, "aria-label": submitSearchButtonLabel, onClick: onSearchHandler, isDisabled, icon: (0, import_jsx_runtime132.jsx)(Icon, { shouldMirrorRTL: true, children: (0, import_jsx_runtime132.jsx)(rh_microns_caret_right_icon_default, {}) }) }) })), expandableInput && (0, import_jsx_runtime132.jsx)(InputGroupItem, { children: expandableToggle })] }));
     };
     const searchInputProps = Object.assign(Object.assign({}, props), { className: css(expandableInput && hasAnimations && input_group_default.modifiers.searchExpandable, expandableInput && hasAnimations && isExpanded && input_group_default.modifiers.expanded, className && css(className)), innerRef: searchInputRef });
     if (!!expandableInput && !isExpanded && !hasAnimations) {
-      return (0, import_jsx_runtime130.jsx)(InputGroup, Object.assign({}, searchInputProps, { children: (0, import_jsx_runtime130.jsx)(InputGroupItem, { children: expandableToggle }) }));
+      return (0, import_jsx_runtime132.jsx)(InputGroup, Object.assign({}, searchInputProps, { children: (0, import_jsx_runtime132.jsx)(InputGroupItem, { children: expandableToggle }) }));
     }
     if (!!onSearch || attributes.length > 0 || !!onToggleAdvancedSearch) {
       if (attributes.length > 0) {
-        const AdvancedSearch = (0, import_jsx_runtime130.jsx)("div", { ref: popperRef, children: (0, import_jsx_runtime130.jsx)(AdvancedSearchMenu, { value, parentRef: searchInputRef, parentInputRef: searchInputInputRef, onSearch, onClear, onChange, onToggleAdvancedMenu: onToggle, resetButtonLabel, submitSearchButtonLabel, attributes, formAdditionalItems, hasWordsAttrLabel, advancedSearchDelimiter, getAttrValueMap, isSearchMenuOpen }) });
+        const AdvancedSearch = (0, import_jsx_runtime132.jsx)("div", { ref: popperRef, children: (0, import_jsx_runtime132.jsx)(AdvancedSearchMenu, { value, parentRef: searchInputRef, parentInputRef: searchInputInputRef, onSearch, onClear, onChange, onToggleAdvancedMenu: onToggle, resetButtonLabel, submitSearchButtonLabel, attributes, formAdditionalItems, hasWordsAttrLabel, advancedSearchDelimiter, getAttrValueMap, isSearchMenuOpen }) });
         const advancedSearchInputProps = hasAnimations ? {
           className: css(expandableInput && input_group_default.modifiers.searchExpandable, expandableInput && isExpanded && input_group_default.modifiers.expanded)
         } : {};
-        const AdvancedSearchWithPopper = (0, import_jsx_runtime130.jsx)("div", Object.assign({ className: css(className), ref: searchInputRef }, props, { children: (0, import_jsx_runtime130.jsx)(Popper, { trigger: buildSearchTextInputGroupWithExtraButtons(advancedSearchInputProps), triggerRef, popper: AdvancedSearch, popperRef, isVisible: isSearchMenuOpen, enableFlip: true, appendTo: () => appendTo || searchInputRef.current, zIndex }) }));
-        const AdvancedSearchInline = (0, import_jsx_runtime130.jsxs)("div", Object.assign({ className: css(className), ref: searchInputRef }, props, { children: [buildSearchTextInputGroupWithExtraButtons(advancedSearchInputProps), AdvancedSearch] }));
+        const AdvancedSearchWithPopper = (0, import_jsx_runtime132.jsx)("div", Object.assign({ className: css(className), ref: searchInputRef }, props, { children: (0, import_jsx_runtime132.jsx)(Popper, { trigger: buildSearchTextInputGroupWithExtraButtons(advancedSearchInputProps), triggerRef, popper: AdvancedSearch, popperRef, isVisible: isSearchMenuOpen, enableFlip: true, appendTo: () => appendTo || searchInputRef.current, zIndex }) }));
+        const AdvancedSearchInline = (0, import_jsx_runtime132.jsxs)("div", Object.assign({ className: css(className), ref: searchInputRef }, props, { children: [buildSearchTextInputGroupWithExtraButtons(advancedSearchInputProps), AdvancedSearch] }));
         return appendTo !== "inline" ? AdvancedSearchWithPopper : AdvancedSearchInline;
       }
       return buildSearchTextInputGroupWithExtraButtons(Object.assign({}, searchInputProps));
@@ -44702,12 +45344,12 @@
     return buildSearchTextInputGroup(searchInputProps);
   };
   SearchInputBase.displayName = "SearchInputBase";
-  var SearchInput = (0, import_react91.forwardRef)((props, ref) => (0, import_jsx_runtime130.jsx)(SearchInputBase, Object.assign({}, props, { innerRef: ref })));
+  var SearchInput = (0, import_react93.forwardRef)((props, ref) => (0, import_jsx_runtime132.jsx)(SearchInputBase, Object.assign({}, props, { innerRef: ref })));
   SearchInput.displayName = "SearchInput";
 
   // node_modules/@patternfly/react-core/dist/esm/components/Toolbar/Toolbar.js
-  var import_jsx_runtime134 = __toESM(require_jsx_runtime());
-  var import_react95 = __toESM(require_react());
+  var import_jsx_runtime136 = __toESM(require_jsx_runtime());
+  var import_react97 = __toESM(require_react());
 
   // node_modules/@patternfly/react-styles/css/components/Toolbar/toolbar.mjs
   var toolbar_default = {
@@ -45093,8 +45735,8 @@
   };
 
   // node_modules/@patternfly/react-core/dist/esm/components/Toolbar/ToolbarUtils.js
-  var import_react92 = __toESM(require_react());
-  var ToolbarContext = (0, import_react92.createContext)({
+  var import_react94 = __toESM(require_react());
+  var ToolbarContext = (0, import_react94.createContext)({
     isExpanded: false,
     toggleIsExpanded: () => {
     },
@@ -45105,7 +45747,7 @@
     clearAllFilters: () => {
     }
   });
-  var ToolbarContentContext = (0, import_react92.createContext)({
+  var ToolbarContentContext = (0, import_react94.createContext)({
     expandableContentRef: null,
     expandableContentId: "",
     labelContainerRef: null,
@@ -45120,11 +45762,11 @@
   };
 
   // node_modules/@patternfly/react-core/dist/esm/components/Toolbar/ToolbarLabelGroupContent.js
-  var import_jsx_runtime133 = __toESM(require_jsx_runtime());
-  var import_react94 = __toESM(require_react());
+  var import_jsx_runtime135 = __toESM(require_jsx_runtime());
+  var import_react96 = __toESM(require_react());
 
   // node_modules/@patternfly/react-core/dist/esm/components/Toolbar/ToolbarItem.js
-  var import_jsx_runtime131 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime133 = __toESM(require_jsx_runtime());
   var ToolbarItemVariant;
   (function(ToolbarItemVariant2) {
     ToolbarItemVariant2["separator"] = "separator";
@@ -45137,15 +45779,15 @@
     var { className, variant, visibility, visibilityAtHeight, gap, columnGap, rowGap, rowWrap, align, alignSelf, alignItems, id, children, isAllExpanded, isOverflowContainer, role } = _a, props = __rest(_a, ["className", "variant", "visibility", "visibilityAtHeight", "gap", "columnGap", "rowGap", "rowWrap", "align", "alignSelf", "alignItems", "id", "children", "isAllExpanded", "isOverflowContainer", "role"]);
     if (variant === ToolbarItemVariant.separator) {
       const isDividerRoleValid = role === "separator" || role === "presentation";
-      return (0, import_jsx_runtime131.jsx)(Divider, Object.assign({ className: css(className), orientation: { default: "vertical" } }, props, isDividerRoleValid && { role }));
+      return (0, import_jsx_runtime133.jsx)(Divider, Object.assign({ className: css(className), orientation: { default: "vertical" } }, props, isDividerRoleValid && { role }));
     }
-    return (0, import_jsx_runtime131.jsx)(PageContext.Consumer, { children: ({ width, getBreakpoint: getBreakpoint2, height, getVerticalBreakpoint: getVerticalBreakpoint2 }) => (0, import_jsx_runtime131.jsx)("div", Object.assign({ className: css(toolbar_default.toolbarItem, variant && toolbar_default.modifiers[toCamel(variant)], variant === ToolbarItemVariant["label-group"] && toolbar_default.modifiers.labelGroup, isAllExpanded && toolbar_default.modifiers.expanded, isOverflowContainer && toolbar_default.modifiers.overflowContainer, formatBreakpointMods(visibility, toolbar_default, "", getBreakpoint2(width)), formatBreakpointMods(visibilityAtHeight, toolbar_default, "", getVerticalBreakpoint2(height), true), formatBreakpointMods(align, toolbar_default, "", getBreakpoint2(width)), formatBreakpointMods(gap, toolbar_default, "", getBreakpoint2(width)), formatBreakpointMods(columnGap, toolbar_default, "", getBreakpoint2(width)), formatBreakpointMods(rowGap, toolbar_default, "", getBreakpoint2(width)), formatBreakpointMods(rowWrap, toolbar_default, "", getBreakpoint2(width)), alignItems === "start" && toolbar_default.modifiers.alignItemsStart, alignItems === "center" && toolbar_default.modifiers.alignItemsCenter, alignItems === "baseline" && toolbar_default.modifiers.alignItemsBaseline, alignSelf === "start" && toolbar_default.modifiers.alignSelfStart, alignSelf === "center" && toolbar_default.modifiers.alignSelfCenter, alignSelf === "baseline" && toolbar_default.modifiers.alignSelfBaseline, className) }, variant === "label" && { "aria-hidden": true }, { id, role }, props, { children })) });
+    return (0, import_jsx_runtime133.jsx)(PageContext.Consumer, { children: ({ width, getBreakpoint: getBreakpoint2, height, getVerticalBreakpoint: getVerticalBreakpoint2 }) => (0, import_jsx_runtime133.jsx)("div", Object.assign({ className: css(toolbar_default.toolbarItem, variant && toolbar_default.modifiers[toCamel(variant)], variant === ToolbarItemVariant["label-group"] && toolbar_default.modifiers.labelGroup, isAllExpanded && toolbar_default.modifiers.expanded, isOverflowContainer && toolbar_default.modifiers.overflowContainer, formatBreakpointMods(visibility, toolbar_default, "", getBreakpoint2(width)), formatBreakpointMods(visibilityAtHeight, toolbar_default, "", getVerticalBreakpoint2(height), true), formatBreakpointMods(align, toolbar_default, "", getBreakpoint2(width)), formatBreakpointMods(gap, toolbar_default, "", getBreakpoint2(width)), formatBreakpointMods(columnGap, toolbar_default, "", getBreakpoint2(width)), formatBreakpointMods(rowGap, toolbar_default, "", getBreakpoint2(width)), formatBreakpointMods(rowWrap, toolbar_default, "", getBreakpoint2(width)), alignItems === "start" && toolbar_default.modifiers.alignItemsStart, alignItems === "center" && toolbar_default.modifiers.alignItemsCenter, alignItems === "baseline" && toolbar_default.modifiers.alignItemsBaseline, alignSelf === "start" && toolbar_default.modifiers.alignSelfStart, alignSelf === "center" && toolbar_default.modifiers.alignSelfCenter, alignSelf === "baseline" && toolbar_default.modifiers.alignSelfBaseline, className) }, variant === "label" && { "aria-hidden": true }, { id, role }, props, { children })) });
   };
   ToolbarItem.displayName = "ToolbarItem";
 
   // node_modules/@patternfly/react-core/dist/esm/components/Toolbar/ToolbarGroup.js
-  var import_jsx_runtime132 = __toESM(require_jsx_runtime());
-  var import_react93 = __toESM(require_react());
+  var import_jsx_runtime134 = __toESM(require_jsx_runtime());
+  var import_react95 = __toESM(require_react());
   var ToolbarGroupVariant;
   (function(ToolbarGroupVariant2) {
     ToolbarGroupVariant2["filter-group"] = "filter-group";
@@ -45154,16 +45796,16 @@
     ToolbarGroupVariant2["action-group-plain"] = "action-group-plain";
     ToolbarGroupVariant2["label-group"] = "label-group";
   })(ToolbarGroupVariant || (ToolbarGroupVariant = {}));
-  var ToolbarGroupWithRef = class extends import_react93.Component {
+  var ToolbarGroupWithRef = class extends import_react95.Component {
     render() {
       const _a = this.props, { visibility, visibilityAtHeight, align, alignItems, alignSelf, gap, columnGap, rowGap, rowWrap, className, variant, children, isOverflowContainer, innerRef } = _a, props = __rest(_a, ["visibility", "visibilityAtHeight", "align", "alignItems", "alignSelf", "gap", "columnGap", "rowGap", "rowWrap", "className", "variant", "children", "isOverflowContainer", "innerRef"]);
-      return (0, import_jsx_runtime132.jsx)(PageContext.Consumer, { children: ({ width, getBreakpoint: getBreakpoint2, height, getVerticalBreakpoint: getVerticalBreakpoint2 }) => (0, import_jsx_runtime132.jsx)("div", Object.assign({ className: css(toolbar_default.toolbarGroup, variant && toolbar_default.modifiers[toCamel(variant)], formatBreakpointMods(visibility, toolbar_default, "", getBreakpoint2(width)), formatBreakpointMods(visibilityAtHeight, toolbar_default, "", getVerticalBreakpoint2(height), true), formatBreakpointMods(align, toolbar_default, "", getBreakpoint2(width)), formatBreakpointMods(gap, toolbar_default, "", getBreakpoint2(width)), formatBreakpointMods(columnGap, toolbar_default, "", getBreakpoint2(width)), formatBreakpointMods(rowGap, toolbar_default, "", getBreakpoint2(width)), formatBreakpointMods(rowWrap, toolbar_default, "", getBreakpoint2(width)), alignItems === "start" && toolbar_default.modifiers.alignItemsStart, alignItems === "center" && toolbar_default.modifiers.alignItemsCenter, alignItems === "baseline" && toolbar_default.modifiers.alignItemsBaseline, alignSelf === "start" && toolbar_default.modifiers.alignSelfStart, alignSelf === "center" && toolbar_default.modifiers.alignSelfCenter, alignSelf === "baseline" && toolbar_default.modifiers.alignSelfBaseline, isOverflowContainer && toolbar_default.modifiers.overflowContainer, className) }, props, { ref: innerRef, children })) });
+      return (0, import_jsx_runtime134.jsx)(PageContext.Consumer, { children: ({ width, getBreakpoint: getBreakpoint2, height, getVerticalBreakpoint: getVerticalBreakpoint2 }) => (0, import_jsx_runtime134.jsx)("div", Object.assign({ className: css(toolbar_default.toolbarGroup, variant && toolbar_default.modifiers[toCamel(variant)], formatBreakpointMods(visibility, toolbar_default, "", getBreakpoint2(width)), formatBreakpointMods(visibilityAtHeight, toolbar_default, "", getVerticalBreakpoint2(height), true), formatBreakpointMods(align, toolbar_default, "", getBreakpoint2(width)), formatBreakpointMods(gap, toolbar_default, "", getBreakpoint2(width)), formatBreakpointMods(columnGap, toolbar_default, "", getBreakpoint2(width)), formatBreakpointMods(rowGap, toolbar_default, "", getBreakpoint2(width)), formatBreakpointMods(rowWrap, toolbar_default, "", getBreakpoint2(width)), alignItems === "start" && toolbar_default.modifiers.alignItemsStart, alignItems === "center" && toolbar_default.modifiers.alignItemsCenter, alignItems === "baseline" && toolbar_default.modifiers.alignItemsBaseline, alignSelf === "start" && toolbar_default.modifiers.alignSelfStart, alignSelf === "center" && toolbar_default.modifiers.alignSelfCenter, alignSelf === "baseline" && toolbar_default.modifiers.alignSelfBaseline, isOverflowContainer && toolbar_default.modifiers.overflowContainer, className) }, props, { ref: innerRef, children })) });
     }
   };
-  var ToolbarGroup = (0, import_react93.forwardRef)((props, ref) => (0, import_jsx_runtime132.jsx)(ToolbarGroupWithRef, Object.assign({}, props, { innerRef: ref })));
+  var ToolbarGroup = (0, import_react95.forwardRef)((props, ref) => (0, import_jsx_runtime134.jsx)(ToolbarGroupWithRef, Object.assign({}, props, { innerRef: ref })));
 
   // node_modules/@patternfly/react-core/dist/esm/components/Toolbar/ToolbarLabelGroupContent.js
-  var ToolbarLabelGroupContent = class extends import_react94.Component {
+  var ToolbarLabelGroupContent = class extends import_react96.Component {
     constructor() {
       super(...arguments);
       this.state = {
@@ -45194,7 +45836,7 @@
       const isHidden3 = numberOfFilters === 0 || isExpanded;
       const showNumberOfFilters = collapseListedFilters && numberOfFilters > 0 && !isExpanded;
       const showDefaultClearFilter = showClearFiltersButton && !isExpanded && !customLabelGroupContent;
-      return (0, import_jsx_runtime133.jsxs)("div", Object.assign({ className: css(toolbar_default.toolbarContent, isHidden3 && toolbar_default.modifiers.hidden, className) }, (numberOfFilters === 0 || isExpanded) && { hidden: true }, { ref: labelGroupContentRef }, props, { children: [(0, import_jsx_runtime133.jsx)(ToolbarGroup, Object.assign({ className: css(collapseListedFilters && toolbar_default.modifiers.hidden) }, collapseListedFilters && { hidden: true }, collapseListedFilters && { "aria-hidden": true })), (showNumberOfFilters || showDefaultClearFilter || customLabelGroupContent) && (0, import_jsx_runtime133.jsxs)(ToolbarGroup, { variant: "action-group-inline", children: [showNumberOfFilters && (0, import_jsx_runtime133.jsx)(ToolbarItem, { children: numberOfFiltersText(numberOfFilters) }), showDefaultClearFilter && (0, import_jsx_runtime133.jsx)(ToolbarItem, { children: (0, import_jsx_runtime133.jsx)(Button, { variant: "link", onClick: clearLabelGroups, isInline: true, children: clearFiltersButtonText }) }), customLabelGroupContent && customLabelGroupContent] })] }));
+      return (0, import_jsx_runtime135.jsxs)("div", Object.assign({ className: css(toolbar_default.toolbarContent, isHidden3 && toolbar_default.modifiers.hidden, className) }, (numberOfFilters === 0 || isExpanded) && { hidden: true }, { ref: labelGroupContentRef }, props, { children: [(0, import_jsx_runtime135.jsx)(ToolbarGroup, Object.assign({ className: css(collapseListedFilters && toolbar_default.modifiers.hidden) }, collapseListedFilters && { hidden: true }, collapseListedFilters && { "aria-hidden": true })), (showNumberOfFilters || showDefaultClearFilter || customLabelGroupContent) && (0, import_jsx_runtime135.jsxs)(ToolbarGroup, { variant: "action-group-inline", children: [showNumberOfFilters && (0, import_jsx_runtime135.jsx)(ToolbarItem, { children: numberOfFiltersText(numberOfFilters) }), showDefaultClearFilter && (0, import_jsx_runtime135.jsx)(ToolbarItem, { children: (0, import_jsx_runtime135.jsx)(Button, { variant: "link", onClick: clearLabelGroups, isInline: true, children: clearFiltersButtonText }) }), customLabelGroupContent && customLabelGroupContent] })] }));
     }
   };
   ToolbarLabelGroupContent.displayName = "ToolbarLabelGroupContent";
@@ -45212,10 +45854,10 @@
     ToolbarColorVariant2["secondary"] = "secondary";
     ToolbarColorVariant2["noBackground"] = "no-background";
   })(ToolbarColorVariant || (ToolbarColorVariant = {}));
-  var Toolbar = class _Toolbar extends import_react95.Component {
+  var Toolbar = class _Toolbar extends import_react97.Component {
     constructor() {
       super(...arguments);
-      this.labelGroupContentRef = (0, import_react95.createRef)();
+      this.labelGroupContentRef = (0, import_react97.createRef)();
       this.staticFilterInfo = {};
       this.hasNoPadding = false;
       this.state = {
@@ -45253,7 +45895,7 @@
         const isExpanded = isToggleManaged ? isManagedToggleExpanded : isExpandedProp;
         const numberOfFilters = this.getNumberOfFilters();
         const showClearFiltersButton = numberOfFilters > 0;
-        return (0, import_jsx_runtime134.jsx)(PageContext.Consumer, { children: ({ width, getBreakpoint: getBreakpoint2 }) => (0, import_jsx_runtime134.jsx)("div", Object.assign({ className: css(toolbar_default.toolbar, hasNoPadding && toolbar_default.modifiers.noPadding, isFullHeight && toolbar_default.modifiers.fullHeight, isStatic && toolbar_default.modifiers.static, isSticky && toolbar_default.modifiers.sticky, isStickyBase && toolbar_default.modifiers.stickyBase, isStickyStuck && toolbar_default.modifiers.stickyStuck, isVertical && toolbar_default.modifiers.vertical, formatBreakpointMods(inset, toolbar_default, "", getBreakpoint2(width)), colorVariant === "primary" && toolbar_default.modifiers.primary, colorVariant === "secondary" && toolbar_default.modifiers.secondary, colorVariant === "no-background" && toolbar_default.modifiers.noBackground, className), id: randomId }, getOUIAProps(_Toolbar.displayName, ouiaId !== void 0 ? ouiaId : generatedOuiaId), props, { children: (0, import_jsx_runtime134.jsxs)(ToolbarContext.Provider, { value: {
+        return (0, import_jsx_runtime136.jsx)(PageContext.Consumer, { children: ({ width, getBreakpoint: getBreakpoint2 }) => (0, import_jsx_runtime136.jsx)("div", Object.assign({ className: css(toolbar_default.toolbar, hasNoPadding && toolbar_default.modifiers.noPadding, isFullHeight && toolbar_default.modifiers.fullHeight, isStatic && toolbar_default.modifiers.static, isSticky && toolbar_default.modifiers.sticky, isStickyBase && toolbar_default.modifiers.stickyBase, isStickyStuck && toolbar_default.modifiers.stickyStuck, isVertical && toolbar_default.modifiers.vertical, formatBreakpointMods(inset, toolbar_default, "", getBreakpoint2(width)), colorVariant === "primary" && toolbar_default.modifiers.primary, colorVariant === "secondary" && toolbar_default.modifiers.secondary, colorVariant === "no-background" && toolbar_default.modifiers.noBackground, className), id: randomId }, getOUIAProps(_Toolbar.displayName, ouiaId !== void 0 ? ouiaId : generatedOuiaId), props, { children: (0, import_jsx_runtime136.jsxs)(ToolbarContext.Provider, { value: {
           isExpanded,
           toggleIsExpanded: isToggleManaged ? this.toggleIsExpanded : toggleIsExpanded,
           labelGroupContentRef: this.labelGroupContentRef,
@@ -45264,7 +45906,7 @@
           showClearFiltersButton,
           toolbarId: randomId,
           customLabelGroupContent
-        }, children: [children, (0, import_jsx_runtime134.jsx)(ToolbarLabelGroupContent, { isExpanded, labelGroupContentRef: this.labelGroupContentRef, clearAllFilters, showClearFiltersButton, clearFiltersButtonText, numberOfFilters, numberOfFiltersText, collapseListedFiltersBreakpoint, customLabelGroupContent })] }) })) });
+        }, children: [children, (0, import_jsx_runtime136.jsx)(ToolbarLabelGroupContent, { isExpanded, labelGroupContentRef: this.labelGroupContentRef, clearAllFilters, showClearFiltersButton, clearFiltersButtonText, numberOfFilters, numberOfFiltersText, collapseListedFiltersBreakpoint, customLabelGroupContent })] }) })) });
       };
     }
     componentDidMount() {
@@ -45281,25 +45923,25 @@
       }
     }
     render() {
-      return (0, import_jsx_runtime134.jsx)(SSRSafeIds, { prefix: "pf-random-id-", ouiaComponentType: "Toolbar", children: (generatedId, generatedOuiaId) => this.renderToolbar(this.props.id || generatedId, generatedOuiaId) });
+      return (0, import_jsx_runtime136.jsx)(SSRSafeIds, { prefix: "pf-random-id-", ouiaComponentType: "Toolbar", children: (generatedId, generatedOuiaId) => this.renderToolbar(this.props.id || generatedId, generatedOuiaId) });
     }
   };
   Toolbar.displayName = "Toolbar";
 
   // node_modules/@patternfly/react-core/dist/esm/components/Toolbar/ToolbarContent.js
-  var import_jsx_runtime135 = __toESM(require_jsx_runtime());
-  var import_react96 = __toESM(require_react());
-  var ToolbarContent = class _ToolbarContent extends import_react96.Component {
+  var import_jsx_runtime137 = __toESM(require_jsx_runtime());
+  var import_react98 = __toESM(require_react());
+  var ToolbarContent = class _ToolbarContent extends import_react98.Component {
     constructor() {
       super(...arguments);
-      this.expandableContentRef = (0, import_react96.createRef)();
-      this.labelContainerRef = (0, import_react96.createRef)();
+      this.expandableContentRef = (0, import_react98.createRef)();
+      this.labelContainerRef = (0, import_react98.createRef)();
     }
     render() {
       const _a = this.props, { className, children, isExpanded, toolbarId, visibility, visibilityAtHeight, rowWrap, alignItems, clearAllFilters, showClearFiltersButton, clearFiltersButtonText } = _a, props = __rest(_a, ["className", "children", "isExpanded", "toolbarId", "visibility", "visibilityAtHeight", "rowWrap", "alignItems", "clearAllFilters", "showClearFiltersButton", "clearFiltersButtonText"]);
-      return (0, import_jsx_runtime135.jsx)(PageContext.Consumer, { children: ({ width, getBreakpoint: getBreakpoint2, height, getVerticalBreakpoint: getVerticalBreakpoint2 }) => (0, import_jsx_runtime135.jsx)("div", Object.assign({ className: css(toolbar_default.toolbarContent, formatBreakpointMods(visibility, toolbar_default, "", getBreakpoint2(width)), formatBreakpointMods(visibilityAtHeight, toolbar_default, "", getVerticalBreakpoint2(height), true), className), ref: this.expandableContentRef }, props, { children: (0, import_jsx_runtime135.jsx)(ToolbarContext.Consumer, { children: ({ clearAllFilters: clearAllFiltersContext, clearFiltersButtonText: clearFiltersButtonContext, showClearFiltersButton: showClearFiltersButtonContext, isExpanded: isExpandedContext, toolbarId: toolbarIdContext }) => {
+      return (0, import_jsx_runtime137.jsx)(PageContext.Consumer, { children: ({ width, getBreakpoint: getBreakpoint2, height, getVerticalBreakpoint: getVerticalBreakpoint2 }) => (0, import_jsx_runtime137.jsx)("div", Object.assign({ className: css(toolbar_default.toolbarContent, formatBreakpointMods(visibility, toolbar_default, "", getBreakpoint2(width)), formatBreakpointMods(visibilityAtHeight, toolbar_default, "", getVerticalBreakpoint2(height), true), className), ref: this.expandableContentRef }, props, { children: (0, import_jsx_runtime137.jsx)(ToolbarContext.Consumer, { children: ({ clearAllFilters: clearAllFiltersContext, clearFiltersButtonText: clearFiltersButtonContext, showClearFiltersButton: showClearFiltersButtonContext, isExpanded: isExpandedContext, toolbarId: toolbarIdContext }) => {
         const expandableContentId = `${toolbarId || toolbarIdContext}-expandable-content-${_ToolbarContent.currentId++}`;
-        return (0, import_jsx_runtime135.jsx)(ToolbarContentContext.Provider, { value: {
+        return (0, import_jsx_runtime137.jsx)(ToolbarContentContext.Provider, { value: {
           expandableContentRef: this.expandableContentRef,
           expandableContentId,
           labelContainerRef: this.labelContainerRef,
@@ -45307,7 +45949,7 @@
           clearAllFilters: clearAllFilters || clearAllFiltersContext,
           clearFiltersButtonText: clearFiltersButtonText || clearFiltersButtonContext,
           showClearFiltersButton: showClearFiltersButton || showClearFiltersButtonContext
-        }, children: (0, import_jsx_runtime135.jsx)("div", { className: css(toolbar_default.toolbarContentSection, formatBreakpointMods(rowWrap, toolbar_default, "", getBreakpoint2(width)), alignItems === "center" && toolbar_default.modifiers.alignItemsCenter, alignItems === "start" && toolbar_default.modifiers.alignItemsStart, alignItems === "baseline" && toolbar_default.modifiers.alignItemsBaseline), children }) });
+        }, children: (0, import_jsx_runtime137.jsx)("div", { className: css(toolbar_default.toolbarContentSection, formatBreakpointMods(rowWrap, toolbar_default, "", getBreakpoint2(width)), alignItems === "center" && toolbar_default.modifiers.alignItemsCenter, alignItems === "start" && toolbar_default.modifiers.alignItemsStart, alignItems === "baseline" && toolbar_default.modifiers.alignItemsBaseline), children }) });
       } }) })) });
     }
   };
@@ -45343,30 +45985,14 @@
     return hasPodmanManifest(window) || hasPodmanManifest(window.parent);
   }
 
-  // src/app/utils/resourceName.js
-  function inspectFileName(kind, name) {
-    const safe = String(name || "").replace(/[^A-Za-z0-9._-]+/g, "_").replace(/^[._]+/, "") || "resource";
-    return `${kind}-${safe}-inspect.json`;
-  }
-  function resourceDisplayName(item) {
-    if (item.title && item.title !== "<none>") {
-      return item.title;
-    }
-    return String(item.id || "").slice(0, 12);
-  }
-  function serviceDisplayName(unit) {
-    const name = String(unit || "");
-    return name.endsWith(".service") && name.length > ".service".length ? name.slice(0, -".service".length) : name;
-  }
-
   // src/app/components/resource/ResourceGrid.jsx
-  var import_react98 = __toESM(require_react(), 1);
+  var import_react100 = __toESM(require_react(), 1);
 
   // src/app/hooks/useColumnCount.js
-  var import_react97 = __toESM(require_react(), 1);
+  var import_react99 = __toESM(require_react(), 1);
   function useColumnCount(ref, minRem, max) {
-    const [count, setCount] = (0, import_react97.useState)(1);
-    (0, import_react97.useLayoutEffect)(function followWidth() {
+    const [count, setCount] = (0, import_react99.useState)(1);
+    (0, import_react99.useLayoutEffect)(function followWidth() {
       const element = ref.current;
       if (!element) {
         return void 0;
@@ -45388,27 +46014,27 @@
   }
 
   // src/app/components/resource/ResourceGrid.jsx
-  var import_jsx_runtime136 = __toESM(require_jsx_runtime(), 1);
+  var import_jsx_runtime138 = __toESM(require_jsx_runtime(), 1);
   var MIN_COLUMN_REM = 28;
   var MAX_COLUMNS = 3;
   function ResourceGrid({ children }) {
-    const gridRef = (0, import_react98.useRef)(
+    const gridRef = (0, import_react100.useRef)(
       /** @type {HTMLDivElement|null} */
       null
     );
     const count = useColumnCount(gridRef, MIN_COLUMN_REM, MAX_COLUMNS);
-    const cards = import_react98.default.Children.toArray(children);
+    const cards = import_react100.default.Children.toArray(children);
     const columns = Array.from({ length: count }, () => []);
     cards.forEach((card, index) => columns[index % count].push(card));
-    return /* @__PURE__ */ (0, import_jsx_runtime136.jsx)("div", { className: "podshift-resource-grid", ref: gridRef, children: columns.map((column, index) => /* @__PURE__ */ (0, import_jsx_runtime136.jsx)("div", { className: "podshift-resource-grid__column", children: column }, index)) });
+    return /* @__PURE__ */ (0, import_jsx_runtime138.jsx)("div", { className: "podshift-resource-grid", ref: gridRef, children: columns.map((column, index) => /* @__PURE__ */ (0, import_jsx_runtime138.jsx)("div", { className: "podshift-resource-grid__column", children: column }, index)) });
   }
 
   // src/app/components/resource/FilterToggle.jsx
-  var import_react100 = __toESM(require_react(), 1);
+  var import_react102 = __toESM(require_react(), 1);
 
   // node_modules/@patternfly/react-core/dist/esm/components/ToggleGroup/ToggleGroup.js
-  var import_jsx_runtime139 = __toESM(require_jsx_runtime());
-  var import_react99 = __toESM(require_react());
+  var import_jsx_runtime141 = __toESM(require_jsx_runtime());
+  var import_react101 = __toESM(require_react());
 
   // node_modules/@patternfly/react-styles/css/components/ToggleGroup/toggle-group.mjs
   var toggle_group_default = {
@@ -45426,16 +46052,16 @@
   };
 
   // node_modules/@patternfly/react-core/dist/esm/components/ToggleGroup/ToggleGroupItem.js
-  var import_jsx_runtime138 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime140 = __toESM(require_jsx_runtime());
 
   // node_modules/@patternfly/react-core/dist/esm/components/ToggleGroup/ToggleGroupItemElement.js
-  var import_jsx_runtime137 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime139 = __toESM(require_jsx_runtime());
   var ToggleGroupItemVariant;
   (function(ToggleGroupItemVariant2) {
     ToggleGroupItemVariant2["icon"] = "icon";
     ToggleGroupItemVariant2["text"] = "text";
   })(ToggleGroupItemVariant || (ToggleGroupItemVariant = {}));
-  var ToggleGroupItemElement = ({ variant, children }) => (0, import_jsx_runtime137.jsx)("span", { className: css(variant === "icon" && toggle_group_default.toggleGroupIcon, variant === "text" && toggle_group_default.toggleGroupText), children });
+  var ToggleGroupItemElement = ({ variant, children }) => (0, import_jsx_runtime139.jsx)("span", { className: css(variant === "icon" && toggle_group_default.toggleGroupIcon, variant === "text" && toggle_group_default.toggleGroupText), children });
   ToggleGroupItemElement.displayName = "ToggleGroupItemElement";
 
   // node_modules/@patternfly/react-core/dist/esm/components/ToggleGroup/ToggleGroupItem.js
@@ -45448,28 +46074,28 @@
     if (!ariaLabel && icon && !text) {
       console.warn("An accessible aria-label is required when using the toggle group item icon variant.");
     }
-    const toggleGroupIcon = (0, import_jsx_runtime138.jsx)(ToggleGroupItemElement, { variant: ToggleGroupItemVariant.icon, children: icon });
-    return (0, import_jsx_runtime138.jsx)("div", Object.assign({ className: css(toggle_group_default.toggleGroupItem, className) }, props, { children: (0, import_jsx_runtime138.jsxs)("button", { type: "button", className: css(toggle_group_default.toggleGroupButton, isSelected && toggle_group_default.modifiers.selected), "aria-pressed": isSelected, onClick: handleChange, "aria-label": ariaLabel, disabled: isDisabled, id: buttonId, children: [icon && iconPosition === "start" && toggleGroupIcon, text && (0, import_jsx_runtime138.jsx)(ToggleGroupItemElement, { variant: ToggleGroupItemVariant.text, children: text }), icon && iconPosition === "end" && toggleGroupIcon] }) }));
+    const toggleGroupIcon = (0, import_jsx_runtime140.jsx)(ToggleGroupItemElement, { variant: ToggleGroupItemVariant.icon, children: icon });
+    return (0, import_jsx_runtime140.jsx)("div", Object.assign({ className: css(toggle_group_default.toggleGroupItem, className) }, props, { children: (0, import_jsx_runtime140.jsxs)("button", { type: "button", className: css(toggle_group_default.toggleGroupButton, isSelected && toggle_group_default.modifiers.selected), "aria-pressed": isSelected, onClick: handleChange, "aria-label": ariaLabel, disabled: isDisabled, id: buttonId, children: [icon && iconPosition === "start" && toggleGroupIcon, text && (0, import_jsx_runtime140.jsx)(ToggleGroupItemElement, { variant: ToggleGroupItemVariant.text, children: text }), icon && iconPosition === "end" && toggleGroupIcon] }) }));
   };
   ToggleGroupItem.displayName = "ToggleGroupItem";
 
   // node_modules/@patternfly/react-core/dist/esm/components/ToggleGroup/ToggleGroup.js
   var ToggleGroup = (_a) => {
     var { className, children, isCompact = false, isFill = false, areAllGroupsDisabled = false, "aria-label": ariaLabel } = _a, props = __rest(_a, ["className", "children", "isCompact", "isFill", "areAllGroupsDisabled", "aria-label"]);
-    const toggleGroupItemList = import_react99.Children.map(children, (child) => !((0, import_react99.isValidElement)(child) && child.type === ToggleGroupItem) ? child : (0, import_react99.cloneElement)(child, areAllGroupsDisabled ? { isDisabled: true } : {}));
-    return (0, import_jsx_runtime139.jsx)("div", Object.assign({ className: css(toggle_group_default.toggleGroup, isCompact && toggle_group_default.modifiers.compact, isFill && toggle_group_default.modifiers.fill, className), role: "group", "aria-label": ariaLabel }, props, { children: toggleGroupItemList }));
+    const toggleGroupItemList = import_react101.Children.map(children, (child) => !((0, import_react101.isValidElement)(child) && child.type === ToggleGroupItem) ? child : (0, import_react101.cloneElement)(child, areAllGroupsDisabled ? { isDisabled: true } : {}));
+    return (0, import_jsx_runtime141.jsx)("div", Object.assign({ className: css(toggle_group_default.toggleGroup, isCompact && toggle_group_default.modifiers.compact, isFill && toggle_group_default.modifiers.fill, className), role: "group", "aria-label": ariaLabel }, props, { children: toggleGroupItemList }));
   };
   ToggleGroup.displayName = "ToggleGroup";
 
   // src/app/components/resource/FilterToggle.jsx
-  var import_jsx_runtime140 = __toESM(require_jsx_runtime(), 1);
+  var import_jsx_runtime142 = __toESM(require_jsx_runtime(), 1);
   function filterToggleItem(option, idPrefix, value, isDisabled, onChange) {
     const Icon2 = option.Icon;
-    return /* @__PURE__ */ (0, import_jsx_runtime140.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime142.jsx)(
       ToggleGroupItem,
       {
         text: option.label,
-        icon: Icon2 ? /* @__PURE__ */ (0, import_jsx_runtime140.jsx)(Icon2, {}) : void 0,
+        icon: Icon2 ? /* @__PURE__ */ (0, import_jsx_runtime142.jsx)(Icon2, {}) : void 0,
         buttonId: idPrefix + option.id,
         isSelected: value === option.id,
         isDisabled,
@@ -45479,12 +46105,12 @@
     );
   }
   function FilterToggle({ filter, value, onChange, isDisabled = false }) {
-    return /* @__PURE__ */ (0, import_jsx_runtime140.jsx)(ToggleGroup, { "aria-label": filter.label, children: filter.options().map((option) => filterToggleItem(option, filter.idPrefix, value, isDisabled, onChange)) });
+    return /* @__PURE__ */ (0, import_jsx_runtime142.jsx)(ToggleGroup, { "aria-label": filter.label, children: filter.options().map((option) => filterToggleItem(option, filter.idPrefix, value, isDisabled, onChange)) });
   }
 
   // src/app/components/resource/OpenInPodmanButton.jsx
-  var import_react101 = __toESM(require_react(), 1);
-  var import_jsx_runtime141 = __toESM(require_jsx_runtime(), 1);
+  var import_react103 = __toESM(require_react(), 1);
+  var import_jsx_runtime143 = __toESM(require_jsx_runtime(), 1);
   var PODSHIFT_UID = 300;
   function handleOpenPodman() {
     cockpitTyped_default.jump("/podman#/?owner=" + PODSHIFT_UID);
@@ -45493,11 +46119,11 @@
     if (!isPodmanPageInstalled()) {
       return null;
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime141.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime143.jsx)(
       Button,
       {
         variant: "link",
-        icon: /* @__PURE__ */ (0, import_jsx_runtime141.jsx)(ExternalLinkAltIcon, {}),
+        icon: /* @__PURE__ */ (0, import_jsx_runtime143.jsx)(ExternalLinkAltIcon, {}),
         iconPosition: "end",
         onClick: handleOpenPodman,
         children: i18n("Show in Podman UI")
@@ -45506,7 +46132,7 @@
   }
 
   // src/app/components/modals/ResourceViewModal.jsx
-  var import_react110 = __toESM(require_react(), 1);
+  var import_react112 = __toESM(require_react(), 1);
 
   // src/app/utils/EnvVariables.js
   var _SECRET_MASK, _DEFAULT_VARIABLES, _SECRET_NAME_PARTS, _URL_PASSWORD, _EnvVariables_static, isDefaultVariable_fn, isSecretVariable_fn, maskUrlPasswords_fn, displayValue_fn, compareNames_fn, formatLine_fn;
@@ -45650,69 +46276,7 @@
   var EnvVariables = _EnvVariables;
 
   // src/app/hooks/useInspect.js
-  var import_react102 = __toESM(require_react(), 1);
-
-  // src/app/utils/ChannelDownload.js
-  var ChannelDownload = class _ChannelDownload {
-    /**
-     * Builds the URL of an external channel.
-     *
-     * @param {Record<string, any>} open Channel open options, for example payload, path, superuser and external.
-     * @returns {string} The same-origin URL, a path with the encoded options as query.
-     */
-    static channelUrl(open) {
-      const bytes = new TextEncoder().encode(JSON.stringify(open));
-      const binary = Array.from(bytes, (byte) => String.fromCodePoint(byte)).join("");
-      const transport = (
-        /** @type {import('cockpit').Transport} */
-        cockpitTyped_default.transport
-      );
-      const prefix = new URL(transport.uri("channel/" + transport.csrf_token)).pathname;
-      return `${prefix}?${window.btoa(binary)}`;
-    }
-    /**
-     * Starts the download of a same-origin URL through a hidden anchor with a download attribute.
-     * The response is an attachment, so the page itself does not navigate.
-     *
-     * @param {string} url Same-origin URL, from channelUrl.
-     * @param {string} fileName Suggested file name.
-     */
-    static startDownload(url, fileName) {
-      const anchor = document.createElement("a");
-      anchor.href = url;
-      anchor.download = fileName;
-      anchor.rel = "noopener";
-      anchor.style.display = "none";
-      document.body.appendChild(anchor);
-      anchor.click();
-      anchor.remove();
-    }
-    /**
-     * Downloads one file of the host as root: a fsread1 external channel with superuser
-     * 'require' on the same host, so files of the podshift user that the signed-in admin cannot
-     * read directly are offered too. The file is sent as is, as an attachment with the given name.
-     *
-     * @param {string} path Absolute path of the file.
-     * @param {string} fileName Suggested file name.
-     * @param {string} contentType Content-Type of the response, for example application/json.
-     */
-    static downloadFile(path, fileName, contentType) {
-      const url = _ChannelDownload.channelUrl({
-        payload: "fsread1",
-        binary: "raw",
-        path,
-        superuser: "require",
-        host: cockpitTyped_default.transport.host,
-        // The bridge has no "unlimited" value; this is what cockpit-files passes.
-        max_read_size: Number.MAX_SAFE_INTEGER,
-        external: {
-          "content-disposition": `attachment; filename="${fileName}"`,
-          "content-type": contentType
-        }
-      });
-      _ChannelDownload.startDownload(url, fileName);
-    }
-  };
+  var import_react104 = __toESM(require_react(), 1);
 
   // src/app/api/InspectResource.js
   var _INSPECT_FILE_PATH, _INSPECT_FILE_REMOVE_DELAY_MS, _InspectResource_static, inspectError_fn;
@@ -45819,16 +46383,16 @@
 
   // src/app/hooks/useInspect.js
   function useInspect(kind, ref) {
-    const [result, setResult] = (0, import_react102.useState)(
+    const [result, setResult] = (0, import_react104.useState)(
       /** @type {InspectResult|null} */
       null
     );
-    const [error, setError] = (0, import_react102.useState)(
+    const [error, setError] = (0, import_react104.useState)(
       /** @type {Error|null} */
       null
     );
-    const [loading, setLoading] = (0, import_react102.useState)(false);
-    (0, import_react102.useEffect)(() => {
+    const [loading, setLoading] = (0, import_react104.useState)(false);
+    (0, import_react104.useEffect)(() => {
       setResult(null);
       setError(null);
       if (!ref) {
@@ -45865,10 +46429,10 @@
   }
 
   // src/app/components/modals/InspectModal.jsx
-  var import_react107 = __toESM(require_react(), 1);
+  var import_react109 = __toESM(require_react(), 1);
 
   // src/app/utils/highlightJson.js
-  var import_react103 = __toESM(require_react(), 1);
+  var import_react105 = __toESM(require_react(), 1);
   function tokenKind(match) {
     if (match[1]) {
       return match[2] ? "key" : "string";
@@ -45882,7 +46446,7 @@
     return "number";
   }
   function punctuation(text, key) {
-    return (0, import_react103.createElement)("span", { key: "p" + key, className: "podshift-code__symb" }, text);
+    return (0, import_react105.createElement)("span", { key: "p" + key, className: "podshift-code__symb" }, text);
   }
   function highlightJson(text) {
     const pattern = /("(?:[^"\\]|\\.)*")(\s*:)?|\b(?:true|false|null)\b|-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?/g;
@@ -45894,7 +46458,7 @@
         nodes.push(punctuation(text.slice(last, match.index), last));
       }
       const kind = tokenKind(match);
-      nodes.push((0, import_react103.createElement)("span", { key: match.index, className: "podshift-code__" + kind }, match[1] || match[0]));
+      nodes.push((0, import_react105.createElement)("span", { key: match.index, className: "podshift-code__" + kind }, match[1] || match[0]));
       if (match[2]) {
         nodes.push(punctuation(match[2], match.index + match[1].length));
       }
@@ -45908,22 +46472,22 @@
   }
 
   // src/app/components/modals/CodeViewModal.jsx
-  var import_react104 = __toESM(require_react(), 1);
-  var import_jsx_runtime142 = __toESM(require_jsx_runtime(), 1);
+  var import_react106 = __toESM(require_react(), 1);
+  var import_jsx_runtime144 = __toESM(require_jsx_runtime(), 1);
   function CodeViewModal({ isOpen = true, title, description, header, text, code, loading = false, error = null, notice = null, alert = null, actions, endActions, onClose }) {
     const { copied, copy, reset } = useCopiedFlag();
-    (0, import_react104.useEffect)(() => reset(), [isOpen, text, reset]);
+    (0, import_react106.useEffect)(() => reset(), [isOpen, text, reset]);
     let body;
     if (error) {
-      body = /* @__PURE__ */ (0, import_jsx_runtime142.jsx)(InlineNotice, { variant: "danger", title: error });
+      body = /* @__PURE__ */ (0, import_jsx_runtime144.jsx)(InlineNotice, { variant: "danger", title: error });
     } else if (loading) {
-      body = /* @__PURE__ */ (0, import_jsx_runtime142.jsx)(Spinner, { size: "lg" });
+      body = /* @__PURE__ */ (0, import_jsx_runtime144.jsx)(Spinner, { size: "lg" });
     } else if (notice) {
       body = notice;
     } else {
-      body = /* @__PURE__ */ (0, import_jsx_runtime142.jsx)(CodeBlock, { className: "podshift-code-view", children: /* @__PURE__ */ (0, import_jsx_runtime142.jsx)(CodeBlockCode, { children: code }) });
+      body = /* @__PURE__ */ (0, import_jsx_runtime144.jsx)(CodeBlock, { className: "podshift-code-view", children: /* @__PURE__ */ (0, import_jsx_runtime144.jsx)(CodeBlockCode, { children: code }) });
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime142.jsxs)(
+    return /* @__PURE__ */ (0, import_jsx_runtime144.jsxs)(
       Modal,
       {
         variant: "large",
@@ -45931,25 +46495,25 @@
         onClose,
         "aria-labelledby": "podshift-code-view-title",
         children: [
-          header ? /* @__PURE__ */ (0, import_jsx_runtime142.jsx)(ModalHeader, { children: header }) : /* @__PURE__ */ (0, import_jsx_runtime142.jsx)(ModalHeader, { labelId: "podshift-code-view-title", title, description }),
-          /* @__PURE__ */ (0, import_jsx_runtime142.jsx)(ModalBody, { children: alert ? /* @__PURE__ */ (0, import_jsx_runtime142.jsxs)(Stack, { hasGutter: true, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime142.jsx)(StackItem, { children: alert }),
-            /* @__PURE__ */ (0, import_jsx_runtime142.jsx)(StackItem, { children: body })
+          header ? /* @__PURE__ */ (0, import_jsx_runtime144.jsx)(ModalHeader, { children: header }) : /* @__PURE__ */ (0, import_jsx_runtime144.jsx)(ModalHeader, { labelId: "podshift-code-view-title", title, description }),
+          /* @__PURE__ */ (0, import_jsx_runtime144.jsx)(ModalBody, { children: alert ? /* @__PURE__ */ (0, import_jsx_runtime144.jsxs)(Stack, { hasGutter: true, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime144.jsx)(StackItem, { children: alert }),
+            /* @__PURE__ */ (0, import_jsx_runtime144.jsx)(StackItem, { children: body })
           ] }) : body }),
-          /* @__PURE__ */ (0, import_jsx_runtime142.jsxs)(ModalFooter, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime144.jsxs)(ModalFooter, { children: [
             actions,
-            /* @__PURE__ */ (0, import_jsx_runtime142.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime144.jsx)(
               Button,
               {
                 variant: "secondary",
-                icon: /* @__PURE__ */ (0, import_jsx_runtime142.jsx)(CopyIcon, {}),
+                icon: /* @__PURE__ */ (0, import_jsx_runtime144.jsx)(CopyIcon, {}),
                 isDisabled: !text,
                 onClick: () => copy(text),
                 children: copied ? i18n("Copied") : i18n("Copy")
               }
             ),
             endActions,
-            /* @__PURE__ */ (0, import_jsx_runtime142.jsx)(Button, { variant: "link", onClick: onClose, children: i18n("Close") })
+            /* @__PURE__ */ (0, import_jsx_runtime144.jsx)(Button, { variant: "link", onClick: onClose, children: i18n("Close") })
           ] })
         ]
       }
@@ -45957,24 +46521,24 @@
   }
 
   // src/app/components/modals/InspectNotice.jsx
-  var import_react106 = __toESM(require_react(), 1);
+  var import_react108 = __toESM(require_react(), 1);
 
   // node_modules/@patternfly/react-core/dist/esm/components/ClipboardCopy/ClipboardCopyButton.js
-  var import_jsx_runtime143 = __toESM(require_jsx_runtime());
-  var import_react105 = __toESM(require_react());
+  var import_jsx_runtime145 = __toESM(require_jsx_runtime());
+  var import_react107 = __toESM(require_react());
   var ClipboardCopyButton = (_a) => {
     var { onClick, exitDelay = 0, entryDelay = 300, maxWidth = "100px", position = "top", "aria-label": ariaLabel = "Copyable input", id, children, variant = "control", onTooltipHidden = () => {
     }, className, hasNoPadding = false } = _a, props = __rest(_a, ["onClick", "exitDelay", "entryDelay", "maxWidth", "position", "aria-label", "id", "children", "variant", "onTooltipHidden", "className", "hasNoPadding"]);
-    const triggerRef = (0, import_react105.createRef)();
-    return (0, import_jsx_runtime143.jsx)(Tooltip, { trigger: "mouseenter focus click", triggerRef, exitDelay, entryDelay, maxWidth, position, "aria-live": "polite", aria: "none", content: (0, import_jsx_runtime143.jsx)("div", { children }), onTooltipHidden, children: (0, import_jsx_runtime143.jsx)(Button, Object.assign({ type: "button", variant, hasNoPadding, onClick, "aria-label": ariaLabel, className, id, icon: (0, import_jsx_runtime143.jsx)(rh_ui_copy_fill_icon_default, {}) }, props, { ref: triggerRef })) });
+    const triggerRef = (0, import_react107.createRef)();
+    return (0, import_jsx_runtime145.jsx)(Tooltip, { trigger: "mouseenter focus click", triggerRef, exitDelay, entryDelay, maxWidth, position, "aria-live": "polite", aria: "none", content: (0, import_jsx_runtime145.jsx)("div", { children }), onTooltipHidden, children: (0, import_jsx_runtime145.jsx)(Button, Object.assign({ type: "button", variant, hasNoPadding, onClick, "aria-label": ariaLabel, className, id, icon: (0, import_jsx_runtime145.jsx)(rh_ui_copy_fill_icon_default, {}) }, props, { ref: triggerRef })) });
   };
   ClipboardCopyButton.displayName = "ClipboardCopyButton";
 
   // src/app/components/modals/InspectNotice.jsx
-  var import_jsx_runtime144 = __toESM(require_jsx_runtime(), 1);
+  var import_jsx_runtime146 = __toESM(require_jsx_runtime(), 1);
   function CommandBlock({ command }) {
     const { copied, copy, reset } = useCopiedFlag();
-    const actions = /* @__PURE__ */ (0, import_jsx_runtime144.jsx)(CodeBlockAction, { children: /* @__PURE__ */ (0, import_jsx_runtime144.jsx)(
+    const actions = /* @__PURE__ */ (0, import_jsx_runtime146.jsx)(CodeBlockAction, { children: /* @__PURE__ */ (0, import_jsx_runtime146.jsx)(
       ClipboardCopyButton,
       {
         id: "podshift-inspect-command-copy",
@@ -45985,36 +46549,36 @@
         children: copied ? i18n("Copied") : i18n("Copy command")
       }
     ) });
-    return /* @__PURE__ */ (0, import_jsx_runtime144.jsx)(CodeBlock, { actions, className: "podshift-code-command", children: /* @__PURE__ */ (0, import_jsx_runtime144.jsx)(CodeBlockCode, { children: command }) });
+    return /* @__PURE__ */ (0, import_jsx_runtime146.jsx)(CodeBlock, { actions, className: "podshift-code-command", children: /* @__PURE__ */ (0, import_jsx_runtime146.jsx)(CodeBlockCode, { children: command }) });
   }
   function InspectNotice({ kind, resourceRef, name, notFound = false, tooLargeSize = null, onRefresh }) {
     if (notFound) {
-      return /* @__PURE__ */ (0, import_jsx_runtime144.jsx)(
+      return /* @__PURE__ */ (0, import_jsx_runtime146.jsx)(
         InlineNotice,
         {
           variant: "warning",
           title: cockpitTyped_default.format(i18n("This $0 no longer exists."), name),
-          actionLinks: onRefresh && /* @__PURE__ */ (0, import_jsx_runtime144.jsx)(AlertActionLink, { onClick: onRefresh, children: i18n("Refresh") })
+          actionLinks: onRefresh && /* @__PURE__ */ (0, import_jsx_runtime146.jsx)(AlertActionLink, { onClick: onRefresh, children: i18n("Refresh") })
         }
       );
     }
     if (tooLargeSize == null) {
       return null;
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime144.jsxs)(Stack, { hasGutter: true, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime144.jsx)(StackItem, { children: /* @__PURE__ */ (0, import_jsx_runtime144.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime146.jsxs)(Stack, { hasGutter: true, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime146.jsx)(StackItem, { children: /* @__PURE__ */ (0, import_jsx_runtime146.jsx)(
         InlineNotice,
         {
           variant: "info",
           title: cockpitTyped_default.format(i18n("The inspect output is too large to show here ($0)."), cockpitTyped_default.format_bytes(tooLargeSize))
         }
       ) }),
-      /* @__PURE__ */ (0, import_jsx_runtime144.jsx)(StackItem, { children: /* @__PURE__ */ (0, import_jsx_runtime144.jsx)(CommandBlock, { command: `podman ${kind} inspect ${resourceRef}` }) })
+      /* @__PURE__ */ (0, import_jsx_runtime146.jsx)(StackItem, { children: /* @__PURE__ */ (0, import_jsx_runtime146.jsx)(CommandBlock, { command: `podman ${kind} inspect ${resourceRef}` }) })
     ] });
   }
 
   // src/app/components/modals/InspectModal.jsx
-  var import_jsx_runtime145 = __toESM(require_jsx_runtime(), 1);
+  var import_jsx_runtime147 = __toESM(require_jsx_runtime(), 1);
   function InspectModal({
     isOpen = true,
     kind,
@@ -46028,16 +46592,16 @@
     onRefresh,
     onClose
   }) {
-    const [downloading, setDownloading] = (0, import_react107.useState)(false);
-    const [downloadError, setDownloadError] = (0, import_react107.useState)(
+    const [downloading, setDownloading] = (0, import_react109.useState)(false);
+    const [downloadError, setDownloadError] = (0, import_react109.useState)(
       /** @type {Error|null} */
       null
     );
-    const [gone, setGone] = (0, import_react107.useState)(false);
-    const text = (0, import_react107.useMemo)(() => data == null ? "" : JSON.stringify(data, null, 4) + "\n", [data]);
-    const code = (0, import_react107.useMemo)(() => highlightJson(text), [text]);
+    const [gone, setGone] = (0, import_react109.useState)(false);
+    const text = (0, import_react109.useMemo)(() => data == null ? "" : JSON.stringify(data, null, 4) + "\n", [data]);
+    const code = (0, import_react109.useMemo)(() => highlightJson(text), [text]);
     const missing = notFound || gone;
-    const notice = missing || tooLargeSize != null ? /* @__PURE__ */ (0, import_jsx_runtime145.jsx)(
+    const notice = missing || tooLargeSize != null ? /* @__PURE__ */ (0, import_jsx_runtime147.jsx)(
       InspectNotice,
       {
         kind,
@@ -46067,7 +46631,7 @@
         setDownloading(false);
       }
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime145.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime147.jsx)(
       CodeViewModal,
       {
         isOpen,
@@ -46077,13 +46641,13 @@
         loading: loading || data == null && !notice,
         error,
         notice,
-        alert: downloadError && /* @__PURE__ */ (0, import_jsx_runtime145.jsx)(InlineNotice, { variant: "danger", title: downloadError }),
+        alert: downloadError && /* @__PURE__ */ (0, import_jsx_runtime147.jsx)(InlineNotice, { variant: "danger", title: downloadError }),
         onClose,
-        actions: /* @__PURE__ */ (0, import_jsx_runtime145.jsx)(
+        actions: /* @__PURE__ */ (0, import_jsx_runtime147.jsx)(
           Button,
           {
             variant: "secondary",
-            icon: /* @__PURE__ */ (0, import_jsx_runtime145.jsx)(DownloadIcon, {}),
+            icon: /* @__PURE__ */ (0, import_jsx_runtime147.jsx)(DownloadIcon, {}),
             isDisabled: !canDownload || downloading,
             isLoading: downloading,
             onClick: () => download(),
@@ -46095,10 +46659,10 @@
   }
 
   // src/app/components/modals/VariablesModal.jsx
-  var import_react109 = __toESM(require_react(), 1);
+  var import_react111 = __toESM(require_react(), 1);
 
   // src/app/utils/highlightIni.js
-  var import_react108 = __toESM(require_react(), 1);
+  var import_react110 = __toESM(require_react(), 1);
   function highlightIni(text) {
     const nodes = [];
     text.split("\n").forEach((line, index) => {
@@ -46108,11 +46672,11 @@
       const key = String(index);
       const equals = line.indexOf("=");
       if (/^\s*[#;]/.test(line)) {
-        nodes.push((0, import_react108.createElement)("span", { key: key + "c", className: "podshift-code__comment" }, line));
+        nodes.push((0, import_react110.createElement)("span", { key: key + "c", className: "podshift-code__comment" }, line));
       } else if (equals > 0) {
-        nodes.push((0, import_react108.createElement)("span", { key: key + "k", className: "podshift-code__key" }, line.slice(0, equals)));
-        nodes.push((0, import_react108.createElement)("span", { key: key + "e", className: "podshift-code__symb" }, "="));
-        nodes.push((0, import_react108.createElement)("span", { key: key + "v", className: "podshift-code__string" }, line.slice(equals + 1)));
+        nodes.push((0, import_react110.createElement)("span", { key: key + "k", className: "podshift-code__key" }, line.slice(0, equals)));
+        nodes.push((0, import_react110.createElement)("span", { key: key + "e", className: "podshift-code__symb" }, "="));
+        nodes.push((0, import_react110.createElement)("span", { key: key + "v", className: "podshift-code__string" }, line.slice(equals + 1)));
       } else if (line) {
         nodes.push(line);
       }
@@ -46121,7 +46685,7 @@
   }
 
   // src/app/components/modals/VariablesModal.jsx
-  var import_jsx_runtime146 = __toESM(require_jsx_runtime(), 1);
+  var import_jsx_runtime148 = __toESM(require_jsx_runtime(), 1);
   function VariablesModal({
     isOpen = true,
     kind,
@@ -46135,10 +46699,10 @@
     onRefresh,
     onClose
   }) {
-    const [showSecrets, setShowSecrets] = (0, import_react109.useState)(false);
-    const text = (0, import_react109.useMemo)(() => variables == null ? "" : EnvVariables.envToText(variables, showSecrets), [variables, showSecrets]);
-    const code = (0, import_react109.useMemo)(() => highlightIni(text), [text]);
-    const notice = notFound || tooLargeSize != null ? /* @__PURE__ */ (0, import_jsx_runtime146.jsx)(
+    const [showSecrets, setShowSecrets] = (0, import_react111.useState)(false);
+    const text = (0, import_react111.useMemo)(() => variables == null ? "" : EnvVariables.envToText(variables, showSecrets), [variables, showSecrets]);
+    const code = (0, import_react111.useMemo)(() => highlightIni(text), [text]);
+    const notice = notFound || tooLargeSize != null ? /* @__PURE__ */ (0, import_jsx_runtime148.jsx)(
       InspectNotice,
       {
         kind,
@@ -46149,7 +46713,7 @@
         onRefresh
       }
     ) : null;
-    return /* @__PURE__ */ (0, import_jsx_runtime146.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime148.jsx)(
       CodeViewModal,
       {
         isOpen,
@@ -46160,11 +46724,11 @@
         error,
         notice,
         onClose,
-        actions: /* @__PURE__ */ (0, import_jsx_runtime146.jsx)(
+        actions: /* @__PURE__ */ (0, import_jsx_runtime148.jsx)(
           Button,
           {
             variant: "secondary",
-            icon: showSecrets ? /* @__PURE__ */ (0, import_jsx_runtime146.jsx)(EyeSlashIcon, {}) : /* @__PURE__ */ (0, import_jsx_runtime146.jsx)(EyeIcon, {}),
+            icon: showSecrets ? /* @__PURE__ */ (0, import_jsx_runtime148.jsx)(EyeSlashIcon, {}) : /* @__PURE__ */ (0, import_jsx_runtime148.jsx)(EyeIcon, {}),
             isDisabled: variables == null,
             onClick: () => setShowSecrets(!showSecrets),
             children: showSecrets ? i18n("Hide secrets") : i18n("Show secrets")
@@ -46175,10 +46739,10 @@
   }
 
   // src/app/components/modals/ResourceViewModal.jsx
-  var import_jsx_runtime147 = __toESM(require_jsx_runtime(), 1);
+  var import_jsx_runtime149 = __toESM(require_jsx_runtime(), 1);
   function ResourceViewModal({ kind, view, onClose, onRefresh }) {
     const { data, notFound, tooLargeSize, error, loading } = useInspect(kind, view ? view.ref : null);
-    const variables = (0, import_react110.useMemo)(
+    const variables = (0, import_react112.useMemo)(
       () => data == null ? null : EnvVariables.envFromList(data.Config?.Env),
       [data]
     );
@@ -46203,14 +46767,14 @@
       onClose
     };
     if (view.mode === "variables") {
-      return /* @__PURE__ */ (0, import_jsx_runtime147.jsx)(VariablesModal, { ...shared, variables });
+      return /* @__PURE__ */ (0, import_jsx_runtime149.jsx)(VariablesModal, { ...shared, variables });
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime147.jsx)(InspectModal, { ...shared, data });
+    return /* @__PURE__ */ (0, import_jsx_runtime149.jsx)(InspectModal, { ...shared, data });
   }
 
   // src/app/components/modals/QuadletUninstallModal.jsx
-  var import_react111 = __toESM(require_react(), 1);
-  var import_jsx_runtime148 = __toESM(require_jsx_runtime(), 1);
+  var import_react113 = __toESM(require_react(), 1);
+  var import_jsx_runtime150 = __toESM(require_jsx_runtime(), 1);
   function uninstallErrorText(result, name) {
     switch (result.error) {
       case "INVALID_NAME":
@@ -46234,12 +46798,12 @@
     if (!target) {
       return null;
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime148.jsx)(UninstallConfirm, { target, onClose, onQueued }, `${target.name}:${target.file}`);
+    return /* @__PURE__ */ (0, import_jsx_runtime150.jsx)(UninstallConfirm, { target, onClose, onQueued }, `${target.name}:${target.file}`);
   }
   function UninstallConfirm({ target, onClose, onQueued }) {
-    const [volumes, setVolumes] = (0, import_react111.useState)(false);
-    const [busy, setBusy] = (0, import_react111.useState)(false);
-    const [failure, setFailure] = (0, import_react111.useState)(
+    const [volumes, setVolumes] = (0, import_react113.useState)(false);
+    const [busy, setBusy] = (0, import_react113.useState)(false);
+    const [failure, setFailure] = (0, import_react113.useState)(
       /** @type {string|null} */
       null
     );
@@ -46265,7 +46829,7 @@
     } else {
       what = cockpitTyped_default.format(i18n("The units of $0 are stopped and the file is removed. Images are kept."), target.name);
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime148.jsxs)(
+    return /* @__PURE__ */ (0, import_jsx_runtime150.jsxs)(
       Modal,
       {
         variant: "medium",
@@ -46273,12 +46837,12 @@
         onClose: busy ? void 0 : onClose,
         "aria-labelledby": "podshift-quadlet-uninstall-title",
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime148.jsx)(ModalHeader, { labelId: "podshift-quadlet-uninstall-title", title: uninstallTitle(target), titleIconVariant: "warning" }),
-          /* @__PURE__ */ (0, import_jsx_runtime148.jsx)(ModalBody, { children: /* @__PURE__ */ (0, import_jsx_runtime148.jsxs)(Stack, { hasGutter: true, children: [
-            failure && /* @__PURE__ */ (0, import_jsx_runtime148.jsx)(StackItem, { children: /* @__PURE__ */ (0, import_jsx_runtime148.jsx)(Alert, { variant: "danger", isInline: true, title: failure }) }),
-            target.isApp && target.file !== target.name && /* @__PURE__ */ (0, import_jsx_runtime148.jsx)(StackItem, { children: cockpitTyped_default.format(i18n("$0 is part of app $1, so the whole app is uninstalled."), target.file, target.name) }),
-            /* @__PURE__ */ (0, import_jsx_runtime148.jsx)(StackItem, { children: what }),
-            offersVolumes && /* @__PURE__ */ (0, import_jsx_runtime148.jsx)(StackItem, { children: /* @__PURE__ */ (0, import_jsx_runtime148.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime150.jsx)(ModalHeader, { labelId: "podshift-quadlet-uninstall-title", title: uninstallTitle(target), titleIconVariant: "warning" }),
+          /* @__PURE__ */ (0, import_jsx_runtime150.jsx)(ModalBody, { children: /* @__PURE__ */ (0, import_jsx_runtime150.jsxs)(Stack, { hasGutter: true, children: [
+            failure && /* @__PURE__ */ (0, import_jsx_runtime150.jsx)(StackItem, { children: /* @__PURE__ */ (0, import_jsx_runtime150.jsx)(Alert, { variant: "danger", isInline: true, title: failure }) }),
+            target.isApp && target.file !== target.name && /* @__PURE__ */ (0, import_jsx_runtime150.jsx)(StackItem, { children: cockpitTyped_default.format(i18n("$0 is part of app $1, so the whole app is uninstalled."), target.file, target.name) }),
+            /* @__PURE__ */ (0, import_jsx_runtime150.jsx)(StackItem, { children: what }),
+            offersVolumes && /* @__PURE__ */ (0, import_jsx_runtime150.jsx)(StackItem, { children: /* @__PURE__ */ (0, import_jsx_runtime150.jsx)(
               Checkbox,
               {
                 id: "podshift-quadlet-uninstall-volumes",
@@ -46289,14 +46853,14 @@
                 onChange: (_event, checked) => setVolumes(checked)
               }
             ) }),
-            /* @__PURE__ */ (0, import_jsx_runtime148.jsx)(StackItem, { children: i18n("The install log on the Drop Quadlet tab shows the progress.") })
+            /* @__PURE__ */ (0, import_jsx_runtime150.jsx)(StackItem, { children: i18n("The install log on the Drop Quadlet tab shows the progress.") })
           ] }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime148.jsxs)(ModalFooter, { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime148.jsx)(Button, { variant: "danger", isDisabled: busy, isLoading: busy, onClick: () => {
+          /* @__PURE__ */ (0, import_jsx_runtime150.jsxs)(ModalFooter, { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime150.jsx)(Button, { variant: "danger", isDisabled: busy, isLoading: busy, onClick: () => {
               uninstall().catch(() => {
               });
             }, children: i18n("Uninstall") }),
-            /* @__PURE__ */ (0, import_jsx_runtime148.jsx)(Button, { variant: "link", isDisabled: busy, onClick: onClose, children: i18n("Cancel") })
+            /* @__PURE__ */ (0, import_jsx_runtime150.jsx)(Button, { variant: "link", isDisabled: busy, onClick: onClose, children: i18n("Cancel") })
           ] })
         ]
       }
@@ -46304,23 +46868,23 @@
   }
 
   // src/app/components/modals/UnitViewModal.jsx
-  var import_react114 = __toESM(require_react(), 1);
+  var import_react116 = __toESM(require_react(), 1);
 
   // src/app/hooks/useActionResult.js
-  var import_react112 = __toESM(require_react(), 1);
+  var import_react114 = __toESM(require_react(), 1);
   function useActionResult(action, args) {
     const key = args ? JSON.stringify(args) : null;
-    const [data, setData] = (0, import_react112.useState)(
+    const [data, setData] = (0, import_react114.useState)(
       /** @type {ActionDataMap[A]|null} */
       null
     );
-    const [error, setError] = (0, import_react112.useState)(
+    const [error, setError] = (0, import_react114.useState)(
       /** @type {Error|null} */
       null
     );
-    const [loading, setLoading] = (0, import_react112.useState)(false);
-    const [round, setRound] = (0, import_react112.useState)(0);
-    (0, import_react112.useEffect)(() => {
+    const [loading, setLoading] = (0, import_react114.useState)(false);
+    const [round, setRound] = (0, import_react114.useState)(0);
+    (0, import_react114.useEffect)(() => {
       setData(null);
       setError(null);
       if (key == null) {
@@ -46346,22 +46910,22 @@
         current = false;
       };
     }, [action, key, round]);
-    const reload = (0, import_react112.useCallback)(() => setRound((value) => value + 1), []);
+    const reload = (0, import_react114.useCallback)(() => setRound((value) => value + 1), []);
     return { data, error, loading, reload };
   }
 
   // src/app/components/modals/UnitViewHeader.jsx
-  var import_react113 = __toESM(require_react(), 1);
-  var import_jsx_runtime149 = __toESM(require_jsx_runtime(), 1);
+  var import_react115 = __toESM(require_react(), 1);
+  var import_jsx_runtime151 = __toESM(require_jsx_runtime(), 1);
   var VIEWS = [
     { key: "quadlet", label: () => i18n("Quadlet"), Icon: FileCodeIcon },
     { key: "unit", label: () => i18n("Unit"), Icon: CogIcon }
   ];
   function UnitViewHeader({ titleId, name, path, active, hasQuadlet, onSelect }) {
     const views = hasQuadlet ? VIEWS : VIEWS.filter((view) => view.key === "unit");
-    return /* @__PURE__ */ (0, import_jsx_runtime149.jsxs)(import_jsx_runtime149.Fragment, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime149.jsxs)("div", { className: "podshift-unit-view__title-row", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime149.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime151.jsxs)(import_jsx_runtime151.Fragment, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime151.jsxs)("div", { className: "podshift-unit-view__title-row", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime151.jsx)(
           "span",
           {
             className: "podshift-unit-view__switch",
@@ -46370,16 +46934,16 @@
             children: views.map((view) => {
               const pressed = view.key === active;
               if (!hasQuadlet) {
-                return /* @__PURE__ */ (0, import_jsx_runtime149.jsx)(Label, { color: "blue", variant: "filled", icon: /* @__PURE__ */ (0, import_jsx_runtime149.jsx)(view.Icon, {}), children: view.label() }, view.key);
+                return /* @__PURE__ */ (0, import_jsx_runtime151.jsx)(Label, { color: "blue", variant: "filled", icon: /* @__PURE__ */ (0, import_jsx_runtime151.jsx)(view.Icon, {}), children: view.label() }, view.key);
               }
-              return /* @__PURE__ */ (0, import_jsx_runtime149.jsx)(
+              return /* @__PURE__ */ (0, import_jsx_runtime151.jsx)(
                 Label,
                 {
                   color: "blue",
                   variant: pressed ? "filled" : "outline",
-                  icon: /* @__PURE__ */ (0, import_jsx_runtime149.jsx)(view.Icon, {}),
+                  icon: /* @__PURE__ */ (0, import_jsx_runtime151.jsx)(view.Icon, {}),
                   isClickable: true,
-                  render: ({ className, content, componentRef }) => /* @__PURE__ */ (0, import_jsx_runtime149.jsx)(
+                  render: ({ className, content, componentRef }) => /* @__PURE__ */ (0, import_jsx_runtime151.jsx)(
                     "button",
                     {
                       type: "button",
@@ -46398,14 +46962,14 @@
             })
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime149.jsx)("h1", { id: titleId, className: "pf-v6-c-modal-box__title podshift-unit-view__name", title: name, children: name })
+        /* @__PURE__ */ (0, import_jsx_runtime151.jsx)("h1", { id: titleId, className: "pf-v6-c-modal-box__title podshift-unit-view__name", title: name, children: name })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime149.jsx)("div", { className: "pf-v6-c-modal-box__description podshift-unit-view__path", title: path || void 0, children: /* @__PURE__ */ (0, import_jsx_runtime149.jsx)("span", { className: "podshift-unit-view__path-text", children: path }) })
+      /* @__PURE__ */ (0, import_jsx_runtime151.jsx)("div", { className: "pf-v6-c-modal-box__description podshift-unit-view__path", title: path || void 0, children: /* @__PURE__ */ (0, import_jsx_runtime151.jsx)("span", { className: "podshift-unit-view__path-text", children: path }) })
     ] });
   }
 
   // src/app/components/modals/UnitViewModal.jsx
-  var import_jsx_runtime150 = __toESM(require_jsx_runtime(), 1);
+  var import_jsx_runtime152 = __toESM(require_jsx_runtime(), 1);
   var TITLE_ID = "podshift-code-view-title";
   var QUADLET_ERRORS = {
     FILE_NOT_FOUND: (path) => cockpitTyped_default.format(i18n("The Quadlet file $0 no longer exists."), path),
@@ -46425,17 +46989,17 @@
     return path.startsWith("/") && parts.every((part) => part !== "" && part !== "." && part !== "..");
   }
   function goneNotice(unit, onRefresh) {
-    return /* @__PURE__ */ (0, import_jsx_runtime150.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime152.jsx)(
       InlineNotice,
       {
         variant: "warning",
         title: cockpitTyped_default.format(i18n("This $0 no longer exists."), unit),
-        actionLinks: onRefresh && /* @__PURE__ */ (0, import_jsx_runtime150.jsx)(AlertActionLink, { onClick: onRefresh, children: i18n("Refresh") })
+        actionLinks: onRefresh && /* @__PURE__ */ (0, import_jsx_runtime152.jsx)(AlertActionLink, { onClick: onRefresh, children: i18n("Refresh") })
       }
     );
   }
   function tooLargeNotice(size) {
-    return /* @__PURE__ */ (0, import_jsx_runtime150.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime152.jsx)(
       InlineNotice,
       {
         variant: "info",
@@ -46444,7 +47008,7 @@
     );
   }
   function UnitViewModal({ view, onClose, onRefresh }) {
-    const [state, setState] = (0, import_react114.useState)(
+    const [state, setState] = (0, import_react116.useState)(
       /** @type {UnitViewTabs} */
       freshTabs(view)
     );
@@ -46469,9 +47033,9 @@
       if (quadletData && !quadletData.found) {
         notice = goneNotice(view.unit, onRefresh);
       } else if (quadletData?.error === "NOT_QUADLET") {
-        notice = /* @__PURE__ */ (0, import_jsx_runtime150.jsx)(InlineNotice, { variant: "info", title: i18n("This unit was not generated from a Quadlet file.") });
+        notice = /* @__PURE__ */ (0, import_jsx_runtime152.jsx)(InlineNotice, { variant: "info", title: i18n("This unit was not generated from a Quadlet file.") });
       } else if (quadletData?.error) {
-        notice = /* @__PURE__ */ (0, import_jsx_runtime150.jsx)(InlineNotice, { variant: "warning", title: (QUADLET_ERRORS[quadletData.error] || QUADLET_ERRORS.FILE_UNREADABLE)(path) });
+        notice = /* @__PURE__ */ (0, import_jsx_runtime152.jsx)(InlineNotice, { variant: "warning", title: (QUADLET_ERRORS[quadletData.error] || QUADLET_ERRORS.FILE_UNREADABLE)(path) });
       } else if (quadletData?.tooLarge) {
         notice = tooLargeNotice(quadletData.size);
       } else if (quadletData && typeof quadletData.text === "string") {
@@ -46489,8 +47053,8 @@
       path = catPath(text) || view.unitPath || "";
     }
     const filePath = text && isFilePath(path) ? path : "";
-    const code = (0, import_react114.useMemo)(() => highlightIni(text), [text]);
-    const select = (0, import_react114.useCallback)(
+    const code = (0, import_react116.useMemo)(() => highlightIni(text), [text]);
+    const select = (0, import_react116.useCallback)(
       /**
        * Shows a view, and loads it the first time.
        *
@@ -46509,12 +47073,12 @@
       return null;
     }
     const result = active === "quadlet" ? quadlet : unitFile;
-    return /* @__PURE__ */ (0, import_jsx_runtime150.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime152.jsx)(
       CodeViewModal,
       {
         isOpen: true,
         title: view.unit,
-        header: /* @__PURE__ */ (0, import_jsx_runtime150.jsx)(
+        header: /* @__PURE__ */ (0, import_jsx_runtime152.jsx)(
           UnitViewHeader,
           {
             titleId: TITLE_ID,
@@ -46530,11 +47094,11 @@
         loading: result.loading,
         error: result.error,
         notice,
-        endActions: /* @__PURE__ */ (0, import_jsx_runtime150.jsx)(
+        endActions: /* @__PURE__ */ (0, import_jsx_runtime152.jsx)(
           Button,
           {
             variant: "secondary",
-            icon: /* @__PURE__ */ (0, import_jsx_runtime150.jsx)(DownloadIcon, {}),
+            icon: /* @__PURE__ */ (0, import_jsx_runtime152.jsx)(DownloadIcon, {}),
             isDisabled: !filePath || !fileName,
             onClick: () => ChannelDownload.downloadFile(filePath, fileName, "text/plain"),
             children: i18n("Download")
@@ -46546,7 +47110,7 @@
   }
 
   // src/app/modules/BaseModule.jsx
-  var import_jsx_runtime151 = __toESM(require_jsx_runtime(), 1);
+  var import_jsx_runtime153 = __toESM(require_jsx_runtime(), 1);
   var _BaseModule_instances, uninstallNotice_fn, moduleClass_fn, _BaseModule_static, className_fn2, toolbar_fn, filterItems_fn, cards_fn;
   var _BaseModule = class _BaseModule {
     /**
@@ -46796,7 +47360,7 @@
      */
     uninstallDialog(state) {
       const { uninstall, closeUninstall, uninstallQueued } = state;
-      return /* @__PURE__ */ (0, import_jsx_runtime151.jsx)(QuadletUninstallModal, { target: uninstall, onClose: closeUninstall, onQueued: uninstallQueued });
+      return /* @__PURE__ */ (0, import_jsx_runtime153.jsx)(QuadletUninstallModal, { target: uninstall, onClose: closeUninstall, onQueued: uninstallQueued });
     }
     /**
      * Builds the dialogues of the page. The default is the Inspect view modal, the Uninstall
@@ -46810,7 +47374,7 @@
       const { closeView, closeUnitView, refresh } = state;
       let unitViewModal = null;
       if (this.quadletView) {
-        unitViewModal = /* @__PURE__ */ (0, import_jsx_runtime151.jsx)(
+        unitViewModal = /* @__PURE__ */ (0, import_jsx_runtime153.jsx)(
           UnitViewModal,
           {
             view: state.unitView,
@@ -46819,8 +47383,8 @@
           }
         );
       }
-      return /* @__PURE__ */ (0, import_jsx_runtime151.jsxs)(import_jsx_runtime151.Fragment, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime151.jsx)(ResourceViewModal, { kind: this.kind, view: state.view, onClose: closeView, onRefresh: refresh }),
+      return /* @__PURE__ */ (0, import_jsx_runtime153.jsxs)(import_jsx_runtime153.Fragment, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime153.jsx)(ResourceViewModal, { kind: this.kind, view: state.view, onClose: closeView, onRefresh: refresh }),
         unitViewModal,
         this.uninstallDialog(state)
       ] });
@@ -46836,10 +47400,10 @@
       const resources = _BaseModule.listItems(state);
       const query = state.filter.trim().toLowerCase();
       const items = this.visibleItems(resources || [], query, state.filterValues);
-      return /* @__PURE__ */ (0, import_jsx_runtime151.jsxs)(Stack, { style: { rowGap: "var(--pf-t--global--spacer--lg)" }, children: [
+      return /* @__PURE__ */ (0, import_jsx_runtime153.jsxs)(Stack, { style: { rowGap: "var(--pf-t--global--spacer--lg)" }, children: [
         __privateMethod(this, _BaseModule_instances, toolbar_fn).call(this, state, resources, items),
         __privateMethod(this, _BaseModule_instances, uninstallNotice_fn).call(this, state),
-        /* @__PURE__ */ (0, import_jsx_runtime151.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime153.jsx)(
           LoadingContent,
           {
             unavailable: state.unavailable,
@@ -46851,7 +47415,7 @@
             emptyBody: this.emptyBody,
             spinnerSize: "lg",
             warningPlacement: "stack",
-            children: /* @__PURE__ */ (0, import_jsx_runtime151.jsx)(ResourceGrid, { children: __privateMethod(this, _BaseModule_instances, cards_fn).call(this, items, state) })
+            children: /* @__PURE__ */ (0, import_jsx_runtime153.jsx)(ResourceGrid, { children: __privateMethod(this, _BaseModule_instances, cards_fn).call(this, items, state) })
           }
         ),
         this.dialogs(state)
@@ -46871,13 +47435,13 @@
       return null;
     }
     const title = target.isApp ? cockpitTyped_default.format(i18n("Uninstall of app $0 is queued"), target.name) : cockpitTyped_default.format(i18n("Uninstall of $0 is queued"), target.name);
-    return /* @__PURE__ */ (0, import_jsx_runtime151.jsx)(StackItem, { children: /* @__PURE__ */ (0, import_jsx_runtime151.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime153.jsx)(StackItem, { children: /* @__PURE__ */ (0, import_jsx_runtime153.jsx)(
       Alert,
       {
         variant: "success",
         isInline: true,
         title,
-        actionClose: /* @__PURE__ */ (0, import_jsx_runtime151.jsx)(AlertActionCloseButton, { onClose: dismissUninstallNotice }),
+        actionClose: /* @__PURE__ */ (0, import_jsx_runtime153.jsx)(AlertActionCloseButton, { onClose: dismissUninstallNotice }),
         children: i18n("The list loads again shortly. The install log on the Drop Quadlet tab shows the progress.")
       }
     ) });
@@ -46912,14 +47476,14 @@
     const ModuleClass = __privateMethod(this, _BaseModule_instances, moduleClass_fn).call(this);
     let podmanItem = null;
     if (this.showOpenInPodman && isPodmanPageInstalled()) {
-      podmanItem = /* @__PURE__ */ (0, import_jsx_runtime151.jsx)(ToolbarItem, { children: /* @__PURE__ */ (0, import_jsx_runtime151.jsx)(OpenInPodmanButton, {}) });
+      podmanItem = /* @__PURE__ */ (0, import_jsx_runtime153.jsx)(ToolbarItem, { children: /* @__PURE__ */ (0, import_jsx_runtime153.jsx)(OpenInPodmanButton, {}) });
     }
     let countItem = null;
     if (resources != null) {
-      countItem = /* @__PURE__ */ (0, import_jsx_runtime151.jsx)(ToolbarItem, { align: { default: "alignEnd" }, children: ModuleClass.countText(items.length) });
+      countItem = /* @__PURE__ */ (0, import_jsx_runtime153.jsx)(ToolbarItem, { align: { default: "alignEnd" }, children: ModuleClass.countText(items.length) });
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime151.jsx)(StackItem, { children: /* @__PURE__ */ (0, import_jsx_runtime151.jsx)(Toolbar, { children: /* @__PURE__ */ (0, import_jsx_runtime151.jsxs)(ToolbarContent, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime151.jsx)(ToolbarItem, { variant: "search-filter", children: /* @__PURE__ */ (0, import_jsx_runtime151.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime153.jsx)(StackItem, { children: /* @__PURE__ */ (0, import_jsx_runtime153.jsx)(Toolbar, { children: /* @__PURE__ */ (0, import_jsx_runtime153.jsxs)(ToolbarContent, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime153.jsx)(ToolbarItem, { variant: "search-filter", children: /* @__PURE__ */ (0, import_jsx_runtime153.jsx)(
         SearchInput,
         {
           placeholder: i18n("Filter"),
@@ -46942,7 +47506,7 @@
    */
   filterItems_fn = function(state) {
     const { filterValues, setFilterValue, unavailable } = state;
-    return this.filters.map((toggle, index) => /* @__PURE__ */ (0, import_jsx_runtime151.jsx)(ToolbarItem, { children: /* @__PURE__ */ (0, import_jsx_runtime151.jsx)(
+    return this.filters.map((toggle, index) => /* @__PURE__ */ (0, import_jsx_runtime153.jsx)(ToolbarItem, { children: /* @__PURE__ */ (0, import_jsx_runtime153.jsx)(
       FilterToggle,
       {
         filter: toggle,
@@ -47005,7 +47569,7 @@
   };
 
   // src/app/modules/containers/ContainersModule.jsx
-  var import_jsx_runtime152 = __toESM(require_jsx_runtime(), 1);
+  var import_jsx_runtime154 = __toESM(require_jsx_runtime(), 1);
   var _ContainersModule = class _ContainersModule extends BaseModule {
     /**
      * Builds the containers module with its list action, source filter and card settings.
@@ -47113,21 +47677,65 @@
       return this.idPrefix + item.title;
     }
     /**
+     * Builds the kebab action list of a container card: Inspect and Variables, then
+     * Commands (always shown), then Show Quadlet and Uninstall when they apply.
+     *
+     * @param {ResourceItem} item The container.
+     * @param {ContainersPageState} state Page state, for the card menu actions.
+     * @returns {(import('../../types/card.js').MenuItem|import('../../types/card.js').MenuDivider)[]} The menu items.
+     */
+    static cardActions(item, state) {
+      return [
+        ...this.viewActions(item, state),
+        { key: "commands", label: i18n("Commands"), onClick: () => state.setCommandsContainer(item) },
+        ...this.quadletActions(item, state),
+        ...this.uninstallActions(item, state)
+      ];
+    }
+    /**
+     * Closes the commands modal and the shared views, then reloads the list.
+     *
+     * @param {ContainersPageState} state Page state, for the close functions and refresh.
+     */
+    closeAndRefresh(state) {
+      state.setCommandsContainer(null);
+      super.closeAndRefresh(state);
+    }
+    /**
+     * Builds the shared dialogues plus the container commands modal.
+     *
+     * @param {ContainersPageState} state Page state, for the open views and their close functions.
+     * @returns {React.ReactElement} The dialogues.
+     */
+    dialogs(state) {
+      return /* @__PURE__ */ (0, import_jsx_runtime154.jsxs)(import_jsx_runtime154.Fragment, { children: [
+        super.dialogs(state),
+        /* @__PURE__ */ (0, import_jsx_runtime154.jsx)(
+          CommandsModal,
+          {
+            container: state.commandsContainer,
+            mode: state.mode,
+            onClose: () => state.setCommandsContainer(null)
+          }
+        )
+      ] });
+    }
+    /**
      * Builds a resource card for one container.
      *
      * @param {ResourceItem} item The container.
-     * @param {ModulePageState} state Page state, for the card menu actions.
+     * @param {ContainersPageState} state Page state, for the card menu actions.
      * @returns {React.ReactElement} The card, with key={item.id}.
      */
     card(item, state) {
       const Icon2 = this.icon;
-      return /* @__PURE__ */ (0, import_jsx_runtime152.jsx)(
+      return /* @__PURE__ */ (0, import_jsx_runtime154.jsx)(
         ResourceCard,
         {
           id: this.cardDomId(item),
           title: item.title,
           subtitle: item.subtitle,
-          icon: /* @__PURE__ */ (0, import_jsx_runtime152.jsx)(Icon2, {}),
+          icon: /* @__PURE__ */ (0, import_jsx_runtime154.jsx)(Icon2, {}),
           autoUpdate: _ContainersModule.autoUpdateTooltip(item),
           autoUpdateWarning: Boolean(item.autoUpdate) && item.autoUpdateActive === false,
           status: _ContainersModule.statusText(item.status),
@@ -47192,16 +47800,16 @@
 
   // src/app/modules/containers/ContainersPage.jsx
   function ContainersPage(props) {
-    const state = useModulePage(containersModule, props);
+    const state = { ...useModulePage(containersModule, props), ...useContainerCommands() };
     return containersModule.render(state);
   }
 
   // src/app/modules/volumes/VolumesPage.jsx
-  var import_react119 = __toESM(require_react(), 1);
+  var import_react121 = __toESM(require_react(), 1);
 
   // src/app/modules/volumes/VolumesModule.jsx
-  var import_react118 = __toESM(require_react(), 1);
-  var import_jsx_runtime153 = __toESM(require_jsx_runtime(), 1);
+  var import_react120 = __toESM(require_react(), 1);
+  var import_jsx_runtime155 = __toESM(require_jsx_runtime(), 1);
   var _VolumesModule = class _VolumesModule extends BaseModule {
     /**
      * Builds the volumes module with its list action, source filter and card settings.
@@ -47261,13 +47869,13 @@
      */
     card(item, state) {
       const Icon2 = this.icon;
-      return /* @__PURE__ */ (0, import_jsx_runtime153.jsx)(
+      return /* @__PURE__ */ (0, import_jsx_runtime155.jsx)(
         ResourceCard,
         {
           id: this.cardDomId(item),
           title: item.title,
           subtitle: item.subtitle,
-          icon: /* @__PURE__ */ (0, import_jsx_runtime153.jsx)(Icon2, {}),
+          icon: /* @__PURE__ */ (0, import_jsx_runtime155.jsx)(Icon2, {}),
           running: item.running === true,
           status: i18n(item.status),
           statusVariant: _VolumesModule.STATUS_VARIANTS[item.status],
@@ -47314,11 +47922,11 @@
   }
 
   // src/app/modules/networks/NetworksPage.jsx
-  var import_react121 = __toESM(require_react(), 1);
+  var import_react123 = __toESM(require_react(), 1);
 
   // src/app/modules/networks/NetworksModule.jsx
-  var import_react120 = __toESM(require_react(), 1);
-  var import_jsx_runtime154 = __toESM(require_jsx_runtime(), 1);
+  var import_react122 = __toESM(require_react(), 1);
+  var import_jsx_runtime156 = __toESM(require_jsx_runtime(), 1);
   var _NetworksModule = class _NetworksModule extends BaseModule {
     /**
      * Builds the networks module with its list action, source filter and card settings.
@@ -47354,13 +47962,13 @@
      */
     card(item, state) {
       const Icon2 = this.icon;
-      return /* @__PURE__ */ (0, import_jsx_runtime154.jsx)(
+      return /* @__PURE__ */ (0, import_jsx_runtime156.jsx)(
         ResourceCard,
         {
           id: this.cardDomId(item),
           title: item.title,
           subtitle: item.subtitle,
-          icon: /* @__PURE__ */ (0, import_jsx_runtime154.jsx)(Icon2, {}),
+          icon: /* @__PURE__ */ (0, import_jsx_runtime156.jsx)(Icon2, {}),
           status: i18n(item.status),
           statusVariant: _NetworksModule.STATUS_VARIANTS[item.status],
           tone: ResourceTone.usageTone(item),
@@ -47397,11 +48005,11 @@
   }
 
   // src/app/modules/images/ImagesPage.jsx
-  var import_react123 = __toESM(require_react(), 1);
+  var import_react125 = __toESM(require_react(), 1);
 
   // src/app/modules/images/ImagesModule.jsx
-  var import_react122 = __toESM(require_react(), 1);
-  var import_jsx_runtime155 = __toESM(require_jsx_runtime(), 1);
+  var import_react124 = __toESM(require_react(), 1);
+  var import_jsx_runtime157 = __toESM(require_jsx_runtime(), 1);
   var _ImagesModule = class _ImagesModule extends BaseModule {
     /**
      * Builds the images module with its list action, source filter and card settings.
@@ -47461,13 +48069,13 @@
      */
     card(item, state) {
       const Icon2 = this.icon;
-      return /* @__PURE__ */ (0, import_jsx_runtime155.jsx)(
+      return /* @__PURE__ */ (0, import_jsx_runtime157.jsx)(
         ResourceCard,
         {
           id: this.cardDomId(item),
           title: item.title,
           subtitle: item.subtitle,
-          icon: /* @__PURE__ */ (0, import_jsx_runtime155.jsx)(Icon2, {}),
+          icon: /* @__PURE__ */ (0, import_jsx_runtime157.jsx)(Icon2, {}),
           running: item.running === true,
           status: i18n(item.status),
           statusVariant: _ImagesModule.STATUS_VARIANTS[item.status],
@@ -47505,10 +48113,10 @@
   }
 
   // src/app/modules/secrets/SecretsPage.jsx
-  var import_react125 = __toESM(require_react(), 1);
+  var import_react127 = __toESM(require_react(), 1);
 
   // src/app/modules/secrets/SecretsModule.jsx
-  var import_react124 = __toESM(require_react(), 1);
+  var import_react126 = __toESM(require_react(), 1);
 
   // src/app/modules/filters/UsageFilter.js
   var UsageFilter = class extends BaseFilter {
@@ -47552,7 +48160,7 @@
   };
 
   // src/app/modules/secrets/SecretsModule.jsx
-  var import_jsx_runtime156 = __toESM(require_jsx_runtime(), 1);
+  var import_jsx_runtime158 = __toESM(require_jsx_runtime(), 1);
   var _SecretsModule = class _SecretsModule extends BaseModule {
     /**
      * Builds the secrets module with its list action, usage filter and card settings.
@@ -47653,13 +48261,13 @@
      */
     card(item, state) {
       const Icon2 = this.icon;
-      return /* @__PURE__ */ (0, import_jsx_runtime156.jsx)(
+      return /* @__PURE__ */ (0, import_jsx_runtime158.jsx)(
         ResourceCard,
         {
           id: this.cardDomId(item),
           title: item.title,
           subtitle: item.subtitle,
-          icon: /* @__PURE__ */ (0, import_jsx_runtime156.jsx)(Icon2, {}),
+          icon: /* @__PURE__ */ (0, import_jsx_runtime158.jsx)(Icon2, {}),
           status: _SecretsModule.statusText(item.status),
           statusVariant: _SecretsModule.STATUS_VARIANTS[item.status],
           tone: ResourceTone.usageTone(item),
@@ -47708,16 +48316,16 @@
   }
 
   // src/app/modules/services/ServicesPage.jsx
-  var import_react130 = __toESM(require_react(), 1);
+  var import_react132 = __toESM(require_react(), 1);
 
   // src/app/hooks/useServiceDialogs.js
-  var import_react126 = __toESM(require_react(), 1);
+  var import_react128 = __toESM(require_react(), 1);
   function useServiceDialogs() {
-    const [statusService, setStatusService] = (0, import_react126.useState)(
+    const [statusService, setStatusService] = (0, import_react128.useState)(
       /** @type {ServiceItem|null} */
       null
     );
-    const [logService, setLogService] = (0, import_react126.useState)(
+    const [logService, setLogService] = (0, import_react128.useState)(
       /** @type {ServiceItem|null} */
       null
     );
@@ -47725,40 +48333,40 @@
   }
 
   // src/app/modules/services/ServicesModule.jsx
-  var import_react129 = __toESM(require_react(), 1);
+  var import_react131 = __toESM(require_react(), 1);
 
   // src/app/components/modals/ServiceLogModal.jsx
-  var import_react127 = __toESM(require_react(), 1);
-  var import_jsx_runtime157 = __toESM(require_jsx_runtime(), 1);
+  var import_react129 = __toESM(require_react(), 1);
+  var import_jsx_runtime159 = __toESM(require_jsx_runtime(), 1);
   function ServiceLogModal({ service, admin, onClose, onRefresh }) {
     const args = service ? { unit: service.id } : null;
     const { data, error, loading, reload } = useActionResult("service-logs", args);
     const result = data;
-    const entries = (0, import_react127.useMemo)(
+    const entries = (0, import_react129.useMemo)(
       () => result?.found && Array.isArray(result.entries) ? result.entries : [],
       [result]
     );
-    const text = (0, import_react127.useMemo)(() => JournalText.toText(entries), [entries]);
-    const code = (0, import_react127.useMemo)(() => JournalText.highlight(entries), [entries]);
+    const text = (0, import_react129.useMemo)(() => JournalText.toText(entries), [entries]);
+    const code = (0, import_react129.useMemo)(() => JournalText.highlight(entries), [entries]);
     if (!service) {
       return null;
     }
     let notice = null;
     if (result && !result.found) {
-      notice = /* @__PURE__ */ (0, import_jsx_runtime157.jsx)(
+      notice = /* @__PURE__ */ (0, import_jsx_runtime159.jsx)(
         InlineNotice,
         {
           variant: "warning",
           title: cockpitTyped_default.format(i18n("This $0 no longer exists."), service.id),
-          actionLinks: onRefresh && /* @__PURE__ */ (0, import_jsx_runtime157.jsx)(AlertActionLink, { onClick: onRefresh, children: i18n("Refresh") })
+          actionLinks: onRefresh && /* @__PURE__ */ (0, import_jsx_runtime159.jsx)(AlertActionLink, { onClick: onRefresh, children: i18n("Refresh") })
         }
       );
     } else if (result?.readable === false) {
-      notice = /* @__PURE__ */ (0, import_jsx_runtime157.jsx)(InlineNotice, { variant: "warning", title: i18n("The journal of the podshift user cannot be read."), children: result.reason });
+      notice = /* @__PURE__ */ (0, import_jsx_runtime159.jsx)(InlineNotice, { variant: "warning", title: i18n("The journal of the podshift user cannot be read."), children: result.reason });
     } else if (result && entries.length === 0) {
-      notice = /* @__PURE__ */ (0, import_jsx_runtime157.jsx)(EmptyState, { headingLevel: "h2", titleText: i18n("No log entries"), variant: EmptyStateVariant.sm });
+      notice = /* @__PURE__ */ (0, import_jsx_runtime159.jsx)(EmptyState, { headingLevel: "h2", titleText: i18n("No log entries"), variant: EmptyStateVariant.sm });
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime157.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime159.jsx)(
       CodeViewModal,
       {
         isOpen: true,
@@ -47769,17 +48377,17 @@
         error,
         notice,
         onClose,
-        endActions: /* @__PURE__ */ (0, import_jsx_runtime157.jsxs)(import_jsx_runtime157.Fragment, { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime157.jsx)(Button, { variant: "secondary", icon: /* @__PURE__ */ (0, import_jsx_runtime157.jsx)(SyncAltIcon, {}), isDisabled: loading, onClick: reload, children: i18n("Refresh") }),
-          admin && /* @__PURE__ */ (0, import_jsx_runtime157.jsx)(Button, { variant: "link", icon: /* @__PURE__ */ (0, import_jsx_runtime157.jsx)(ExternalLinkAltIcon, {}), iconPosition: "end", onClick: () => CockpitLinks.openServiceLog(service.id), children: i18n("Open log") })
+        endActions: /* @__PURE__ */ (0, import_jsx_runtime159.jsxs)(import_jsx_runtime159.Fragment, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime159.jsx)(Button, { variant: "secondary", icon: /* @__PURE__ */ (0, import_jsx_runtime159.jsx)(SyncAltIcon, {}), isDisabled: loading, onClick: reload, children: i18n("Refresh") }),
+          admin && /* @__PURE__ */ (0, import_jsx_runtime159.jsx)(Button, { variant: "link", icon: /* @__PURE__ */ (0, import_jsx_runtime159.jsx)(ExternalLinkAltIcon, {}), iconPosition: "end", onClick: () => CockpitLinks.openServiceLog(service.id), children: i18n("Open log") })
         ] })
       }
     );
   }
 
   // src/app/components/modals/ServiceStatusModal.jsx
-  var import_react128 = __toESM(require_react(), 1);
-  var import_jsx_runtime158 = __toESM(require_jsx_runtime(), 1);
+  var import_react130 = __toESM(require_react(), 1);
+  var import_jsx_runtime160 = __toESM(require_jsx_runtime(), 1);
   function ServiceStatusModal({ service, onClose, onRefresh }) {
     const args = service ? { unit: service.id, mode: "status" } : null;
     const { data, error, loading } = useActionResult("service-view", args);
@@ -47790,16 +48398,16 @@
     }
     let notice = null;
     if (result && !result.found) {
-      notice = /* @__PURE__ */ (0, import_jsx_runtime158.jsx)(
+      notice = /* @__PURE__ */ (0, import_jsx_runtime160.jsx)(
         InlineNotice,
         {
           variant: "warning",
           title: cockpitTyped_default.format(i18n("This $0 no longer exists."), service.id),
-          actionLinks: onRefresh && /* @__PURE__ */ (0, import_jsx_runtime158.jsx)(AlertActionLink, { onClick: onRefresh, children: i18n("Refresh") })
+          actionLinks: onRefresh && /* @__PURE__ */ (0, import_jsx_runtime160.jsx)(AlertActionLink, { onClick: onRefresh, children: i18n("Refresh") })
         }
       );
     } else if (result?.tooLarge) {
-      notice = /* @__PURE__ */ (0, import_jsx_runtime158.jsx)(
+      notice = /* @__PURE__ */ (0, import_jsx_runtime160.jsx)(
         InlineNotice,
         {
           variant: "info",
@@ -47807,7 +48415,7 @@
         }
       );
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime158.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime160.jsx)(
       CodeViewModal,
       {
         isOpen: true,
@@ -47873,7 +48481,7 @@
   };
 
   // src/app/modules/services/ServicesModule.jsx
-  var import_jsx_runtime159 = __toESM(require_jsx_runtime(), 1);
+  var import_jsx_runtime161 = __toESM(require_jsx_runtime(), 1);
   var _ServicesModule = class _ServicesModule extends BaseModule {
     /**
      * Builds the services module with its list action, state filter and card settings.
@@ -48059,10 +48667,10 @@
     dialogs(state) {
       const { closeUnitView } = state;
       const onRefresh = () => this.closeAndRefresh(state);
-      return /* @__PURE__ */ (0, import_jsx_runtime159.jsxs)(import_jsx_runtime159.Fragment, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime159.jsx)(UnitViewModal, { view: state.unitView, onClose: closeUnitView, onRefresh }),
-        /* @__PURE__ */ (0, import_jsx_runtime159.jsx)(ServiceStatusModal, { service: state.statusService, onClose: () => state.setStatusService(null), onRefresh }),
-        /* @__PURE__ */ (0, import_jsx_runtime159.jsx)(ServiceLogModal, { service: state.logService, admin: state.mode === "admin", onClose: () => state.setLogService(null), onRefresh })
+      return /* @__PURE__ */ (0, import_jsx_runtime161.jsxs)(import_jsx_runtime161.Fragment, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime161.jsx)(UnitViewModal, { view: state.unitView, onClose: closeUnitView, onRefresh }),
+        /* @__PURE__ */ (0, import_jsx_runtime161.jsx)(ServiceStatusModal, { service: state.statusService, onClose: () => state.setStatusService(null), onRefresh }),
+        /* @__PURE__ */ (0, import_jsx_runtime161.jsx)(ServiceLogModal, { service: state.logService, admin: state.mode === "admin", onClose: () => state.setLogService(null), onRefresh })
       ] });
     }
     /**
@@ -48075,13 +48683,13 @@
     card(item, state) {
       const Icon2 = this.icon;
       const label = _ServicesModule.stateLabel(item);
-      return /* @__PURE__ */ (0, import_jsx_runtime159.jsx)(
+      return /* @__PURE__ */ (0, import_jsx_runtime161.jsx)(
         ResourceCard,
         {
           id: this.cardDomId(item),
           title: serviceDisplayName(item.title),
           subtitle: item.subtitle === item.title ? serviceDisplayName(item.subtitle) : item.subtitle,
-          icon: /* @__PURE__ */ (0, import_jsx_runtime159.jsx)(Icon2, {}),
+          icon: /* @__PURE__ */ (0, import_jsx_runtime161.jsx)(Icon2, {}),
           status: label.text,
           statusVariant: label.variant,
           source: item.source,
@@ -48128,10 +48736,10 @@
   }
 
   // src/app/modules/quadlets/QuadletsPage.jsx
-  var import_react132 = __toESM(require_react(), 1);
+  var import_react134 = __toESM(require_react(), 1);
 
   // src/app/modules/quadlets/QuadletsModule.jsx
-  var import_react131 = __toESM(require_react(), 1);
+  var import_react133 = __toESM(require_react(), 1);
 
   // src/app/modules/filters/QuadletStatusFilter.js
   var QuadletStatusFilter = class _QuadletStatusFilter extends BaseFilter {
@@ -48242,7 +48850,7 @@
   var QuadletTypeFilter = _QuadletTypeFilter;
 
   // src/app/modules/quadlets/QuadletsModule.jsx
-  var import_jsx_runtime160 = __toESM(require_jsx_runtime(), 1);
+  var import_jsx_runtime162 = __toESM(require_jsx_runtime(), 1);
   var _QuadletsModule = class _QuadletsModule extends BaseModule {
     /**
      * Builds the Quadlets module with its list action, status and type filters and card settings.
@@ -48417,8 +49025,8 @@
     dialogs(state) {
       const { closeUnitView } = state;
       const onRefresh = () => this.closeAndRefresh(state);
-      return /* @__PURE__ */ (0, import_jsx_runtime160.jsxs)(import_jsx_runtime160.Fragment, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime160.jsx)(UnitViewModal, { view: state.unitView, onClose: closeUnitView, onRefresh }),
+      return /* @__PURE__ */ (0, import_jsx_runtime162.jsxs)(import_jsx_runtime162.Fragment, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(UnitViewModal, { view: state.unitView, onClose: closeUnitView, onRefresh }),
         this.uninstallDialog(state)
       ] });
     }
@@ -48432,14 +49040,14 @@
     card(item, state) {
       const Icon2 = ResourceIcons.forQuadlet(item.type);
       const label = _QuadletsModule.statusLabel(item);
-      return /* @__PURE__ */ (0, import_jsx_runtime160.jsx)(
+      return /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(
         ResourceCard,
         {
           id: this.cardDomId(item),
           title: item.title,
           description: item.description || void 0,
           subtitle: _QuadletsModule.typeLabel(item.type),
-          icon: /* @__PURE__ */ (0, import_jsx_runtime160.jsx)(Icon2, {}),
+          icon: /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(Icon2, {}),
           running: item.status === "active/running",
           status: label.text,
           statusVariant: label.variant,
@@ -48490,8 +49098,8 @@
   }
 
   // src/app/modules/health/HealthPage.jsx
-  var import_react133 = __toESM(require_react(), 1);
-  var import_jsx_runtime161 = __toESM(require_jsx_runtime(), 1);
+  var import_react135 = __toESM(require_react(), 1);
+  var import_jsx_runtime163 = __toESM(require_jsx_runtime(), 1);
   var groupTableStyle = {
     tableLayout: "fixed",
     width: "100%"
@@ -48508,9 +49116,9 @@
     const canCopy = !unavailable && data != null && summary != null;
     let heading = title;
     if (!unavailable && summary) {
-      heading = /* @__PURE__ */ (0, import_jsx_runtime161.jsxs)(Flex, { spaceItems: { default: "spaceItemsSm" }, alignItems: { default: "alignItemsCenter" }, flexWrap: { default: "nowrap" }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime161.jsx)(FlexItem, { children: /* @__PURE__ */ (0, import_jsx_runtime161.jsx)(HealthStatusIcon, { state: summary.state }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime161.jsx)(FlexItem, { children: summary.label })
+      heading = /* @__PURE__ */ (0, import_jsx_runtime163.jsxs)(Flex, { spaceItems: { default: "spaceItemsSm" }, alignItems: { default: "alignItemsCenter" }, flexWrap: { default: "nowrap" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime163.jsx)(FlexItem, { children: /* @__PURE__ */ (0, import_jsx_runtime163.jsx)(HealthStatusIcon, { state: summary.state }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime163.jsx)(FlexItem, { children: summary.label })
       ] });
     }
     const menuItems = [
@@ -48521,9 +49129,9 @@
         onClick: () => copyText(healthToText(title, data))
       }
     ];
-    return /* @__PURE__ */ (0, import_jsx_runtime161.jsxs)(Card, { id: "podshift-health-report", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime161.jsx)(CardHeader, { actions: { actions: /* @__PURE__ */ (0, import_jsx_runtime161.jsx)(CardActionsMenu, { items: menuItems }), hasNoOffset: false }, children: /* @__PURE__ */ (0, import_jsx_runtime161.jsx)(CardTitle, { children: heading }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime161.jsx)(CardBody, { children: /* @__PURE__ */ (0, import_jsx_runtime161.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime163.jsxs)(Card, { id: "podshift-health-report", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime163.jsx)(CardHeader, { actions: { actions: /* @__PURE__ */ (0, import_jsx_runtime163.jsx)(CardActionsMenu, { items: menuItems }), hasNoOffset: false }, children: /* @__PURE__ */ (0, import_jsx_runtime163.jsx)(CardTitle, { children: heading }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime163.jsx)(CardBody, { children: /* @__PURE__ */ (0, import_jsx_runtime163.jsx)(
         LoadingContent,
         {
           unavailable,
@@ -48532,23 +49140,23 @@
           hasData: data != null,
           spinnerSize: "md",
           warningPlacement: "none",
-          children: /* @__PURE__ */ (0, import_jsx_runtime161.jsxs)(Stack, { style: groupStackStyle2, children: [
-            error && /* @__PURE__ */ (0, import_jsx_runtime161.jsx)(StackItem, { children: /* @__PURE__ */ (0, import_jsx_runtime161.jsx)(InlineNotice, { variant: "warning", title: error }) }),
-            (data?.groups ? data.groups : []).map((group) => /* @__PURE__ */ (0, import_jsx_runtime161.jsxs)(StackItem, { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime161.jsx)(Title, { headingLevel: "h4", size: "md", children: group.label }),
-              /* @__PURE__ */ (0, import_jsx_runtime161.jsxs)("table", { className: "pf-v6-c-table pf-m-grid-md pf-m-compact", style: groupTableStyle, children: [
-                /* @__PURE__ */ (0, import_jsx_runtime161.jsxs)("colgroup", { children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime161.jsx)("col", { style: { width: "18rem" } }),
-                  /* @__PURE__ */ (0, import_jsx_runtime161.jsx)("col", {})
+          children: /* @__PURE__ */ (0, import_jsx_runtime163.jsxs)(Stack, { style: groupStackStyle2, children: [
+            error && /* @__PURE__ */ (0, import_jsx_runtime163.jsx)(StackItem, { children: /* @__PURE__ */ (0, import_jsx_runtime163.jsx)(InlineNotice, { variant: "warning", title: error }) }),
+            (data?.groups ? data.groups : []).map((group) => /* @__PURE__ */ (0, import_jsx_runtime163.jsxs)(StackItem, { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime163.jsx)(Title, { headingLevel: "h4", size: "md", children: group.label }),
+              /* @__PURE__ */ (0, import_jsx_runtime163.jsxs)("table", { className: "pf-v6-c-table pf-m-grid-md pf-m-compact", style: groupTableStyle, children: [
+                /* @__PURE__ */ (0, import_jsx_runtime163.jsxs)("colgroup", { children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime163.jsx)("col", { style: { width: "18rem" } }),
+                  /* @__PURE__ */ (0, import_jsx_runtime163.jsx)("col", {})
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime161.jsx)("tbody", { className: "pf-v6-c-table__tbody", children: (group.rows || []).map((row) => /* @__PURE__ */ (0, import_jsx_runtime161.jsxs)("tr", { className: "pf-v6-c-table__tr", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime161.jsx)("th", { className: "pf-v6-c-table__th", scope: "row", children: /* @__PURE__ */ (0, import_jsx_runtime161.jsxs)(Flex, { spaceItems: { default: "spaceItemsSm" }, alignItems: { default: "alignItemsCenter" }, flexWrap: { default: "nowrap" }, children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime161.jsx)(FlexItem, { children: /* @__PURE__ */ (0, import_jsx_runtime161.jsx)(HealthStatusIcon, { state: row.state }) }),
-                    /* @__PURE__ */ (0, import_jsx_runtime161.jsx)(FlexItem, { children: row.label })
+                /* @__PURE__ */ (0, import_jsx_runtime163.jsx)("tbody", { className: "pf-v6-c-table__tbody", children: (group.rows || []).map((row) => /* @__PURE__ */ (0, import_jsx_runtime163.jsxs)("tr", { className: "pf-v6-c-table__tr", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime163.jsx)("th", { className: "pf-v6-c-table__th", scope: "row", children: /* @__PURE__ */ (0, import_jsx_runtime163.jsxs)(Flex, { spaceItems: { default: "spaceItemsSm" }, alignItems: { default: "alignItemsCenter" }, flexWrap: { default: "nowrap" }, children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime163.jsx)(FlexItem, { children: /* @__PURE__ */ (0, import_jsx_runtime163.jsx)(HealthStatusIcon, { state: row.state }) }),
+                    /* @__PURE__ */ (0, import_jsx_runtime163.jsx)(FlexItem, { children: row.label })
                   ] }) }),
-                  /* @__PURE__ */ (0, import_jsx_runtime161.jsxs)("td", { className: "pf-v6-c-table__td", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime163.jsxs)("td", { className: "pf-v6-c-table__td", children: [
                     row.value,
-                    row.fix && /* @__PURE__ */ (0, import_jsx_runtime161.jsx)(HelperText, { children: /* @__PURE__ */ (0, import_jsx_runtime161.jsx)(HelperTextItem, { children: row.fix }) })
+                    row.fix && /* @__PURE__ */ (0, import_jsx_runtime163.jsx)(HelperText, { children: /* @__PURE__ */ (0, import_jsx_runtime163.jsx)(HelperTextItem, { children: row.fix }) })
                   ] })
                 ] }, row.id)) })
               ] })
@@ -48574,40 +49182,40 @@
   ];
 
   // src/app/components/layout/MainBoard.jsx
-  var import_jsx_runtime162 = __toESM(require_jsx_runtime(), 1);
+  var import_jsx_runtime164 = __toESM(require_jsx_runtime(), 1);
   function ModuleNavItem({ item, isActive }) {
     const Icon2 = item.icon;
-    const anchorRef = (0, import_react134.useRef)(
+    const anchorRef = (0, import_react136.useRef)(
       /** @type {HTMLAnchorElement|null} */
       null
     );
     if (item.iconOnly && Icon2) {
-      return /* @__PURE__ */ (0, import_jsx_runtime162.jsxs)(import_jsx_runtime162.Fragment, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(
+      return /* @__PURE__ */ (0, import_jsx_runtime164.jsxs)(import_jsx_runtime164.Fragment, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime164.jsx)(
           NavItem,
           {
             itemId: item.id,
             preventDefault: true,
             isActive,
             anchorRef,
-            children: /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(Button, { variant: "link", component: "a", "aria-label": item.label, children: /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(Icon2, {}) })
+            children: /* @__PURE__ */ (0, import_jsx_runtime164.jsx)(Button, { variant: "link", component: "a", "aria-label": item.label, children: /* @__PURE__ */ (0, import_jsx_runtime164.jsx)(Icon2, {}) })
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(Tooltip, { content: item.label, triggerRef: anchorRef, position: "bottom", flipBehavior: ["bottom"] })
+        /* @__PURE__ */ (0, import_jsx_runtime164.jsx)(Tooltip, { content: item.label, triggerRef: anchorRef, position: "bottom", flipBehavior: ["bottom"] })
       ] });
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime164.jsx)(
       NavItem,
       {
         itemId: item.id,
         preventDefault: true,
         isActive,
-        children: /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(Button, { variant: "link", component: "a", children: item.label })
+        children: /* @__PURE__ */ (0, import_jsx_runtime164.jsx)(Button, { variant: "link", component: "a", children: item.label })
       }
     );
   }
   function LoadingNavItem() {
-    return /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(NavItem, { itemId: "podshift-loading", preventDefault: true, isActive: false, children: /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(Button, { variant: "link", component: "span", tabIndex: -1, children: /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(Spinner, { size: "md", isInline: true, "aria-label": i18n("Checking PodShift access") }) }) });
+    return /* @__PURE__ */ (0, import_jsx_runtime164.jsx)(NavItem, { itemId: "podshift-loading", preventDefault: true, isActive: false, children: /* @__PURE__ */ (0, import_jsx_runtime164.jsx)(Button, { variant: "link", component: "span", tabIndex: -1, children: /* @__PURE__ */ (0, import_jsx_runtime164.jsx)(Spinner, { size: "md", isInline: true, "aria-label": i18n("Checking PodShift access") }) }) });
   }
   function AutoRefreshToggle({ on, ranOut, forMs, onToggle }) {
     let tip = i18n("Auto refresh is off. Click to turn it on.");
@@ -48616,22 +49224,22 @@
     } else if (ranOut) {
       tip = cockpitTyped_default.format(i18n("Auto refresh turned off after $0 minutes. Click to turn it on."), AutoRefresh.offAfterMinutes(forMs));
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(Tooltip, { content: tip, position: "bottom", flipBehavior: ["bottom"], children: /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime164.jsx)(Tooltip, { content: tip, position: "bottom", flipBehavior: ["bottom"], children: /* @__PURE__ */ (0, import_jsx_runtime164.jsx)(
       Button,
       {
         variant: "plain",
         "aria-label": i18n("Auto refresh"),
         "aria-pressed": on,
         onClick: onToggle,
-        children: on ? /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(RhUiAutomationIcon, {}) : /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(RhUiAsleepIcon, {})
+        children: on ? /* @__PURE__ */ (0, import_jsx_runtime164.jsx)(RhUiAutomationIcon, {}) : /* @__PURE__ */ (0, import_jsx_runtime164.jsx)(RhUiAsleepIcon, {})
       }
     ) });
   }
   function MainBoard({ mode }) {
-    const [refreshToken, setRefreshToken] = (0, import_react134.useState)(0);
-    const refresh = (0, import_react134.useCallback)(() => setRefreshToken((count) => count + 1), []);
-    const [running, setRunning] = (0, import_react134.useState)(0);
-    const report = (0, import_react134.useCallback)(() => {
+    const [refreshToken, setRefreshToken] = (0, import_react136.useState)(0);
+    const refresh = (0, import_react136.useCallback)(() => setRefreshToken((count) => count + 1), []);
+    const [running, setRunning] = (0, import_react136.useState)(0);
+    const report = (0, import_react136.useCallback)(() => {
       let open = true;
       setRunning((count) => count + 1);
       return () => {
@@ -48642,25 +49250,25 @@
         setRunning((count) => count - 1);
       };
     }, []);
-    const [autoStartedAt, setAutoStartedAt] = (0, import_react134.useState)(
+    const [autoStartedAt, setAutoStartedAt] = (0, import_react136.useState)(
       /** @type {number|null} */
       null
     );
-    const [autoRanOut, setAutoRanOut] = (0, import_react134.useState)(false);
-    const [autoForMs, setAutoForMs] = (0, import_react134.useState)(AutoRefresh.OFF_AFTER_MS);
+    const [autoRanOut, setAutoRanOut] = (0, import_react136.useState)(false);
+    const [autoForMs, setAutoForMs] = (0, import_react136.useState)(AutoRefresh.OFF_AFTER_MS);
     const autoOn = autoStartedAt !== null;
-    const startAuto = (0, import_react134.useCallback)(function startAuto2(forMs = AutoRefresh.OFF_AFTER_MS) {
+    const startAuto = (0, import_react136.useCallback)(function startAuto2(forMs = AutoRefresh.OFF_AFTER_MS) {
       setAutoRanOut(false);
       setAutoForMs(forMs);
       setAutoStartedAt(Date.now());
     }, []);
-    const stopAuto = (0, import_react134.useCallback)(() => {
+    const stopAuto = (0, import_react136.useCallback)(() => {
       setAutoRanOut(false);
       setAutoStartedAt(null);
     }, []);
-    const [autoHeld, setAutoHeld] = (0, import_react134.useState)(false);
-    const autoHeldRef = (0, import_react134.useRef)(false);
-    const holdAuto = (0, import_react134.useCallback)(function holdAuto2(held) {
+    const [autoHeld, setAutoHeld] = (0, import_react136.useState)(false);
+    const autoHeldRef = (0, import_react136.useRef)(false);
+    const holdAuto = (0, import_react136.useCallback)(function holdAuto2(held) {
       if (autoHeldRef.current === held) {
         return;
       }
@@ -48670,11 +49278,11 @@
         setAutoStartedAt((current) => current === null ? null : Date.now());
       }
     }, []);
-    const autoRefresh = (0, import_react134.useMemo)(
+    const autoRefresh = (0, import_react136.useMemo)(
       () => ({ on: autoOn, ranOut: autoRanOut, startedAt: autoStartedAt, forMs: autoForMs, start: startAuto, stop: stopAuto, hold: holdAuto }),
       [autoOn, autoRanOut, autoStartedAt, autoForMs, startAuto, stopAuto, holdAuto]
     );
-    (0, import_react134.useEffect)(() => {
+    (0, import_react136.useEffect)(() => {
       if (autoStartedAt === null || autoHeld) {
         return void 0;
       }
@@ -48684,7 +49292,7 @@
       }, AutoRefresh.msLeft(autoStartedAt, Date.now(), autoForMs));
       return () => window.clearTimeout(timer);
     }, [autoStartedAt, autoHeld, autoForMs]);
-    return /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(RefreshContext.Provider, { value: refreshToken, children: /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(RefreshActivityContext.Provider, { value: report, children: /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(CapabilitiesProvider, { children: /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(HealthProvider, { children: /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime164.jsx)(RefreshContext.Provider, { value: refreshToken, children: /* @__PURE__ */ (0, import_jsx_runtime164.jsx)(RefreshActivityContext.Provider, { value: report, children: /* @__PURE__ */ (0, import_jsx_runtime164.jsx)(CapabilitiesProvider, { children: /* @__PURE__ */ (0, import_jsx_runtime164.jsx)(HealthProvider, { children: /* @__PURE__ */ (0, import_jsx_runtime164.jsx)(
       MainBoardContent,
       {
         mode,
@@ -48706,19 +49314,19 @@
     const autoPage = autoOnOpen || current?.autoRefresh === "action";
     const currentId2 = current ? current.id : null;
     const { start: startAuto, stop: stopAuto } = autoRefresh;
-    (0, import_react134.useEffect)(() => {
+    (0, import_react136.useEffect)(() => {
       if (current && current.id !== tab) {
         go(current.id);
       }
     }, [current, tab, go]);
-    (0, import_react134.useEffect)(function followActiveTab() {
+    (0, import_react136.useEffect)(function followActiveTab() {
       if (autoOnOpen) {
         startAuto();
       } else {
         stopAuto();
       }
     }, [currentId2, autoOnOpen, startAuto, stopAuto]);
-    (0, import_react134.useEffect)(function followBrowserTab() {
+    (0, import_react136.useEffect)(function followBrowserTab() {
       if (!autoPage) {
         return void 0;
       }
@@ -48733,13 +49341,13 @@
       return () => document.removeEventListener("visibilitychange", onVisibility);
     }, [autoPage, autoOnOpen, startAuto, stopAuto]);
     const autoOn = autoRefresh.on;
-    const refreshTab = (0, import_react134.useCallback)(function refreshTab2() {
+    const refreshTab = (0, import_react136.useCallback)(function refreshTab2() {
       onRefresh();
       if (autoOnOpen) {
         startAuto();
       }
     }, [onRefresh, autoOnOpen, startAuto]);
-    const toggleAuto = (0, import_react134.useCallback)(function toggleAuto2() {
+    const toggleAuto = (0, import_react136.useCallback)(function toggleAuto2() {
       if (autoOn) {
         stopAuto();
         return;
@@ -48749,15 +49357,15 @@
       }
       startAuto();
     }, [autoOn, refreshing, startAuto, stopAuto, onRefresh]);
-    return /* @__PURE__ */ (0, import_jsx_runtime162.jsxs)(Page, { className: "pf-m-no-sidebar", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(PageSection, { hasBodyWrapper: false, className: "podshift-header", children: /* @__PURE__ */ (0, import_jsx_runtime162.jsxs)(
+    return /* @__PURE__ */ (0, import_jsx_runtime164.jsxs)(Page, { className: "pf-m-no-sidebar", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime164.jsx)(PageSection, { hasBodyWrapper: false, className: "podshift-header", children: /* @__PURE__ */ (0, import_jsx_runtime164.jsxs)(
         Flex,
         {
           justifyContent: { default: "justifyContentSpaceBetween" },
           alignItems: { default: "alignItemsCenter" },
           flexWrap: { default: "nowrap" },
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime164.jsx)(
               Nav,
               {
                 variant: "horizontal-subnav",
@@ -48767,9 +49375,9 @@
                     go(String(result.itemId));
                   }
                 },
-                children: /* @__PURE__ */ (0, import_jsx_runtime162.jsxs)(NavList, { children: [
-                  firstLoad && /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(LoadingNavItem, {}),
-                  shown.map((item) => /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(
+                children: /* @__PURE__ */ (0, import_jsx_runtime164.jsxs)(NavList, { children: [
+                  firstLoad && /* @__PURE__ */ (0, import_jsx_runtime164.jsx)(LoadingNavItem, {}),
+                  shown.map((item) => /* @__PURE__ */ (0, import_jsx_runtime164.jsx)(
                     ModuleNavItem,
                     {
                       item,
@@ -48780,44 +49388,44 @@
                 ] })
               }
             ),
-            showRefresh && /* @__PURE__ */ (0, import_jsx_runtime162.jsxs)(FlexItem, { children: [
-              autoPage && /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(AutoRefreshToggle, { on: autoOn, ranOut: autoRefresh.ranOut, forMs: autoRefresh.forMs, onToggle: toggleAuto }),
-              /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(Tooltip, { content: i18n("Refresh"), position: "bottom", flipBehavior: ["bottom"], children: /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(
+            showRefresh && /* @__PURE__ */ (0, import_jsx_runtime164.jsxs)(FlexItem, { children: [
+              autoPage && /* @__PURE__ */ (0, import_jsx_runtime164.jsx)(AutoRefreshToggle, { on: autoOn, ranOut: autoRefresh.ranOut, forMs: autoRefresh.forMs, onToggle: toggleAuto }),
+              /* @__PURE__ */ (0, import_jsx_runtime164.jsx)(Tooltip, { content: i18n("Refresh"), position: "bottom", flipBehavior: ["bottom"], children: /* @__PURE__ */ (0, import_jsx_runtime164.jsx)(
                 Button,
                 {
                   variant: "plain",
                   "aria-label": i18n("Refresh"),
                   isAriaDisabled: refreshing,
                   onClick: refreshTab,
-                  children: refreshing ? /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(Spinner, { size: "md", isInline: true, "aria-label": i18n("Refresh") }) : /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(SyncAltIcon, {})
+                  children: refreshing ? /* @__PURE__ */ (0, import_jsx_runtime164.jsx)(Spinner, { size: "md", isInline: true, "aria-label": i18n("Refresh") }) : /* @__PURE__ */ (0, import_jsx_runtime164.jsx)(SyncAltIcon, {})
                 }
               ) })
             ] })
           ]
         }
       ) }),
-      /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(AutoRefreshContext.Provider, { value: autoPage ? autoRefresh : AUTO_REFRESH_ALWAYS_ON, children: /* @__PURE__ */ (0, import_jsx_runtime162.jsxs)(PageSection, { hasBodyWrapper: false, children: [
-        caps.status === "error" && /* @__PURE__ */ (0, import_jsx_runtime162.jsx)("div", { className: "podshift-capabilities-warning", children: /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime164.jsx)(AutoRefreshContext.Provider, { value: autoPage ? autoRefresh : AUTO_REFRESH_ALWAYS_ON, children: /* @__PURE__ */ (0, import_jsx_runtime164.jsxs)(PageSection, { hasBodyWrapper: false, children: [
+        caps.status === "error" && /* @__PURE__ */ (0, import_jsx_runtime164.jsx)("div", { className: "podshift-capabilities-warning", children: /* @__PURE__ */ (0, import_jsx_runtime164.jsx)(
           InlineNotice,
           {
             variant: "warning",
             title: cockpitTyped_default.format(i18n("Could not read capabilities: $0"), caps.error?.message || String(caps.error))
           }
         ) }),
-        firstLoad && /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(LoadingContent, { loading: true, spinnerSize: "lg" }),
-        !firstLoad && (Current ? /* @__PURE__ */ (0, import_jsx_runtime162.jsx)("div", { id: "podshift-tab-" + current.id, children: /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(Current, { mode }) }) : /* @__PURE__ */ (0, import_jsx_runtime162.jsx)(InlineNotice, { variant: "info", title: i18n("This PodShift version offers none of these views.") }))
+        firstLoad && /* @__PURE__ */ (0, import_jsx_runtime164.jsx)(LoadingContent, { loading: true, spinnerSize: "lg" }),
+        !firstLoad && (Current ? /* @__PURE__ */ (0, import_jsx_runtime164.jsx)("div", { id: "podshift-tab-" + current.id, children: /* @__PURE__ */ (0, import_jsx_runtime164.jsx)(Current, { mode }) }) : /* @__PURE__ */ (0, import_jsx_runtime164.jsx)(InlineNotice, { variant: "info", title: i18n("This PodShift version offers none of these views.") }))
       ] }) })
     ] });
   }
 
   // src/app/app.jsx
-  var import_jsx_runtime163 = __toESM(require_jsx_runtime(), 1);
+  var import_jsx_runtime165 = __toESM(require_jsx_runtime(), 1);
   function Application() {
-    const [access, setAccess] = (0, import_react135.useState)(
+    const [access, setAccess] = (0, import_react137.useState)(
       /** @type {AccessResult} */
       { status: "checking" }
     );
-    (0, import_react135.useEffect)(() => {
+    (0, import_react137.useEffect)(() => {
       let cancelled = false;
       function refresh() {
         PodShiftApi.resolveAccess().then((result) => {
@@ -48835,24 +49443,24 @@
     }, []);
     switch (access.status) {
       case "not-installed":
-        return /* @__PURE__ */ (0, import_jsx_runtime163.jsx)(NotInstalled, {});
+        return /* @__PURE__ */ (0, import_jsx_runtime165.jsx)(NotInstalled, {});
       case "no-access":
-        return /* @__PURE__ */ (0, import_jsx_runtime163.jsx)(NoAccess, {});
+        return /* @__PURE__ */ (0, import_jsx_runtime165.jsx)(NoAccess, {});
       case "mainboard":
         if (access.mode !== "admin") {
-          return /* @__PURE__ */ (0, import_jsx_runtime163.jsx)(AdminRequired, {});
+          return /* @__PURE__ */ (0, import_jsx_runtime165.jsx)(AdminRequired, {});
         }
-        return /* @__PURE__ */ (0, import_jsx_runtime163.jsx)(MainBoard, { mode: access.mode });
+        return /* @__PURE__ */ (0, import_jsx_runtime165.jsx)(MainBoard, { mode: access.mode });
       default:
-        return /* @__PURE__ */ (0, import_jsx_runtime163.jsx)(Loading, {});
+        return /* @__PURE__ */ (0, import_jsx_runtime165.jsx)(Loading, {});
     }
   }
 
   // src/app/index.jsx
-  var import_jsx_runtime164 = __toESM(require_jsx_runtime(), 1);
+  var import_jsx_runtime166 = __toESM(require_jsx_runtime(), 1);
   async function main2() {
     await cockpitTyped_default.init();
-    (0, import_client.createRoot)(document.getElementById("app")).render(/* @__PURE__ */ (0, import_jsx_runtime164.jsx)(Application, {}));
+    (0, import_client.createRoot)(document.getElementById("app")).render(/* @__PURE__ */ (0, import_jsx_runtime166.jsx)(Application, {}));
   }
   document.addEventListener("DOMContentLoaded", main2);
 })();

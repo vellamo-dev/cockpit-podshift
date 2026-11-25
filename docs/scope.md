@@ -15,7 +15,7 @@ PodShift UI shows a PodShift server in Cockpit, so it can be looked at and opera
 
 ## What PodShift UI is
 
-- An optional add-on: PodShift works fully without it. All monitoring and management is done with the `podshift` commands in a terminal; the UI only makes monitoring easier for people who prefer a web interface. Installing the UI never installs PodShift.
+- An optional add-on: PodShift works fully without it. All monitoring and management is done with the `podshift` commands in a terminal; the UI makes monitoring and some maintenance tasks easier for people who prefer a web interface over the terminal. Installing the UI never installs PodShift.
 - A view of one server: the server Cockpit is connected to.
 - For administrators and the `podshift` user. Others see **No access**.
 
@@ -26,7 +26,7 @@ PodShift UI shows a PodShift server in Cockpit, so it can be looked at and opera
 - **A general Podman or systemd manager**: it shows what PodShift manages.
 - **A multi-server dashboard**: one server at a time, as Cockpit itself works.
 - **A standalone web app**: it runs only inside Cockpit.
-- **A management tool, for now**: today the UI is for monitoring. Managing the server from the UI is planned, but not before autumn 2027 (see [roadmap.md](roadmap.md)).
+- **A full management tool**: the UI handles monitoring and some maintenance tasks, such as setting the environment, Drop install and uninstall. Fuller management is planned (see [roadmap.md](roadmap.md)).
 
 ## Principles
 

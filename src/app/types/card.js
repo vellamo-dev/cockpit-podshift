@@ -35,7 +35,7 @@
  * One item in a card's kebab menu.
  *
  * @typedef {object} MenuItem
- * @property {string} key Stable React key.
+ * @property {string} key Stable React key; CardActionsMenu maps it to a PatternFly icon.
  * @property {string} label Text shown in the menu.
  * @property {() => void} onClick Called when the item is chosen.
  * @property {boolean} [isDisabled] Greys the item out.
@@ -46,7 +46,7 @@
  * A separator line between items in a card's kebab menu.
  *
  * @typedef {object} MenuDivider
- * @property {string} key Stable React key.
+ * @property {string} key Stable React key; CardActionsMenu maps it to a PatternFly icon.
  * @property {true} divider Marks the entry as a divider.
  */
 

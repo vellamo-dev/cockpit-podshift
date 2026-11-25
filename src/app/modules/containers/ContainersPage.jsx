@@ -14,10 +14,12 @@
 import React from 'react';
 
 import {useModulePage} from '../../hooks/useModulePage.js';
+import {useContainerCommands} from '../../hooks/useContainerCommands.js';
 
 import {containersModule} from './ContainersModule.jsx';
 
 /** @typedef {import('../../types/api.js').AccessMode} AccessMode */
+/** @typedef {import('../../types/container.js').ContainersPageState} ContainersPageState */
 
 /**
  * Shows the Podman containers as resource cards, with a text filter and a source switch. Needs admin access.
@@ -27,6 +29,7 @@ import {containersModule} from './ContainersModule.jsx';
  * @returns {React.ReactElement} The page content.
  */
 export function ContainersPage(props) {
-    const state = useModulePage(containersModule, props);
+    /** @type {ContainersPageState} */
+    const state = {...useModulePage(containersModule, props), ...useContainerCommands()};
     return containersModule.render(state);
 }

@@ -10,7 +10,7 @@ PodShift is a lightweight container orchestration enabler for small servers: it 
 
 PodShift works fully without the UI. All monitoring and management is done with the `podshift` commands in a terminal.
 
-The UI is optional. It only makes monitoring easier for people who prefer a web interface over the terminal. It needs PodShift installed on the same host, but the `cockpit-podshift` package does not install PodShift for you.
+The UI is optional. It makes monitoring and some maintenance tasks easier for people who prefer a web interface over the terminal. It needs PodShift installed on the same host, but the `cockpit-podshift` package does not install PodShift for you.
 
 ## Install
 

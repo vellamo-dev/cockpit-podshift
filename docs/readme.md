@@ -2,7 +2,7 @@
 
 PodShift UI is the Cockpit page for a [PodShift](https://github.com/vellamo-dev/podshift) server. It needs [Cockpit](https://cockpit-project.org/) 137 or later and PodShift on the same host, but installing it does not install PodShift.
 
-PodShift does not need the UI. All monitoring and management is done with the `podshift` commands in a terminal. The UI only makes monitoring easier for people who prefer a web interface.
+PodShift does not need the UI. All monitoring and management is done with the `podshift` commands in a terminal. The UI makes monitoring and some maintenance tasks easier for people who prefer a web interface over the terminal.
 
 The app talks to PodShift's Cockpit API on the server, under `/opt/podshift/cockpit/api` (the handler is `/opt/podshift/cockpit/api/main.sh`). How to install, update and remove the package is in [usage.md](usage.md).
 
@@ -14,7 +14,7 @@ The menu entry is **PodShift**. These tabs appear, in this order. A tab is shown
 |---|---|
 | Overview | Status, Usage, Info, Configuration and Health cards. When the environment tag (`TSV_ENV`) is not set, an administrator sees a warning under the tabs. The Configuration card can add, edit and remove custom `TSV_*` variables, and set the environment tag once. |
 | Health | The full health check report, grouped. |
-| Containers | Podman containers as cards, with a text filter and a source switch. A container made by an installed Quadlet file has Uninstall in its menu. |
+| Containers | Podman containers as cards, with a text filter and a source switch. Each card has Commands in its menu for ready-to-copy terminal commands, which can be copied or downloaded as Markdown, and a container made by an installed Quadlet file has Uninstall. |
 | Volumes | Podman volumes as cards, with a text filter and a source switch. A volume made by an installed `.volume` file has Uninstall in its menu. |
 | Networks | Podman networks as cards, with a text filter and a source switch. A network made by an installed `.network` file has Uninstall in its menu. |
 | Images | Podman images as cards, with a text filter and a source switch. |
@@ -47,6 +47,8 @@ The UI first checks that the PodShift handler is present, then who you are.
 - If you are not an administrator and not the `podshift` user, it says **No access**, and asks you to log in as the `podshift` user or turn on Cockpit administrative access.
 - An administrator gets the main page and its tabs.
 - The `podshift` user without administrative access sees **Requires administrative access**, with a request to turn on Cockpit administrative access, instead of the tabs. Every view loads data as root, so it needs that access.
+
+Some actions change the system through PodShift API actions; see [security.md](../security.md).
 
 ## Documents
 

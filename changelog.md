@@ -1,5 +1,26 @@
 # Change Log
 
+Changelog history. To see the latest changes, please check the [cockpit-podshift.spec](./cockpit-podshift.spec)
+
+## Sat Nov 21 2026 - 0.17.1
+- Drop zone: locked after a drop until the drop shows in the Drop History, for at most 5 seconds; it looks greyed out
+- A refused or failed upload unlocks the drop zone at once
+- Install log: Copy log in its menu copies the shown lines as text; the title reads "Copied" for 2 seconds
+- Uninstall dialogue: "Also remove volumes" is now "Also delete volume data", with a note that it cannot be undone
+- Uninstall of the same file or app is disabled for 60 seconds after it is queued, so it is not queued twice
+- Translations: Finnish and German for the Uninstall and Copy log texts
+- Tests: QUnit tests for the Uninstall guard and the copied log text
+
+
+## Sat Nov 21 2026 - 0.17.0
+- Quadlets: every card has Uninstall in its menu; it removes the Quadlet file, or the whole app it belongs to
+- Containers, Volumes and Networks: Uninstall is in the menu of items made by an installed Quadlet file
+- Uninstall needs the quadlet-remove action and the quadlet field of PodShift 0.25.3 for the resource tabs
+- The confirm dialogue names what goes, such as "Uninstall boy.container" or "Uninstall app shop"
+- "Also remove volumes" is offered for an app and a .volume file; images are always kept
+- After the uninstall is queued, a notice shows and the tab loads its list now and again after 5 seconds
+- The unused remove dialogue of the drop history is replaced by the shared Uninstall dialogue
+
 ## Sat Nov 21 2026 - 0.16.3
 - The Health tab runs a new health check each time it opens
 - The last result stays on screen while the check runs

@@ -23,7 +23,7 @@ The `tone` prop colors the corner tint: neutral (text color, 9%), success or dan
 `--podshift-resource-card--tone-strength`, 18%; the brighter hover status tokens in the dark theme).
 A row can set `mono` to show its value in a monospace font, for example the container command.
 
-`CardActionsMenu.jsx` is the kebab menu used on resource cards, the Overview PropertiesCard, and the Health views. An item with `isSelected` shows a check mark (the install log order on the Drop Quadlet tab). An item `{ key, divider: true }` (`MenuDivider` in `../types/card.js`) shows a separator line.
+`CardActionsMenu.jsx` is the kebab menu used on resource cards, the Overview PropertiesCard, and the Health views. Icons are chosen from the item key in `resource/menuItemIcon.js` (Copy, Inspect, Commands, Show Quadlet, Uninstall and the other kebab actions). An item with `isSelected` shows a check mark (the install log order on the Drop Quadlet tab). An item `{ key, divider: true }` (`MenuDivider` in `../types/card.js`) shows a separator line.
 `OpenInPodmanButton.jsx` links to the Cockpit Podman page for the podshift user. Whether that page is installed is
 checked by `../utils/isPodmanPageInstalled.js`.
 
@@ -42,6 +42,7 @@ with `UnitViewHeader` as its header: the Quadlet and Unit view labels (clickable
 the unit name with an ellipsis, and the path line of the shown file, cut at its start. Each view loads on first show from
 `quadlet-view` or `service-view` (`unit` mode) and stays cached while open; Copy and Download act on the shown view;
 Download reads the file as root through `ChannelDownload.downloadFile()` (`../utils/ChannelDownload.js`), like Inspect. See `../modules/readme.md` for where it opens.
+`CommandsModal` keeps the dialog title Commands and shows the commands as a separate Markdown-style page in the body (heading with the container name as inline code, blockquote, section headings with `#` / `##`, and a padded code snippet with a copy button per command). Copy copies the page as Markdown (`useCopiedFlag`); Download saves `commands-<name>.md` through `ChannelDownload.downloadText()` (`../utils/ChannelDownload.js`), the same cockpit-ws channel method as Inspect. Host commands are marked with inline `(host)` code.
 
 ## common/
 

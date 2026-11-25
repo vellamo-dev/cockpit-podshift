@@ -3,7 +3,7 @@
  */
 
 /**
- * Display name of a resource card for titles and messages, and the inspect download file name.
+ * Display name of a resource card for titles and messages, and inspect or commands download file names.
  *
  * @file resourceName.js
  * @license AGPL-3.0-or-later
@@ -25,6 +25,20 @@ export function inspectFileName(kind, name) {
             .replace(/[^A-Za-z0-9._-]+/g, '_')
             .replace(/^[._]+/, '') || 'resource';
     return `${kind}-${safe}-inspect.json`;
+}
+
+/**
+ * Returns the download file name of a container commands Markdown page:
+ * commands-<name>.md, with the name reduced to letters, digits, dot, underscore and dash.
+ *
+ * @param {string} name Display name of the container.
+ * @returns {string} The file name.
+ */
+export function commandsFileName(name) {
+    const safe = String(name || '')
+            .replace(/[^A-Za-z0-9._-]+/g, '_')
+            .replace(/^[._]+/, '') || 'container';
+    return `commands-${safe}.md`;
 }
 
 /**

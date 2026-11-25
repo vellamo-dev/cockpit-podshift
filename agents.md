@@ -72,3 +72,4 @@ Full rules: [Coding style](docs/coding.md#coding-style) and [JSDoc](docs/coding.
 - Change only what the task needs. Docs state only verified facts.
 - Only the root readme has a Finnish version, `readme.fi.md`. Update it whenever `readme.md` changes. No other files are translated.
 - Bump the version as the last step of a change, and say so in your report. See [Versioning](docs/coding.md#versioning).
+- Keep 3 entries in the spec `%changelog`, newest first; move older ones to the top of `changelog.md`. See [Versioning](docs/coding.md#versioning).

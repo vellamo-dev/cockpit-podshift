@@ -1,5 +1,5 @@
 Name: cockpit-podshift
-Version: 0.19.0
+Version: 0.20.0
 Release: 1%{?dist}
 Summary: Cockpit UI for PodShift
 License: AGPL-3.0-or-later AND LGPL-2.1-or-later
@@ -15,8 +15,8 @@ BuildRequires: gettext libappstream-glib
 Requires: cockpit >= 137
 
 %description
-Cockpit UI for PodShift. View PodShift containers, volumes, networks,
-images, secrets, services and Quadlets in Cockpit.
+Cockpit UI for PodShift. View and maintain PodShift containers, volumes,
+networks, images, secrets, services and Quadlets in Cockpit.
 
 %prep
 %autosetup -n %{name}-%{branch}
@@ -46,6 +46,18 @@ test -f %{buildroot}%{_datadir}/cockpit/podshift/index.js
 %{_metainfodir}/fyi.vellamo.cockpit_podshift.metainfo.xml
 
 %changelog
+* Wed Nov 25 2026 Vellamo Dev <no-email@vellamo.fyi> - 0.20.0
+- Containers: Commands item in each card menu opens ready-to-copy Terminal, Logs, Processes and System info commands
+- Commands: Markdown-style page in the dialog; host commands are marked (host) first; admin uses sudo -u podshift -i
+- Commands: Copy copies the page as Markdown; Download saves commands-<name>.md through a cockpit-ws channel
+- Commands: process commands (pstree, ps, /proc) run with podman exec from the host, like other in-container commands
+- Menus: kebab items on resource cards and the Overview, Health and Drop views show PatternFly icons
+- Translations: Finnish and German for the Commands modal texts
+- Tests: QUnit unit tests for the command catalogue, placeholders and Markdown export
+- Documentation: security.md covers changing actions through the API, confirmation for removals, and Commands downloads
+- Documentation: readme, scope, roadmap and the package description cover monitoring and some maintenance
+- Documentation: the spec %changelog keeps the 3 latest entries; older ones move to changelog.md
+
 * Mon Nov 23 2026 Vellamo Dev <no-email@vellamo.fyi> - 0.19.0
 - Containers, Volumes, Networks and Quadlets: the Auto refresh toggle, off by default; Refresh only reloads
 - A queued Uninstall turns auto refresh on: every 1 s, then every 2 s from 15 s and every 5 s from 30 s
@@ -63,21 +75,3 @@ test -f %{buildroot}%{_datadir}/cockpit/podshift/index.js
 - Drop Quadlet: while an item is in progress both poll at least every second and the auto refresh countdown waits
 - Translations: Finnish and German for the auto refresh texts
 - Tests: QUnit tests for the auto refresh countdown and the Drop Quadlet poll schedules
-
-* Sat Nov 21 2026 Vellamo Dev <no-email@vellamo.fyi> - 0.17.1
-- Drop zone: locked after a drop until the drop shows in the Drop History, for at most 5 seconds; it looks greyed out
-- A refused or failed upload unlocks the drop zone at once
-- Install log: Copy log in its menu copies the shown lines as text; the title reads "Copied" for 2 seconds
-- Uninstall dialogue: "Also remove volumes" is now "Also delete volume data", with a note that it cannot be undone
-- Uninstall of the same file or app is disabled for 60 seconds after it is queued, so it is not queued twice
-- Translations: Finnish and German for the Uninstall and Copy log texts
-- Tests: QUnit tests for the Uninstall guard and the copied log text
-
-* Sat Nov 21 2026 Vellamo Dev <no-email@vellamo.fyi> - 0.17.0
-- Quadlets: every card has Uninstall in its menu; it removes the Quadlet file, or the whole app it belongs to
-- Containers, Volumes and Networks: Uninstall is in the menu of items made by an installed Quadlet file
-- Uninstall needs the quadlet-remove action and the quadlet field of PodShift 0.25.3 for the resource tabs
-- The confirm dialogue names what goes, such as "Uninstall boy.container" or "Uninstall app shop"
-- "Also remove volumes" is offered for an app and a .volume file; images are always kept
-- After the uninstall is queued, a notice shows and the tab loads its list now and again after 5 seconds
-- The unused remove dialogue of the drop history is replaced by the shared Uninstall dialogue

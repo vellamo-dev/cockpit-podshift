@@ -228,4 +228,8 @@ Versions are `x.y.z`. The `Version:` line in `cockpit-podshift.spec` is the sing
 - **Minor (`y`)** goes up when a feature is added or after a bigger refactor, and `z` goes back to 0.
 - **Major (`x`)** stays at 0 until the first stable release. Only the maintainer changes it, never an agent.
 
-Every bump adds a spec `%changelog` entry (`- x.y.z-1`) and sets `Release:` back to `1`. Bump once per task or delivery, not per saved file. An agent bumps the version as the last step of a change and says so in its report.
+Every bump adds a spec `%changelog` entry (header `* <date> <author> - x.y.z`) and sets `Release:` back to `1`. Bump once per task or delivery, not per saved file. An agent bumps the version as the last step of a change and says so in its report.
+
+The spec `%changelog` keeps only the 3 latest entries. When a bump adds a fourth, move the oldest one to the top of `changelog.md`, under its first heading, as `## <date> - x.y.z` with the same item lines. Do not edit moved entries. `changelog.md` is the full history and the spec is the short, current part, so the spec stays small.
+
+Entries are newest first in both files. The newest goes at the top of the spec `%changelog`, and a moved entry goes at the top of `changelog.md`, so `changelog.md` carries straight on from where the spec ends.

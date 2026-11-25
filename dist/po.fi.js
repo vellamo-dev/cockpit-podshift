@@ -128,6 +128,118 @@ cockpit.locale({
   null,
   "Tarkastelutuloste on liian suuri näytettäväksi tässä ($0)."
  ],
+ "Terminal": [
+  null,
+  "Pääte"
+ ],
+ "Logs": [
+  null,
+  "Lokit"
+ ],
+ "Processes": [
+  null,
+  "Prosessit"
+ ],
+ "System info": [
+  null,
+  "Järjestelmätiedot"
+ ],
+ "Open a root shell (container root maps to the podshift user on the host).": [
+  null,
+  "Avaa root-komentotulkki (kontin root vastaa isäntäkoneen podshift-käyttäjää)."
+ ],
+ "Open a root bash shell (works if the image has bash).": [
+  null,
+  "Avaa root-bash-komentotulkki (toimii, jos levykuvassa on bash)."
+ ],
+ "Show the last 100 log lines.": [
+  null,
+  "Näytä viimeiset 100 lokiriviä."
+ ],
+ "Follow the log output live.": [
+  null,
+  "Seuraa lokitulostetta reaaliajassa."
+ ],
+ "Show logs from the last 10 minutes.": [
+  null,
+  "Näytä lokit viimeisen 10 minuutin ajalta."
+ ],
+ "List running processes in the container.": [
+  null,
+  "Listaa kontin käynnissä olevat prosessit."
+ ],
+ "Show one snapshot of CPU, memory and I/O usage.": [
+  null,
+  "Näytä yksi tilannekuva suorittimen, muistin ja I/O:n käytöstä."
+ ],
+ "Show the process tree (needs psmisc).": [
+  null,
+  "Näytä prosessipuu (vaatii psmisc-paketin)."
+ ],
+ "Show processes as a tree (needs procps).": [
+  null,
+  "Näytä prosessit puuna (vaatii procps-paketin)."
+ ],
+ "List processes (works in BusyBox images too).": [
+  null,
+  "Listaa prosessit (toimii myös BusyBox-levykuvissa)."
+ ],
+ "List each process's name, PID and parent PID from /proc (works without ps).": [
+  null,
+  "Listaa kunkin prosessin nimen, PID:n ja pääprosessin PID:n /proc-hakemistosta (toimii ilman ps-komentoa)."
+ ],
+ "Show the container OS name and version.": [
+  null,
+  "Näytä kontin käyttöjärjestelmän nimi ja versio."
+ ],
+ "Show memory figures visible inside the container.": [
+  null,
+  "Näytä kontin sisällä näkyvät muistitiedot."
+ ],
+ "Show filesystem disk space usage inside the container.": [
+  null,
+  "Näytä tiedostojärjestelmän levytilan käyttö kontin sisällä."
+ ],
+ "Show the user and group IDs inside the container.": [
+  null,
+  "Näytä käyttäjä- ja ryhmätunnisteet kontin sisällä."
+ ],
+ "Show DNS resolver settings inside the container.": [
+  null,
+  "Näytä DNS-selvittimen asetukset kontin sisällä."
+ ],
+ "Show environment variables in the container (can show secret values when run).": [
+  null,
+  "Näytä kontin ympäristömuuttujat (voi paljastaa salaisia arvoja ajettaessa)."
+ ],
+ "Copy": [
+  null,
+  "Kopioi"
+ ],
+ "Commands": [
+  null,
+  "Komennot"
+ ],
+ "Commands for container:": [
+  null,
+  "Komennot kontille:"
+ ],
+ "Commands inside the container depend on its installed tools and current state, so some may not work in minimal or stopped containers.": [
+  null,
+  "Kontin sisällä toimivat komennot riippuvat sen asennetuista työkaluista ja nykyisestä tilasta, joten osa ei ehkä toimi minimaalisissa tai pysäytetyissä konteissa."
+ ],
+ "Commands marked $0 work without tools in the image.": [
+  null,
+  "Komennot, joissa on merkintä $0, toimivat ilman levykuvan työkaluja."
+ ],
+ "Download": [
+  null,
+  "Lataa"
+ ],
+ "Close": [
+  null,
+  "Sulje"
+ ],
  "PodShift refused the change.": [
   null,
   ""
@@ -212,14 +324,6 @@ cockpit.locale({
   null,
   ""
  ],
- "Copy": [
-  null,
-  "Kopioi"
- ],
- "Close": [
-  null,
-  "Sulje"
- ],
  "The Quadlet file $0 no longer exists.": [
   null,
   "Quadlet-tiedostoa $0 ei enää ole."
@@ -235,10 +339,6 @@ cockpit.locale({
  "This unit was not generated from a Quadlet file.": [
   null,
   "Tätä yksikköä ei ole luotu Quadlet-tiedostosta."
- ],
- "Download": [
-  null,
-  "Lataa"
  ],
  "The journal of the podshift user cannot be read.": [
   null,

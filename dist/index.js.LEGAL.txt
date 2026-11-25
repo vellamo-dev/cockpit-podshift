@@ -175,7 +175,17 @@
  * @author Vellamo.fyi
  */
 /**
+ * PatternFly icons for kebab menu items, keyed by the item's stable key so every
+ * CardActionsMenu shows the same icon for the same action.
+ *
+ * @file menuItemIcon.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
  * Kebab menu for a card header, using Cockpit's shared KebabDropdown.
+ * Icons are taken from the item key via menuItemIcon, so every menu shows the same
+ * icon for the same action.
  *
  * @file CardActionsMenu.jsx
  * @license AGPL-3.0-or-later
@@ -404,6 +414,13 @@
  * @author Vellamo.fyi
  */
 /**
+ * Hook that keeps the open container commands modal of the Containers page.
+ *
+ * @file useContainerCommands.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
  * Card icons of the resource modules, shared so Quadlets can use the same icon as
  * Containers, Volumes, Networks and Images.
  *
@@ -448,6 +465,40 @@
  * @author Vellamo.fyi
  */
 /**
+ * Builds the container diagnostic and shell command sections with placeholders filled,
+ * and the Markdown form of the same page.
+ *
+ * @file commandCatalogue.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Downloads through a cockpit-ws external channel, the way Cockpit's own pages do it
+ * (cockpit-files download.tsx): a same-origin GET on /cockpit/channel/<csrf token>?<open options>.
+ * cockpit-ws opens the channel on the bridge and sends its data as the response body, with the
+ * Content-Disposition and Content-Type headers given in the "external" option. No blob: or data:
+ * URL is involved, so the page's default Content Security Policy ('self') allows it.
+ *
+ * @file ChannelDownload.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Display name of a resource card for titles and messages, and inspect or commands download file names.
+ *
+ * @file resourceName.js
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
+ * Modal showing terminal, log, process and system-info commands for one container,
+ * laid out like a Markdown page, with Copy and Download of the same text as Markdown.
+ *
+ * @file CommandsModal.jsx
+ * @license AGPL-3.0-or-later
+ * @author Vellamo.fyi
+ */
+/**
  * Sort order for resource cards: built-in resources first, then the rest by name.
  *
  * @file compareResources.js
@@ -458,13 +509,6 @@
  * Checks whether the Cockpit Podman page is installed.
  *
  * @file isPodmanPageInstalled.js
- * @license AGPL-3.0-or-later
- * @author Vellamo.fyi
- */
-/**
- * Display name of a resource card for titles and messages, and the inspect download file name.
- *
- * @file resourceName.js
  * @license AGPL-3.0-or-later
  * @author Vellamo.fyi
  */
@@ -501,17 +545,6 @@
  * and the NAME=value text of the Variables view.
  *
  * @file EnvVariables.js
- * @license AGPL-3.0-or-later
- * @author Vellamo.fyi
- */
-/**
- * Downloads through a cockpit-ws external channel, the way Cockpit's own pages do it
- * (cockpit-files download.tsx): a same-origin GET on /cockpit/channel/<csrf token>?<open options>.
- * cockpit-ws opens the channel on the bridge and sends its data as the response body, with the
- * Content-Disposition and Content-Type headers given in the "external" option. No blob: URL is
- * involved, so the page's default Content Security Policy ('self') allows it.
- *
- * @file ChannelDownload.js
  * @license AGPL-3.0-or-later
  * @author Vellamo.fyi
  */

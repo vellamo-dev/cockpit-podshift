@@ -6,7 +6,7 @@
   <summary>Cockpit UI for PodShift</summary>
   <description>
     <p>
-      View a PodShift server in Cockpit: containers, volumes, networks, images, secrets, services and Quadlets.
+      View and maintain a PodShift server in Cockpit: containers, volumes, networks, images, secrets, services and Quadlets.
     </p>
   </description>
   <project_license>AGPL-3.0-or-later AND LGPL-2.1-or-later</project_license>

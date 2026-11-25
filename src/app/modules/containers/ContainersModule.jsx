@@ -19,6 +19,7 @@ import {translateResourceRow} from '../../utils/translateResourceRow.js';
 import {ResourceTone} from '../../utils/ResourceTone.js';
 
 import {ResourceCard} from '../../components/resource/ResourceCard.jsx';
+import {CommandsModal} from '../../components/modals/CommandsModal.jsx';
 
 import {BaseModule} from '../BaseModule.jsx';
 import {SourceFilter} from '../filters/SourceFilter.js';
@@ -26,7 +27,7 @@ import {SourceFilter} from '../filters/SourceFilter.js';
 /** @typedef {import('../../types/card.js').CardStatusVariant} CardStatusVariant */
 /** @typedef {import('../../types/card.js').PropertyGroup} PropertyGroup */
 /** @typedef {import('../../types/card.js').PropertyRow} PropertyRow */
-/** @typedef {import('../../types/module.js').ModulePageState} ModulePageState */
+/** @typedef {import('../../types/container.js').ContainersPageState} ContainersPageState */
 /** @typedef {import('../../types/resource.js').ResourceItem} ResourceItem */
 /** @typedef {import('../../types/resource.js').ResourceRow} ResourceRow */
 
@@ -193,10 +194,56 @@ export class ContainersModule extends BaseModule {
     }
 
     /**
+     * Builds the kebab action list of a container card: Inspect and Variables, then
+     * Commands (always shown), then Show Quadlet and Uninstall when they apply.
+     *
+     * @param {ResourceItem} item The container.
+     * @param {ContainersPageState} state Page state, for the card menu actions.
+     * @returns {(import('../../types/card.js').MenuItem|import('../../types/card.js').MenuDivider)[]} The menu items.
+     */
+    static cardActions(item, state) {
+        return [
+            ...this.viewActions(item, state),
+            {key: 'commands', label: i18n("Commands"), onClick: () => state.setCommandsContainer(item)},
+            ...this.quadletActions(item, state),
+            ...this.uninstallActions(item, state),
+        ];
+    }
+
+    /**
+     * Closes the commands modal and the shared views, then reloads the list.
+     *
+     * @param {ContainersPageState} state Page state, for the close functions and refresh.
+     */
+    closeAndRefresh(state) {
+        state.setCommandsContainer(null);
+        super.closeAndRefresh(state);
+    }
+
+    /**
+     * Builds the shared dialogues plus the container commands modal.
+     *
+     * @param {ContainersPageState} state Page state, for the open views and their close functions.
+     * @returns {React.ReactElement} The dialogues.
+     */
+    dialogs(state) {
+        return (
+            <>
+                {super.dialogs(state)}
+                <CommandsModal
+                    container={state.commandsContainer}
+                    mode={state.mode}
+                    onClose={() => state.setCommandsContainer(null)}
+                />
+            </>
+        );
+    }
+
+    /**
      * Builds a resource card for one container.
      *
      * @param {ResourceItem} item The container.
-     * @param {ModulePageState} state Page state, for the card menu actions.
+     * @param {ContainersPageState} state Page state, for the card menu actions.
      * @returns {React.ReactElement} The card, with key={item.id}.
      */
     card(item, state) {

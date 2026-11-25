@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cockpit-podshift 0.9.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-23 20:51+0000\n"
+"POT-Creation-Date: 2026-11-25 16:06+0000\n"
 "PO-Revision-Date: 2026-11-14 12:18+0200\n"
 "Last-Translator: Vellamo Dev <no-email@vellamo.fyi>\n"
 "Language-Team: Finnish\n"
@@ -155,10 +155,14 @@ msgstr "Tulossa pian."
 
 #: src/app/components/modals/InspectNotice.jsx:41
 #: src/app/components/modals/InspectNotice.jsx:46
+#: src/app/components/modals/CommandsModal.jsx:143
 msgid "Copy command"
 msgstr "Kopioi komento"
 
 #: src/app/components/modals/InspectNotice.jsx:46
+#: src/app/components/modals/CommandsModal.jsx:136
+#: src/app/components/modals/CommandsModal.jsx:143
+#: src/app/components/modals/CommandsModal.jsx:223
 #: src/app/components/modals/CodeViewModal.jsx:92
 #: src/app/modules/drop/DropQuadletPage.jsx:354
 msgid "Copied"
@@ -174,6 +178,141 @@ msgstr "Kohdetta $0 ei enää ole."
 #: src/app/components/modals/InspectNotice.jsx:88
 msgid "The inspect output is too large to show here ($0)."
 msgstr "Tarkastelutuloste on liian suuri näytettäväksi tässä ($0)."
+
+#: src/app/components/modals/CommandsModal.jsx:46
+msgid "Terminal"
+msgstr "Pääte"
+
+#: src/app/components/modals/CommandsModal.jsx:48
+msgid "Logs"
+msgstr "Lokit"
+
+#: src/app/components/modals/CommandsModal.jsx:50
+msgid "Processes"
+msgstr "Prosessit"
+
+#: src/app/components/modals/CommandsModal.jsx:52
+msgid "System info"
+msgstr "Järjestelmätiedot"
+
+#: src/app/components/modals/CommandsModal.jsx:67
+msgid ""
+"Open a root shell (container root maps to the podshift user on the host)."
+msgstr ""
+"Avaa root-komentotulkki (kontin root vastaa isäntäkoneen podshift-käyttäjää)."
+
+#: src/app/components/modals/CommandsModal.jsx:69
+msgid "Open a root bash shell (works if the image has bash)."
+msgstr "Avaa root-bash-komentotulkki (toimii, jos levykuvassa on bash)."
+
+#: src/app/components/modals/CommandsModal.jsx:71
+msgid "Show the last 100 log lines."
+msgstr "Näytä viimeiset 100 lokiriviä."
+
+#: src/app/components/modals/CommandsModal.jsx:73
+msgid "Follow the log output live."
+msgstr "Seuraa lokitulostetta reaaliajassa."
+
+#: src/app/components/modals/CommandsModal.jsx:75
+msgid "Show logs from the last 10 minutes."
+msgstr "Näytä lokit viimeisen 10 minuutin ajalta."
+
+#: src/app/components/modals/CommandsModal.jsx:77
+msgid "List running processes in the container."
+msgstr "Listaa kontin käynnissä olevat prosessit."
+
+#: src/app/components/modals/CommandsModal.jsx:79
+msgid "Show one snapshot of CPU, memory and I/O usage."
+msgstr "Näytä yksi tilannekuva suorittimen, muistin ja I/O:n käytöstä."
+
+#: src/app/components/modals/CommandsModal.jsx:81
+msgid "Show the process tree (needs psmisc)."
+msgstr "Näytä prosessipuu (vaatii psmisc-paketin)."
+
+#: src/app/components/modals/CommandsModal.jsx:83
+msgid "Show processes as a tree (needs procps)."
+msgstr "Näytä prosessit puuna (vaatii procps-paketin)."
+
+#: src/app/components/modals/CommandsModal.jsx:85
+msgid "List processes (works in BusyBox images too)."
+msgstr "Listaa prosessit (toimii myös BusyBox-levykuvissa)."
+
+#: src/app/components/modals/CommandsModal.jsx:87
+msgid ""
+"List each process's name, PID and parent PID from /proc (works without ps)."
+msgstr ""
+"Listaa kunkin prosessin nimen, PID:n ja pääprosessin PID:n /proc-"
+"hakemistosta (toimii ilman ps-komentoa)."
+
+#: src/app/components/modals/CommandsModal.jsx:89
+msgid "Show the container OS name and version."
+msgstr "Näytä kontin käyttöjärjestelmän nimi ja versio."
+
+#: src/app/components/modals/CommandsModal.jsx:91
+msgid "Show memory figures visible inside the container."
+msgstr "Näytä kontin sisällä näkyvät muistitiedot."
+
+#: src/app/components/modals/CommandsModal.jsx:93
+msgid "Show filesystem disk space usage inside the container."
+msgstr "Näytä tiedostojärjestelmän levytilan käyttö kontin sisällä."
+
+#: src/app/components/modals/CommandsModal.jsx:95
+msgid "Show the user and group IDs inside the container."
+msgstr "Näytä käyttäjä- ja ryhmätunnisteet kontin sisällä."
+
+#: src/app/components/modals/CommandsModal.jsx:97
+msgid "Show DNS resolver settings inside the container."
+msgstr "Näytä DNS-selvittimen asetukset kontin sisällä."
+
+#: src/app/components/modals/CommandsModal.jsx:99
+msgid ""
+"Show environment variables in the container (can show secret values when "
+"run)."
+msgstr ""
+"Näytä kontin ympäristömuuttujat (voi paljastaa salaisia arvoja ajettaessa)."
+
+#: src/app/components/modals/CommandsModal.jsx:136
+#: src/app/components/modals/CommandsModal.jsx:223
+#: src/app/components/modals/CodeViewModal.jsx:92
+#: src/app/components/resource/ResourceCard.jsx:127
+#: src/app/modules/health/HealthPage.jsx:74
+#: src/app/modules/overview/HealthCard.jsx:57
+#: src/app/modules/overview/PropertiesCard.jsx:115
+msgid "Copy"
+msgstr "Kopioi"
+
+#: src/app/components/modals/CommandsModal.jsx:182
+#: src/app/modules/containers/ContainersModule.jsx:207
+msgid "Commands"
+msgstr "Komennot"
+
+#: src/app/components/modals/CommandsModal.jsx:188
+msgid "Commands for container:"
+msgstr "Komennot kontille:"
+
+#: src/app/components/modals/CommandsModal.jsx:193
+msgid ""
+"Commands inside the container depend on its installed tools and current "
+"state, so some may not work in minimal or stopped containers."
+msgstr ""
+"Kontin sisällä toimivat komennot riippuvat sen asennetuista työkaluista ja "
+"nykyisestä tilasta, joten osa ei ehkä toimi minimaalisissa tai pysäytetyissä "
+"konteissa."
+
+#: src/app/components/modals/CommandsModal.jsx:195
+msgid "Commands marked $0 work without tools in the image."
+msgstr "Komennot, joissa on merkintä $0, toimivat ilman levykuvan työkaluja."
+
+#: src/app/components/modals/CommandsModal.jsx:231
+#: src/app/components/modals/UnitViewModal.jsx:229
+#: src/app/components/modals/InspectModal.jsx:110
+msgid "Download"
+msgstr "Lataa"
+
+#: src/app/components/modals/CommandsModal.jsx:234
+#: src/app/components/modals/CodeViewModal.jsx:96
+msgid "Close"
+msgstr "Sulje"
 
 #: src/app/components/modals/EnvTagModal.jsx:71
 #: src/app/components/modals/ConfigVariableModal.jsx:120
@@ -288,18 +427,6 @@ msgstr ""
 msgid "Remove"
 msgstr ""
 
-#: src/app/components/modals/CodeViewModal.jsx:92
-#: src/app/components/resource/ResourceCard.jsx:127
-#: src/app/modules/health/HealthPage.jsx:74
-#: src/app/modules/overview/HealthCard.jsx:57
-#: src/app/modules/overview/PropertiesCard.jsx:115
-msgid "Copy"
-msgstr "Kopioi"
-
-#: src/app/components/modals/CodeViewModal.jsx:96
-msgid "Close"
-msgstr "Sulje"
-
 #: src/app/components/modals/UnitViewModal.jsx:60
 msgid "The Quadlet file $0 no longer exists."
 msgstr "Quadlet-tiedostoa $0 ei enää ole."
@@ -319,11 +446,6 @@ msgstr "Quadlet-tiedostoa $0 ei voi lukea."
 #: src/app/components/modals/UnitViewModal.jsx:174
 msgid "This unit was not generated from a Quadlet file."
 msgstr "Tätä yksikköä ei ole luotu Quadlet-tiedostosta."
-
-#: src/app/components/modals/UnitViewModal.jsx:229
-#: src/app/components/modals/InspectModal.jsx:110
-msgid "Download"
-msgstr "Lataa"
 
 #: src/app/components/modals/ServiceLogModal.jsx:77
 msgid "The journal of the podshift user cannot be read."
@@ -460,7 +582,7 @@ msgstr ""
 #: src/app/components/resource/ResourceCard.jsx:164
 #: src/app/components/resource/ResourceCard.jsx:165
 #: src/app/modules/quadlets/QuadletsModule.jsx:93
-#: src/app/modules/containers/ContainersModule.jsx:75
+#: src/app/modules/containers/ContainersModule.jsx:76
 #: src/app/modules/services/ServicesModule.jsx:120
 msgid "Running"
 msgstr "Käynnissä"
@@ -585,7 +707,7 @@ msgid "Driver"
 msgstr "Ajuri"
 
 #: src/app/modules/secrets/SecretsModule.jsx:91
-#: src/app/modules/containers/ContainersModule.jsx:78
+#: src/app/modules/containers/ContainersModule.jsx:79
 msgid "Created"
 msgstr "Luotu"
 
@@ -842,7 +964,7 @@ msgstr "Käynnistys epäonnistui"
 
 #: src/app/modules/quadlets/QuadletsModule.jsx:96
 #: src/app/modules/quadlets/QuadletsModule.jsx:126
-#: src/app/modules/containers/ContainersModule.jsx:89
+#: src/app/modules/containers/ContainersModule.jsx:90
 #: src/app/modules/services/ServicesModule.jsx:117
 msgid "Starting"
 msgstr "Käynnistyy"
@@ -876,62 +998,62 @@ msgid_plural "$0 quadlets"
 msgstr[0] "$0 Quadlet"
 msgstr[1] "$0 Quadletia"
 
-#: src/app/modules/containers/ContainersModule.jsx:46
+#: src/app/modules/containers/ContainersModule.jsx:47
 msgid "Containers"
 msgstr "Kontit"
 
-#: src/app/modules/containers/ContainersModule.jsx:50
+#: src/app/modules/containers/ContainersModule.jsx:51
 msgid "No containers"
 msgstr "Ei kontteja"
 
-#: src/app/modules/containers/ContainersModule.jsx:51
+#: src/app/modules/containers/ContainersModule.jsx:52
 msgid "No matching containers."
 msgstr "Ei vastaavia kontteja."
 
-#: src/app/modules/containers/ContainersModule.jsx:76
+#: src/app/modules/containers/ContainersModule.jsx:77
 msgid "Paused"
 msgstr "Keskeytetty"
 
-#: src/app/modules/containers/ContainersModule.jsx:77
+#: src/app/modules/containers/ContainersModule.jsx:78
 msgid "Exited"
 msgstr "Päättynyt"
 
-#: src/app/modules/containers/ContainersModule.jsx:87
+#: src/app/modules/containers/ContainersModule.jsx:88
 msgid "Healthy"
 msgstr "Kunnossa"
 
-#: src/app/modules/containers/ContainersModule.jsx:88
+#: src/app/modules/containers/ContainersModule.jsx:89
 msgid "Unhealthy"
 msgstr "Ei kunnossa"
 
-#: src/app/modules/containers/ContainersModule.jsx:90
-#: src/app/modules/containers/ContainersModule.jsx:157
+#: src/app/modules/containers/ContainersModule.jsx:91
+#: src/app/modules/containers/ContainersModule.jsx:158
 msgid "Registry"
 msgstr "Rekisteri"
 
-#: src/app/modules/containers/ContainersModule.jsx:91
-#: src/app/modules/containers/ContainersModule.jsx:157
+#: src/app/modules/containers/ContainersModule.jsx:92
+#: src/app/modules/containers/ContainersModule.jsx:158
 msgid "Local"
 msgstr "Paikallinen"
 
-#: src/app/modules/containers/ContainersModule.jsx:92
+#: src/app/modules/containers/ContainersModule.jsx:93
 msgid "Off"
 msgstr "Pois päältä"
 
-#: src/app/modules/containers/ContainersModule.jsx:131
+#: src/app/modules/containers/ContainersModule.jsx:132
 msgid "$0 (no effect, not run by systemd)"
 msgstr "$0 (ei vaikutusta, systemd ei suorita)"
 
-#: src/app/modules/containers/ContainersModule.jsx:158
+#: src/app/modules/containers/ContainersModule.jsx:159
 msgid "Auto-update: $0, no effect because systemd does not run the container"
 msgstr ""
 "Automaattipäivitys: $0, ei vaikutusta, koska systemd ei suorita konttia"
 
-#: src/app/modules/containers/ContainersModule.jsx:159
+#: src/app/modules/containers/ContainersModule.jsx:160
 msgid "Auto-update: $0"
 msgstr "Automaattipäivitys: $0"
 
-#: src/app/modules/containers/ContainersModule.jsx:182
+#: src/app/modules/containers/ContainersModule.jsx:183
 msgid "$0 container"
 msgid_plural "$0 containers"
 msgstr[0] "$0 kontti"
@@ -1141,6 +1263,18 @@ msgid ""
 msgstr ""
 "Näytä PodShift-palvelin Cockpitissa: kontit, taltiot, verkot, levykuvat, "
 "salaisuudet, palvelut ja Quadletit."
+
+#~ msgid "Commands for $0"
+#~ msgstr "Komennot: $0"
+
+#~ msgid "List PID, parent PID and command from /proc."
+#~ msgstr "Listaa PID, pääprosessin PID ja komento /proc-hakemistosta."
+
+#~ msgid "Commands marked \"host\" always work."
+#~ msgstr "Komennot, joissa on merkintä \"isäntä\", toimivat aina."
+
+#~ msgid "host"
+#~ msgstr "isäntä"
 
 #, fuzzy
 #~ msgid "drop-quadlet"

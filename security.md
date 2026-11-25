@@ -2,7 +2,11 @@
 
 PodShift UI follows the same security principles as [PodShift](https://github.com/vellamo-dev/podshift/blob/main/security.md). This page covers what is specific to the UI.
 
-The UI only views data and does not change anything. It has no backend, ports or login of its own. It uses Cockpit's login and administrative access, and all data comes through PodShift's API handler.
+The UI has no backend, ports or login of its own. It uses Cockpit's login and administrative access, and talks to the system only through Cockpit's own channels to PodShift's API handler.
+
+Most pages only show data. Some actions change the system, for example setting `TSV_ENV`, adding configuration variables, installing apps through Drop and uninstalling them. Each change is done by a PodShift API action, never by the UI running commands of its own, so the same checks and rules apply as on the command line. Actions that remove things ask for confirmation first.
+
+The UI never runs the commands shown in the Commands dialog. It only shows them for you to copy. A download from that dialog is written briefly to `/tmp` as the signed-in user and removed afterwards.
 
 ## In scope and out of scope
 

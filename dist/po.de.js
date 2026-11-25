@@ -128,6 +128,118 @@ cockpit.locale({
   null,
   "Die Inspect-Ausgabe ist zu groß für die Anzeige hier ($0)."
  ],
+ "Terminal": [
+  null,
+  "Terminal"
+ ],
+ "Logs": [
+  null,
+  "Logs"
+ ],
+ "Processes": [
+  null,
+  "Prozesse"
+ ],
+ "System info": [
+  null,
+  "Systeminfo"
+ ],
+ "Open a root shell (container root maps to the podshift user on the host).": [
+  null,
+  "Eine Root-Shell öffnen (Root im Container entspricht dem Benutzer podshift auf dem Host)."
+ ],
+ "Open a root bash shell (works if the image has bash).": [
+  null,
+  "Eine Root-Bash-Shell öffnen (funktioniert, wenn das Image bash enthält)."
+ ],
+ "Show the last 100 log lines.": [
+  null,
+  "Die letzten 100 Log-Zeilen anzeigen."
+ ],
+ "Follow the log output live.": [
+  null,
+  "Die Log-Ausgabe live verfolgen."
+ ],
+ "Show logs from the last 10 minutes.": [
+  null,
+  "Logs der letzten 10 Minuten anzeigen."
+ ],
+ "List running processes in the container.": [
+  null,
+  "Laufende Prozesse im Container auflisten."
+ ],
+ "Show one snapshot of CPU, memory and I/O usage.": [
+  null,
+  "Eine Momentaufnahme von CPU-, Speicher- und E/A-Auslastung anzeigen."
+ ],
+ "Show the process tree (needs psmisc).": [
+  null,
+  "Den Prozessbaum anzeigen (benötigt psmisc)."
+ ],
+ "Show processes as a tree (needs procps).": [
+  null,
+  "Prozesse als Baum anzeigen (benötigt procps)."
+ ],
+ "List processes (works in BusyBox images too).": [
+  null,
+  "Prozesse auflisten (funktioniert auch in BusyBox-Images)."
+ ],
+ "List each process's name, PID and parent PID from /proc (works without ps).": [
+  null,
+  "Name, PID und Eltern-PID jedes Prozesses aus /proc auflisten (funktioniert ohne ps)."
+ ],
+ "Show the container OS name and version.": [
+  null,
+  "Name und Version des Container-Betriebssystems anzeigen."
+ ],
+ "Show memory figures visible inside the container.": [
+  null,
+  "Im Container sichtbare Speicherwerte anzeigen."
+ ],
+ "Show filesystem disk space usage inside the container.": [
+  null,
+  "Speicherplatzbelegung der Dateisysteme im Container anzeigen."
+ ],
+ "Show the user and group IDs inside the container.": [
+  null,
+  "Benutzer- und Gruppen-IDs im Container anzeigen."
+ ],
+ "Show DNS resolver settings inside the container.": [
+  null,
+  "DNS-Resolver-Einstellungen im Container anzeigen."
+ ],
+ "Show environment variables in the container (can show secret values when run).": [
+  null,
+  "Umgebungsvariablen im Container anzeigen (kann beim Ausführen geheime Werte zeigen)."
+ ],
+ "Copy": [
+  null,
+  "Kopieren"
+ ],
+ "Commands": [
+  null,
+  "Befehle"
+ ],
+ "Commands for container:": [
+  null,
+  "Befehle für Container:"
+ ],
+ "Commands inside the container depend on its installed tools and current state, so some may not work in minimal or stopped containers.": [
+  null,
+  "Befehle im Container hängen von den installierten Werkzeugen und dem aktuellen Zustand ab; einige funktionieren in minimalen oder angehaltenen Containern möglicherweise nicht."
+ ],
+ "Commands marked $0 work without tools in the image.": [
+  null,
+  "Mit $0 markierte Befehle funktionieren ohne Werkzeuge im Image."
+ ],
+ "Download": [
+  null,
+  "Herunterladen"
+ ],
+ "Close": [
+  null,
+  "Schließen"
+ ],
  "PodShift refused the change.": [
   null,
   ""
@@ -212,14 +324,6 @@ cockpit.locale({
   null,
   ""
  ],
- "Copy": [
-  null,
-  "Kopieren"
- ],
- "Close": [
-  null,
-  "Schließen"
- ],
  "The Quadlet file $0 no longer exists.": [
   null,
   "Die Quadlet-Datei $0 existiert nicht mehr."
@@ -235,10 +339,6 @@ cockpit.locale({
  "This unit was not generated from a Quadlet file.": [
   null,
   "Diese Unit wurde nicht aus einer Quadlet-Datei erzeugt."
- ],
- "Download": [
-  null,
-  "Herunterladen"
  ],
  "The journal of the podshift user cannot be read.": [
   null,

@@ -1,0 +1,82 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
+// The commands list is a Markdown-like page, visually separate from the dialog chrome.
+.podshift-commands-page {
+  padding-block: var(--pf-t--global--spacer--xl);
+  padding-inline: var(--pf-t--global--spacer--xl);
+  background-color: var(--pf-t--global--background--color--secondary--default);
+  border-radius: var(--pf-t--global--border--radius--medium);
+}
+
+// The # / ## markers are part of the heading, in a quieter colour.
+.podshift-commands-mark {
+  color: var(--pf-t--global--text--color--subtle);
+}
+
+// Space between a command's description, its snippet, and the next entry.
+.podshift-commands-entry {
+  margin-block-end: var(--pf-t--global--spacer--lg);
+}
+
+.podshift-commands-entry:last-child {
+  margin-block-end: 0;
+}
+
+.podshift-commands-entry p {
+  margin-block-start: 0;
+  margin-block-end: var(--pf-t--global--spacer--sm);
+}
+
+.podshift-commands-page h2 {
+  margin-block-start: var(--pf-t--global--spacer--xl);
+}
+
+// The snippet is one full-width plain button: padded well, wrapping text, copy icon at the end.
+.podshift-commands-snippet.pf-v6-c-button {
+  --pf-v6-c-button--PaddingBlockStart: var(--pf-t--global--spacer--md);
+  --pf-v6-c-button--PaddingBlockEnd: var(--pf-t--global--spacer--md);
+  --pf-v6-c-button--PaddingInlineStart: var(--pf-t--global--spacer--md);
+  --pf-v6-c-button--PaddingInlineEnd: var(--pf-t--global--spacer--md);
+  --pf-v6-c-button--BackgroundColor: var(--pf-t--global--background--color--tertiary--default);
+  --pf-v6-c-button--hover--BackgroundColor: var(--pf-t--global--background--color--action--plain--hover);
+  --pf-v6-c-button--m-clicked--BackgroundColor: var(--pf-t--global--background--color--action--plain--clicked);
+  --pf-v6-c-button--BorderRadius: var(--pf-t--global--border--radius--small);
+
+  justify-content: flex-start;
+  min-block-size: auto;
+  text-align: start;
+  white-space: normal;
+  cursor: pointer;
+}
+
+.podshift-commands-snippet .pf-v6-c-button__text {
+  flex: 1 1 auto;
+  min-inline-size: 0;
+  overflow-wrap: anywhere;
+  //noinspection CssNoGenericFontName
+  font-family: var(--pf-t--global--font--family--mono);
+  color: rgb(157 29 0);
+  font-weight: var(--pf-t--global--font--weight--body--bold);
+  text-align: start;
+  white-space: pre-wrap;
+}
+
+:where(.pf-v6-theme-dark) .podshift-commands-snippet .pf-v6-c-button__text {
+  color: rgb(118 255 20);
+}
+
+// Inline code in the caution and in "(host)" markers, like Markdown.
+.podshift-commands-page code {
+  padding-block: 0;
+  padding-inline: var(--pf-t--global--spacer--xs);
+  background-color: var(--pf-t--global--background--color--tertiary--default);
+  border-radius: var(--pf-t--global--border--radius--small);
+  //noinspection CssNoGenericFontName
+  font-family: var(--pf-t--global--font--family--mono);
+}
+
+.podshift-commands-snippet .pf-v6-c-button__icon {
+  flex: none;
+  margin-inline-start: auto;
+  color: var(--pf-t--global--icon--color--regular);
+}

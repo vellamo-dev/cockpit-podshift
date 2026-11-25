@@ -12,7 +12,7 @@ PodShift on kevyt konttiorkestroinnin mahdollistaja pienille palvelimille: se mu
 
 PodShift toimii täysin ilman käyttöliittymää. Kaikki seuranta ja hallinta hoidetaan `podshift`-komennoilla päätteessä.
 
-Käyttöliittymä on valinnainen. Se vain helpottaa seurantaa niille, jotka pitävät enemmän verkkokäyttöliittymästä kuin päätteestä. Se edellyttää, että PodShift on asennettu samalle koneelle, mutta `cockpit-podshift`-paketti ei asenna PodShiftia puolestasi.
+Käyttöliittymä on valinnainen. Se helpottaa seurantaa ja joitakin ylläpitotehtäviä niille, jotka pitävät enemmän verkkokäyttöliittymästä kuin päätteestä. Se edellyttää, että PodShift on asennettu samalle koneelle, mutta `cockpit-podshift`-paketti ei asenna PodShiftia puolestasi.
 
 ## Asennus
 
